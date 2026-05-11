@@ -23,12 +23,16 @@ jobs:
 
       - name: Sync leaderboard data
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LLM_PROVIDER: ollama
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: gpt-oss:120b
         run: npx tsx scripts/sync-leaderboard.ts
 
       - name: Generate blog drafts
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LLM_PROVIDER: ollama
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: gpt-oss:120b
         run: npx tsx scripts/generate-blog.ts
 
       - name: Commit changes if any

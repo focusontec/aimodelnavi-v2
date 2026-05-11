@@ -1,41 +1,78 @@
 /**
- * Claude API wrapper for data extraction and Japanese translation.
+ * LLM API wrapper for data extraction and Japanese translation.
  *
- * Used by all sync scripts for:
- *   - Extracting structured data from unstructured HTML
- *   - Translating technical content to Japanese
- *   - Generating blog posts
- *   - Validating extracted data
+ * Supports multiple providers via environment variables:
+ *   LLM_PROVIDER=ollama   → Ollama Cloud (OpenAI-compatible at https://ollama.com/v1)
+ *   LLM_PROVIDER=anthropic → Anthropic Claude API (default for backward compat)
+ *   LLM_PROVIDER=openai    → OpenAI API
  *
- * Set ANTHROPIC_API_KEY env var to authenticate.
+ * Required env vars:
+ *   LLM_API_KEY   — API key for the chosen provider
+ *   LLM_MODEL      — Model name (defaults vary by provider)
+ *
+ * Optional env vars:
+ *   LLM_BASE_URL   — Override base URL (e.g. for self-hosted Ollama)
+ *   LLM_PROVIDER   — "ollama" | "anthropic" | "openai" (default: "ollama")
  */
 
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
-const BASE_URL = "https://api.anthropic.com/v1/messages";
+// ── Configuration ──
 
-interface ClaudeResponse {
-  content: Array<{ type: "text"; text: string }>;
-}
+type Provider = "ollama" | "anthropic" | "openai";
 
-async function callClaude(
+const PROVIDER = (process.env.LLM_PROVIDER || "ollama") as Provider;
+const API_KEY = process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY || "";
+
+const DEFAULT_MODELS: Record<Provider, string> = {
+  ollama: "gpt-oss:120b",
+  anthropic: "claude-sonnet-4-6-20250514",
+  openai: "gpt-4.1",
+};
+
+const MODEL = process.env.LLM_MODEL || DEFAULT_MODELS[PROVIDER];
+
+const BASE_URLS: Record<Provider, string> = {
+  ollama: "https://ollama.com/v1/chat/completions",
+  anthropic: "https://api.anthropic.com/v1/messages",
+  openai: "https://api.openai.com/v1/chat/completions",
+};
+
+const BASE_URL = process.env.LLM_BASE_URL || BASE_URLS[PROVIDER];
+
+// ── API call ──
+
+async function callLLM(
   systemPrompt: string,
   userMessage: string,
-  model = "claude-sonnet-4-6-20250514",
   maxTokens = 4096
 ): Promise<string> {
-  if (!ANTHROPIC_API_KEY) {
-    throw new Error("ANTHROPIC_API_KEY env var not set");
+  if (!API_KEY) {
+    throw new Error(
+      "LLM_API_KEY (or ANTHROPIC_API_KEY) env var not set.\n" +
+        "Set LLM_PROVIDER=ollama and LLM_API_KEY=your-ollama-key for Ollama Cloud."
+    );
   }
 
+  if (PROVIDER === "anthropic") {
+    return callAnthropic(systemPrompt, userMessage, maxTokens);
+  }
+  // ollama and openai both use OpenAI-compatible format
+  return callOpenAICompatible(systemPrompt, userMessage, maxTokens);
+}
+
+async function callAnthropic(
+  systemPrompt: string,
+  userMessage: string,
+  maxTokens: number
+): Promise<string> {
   const res = await fetch(BASE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-api-key": ANTHROPIC_API_KEY,
+      "x-api-key": API_KEY,
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
-      model,
+      model: MODEL,
       max_tokens: maxTokens,
       system: systemPrompt,
       messages: [{ role: "user", content: userMessage }],
@@ -44,15 +81,47 @@ async function callClaude(
 
   if (!res.ok) {
     const body = await res.text();
-    throw new Error(`Claude API error ${res.status}: ${body}`);
+    throw new Error(`Anthropic API error ${res.status}: ${body}`);
   }
 
-  const data: ClaudeResponse = await res.json();
+  const data = await res.json();
   return data.content[0].text;
 }
 
+async function callOpenAICompatible(
+  systemPrompt: string,
+  userMessage: string,
+  maxTokens: number
+): Promise<string> {
+  const res = await fetch(BASE_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: MODEL,
+      max_tokens: maxTokens,
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userMessage },
+      ],
+    }),
+  });
+
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`LLM API error ${res.status}: ${body}`);
+  }
+
+  const data = await res.json();
+  return data.choices[0].message.content;
+}
+
+// ── Public functions (unchanged interface) ──
+
 /**
- * Extract structured data from raw HTML using Claude's semantic understanding.
+ * Extract structured data from raw HTML using LLM's semantic understanding.
  * Much more robust than CSS selectors — survives DOM structure changes.
  */
 export async function extractFromHTML<T>(
@@ -65,9 +134,8 @@ Respond ONLY with valid JSON. No explanations, no markdown fences.
 
 ${instructions}`;
 
-  const result = await callClaude(system, html, "claude-sonnet-4-6-20250514", 4096);
+  const result = await callLLM(system, html, 4096);
 
-  // Clean possible markdown code fences
   const cleaned = result
     .replace(/^```json?\s*/i, "")
     .replace(/\s*```$/i, "")
@@ -101,7 +169,7 @@ Style: Professional yet accessible. Target audience is Japanese developers and t
 Preserve all numbers, URLs, and technical identifiers exactly as-is.
 Context: ${context}`;
 
-  return callClaude(system, content, "claude-sonnet-4-6-20250514", 4096);
+  return callLLM(system, content, 4096);
 }
 
 /**
@@ -134,10 +202,9 @@ Respond as JSON:
     .map((s, i) => `### Source ${i + 1}:\n${s}`)
     .join("\n\n");
 
-  const result = await callClaude(
+  const result = await callLLM(
     system,
     `Topic: ${topic}\n\n${sourcesBlock}`,
-    "claude-sonnet-4-6-20250514",
     8192
   );
 
@@ -160,7 +227,7 @@ export async function validateData<T>(
 Check for: unrealistic prices, missing required fields, contradictory information, impossible values.
 Respond as JSON: { "valid": true/false, "issues": ["..."] }`;
 
-  const result = await callClaude(system, JSON.stringify(data, null, 2), "claude-haiku-4-6-20250514", 1024);
+  const result = await callLLM(system, JSON.stringify(data, null, 2), 1024);
   const cleaned = result.replace(/^```json?\s*/i, "").replace(/\s*```$/i, "").trim();
   return JSON.parse(cleaned);
 }

@@ -23,7 +23,9 @@ jobs:
 
       - name: Sync pricing data
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LLM_PROVIDER: ollama
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: gpt-oss:120b
         run: npx tsx scripts/sync-pricing.ts
 
       - name: Commit changes if any
