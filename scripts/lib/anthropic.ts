@@ -23,7 +23,7 @@ const PROVIDER = (process.env.LLM_PROVIDER || "ollama") as Provider;
 const API_KEY = process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY || "";
 
 const DEFAULT_MODELS: Record<Provider, string> = {
-  ollama: "gpt-oss:120b",
+  ollama: "gemma4:31b",
   anthropic: "claude-sonnet-4-6-20250514",
   openai: "gpt-4.1",
 };

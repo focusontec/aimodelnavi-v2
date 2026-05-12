@@ -120,53 +120,57 @@ async function fetchPage(url: string, needsJS: boolean): Promise<string> {
   console.log("    Using HTTP fetch");
   return fetchPageHTTP(url);
 }
-}
 
 async function extractWithRetry(
   html: string,
   providerName: string
 ): Promise<PricingEntry[]> {
-  // Strategy 1: Try extracting from full HTML
+  // Pre-clean: strip scripts, styles, nav, footer and limit size
+  const preprocessed = html
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
+    .replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, "")
+    .replace(/<footer[^>]*>[\s\S]*?<\/footer>/gi, "")
+    .replace(/<head[^>]*>[\s\S]*?<\/head>/gi, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 30000); // Limit to 30K chars to fit in context window
+
+  // Strategy 1: Try extracting from preprocessed HTML
   try {
-    console.log(`    Strategy 1: Full HTML extraction`);
+    console.log(`    Strategy 1: Preprocessed HTML extraction`);
     const data = await extractFromHTML<PricingEntry[]>(
-      html,
+      preprocessed,
       "Array<PricingEntry>",
-      `Provider: ${providerName}\n${SCHEMA_INSTRUCTIONS}`
+      `Provider: ${providerName}\n${SCHEMA_INSTRUCTIONS}\nNote: HTML has been preprocessed. Focus on pricing tables and lists.`
     );
     if (data && data.length > 0) return data;
   } catch (err) {
     console.warn(`    Strategy 1 failed: ${err}`);
   }
 
-  // Strategy 2: Strip scripts/styles, try with cleaned HTML
+  // Strategy 2: Even more aggressive truncation — only first 15K chars
   try {
-    console.log(`    Strategy 2: Cleaned HTML extraction`);
-    const cleaned = html
-      .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
-      .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
-      .replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, "")
-      .replace(/<footer[^>]*>[\s\S]*?<\/footer>/gi, "")
-      .replace(/\s+/g, " ")
-      .trim()
-      .slice(0, 50000); // Limit to 50K chars to avoid token limits
+    console.log(`    Strategy 2: Short HTML extraction`);
+    const short = preprocessed.slice(0, 15000);
 
     const data = await extractFromHTML<PricingEntry[]>(
-      cleaned,
+      short,
       "Array<PricingEntry>",
-      `Provider: ${providerName}\n${SCHEMA_INSTRUCTIONS}\nNote: This is cleaned HTML, focus on main content area.`
+      `Provider: ${providerName}\n${SCHEMA_INSTRUCTIONS}\nNote: This is a short excerpt from the pricing page. Extract whatever pricing data you can find.`
     );
     if (data && data.length > 0) return data;
   } catch (err) {
     console.warn(`    Strategy 2 failed: ${err}`);
   }
 
-  // Strategy 3: Try different prompt approach
+  // Strategy 3: Minimal prompt with even shorter input
   try {
-    console.log(`    Strategy 3: Alternative prompt`);
-    const simplePrompt = `The following HTML is from ${providerName}'s pricing page. Extract all model names and their prices per 1M tokens as JSON array. Format: [{"modelName": "...", "inputPrice": number, "outputPrice": number, "billingMode": "standard"}]`;
+    console.log(`    Strategy 3: Minimal prompt`);
+    const tiny = preprocessed.slice(0, 8000);
+    const simplePrompt = `Extract pricing from this ${providerName} page snippet. Return JSON array: [{"modelName":"...", "inputPrice":0, "outputPrice":0, "billingMode":"standard"}]`;
     const data = await extractFromHTML<PricingEntry[]>(
-      html.slice(0, 30000),
+      tiny,
       "Array<PricingEntry>",
       simplePrompt
     );
