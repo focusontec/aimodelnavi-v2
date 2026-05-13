@@ -230,6 +230,65 @@ Respond as JSON:
 }
 
 /**
+ * Generate an opinionated Japanese blog post from news sources.
+ * Includes personal analysis, Japanese developer perspective, and a 「考察」 section.
+ */
+export async function generateOpinionatedBlogPost(
+  title: string,
+  snippet: string,
+  source: string,
+  url: string,
+  date: string,
+  angle: string,
+  scores: { technical_depth: number; reader_value: number; timeliness: number; opinion_potential: number }
+): Promise<{ title: string; content: string; excerpt: string; tag: string }> {
+  const system = `あなたは日本のAI専門ジャーナリストです。AI Models Navi（aimodelsnavi.com）のライターとして、AIニュースを日本語で解説する記事を執筆します。
+
+# 文体ルール
+- 「〜だ」「〜である」調（ですます調は使わない）
+- 客観的事実と執筆者の意見・分析を明確に区別する
+- 数字や性能値は捏造しない。不明な点は「不明」「未発表」と明記
+- 記事末尾に「## 考察」セクションを必ず入れる
+- 日本のAI開発者にとっての意義や影響を含める
+- 日本語として自然で、翻訳調にならないように
+
+# タイトル
+- SEOを意識した日本語タイトル
+- 具体的な内容が伝わるもの（クリックベイトは避ける）
+
+# タグ（以下のいずれか）
+OpenAI, Anthropic, Google, オープンソース, ベンチマーク, AIエージェント, xAI, DeepSeek, 解説, 速報
+
+# 執筆の切り口
+${angle}
+
+# 出力形式（JSON）
+{
+  "title": "日本語タイトル",
+  "content": "マークダウン本文（H1見出しは含めない）",
+  "excerpt": "2-3文の日本語サマリー",
+  "tag": "タグ"
+}`;
+
+  const userMessage = `# ニュース情報
+タイトル: ${title}
+ソース: ${source}
+URL: ${url}
+日付: ${date}
+技術的深さ: ${scores.technical_depth}/10
+読者価値: ${scores.reader_value}/10
+速報性: ${scores.timeliness}/10
+意見性: ${scores.opinion_potential}/10
+
+# 元コンテンツ
+${snippet.slice(0, 8000)}`;
+
+  const result = await callLLM(system, userMessage, 8192);
+  const cleaned = result.replace(/^```json?\s*/i, "").replace(/\s*```$/i, "").trim();
+  return JSON.parse(cleaned);
+}
+
+/**
  * Process a Chinese blog article into a Japanese blog post.
  * Translates and adapts for Japanese AI developer audience.
  */

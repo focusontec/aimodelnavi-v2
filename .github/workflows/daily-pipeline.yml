@@ -2,8 +2,8 @@ name: Daily Pipeline Sync
 
 on:
   schedule:
-    # Run daily at 07:00 UTC (16:00 JST)
-    - cron: "3 7 * * *"
+    # Run 3x daily: JST 09:00 / 17:00 / 01:00 (UTC 00:00 / 08:00 / 16:00)
+    - cron: "7 0,8,16 * * *"
   workflow_dispatch:
     inputs:
       mode:
