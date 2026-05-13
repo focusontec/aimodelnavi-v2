@@ -386,7 +386,7 @@ export async function processModels(): Promise<ProcessResult> {
         u.includes("anthropic.com") || u.includes("openai.com") || u.includes("deepmind.google") || u.includes("deepseek.com") || u.includes("x.ai")
       ) || null;
 
-      upsertModel({
+      const modelId = upsertModel({
         slug,
         name,
         developer,
@@ -409,6 +409,23 @@ export async function processModels(): Promise<ProcessResult> {
         is_japanese: 0,
         priority: 0,
       });
+
+      // Sync DataLearnerAI offers into pricing_entries table
+      if (offers?.price) {
+        const { upsertPricingEntry } = await import("../lib/db");
+        upsertPricingEntry({
+          modelId,
+          modelName: name,
+          provider: developer,
+          billingMode: "standard",
+          inputPrice: parseFloat(offers.price) || 0,
+          outputPrice: 0,
+          inputModality: "text",
+          outputModality: "text",
+          currency: offers.priceCurrency || "USD",
+          sourceUrl: `https://www.datalearner.com/ai-models/pretrained-models/${slug}`,
+        });
+      }
 
       existingSlugs.add(slug);
       result.processed++;

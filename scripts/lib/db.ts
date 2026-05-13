@@ -394,6 +394,48 @@ export function getRawModelCount(): number {
   return row.c;
 }
 
+// ── Pricing entries ──
+
+export function upsertPricingEntry(input: {
+  modelId: number | null;
+  modelName: string;
+  provider: string;
+  billingMode: string;
+  inputPrice: number;
+  outputPrice: number;
+  inputModality: string;
+  outputModality: string;
+  currency: string;
+  notes?: string;
+  sourceUrl?: string;
+}): void {
+  const db = getDb();
+  db.prepare(`
+    INSERT INTO pricing_entries (model_id, model_name, provider, billing_mode, input_price, output_price, input_modality, output_modality, currency, notes, source_url)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ON CONFLICT(model_name, provider, billing_mode) DO UPDATE SET
+      input_price = excluded.input_price,
+      output_price = excluded.output_price,
+      input_modality = excluded.input_modality,
+      output_modality = excluded.output_modality,
+      currency = excluded.currency,
+      notes = excluded.notes,
+      updated_at = datetime('now')
+  `).run(
+    input.modelId,
+    input.modelName,
+    input.provider,
+    input.billingMode,
+    input.inputPrice,
+    input.outputPrice,
+    input.inputModality,
+    input.outputModality,
+    input.currency,
+    input.notes || null,
+    input.sourceUrl || null
+  );
+}
+
 // ── Blog posts ──
 
 export interface BlogPostRecord {

@@ -37,11 +37,11 @@ interface BlogArticleContent {
 // ── Extract article links from blog list page ──
 
 function extractArticleLinks(html: string): BlogArticleMeta[] {
+  const seen = new Set<string>();
   const articles: BlogArticleMeta[] = [];
 
-  // Match blog article links with title and date
-  // Pattern: <a href="/blog/slug">...title...</a> ... date pattern
-  const linkPattern = /<a[^>]*href="(\/blog\/([^"]+))"[^>]*>([^<]+)<\/a>/gi;
+  // DL blog list structure: <a href="/blog/slug"><h2>Title</h2></a>
+  const linkPattern = /<a[^>]*href="(\/blog\/([a-z][^"]+))"[^>]*>\s*<h2[^>]*>([^<]+)<\/h2>/gi;
   let match;
 
   while ((match = linkPattern.exec(html)) !== null) {
@@ -49,25 +49,16 @@ function extractArticleLinks(html: string): BlogArticleMeta[] {
     const slug = match[2];
     const title = match[3].trim();
 
-    // Skip non-article links (pagination, sidebar, etc.)
-    if (
-      slug.includes("page/") ||
-      slug === "blog_list" ||
-      title.length < 10 ||
-      slug.match(/^\d+$/) // numeric IDs (sidebar popular posts)
-    ) {
-      continue;
-    }
+    if (slug.includes("page/") || seen.has(slug)) continue;
 
-    if (!articles.find((a) => a.slug === slug)) {
-      articles.push({
-        slug,
-        url: `${BASE_URL}${href}`,
-        title,
-        date: "",
-        tags: [],
-      });
-    }
+    seen.add(slug);
+    articles.push({
+      slug,
+      url: `${BASE_URL}${href}`,
+      title,
+      date: "",
+      tags: [],
+    });
   }
 
   return articles;
@@ -75,25 +66,16 @@ function extractArticleLinks(html: string): BlogArticleMeta[] {
 
 function extractDates(html: string): Map<string, string> {
   const dates = new Map<string, string>();
-  // Date pattern in blog list: datetime="YYYY/MM/DD HH:mm:ss" or text node with date
-  const datePattern = /datetime="([^"]+)"/g;
-  const slugPattern = /href="\/blog\/([^"]+)"/g;
 
-  const slugs: string[] = [];
-  let m;
-  while ((m = slugPattern.exec(html)) !== null) {
-    slugs.push(m[1]);
-  }
-
-  const dateStrs: string[] = [];
-  let dm;
-  while ((dm = datePattern.exec(html)) !== null) {
-    dateStrs.push(dm[1]);
-  }
-
-  // Match slugs to dates by position
-  for (let i = 0; i < Math.min(slugs.length, dateStrs.length); i++) {
-    dates.set(slugs[i], dateStrs[i]);
+  // Find date patterns near each blog slug
+  const slugDatePattern = /href="\/blog\/([a-z][^"]+)"[^]*?(\d{4}\/\d{2}\/\d{2}\s+\d{2}:\d{2}:\d{2})/gi;
+  let match;
+  while ((match = slugDatePattern.exec(html)) !== null) {
+    const slug = match[1];
+    const date = match[2];
+    if (!dates.has(slug)) {
+      dates.set(slug, date);
+    }
   }
 
   return dates;
