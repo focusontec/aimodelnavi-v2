@@ -1,28 +1,21 @@
-'use client';
-
-import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import type { Metadata } from 'next';
 import { getAllPosts } from '@/lib/blog';
 
 const ITEMS_PER_PAGE = 10;
 
-export default function BlogListPage() {
-  const [page, setPage] = useState(1);
-  const posts = useMemo(() => getAllPosts(), []);
-
+export default async function BlogListPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const { page: pageParam } = await searchParams;
+  const currentPage = Math.max(1, parseInt(pageParam || '1', 10) || 1);
+  const posts = getAllPosts();
   const totalPages = Math.max(1, Math.ceil(posts.length / ITEMS_PER_PAGE));
-  const safePage = Math.min(page, totalPages);
-
-  useEffect(() => {
-    if (page > totalPages) setPage(totalPages);
-  }, [totalPages, page]);
-
-  const displayPosts = useMemo(() => {
-    const start = (safePage - 1) * ITEMS_PER_PAGE;
-    return posts.slice(start, start + ITEMS_PER_PAGE);
-  }, [posts, safePage]);
+  const safePage = Math.min(currentPage, totalPages);
+  const start = (safePage - 1) * ITEMS_PER_PAGE;
+  const displayPosts = posts.slice(start, start + ITEMS_PER_PAGE);
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -69,13 +62,14 @@ export default function BlogListPage() {
 
           {totalPages > 1 && (
             <div className="flex items-center justify-center gap-1 mt-8">
-              <button
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
-                disabled={safePage === 1}
-                className="p-1.5 rounded-md hover:bg-gray-100 disabled:opacity-30 disabled:cursor-default"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
+              {safePage > 1 && (
+                <Link
+                  href={`/blog?page=${safePage - 1}`}
+                  className="p-1.5 rounded-md hover:bg-gray-100"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </Link>
+              )}
 
               {Array.from({ length: totalPages }, (_, i) => i + 1)
                 .filter((p) => p === 1 || p === totalPages || Math.abs(p - safePage) <= 1)
@@ -88,27 +82,28 @@ export default function BlogListPage() {
                   item === 'ellipsis' ? (
                     <span key={`e-${idx}`} className="px-2 text-gray-300 text-xs">...</span>
                   ) : (
-                    <button
+                    <Link
                       key={item}
-                      onClick={() => setPage(item as number)}
-                      className={`w-8 h-8 rounded-md text-xs font-medium transition-colors ${
+                      href={`/blog?page=${item}`}
+                      className={`w-8 h-8 rounded-md text-xs font-medium transition-colors flex items-center justify-center ${
                         safePage === item
                           ? 'bg-primary-600 text-white'
                           : 'hover:bg-gray-100 text-gray-600'
                       }`}
                     >
                       {item}
-                    </button>
+                    </Link>
                   )
                 )}
 
-              <button
-                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                disabled={safePage === totalPages}
-                className="p-1.5 rounded-md hover:bg-gray-100 disabled:opacity-30 disabled:cursor-default"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
+              {safePage < totalPages && (
+                <Link
+                  href={`/blog?page=${safePage + 1}`}
+                  className="p-1.5 rounded-md hover:bg-gray-100"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              )}
             </div>
           )}
         </>
