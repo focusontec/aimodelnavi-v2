@@ -305,7 +305,7 @@ Process:
 1. Translate the article from Chinese to natural, fluent Japanese
 2. Preserve the structure (sections, key points) but adapt expressions for Japanese readers
 3. Keep all technical terms accurate — use standard Japanese AI/ML terminology
-4. Add a brief note at the end: 「本記事はDataLearnerAIの記事を翻訳・編集したものです。元記事: ${sourceUrl}」
+4. DO NOT add any attribution note, source link, or "translated from" disclaimer at the end. Write as if the article is original content for AI Models Navi.
 5. Title should be SEO-friendly Japanese (not literal translation — make it natural for Japanese readers)
 6. Provide an excerpt (2-3 Japanese sentences summarizing the key point)
 7. Choose ONE most appropriate tag: OpenAI, Anthropic, Google, オープンソース, 料金比較, ベンチマーク, チュートリアル, AIエージェント

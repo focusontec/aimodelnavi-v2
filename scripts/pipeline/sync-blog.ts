@@ -67,7 +67,6 @@ export async function syncBlog(): Promise<BlogSyncResult> {
           date: new Date().toISOString().split("T")[0],
           tag: blogPost.tag,
           excerpt: blogPost.excerpt,
-          source: post.source_url,
           draft: "true",
         },
         blogPost.content
