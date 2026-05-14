@@ -78,17 +78,73 @@ function isPromoByHeuristic(alt: string, src: string): boolean {
   return false;
 }
 
-// ── AI-based image filter (Gemma text model) ──
+// ── AI-based image filter (Gemma4 vision model) ──
+
+const VISION_MODEL = "gemma4:31b-cloud";
+
+async function analyzeImageWithVision(
+  imageUrl: string,
+  imageAlt: string,
+  articleTitle: string
+): Promise<"promo" | "chinese_text" | "content"> {
+  const key = process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY || "";
+  const baseUrl = process.env.LLM_BASE_URL || "https://ollama.com/v1/chat/completions";
+
+  try {
+    // Download image and convert to base64
+    const imgRes = await fetch(imageUrl, {
+      headers: { "User-Agent": "AIModelsNavi/1.0" },
+    });
+    if (!imgRes.ok) return "content"; // can't download, assume OK
+    const buf = Buffer.from(await imgRes.arrayBuffer());
+    const b64 = buf.toString("base64");
+    const mimeType = imgRes.headers.get("content-type") || "image/webp";
+
+    const prompt = `Analyze this image from a Chinese AI blog article titled "${articleTitle}" (alt text: "${imageAlt}").
+
+Classify as one of:
+- "promo": WeChat/微信公众号 QR code, subscription banner, "scan to follow", reader group invite, DataLearnerAI self-promotion, or advertisement
+- "chinese_text": contains Chinese text but appears to be a content image (infographic, diagram, chart, screenshot with Chinese labels)
+- "content": purely technical content (chart, diagram, architecture, benchmark results, photo) — no Chinese text at all
+
+Respond with EXACTLY one word: promo, chinese_text, or content.`;
+
+    const res = await fetch(baseUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${key}`,
+      },
+      body: JSON.stringify({
+        model: VISION_MODEL,
+        max_tokens: 32,
+        messages: [{
+          role: "user",
+          content: [
+            { type: "text", text: prompt },
+            { type: "image_url", image_url: { url: `data:${mimeType};base64,${b64}` } },
+          ],
+        }],
+      }),
+    });
+
+    if (!res.ok) return "content";
+    const data = await res.json() as { choices: { message: { content: string } }[] };
+    const answer = data.choices[0].message.content.toLowerCase().trim();
+
+    if (answer.includes("promo")) return "promo";
+    if (answer.includes("chinese")) return "chinese_text";
+    return "content";
+  } catch {
+    return "content"; // on error, keep the image
+  }
+}
 
 async function filterImagesByAI(
   images: { src: string; alt: string; context: string }[],
   articleTitle: string
 ): Promise<{ src: string; alt: string }[]> {
   if (images.length === 0) return [];
-
-  const key = process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY || "";
-  const baseUrl = process.env.LLM_BASE_URL || "https://ollama.com/v1/chat/completions";
-  const model = "gemma4:31b";
 
   // First pass: heuristic filter
   const heuristicKeep: typeof images = [];
@@ -105,76 +161,30 @@ async function filterImagesByAI(
     console.log(`    Heuristic: rejected ${heuristicReject.length} promo images`);
   }
 
-  // If only 0-1 images remain after heuristic, skip AI filter
-  if (heuristicKeep.length <= 1) {
-    return heuristicKeep.map(({ src, alt }) => ({ src, alt }));
-  }
+  if (heuristicKeep.length === 0) return [];
 
-  // AI filter: classify remaining images
-  console.log(`    AI filter: classifying ${heuristicKeep.length} images...`);
+  // Second pass: Gemma4 vision analysis for each image
+  console.log(`    Vision AI: analyzing ${heuristicKeep.length} images...`);
+  const result: { src: string; alt: string }[] = [];
+  let rejected = 0;
 
-  const imageList = heuristicKeep.map((img, i) =>
-    `[${i + 1}] alt="${img.alt}"`
-  ).join("\n");
-
-  const systemPrompt = `You are an image content classifier. Given a list of images from a Chinese AI blog article, classify each image as "KEEP" or "REJECT".
-
-REJECT if the image likely contains:
-- Chinese text (especially if it's a WeChat/微信公众号 promotional banner)
-- QR codes, "scan to follow" prompts
-- Advertisement or promotional content
-- Screenshots that are mostly Chinese text (not diagrams)
-
-KEEP if the image is likely:
-- A diagram, chart, or technical illustration
-- A photo or screenshot showing AI model results/benchmarks
-- An architecture diagram or flowchart
-- A relevant product screenshot (not promotional)
-
-Article title: ${articleTitle}
-
-Respond as JSON array of indices to KEEP:
-{
-  "keep": [1, 3, 5]
-}`;
-
-  try {
-    const res = await fetch(baseUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${key}`,
-      },
-      body: JSON.stringify({
-        model,
-        max_tokens: 256,
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: imageList },
-        ],
-      }),
-    });
-
-    if (!res.ok) return heuristicKeep.map(({ src, alt }) => ({ src, alt }));
-
-    const data = await res.json() as { choices: { message: { content: string } }[] };
-    const content = data.choices[0].message.content;
-    const cleaned = content.replace(/^```json?\s*/i, "").replace(/\s*```$/i, "").trim();
-    const result = JSON.parse(cleaned) as { keep: number[] };
-    const keepIndices = new Set(result.keep.map((k: number) => k - 1));
-
-    const kept = heuristicKeep.filter((_, i) => keepIndices.has(i));
-    const rejected = heuristicKeep.length - kept.length;
-    if (rejected > 0) {
-      console.log(`    AI filter: rejected ${rejected}, kept ${kept.length}`);
+  for (const img of heuristicKeep) {
+    const classification = await analyzeImageWithVision(img.src, img.alt, articleTitle);
+    if (classification === "promo" || classification === "chinese_text") {
+      const reason = classification === "promo" ? "promo" : "chinese text";
+      console.log(`      ✗ ${reason}: ${img.alt || img.src.split("/").pop()}`);
+      rejected++;
+    } else {
+      console.log(`      ✓ content: ${img.alt || img.src.split("/").pop()}`);
+      result.push({ src: img.src, alt: img.alt });
     }
-
-    return kept.map(({ src, alt }) => ({ src, alt }));
-  } catch {
-    // Fallback: keep all heuristic-passing images
-    console.warn("    AI filter failed, keeping all non-promo images");
-    return heuristicKeep.map(({ src, alt }) => ({ src, alt }));
   }
+
+  if (rejected > 0) {
+    console.log(`    Vision AI: rejected ${rejected} promo, kept ${result.length}`);
+  }
+
+  return result;
 }
 
 // ── Image download ──
