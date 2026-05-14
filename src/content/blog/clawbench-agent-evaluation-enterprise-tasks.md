@@ -39,4 +39,3 @@ ClawBenchはClawBench Labsによって維持管理されており（GitHub組織
 
 これらのシナリオでは、命名規則の不一致、ディレクトリの欠損、日付に関する罠など、企業の実環境で頻発する複雑な状況をシミュレートし、モデルの堅牢性を検証します。
 
-![](/images/blog/clawbench-agent-evaluation-enterprise-tasks/img-2.png)
