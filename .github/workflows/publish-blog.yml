@@ -56,8 +56,8 @@ jobs:
       - name: Commit and push
         run: |
           if [ -n "$(git status --porcelain src/content/blog/)" ]; then
-            git config user.name "aimodelsnavi-bot"
-            git config user.email "bot@aimodelsnavi.com"
+            git config user.name "coder"
+            git config user.email "focusteczzc@163.com"
             git add src/content/blog/
             git commit -m "blog: publish translated post — ${{ inputs.title }}"
             git pull -X ours origin main || true
