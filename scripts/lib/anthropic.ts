@@ -421,47 +421,49 @@ ${truncatedBody}`;
   const result = await callLLM(system, userMessage, 8192, 120000); // 120s for blog translation
   const cleaned = result.replace(/^```json?\s*/i, "").replace(/\s*```$/i, "").trim();
 
-  // Try parsing as JSON
+  // Attempt 1: direct JSON parse
   try {
     const parsed = JSON.parse(cleaned);
-    // Validate that we got actual translated content (not just echoed input)
-    if (parsed.title && parsed.content && parsed.title !== titleZh) {
-      return parsed;
-    }
-    // If title is same as input, translation may have failed — try to use content anyway
-    if (parsed.title && parsed.content) {
-      console.warn("  ⚠ Title unchanged after translation, using parsed JSON anyway");
-      return parsed;
-    }
-  } catch {
-    // JSON parse failed — LLM might have returned JSON as a string with escape sequences
-  }
+    if (parsed.title && parsed.content) return parsed;
+  } catch { /* not valid JSON */ }
 
-  // Second attempt: try unescaping \n in case LLM returned JSON string with literal escapes
-  try {
-    const unescaped = cleaned.replace(/\\n/g, "\n").replace(/\\"/g, '"').replace(/\\\\/g, "\\");
-    const parsed = JSON.parse(unescaped);
-    if (parsed.title && parsed.content) {
-      console.warn("  ⚠ Parsed JSON after unescaping");
-      return parsed;
-    }
-  } catch {
-    // Still not valid JSON
-  }
-
-  // Third attempt: try to extract JSON from within the string
+  // Attempt 2: extract JSON object from response and parse
   try {
     const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
     if (jsonMatch) {
-      const inner = jsonMatch[0].replace(/\\n/g, "\n").replace(/\\"/g, '"');
-      const parsed = JSON.parse(inner);
-      if (parsed.title && parsed.content) {
-        console.warn("  ⚠ Extracted JSON from response string");
-        return parsed;
-      }
+      const parsed = JSON.parse(jsonMatch[0]);
+      if (parsed.title && parsed.content) return parsed;
     }
-  } catch {
-    // Give up on JSON parsing
+  } catch { /* not valid JSON */ }
+
+  // Attempt 3: LLM returned JSON as escaped string — extract fields via regex
+  // Handles: {"title":"...", "content":"line1\nline2", "excerpt":"...", "tag":"..."}
+  const extractField = (name: string): string | null => {
+    // Match "name":"value" where value may contain escaped chars
+    const re = new RegExp(`"${name}"\\s*:\\s*"((?:[^"\\\\]|\\\\.)*)"`, "s");
+    const m = cleaned.match(re);
+    if (!m) return null;
+    // Unescape JSON string escapes
+    return m[1]
+      .replace(/\\n/g, "\n")
+      .replace(/\\t/g, "\t")
+      .replace(/\\"/g, '"')
+      .replace(/\\\\/g, "\\");
+  };
+
+  const title = extractField("title");
+  const content = extractField("content");
+  const excerpt = extractField("excerpt");
+  const tag = extractField("tag");
+
+  if (title && content) {
+    console.warn("  ⚠ Extracted fields via regex (JSON parse failed)");
+    return {
+      title,
+      content,
+      excerpt: excerpt || excerptZh || "",
+      tag: tag || "解説",
+    };
   }
 
   // Fallback: LLM returned raw content, not JSON
