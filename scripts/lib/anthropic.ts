@@ -45,7 +45,8 @@ const LLM_TIMEOUT_MS = 45000; // 45 seconds timeout per LLM call
 async function callLLM(
   systemPrompt: string,
   userMessage: string,
-  maxTokens = 4096
+  maxTokens = 4096,
+  timeoutMs = LLM_TIMEOUT_MS
 ): Promise<string> {
   if (!API_KEY) {
     throw new Error(
@@ -55,10 +56,10 @@ async function callLLM(
   }
 
   if (PROVIDER === "anthropic") {
-    return callAnthropic(systemPrompt, userMessage, maxTokens);
+    return callAnthropic(systemPrompt, userMessage, maxTokens, timeoutMs);
   }
   // ollama and openai both use OpenAI-compatible format
-  return callOpenAICompatible(systemPrompt, userMessage, maxTokens);
+  return callOpenAICompatible(systemPrompt, userMessage, maxTokens, timeoutMs);
 }
 
 async function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number): Promise<Response> {
@@ -75,7 +76,8 @@ async function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: nu
 async function callAnthropic(
   systemPrompt: string,
   userMessage: string,
-  maxTokens: number
+  maxTokens: number,
+  timeoutMs: number = LLM_TIMEOUT_MS
 ): Promise<string> {
   const res = await fetchWithTimeout(BASE_URL, {
     method: "POST",
@@ -90,7 +92,7 @@ async function callAnthropic(
       system: systemPrompt,
       messages: [{ role: "user", content: userMessage }],
     }),
-  }, LLM_TIMEOUT_MS);
+  }, timeoutMs);
 
   if (!res.ok) {
     const body = await res.text();
@@ -104,7 +106,8 @@ async function callAnthropic(
 async function callOpenAICompatible(
   systemPrompt: string,
   userMessage: string,
-  maxTokens: number
+  maxTokens: number,
+  timeoutMs: number = LLM_TIMEOUT_MS
 ): Promise<string> {
   const res = await fetchWithTimeout(BASE_URL, {
     method: "POST",
@@ -120,7 +123,7 @@ async function callOpenAICompatible(
         { role: "user", content: userMessage },
       ],
     }),
-  }, LLM_TIMEOUT_MS);
+  }, timeoutMs);
 
   if (!res.ok) {
     const body = await res.text();
@@ -415,7 +418,7 @@ ${excerptZh ? `Excerpt (Chinese): ${excerptZh}` : ""}
 Article body (Chinese Markdown):
 ${truncatedBody}`;
 
-  const result = await callLLM(system, userMessage, 8192);
+  const result = await callLLM(system, userMessage, 8192, 120000); // 120s for blog translation
   const cleaned = result.replace(/^```json?\s*/i, "").replace(/\s*```$/i, "").trim();
 
   // Try parsing as JSON
