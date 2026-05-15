@@ -117,12 +117,39 @@ fi
 
 BODY_LEN=${#BODY}
 
-# ── 提取外部图片 URL ──
+# ── 提取外部图片 URL（仅限图片文件或已知图床） ──
 
-IMAGE_URLS=$(echo "$BODY" | grep -oP '!\[[^\]]*\]\(https?://[^)]+\)' | grep -oP 'https?://[^)]+' || true)
+# 第一步：提取所有 markdown 图片 URL
+ALL_IMAGE_URLS=$(echo "$BODY" | grep -oP '!\[[^\]]*\]\(https?://[^)]+\)' | grep -oP 'https?://[^)]+' || true)
+
+# 第二步：过滤出真正的图片 URL
+# - 包含图片扩展名：.jpg, .jpeg, .png, .gif, .webp, .svg, .avif
+# - 或来自已知图床域名：images.unsplash.com, pbs.twimg.com, imgur.com, cloudinary.com
+IMAGE_URLS=""
+while IFS= read -r url; do
+  [ -z "$url" ] && continue
+  # 检查是否是图片扩展名或已知图床
+  if echo "$url" | grep -qiE '\.(jpg|jpeg|png|gif|webp|svg|avif)(\?|$)|images\.unsplash\.com|pbs\.twimg\.com|imgur\.com|cloudinary\.com|cdn\.openai\.com|storage\.googleapis\.com'; then
+    if [ -n "$IMAGE_URLS" ]; then
+      IMAGE_URLS="${IMAGE_URLS}"$'\n'"${url}"
+    else
+      IMAGE_URLS="$url"
+    fi
+  fi
+done <<< "$ALL_IMAGE_URLS"
+
 IMAGE_COUNT=0
 if [ -n "$IMAGE_URLS" ]; then
   IMAGE_COUNT=$(echo "$IMAGE_URLS" | wc -l | tr -d ' ')
+fi
+
+# 报告被跳过的非图片 URL
+if [ -n "$ALL_IMAGE_URLS" ]; then
+  ALL_COUNT=$(echo "$ALL_IMAGE_URLS" | wc -l | tr -d ' ')
+  SKIPPED=$((ALL_COUNT - IMAGE_COUNT))
+  if [ "$SKIPPED" -gt 0 ]; then
+    echo "  注意: 跳过 $SKIPPED 个非图片 URL（网页链接）"
+  fi
 fi
 
 echo "═══════════════════════════════════════"

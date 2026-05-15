@@ -384,12 +384,24 @@ export async function translateBlogMarkdown(
 - 記事本文にはH1見出しを含めない（タイトルは別にレンダリングされる）
 - 「です・ます」調ではなく「だ・である」調で書く
 
+# タグ選択ルール
+記事の主要内容に基づいてタグを選択する：
+- OpenAI製品・モデルに関する記事 → "OpenAI"
+- Anthropic製品・モデルに関する記事 → "Anthropic"
+- Google製品・モデルに関する記事 → "Google"
+- DeepSeek製品・モデルに関する記事 → "DeepSeek"
+- xAI/Grokに関する記事 → "xAI"
+- オープンソースモデル・プロジェクト → "オープンソース"
+- ベンチマーク・性能比較 → "ベンチマーク"
+- 上記のどれでもない場合 → "解説" または "速報"
+
 # 出力形式（JSON）
+重要：以下のJSONは文字列として出力してはいけない。必ずJSONオブジェクトとして出力すること。
 {
-  "title": "SEOを意識した日本語タイトル",
-  "content": "Markdown本文（H1見出しは含めない）",
-  "excerpt": "2-3文の日本語要約",
-  "tag": "以下のいずれか1つ: OpenAI, Anthropic, Google, オープンソース, ベンチマーク, チュートリアル, AIエージェント, xAI, DeepSeek, 解説, 速報, 料金比較"
+  "title": "SEOを意識した日本語タイトル（中国語は一切使わない）",
+  "content": "Markdown本文（H1見出しは含めない。全て日本語で書く）",
+  "excerpt": "2-3文の日本語要約（中国語は一切使わない）",
+  "tag": "上記ルールに基づいて選択した1つのタグ"
 }`;
 
   const maxBodyLen = 12000;
@@ -406,17 +418,57 @@ ${truncatedBody}`;
   const result = await callLLM(system, userMessage, 8192);
   const cleaned = result.replace(/^```json?\s*/i, "").replace(/\s*```$/i, "").trim();
 
+  // Try parsing as JSON
   try {
-    return JSON.parse(cleaned);
+    const parsed = JSON.parse(cleaned);
+    // Validate that we got actual translated content (not just echoed input)
+    if (parsed.title && parsed.content && parsed.title !== titleZh) {
+      return parsed;
+    }
+    // If title is same as input, translation may have failed — try to use content anyway
+    if (parsed.title && parsed.content) {
+      console.warn("  ⚠ Title unchanged after translation, using parsed JSON anyway");
+      return parsed;
+    }
   } catch {
-    // Fallback: if LLM returns raw content instead of JSON, wrap it
-    return {
-      title: titleZh,
-      content: cleaned,
-      excerpt: excerptZh || "",
-      tag: "解説",
-    };
+    // JSON parse failed — LLM might have returned JSON as a string with escape sequences
   }
+
+  // Second attempt: try unescaping \n in case LLM returned JSON string with literal escapes
+  try {
+    const unescaped = cleaned.replace(/\\n/g, "\n").replace(/\\"/g, '"').replace(/\\\\/g, "\\");
+    const parsed = JSON.parse(unescaped);
+    if (parsed.title && parsed.content) {
+      console.warn("  ⚠ Parsed JSON after unescaping");
+      return parsed;
+    }
+  } catch {
+    // Still not valid JSON
+  }
+
+  // Third attempt: try to extract JSON from within the string
+  try {
+    const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      const inner = jsonMatch[0].replace(/\\n/g, "\n").replace(/\\"/g, '"');
+      const parsed = JSON.parse(inner);
+      if (parsed.title && parsed.content) {
+        console.warn("  ⚠ Extracted JSON from response string");
+        return parsed;
+      }
+    }
+  } catch {
+    // Give up on JSON parsing
+  }
+
+  // Fallback: LLM returned raw content, not JSON
+  console.warn("  ⚠ JSON parse failed, using raw content as fallback");
+  return {
+    title: titleZh,
+    content: cleaned,
+    excerpt: excerptZh || "",
+    tag: "解説",
+  };
 }
 
 /**

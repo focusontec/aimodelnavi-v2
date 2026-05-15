@@ -81,12 +81,19 @@ jobs:
             url=$(echo "$url" | xargs)  # trim whitespace
             [ -z "$url" ] && continue
 
+            # Skip non-image URLs (web pages without image extensions)
+            if ! echo "$url" | grep -qiE '\.(jpg|jpeg|png|gif|webp|svg|avif)(\?|$)|images\.unsplash\.com|pbs\.twimg\.com|imgur\.com|cloudinary\.com|cdn\.openai\.com|storage\.googleapis\.com'; then
+              echo "  Skipping non-image URL: $url"
+              continue
+            fi
+
             # Determine extension from URL
             EXT="webp"
             if echo "$url" | grep -qiE '\.(jpg|jpeg)(\?|$)'; then EXT="jpg"
             elif echo "$url" | grep -qiE '\.png(\?|$)'; then EXT="png"
             elif echo "$url" | grep -qiE '\.gif(\?|$)'; then EXT="gif"
             elif echo "$url" | grep -qiE '\.webp(\?|$)'; then EXT="webp"
+            elif echo "$url" | grep -qiE '\.avif(\?|$)'; then EXT="avif"
             fi
 
             FILENAME="img-${IMG_INDEX}.${EXT}"

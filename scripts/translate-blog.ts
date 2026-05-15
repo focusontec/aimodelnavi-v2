@@ -131,6 +131,14 @@ async function main() {
     input.excerpt || undefined
   );
 
+  // Validate translation actually happened
+  const hasJapanese = /[　-鿿豈-﫿]/.test(translated.content);
+  if (!hasJapanese) {
+    console.error("  ✗ Translation failed: content contains no Japanese characters");
+    console.error("  The LLM may have returned the original Chinese or JSON as text.");
+    process.exit(1);
+  }
+
   console.log(`  ✓ Title: ${translated.title}`);
   console.log(`  ✓ Tag: ${translated.tag}`);
   console.log(`  ✓ Excerpt: ${translated.excerpt.slice(0, 80)}...`);
