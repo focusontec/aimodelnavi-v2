@@ -1,5 +1,16 @@
 [
   {
+    "slug": "a-new-personal-finance-experience-in-chatgpt",
+    "title": "ChatGPTに個人資産管理機能が登場：米国のProユーザー向けに先行提供開始",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIが米国のProユーザー向けに、財務アカウントを連携させてAIによる資産管理ができる新機能を発表。個人の財務コンテキストに基づいた高度なインサイト提供が可能になります。",
+    "topics": [
+      "OpenAI",
+      "セキュリティ"
+    ],
+    "date": "2026-05-15"
+  },
+  {
     "slug": "blog-2026-05-15-lrh6ar",
     "title": "中国LLMで吹き荒れる資金調達ラッシュ：次に淘汰されるのは誰か？",
     "tag": "解説",
@@ -38,6 +49,19 @@
       "Google",
       "ベンチマーク",
       "AIエージェント"
+    ],
+    "date": "2026-05-15"
+  },
+  {
+    "slug": "seas-view-on-the-future-of-agentic-software-development-with-codex",
+    "title": "Sea LimitedがCodexで加速させる「AIネイティブ」なソフトウェア開発の未来",
+    "tag": "OpenAI",
+    "excerpt": "Sea LimitedのCPO、David Chen氏が語るCodex導入の真意とは。単なる効率化を超え、アジア市場で競争力を維持するための「AIネイティブ」な開発体制への移行について解説します。",
+    "topics": [
+      "OpenAI",
+      "ベンチマーク",
+      "AIエージェント",
+      "コーディング"
     ],
     "date": "2026-05-15"
   },

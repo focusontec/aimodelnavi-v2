@@ -9,6 +9,7 @@ import {
   TrendingUp,
   BookOpen,
 } from "lucide-react";
+import blogManifest from "@/data/blog-manifest.json";
 
 export const metadata: Metadata = {
   title: "AI Models Navi — AIモデルの比較・料金・ランキング",
@@ -232,29 +233,13 @@ export default function Home() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              title:
-                "GPT-5.2のベンチマーク総まとめ：コーディング・推論性能を徹底検証",
-              date: "2026-05-07",
-              tag: "OpenAI",
-            },
-            {
-              title:
-                "Claude Opus 4.7 発表：MythosアーキテクチャとManaged Agentsの全貌",
-              date: "2026-04-16",
-              tag: "Anthropic",
-            },
-            {
-              title:
-                "【2026年5月版】主要AIモデルAPI料金の完全比較一覧",
-              date: "2026-05-01",
-              tag: "料金比較",
-            },
-          ].map((post) => (
+          {[...blogManifest]
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+            .slice(0, 3)
+            .map((post) => (
             <Link
-              key={post.title}
-              href="/blog"
+              key={post.slug}
+              href={`/blog/${post.slug}`}
               className="blog-card group block p-5 rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all"
             >
               <span className="inline-block px-2.5 py-0.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-full mb-3">
