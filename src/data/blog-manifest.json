@@ -1,5 +1,19 @@
 [
   {
+    "slug": "anthropic-openai-ramp-ai",
+    "title": "Anthropicの企業ユーザー数がOpenAIを逆転：Rampデータが示す生成AI市場の構造変化",
+    "tag": "Anthropic",
+    "excerpt": "決済プラットフォームRampのデータにより、Anthropicの企業顧客数がOpenAIを上回ることが判明した。Claudeの性能向上とエンタープライズ機能の充実は、法人市場における評価軸の変化を象徴している。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "Qwen/Alibaba"
+    ],
+    "date": "2026-05-17"
+  },
+  {
     "slug": "a-new-personal-finance-experience-in-chatgpt",
     "title": "ChatGPTに個人資産管理機能が登場：米国のProユーザー向けに先行提供開始",
     "tag": "OpenAI",
