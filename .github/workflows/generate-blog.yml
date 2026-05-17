@@ -1,0 +1,56 @@
+name: Generate Blog Post
+
+on:
+  schedule:
+    # JST 16:00 = UTC 07:00
+    - cron: "7 7 * * *"
+  workflow_dispatch:
+
+jobs:
+  generate-blog:
+    runs-on: ubuntu-latest
+    environment: LLM_API_KEY
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Generate blog post with AI
+        timeout-minutes: 10
+        env:
+          LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'ollama' }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: ${{ vars.LLM_MODEL || 'gemma4:31b' }}
+        run: npx tsx scripts/generate-blog.ts
+
+      - name: Update blog manifest and internal links
+        if: always()
+        env:
+          LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'ollama' }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: ${{ vars.LLM_MODEL || 'gemma4:31b' }}
+        run: |
+          npx tsx scripts/blog-manifest.ts
+          npx tsx scripts/add-internal-links.ts --apply || true
+
+      - name: Commit and push
+        if: always()
+        run: |
+          if [ -n "$(git status --porcelain src/content/ src/data/blog-manifest.json)" ]; then
+            git config user.name "coder"
+            git config user.email "focusteczzc@163.com"
+            git add src/content/ src/data/blog-manifest.json
+            git commit -m "auto: generate blog post $(date +%Y-%m-%d)"
+            git pull -X ours origin main || true
+            git push
+            echo "✓ Blog post committed and pushed"
+          else
+            echo "No new blog post generated"
+          fi
