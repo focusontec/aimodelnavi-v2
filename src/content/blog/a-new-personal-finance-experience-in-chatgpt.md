@@ -1,10 +1,11 @@
 ---
-title: "ChatGPTに個人資産管理機能が登場：米国のProユーザー向けに先行提供開始"
-date: "2026-05-15"
-tag: "OpenAI"
-excerpt: "OpenAIが米国のProユーザー向けに、財務アカウントを連携させてAIによる資産管理ができる新機能を発表。個人の財務コンテキストに基づいた高度なインサイト提供が可能になります。"
-source: "https://openai.com/index/personal-finance-chatgpt"
-draft: "true"
+title: ChatGPTに個人資産管理機能が登場：米国のProユーザー向けに先行提供開始
+date: '2026-05-15'
+tag: OpenAI
+excerpt: >-
+  OpenAIが米国のProユーザー向けに、財務アカウントを連携させてAIによる資産管理ができる新機能を発表。個人の財務コンテキストに基づいた高度なインサイト提供が可能になります。
+source: 'https://openai.com/index/personal-finance-chatgpt'
+draft: 'true'
 ---
 
 OpenAIは、米国のChatGPT Proユーザー向けに、パーソナルファイナンス（個人資産管理）の新しい体験をプレビュー提供することを発表しました。これにより、AIによる個別の財務コンサルティングが、より具体的かつパーソナライズされた形で提供されます。
@@ -25,3 +26,11 @@ OpenAIは、米国のChatGPT Proユーザー向けに、パーソナルファイ
 本機能は現在、**米国のProユーザー**を対象としたプレビュー版として提供されています。財務データという極めて機密性の高い情報を扱うため、セキュリティ面での堅牢性が強調されており、安全な接続環境での運用が前提となっています。
 
 日本を含む他地域への展開や、無料プランへの適用については現時点で発表されていませんが、ChatGPTが「汎用的なチャットボット」から「個人のライフマネージャー」へと進化する大きな一歩と言えるでしょう。
+
+---
+
+## 関連記事
+
+- [OpenAIが「Frontier」を公開：AIを「デジタル同僚」に変える企業向けエージェント構築プラットフォームの全貌](/blog/openai-frontier-agent-platform-enterprise)
+- [OpenAIが「GPT-5.5（コードネーム：Spud）」をリリース：エージェント能力が大幅向上、API提供は安全審査のため順次開始へ](/blog/openai-gpt-5-5-spud-release)
+- [OpenAIが「Daybreak」をリリース：AIセキュリティ分野でAnthropicと激突](/blog/openai-daybreak-ai-anthropic)
