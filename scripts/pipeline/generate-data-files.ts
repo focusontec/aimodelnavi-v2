@@ -51,6 +51,36 @@ function escapeStr(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n");
 }
 
+// Translate Chinese developer/provider names to Japanese
+const developerJaMap: Record<string, string> = {
+  "阿里巴巴": "アリババ",
+  "智谱AI": "Zhipu AI",
+  "百度": "バイドゥ",
+  "腾讯AI实验室": "テンセントAI研究所",
+  "华为": "ファーウェイ",
+  "亚马逊": "アマゾン",
+  "上海人工智能实验室": "上海人工知能研究所",
+  "普林斯顿大学": "プリンストン大学",
+  "Facebook AI研究实验室": "Meta AI",
+  "DeepSeek-AI": "DeepSeek",
+  "小米": "Xiaomi",
+  "字节跳动": "ByteDance",
+  "字节跳动Seed团队": "ByteDance Seed",
+  "网易": "NetEase",
+  "科大讯飞": "iFlytek",
+  "商汤": "SenseTime",
+  "旷视": "Megvii",
+  "百川智能": "Baichuan AI",
+  "元象XVERSE": "XVERSE",
+  "昆仑万维": "Kunlun Tech",
+  "富士通": "富士通",
+  "个人": "個人",
+};
+
+function translateDeveloper(dev: string): string {
+  return developerJaMap[dev] || dev;
+}
+
 export function generateDataFiles(): GenerateResult {
   migrate();
   const db = getDb();
@@ -90,7 +120,7 @@ export function generateDataFiles(): GenerateResult {
     return `  {
     slug: "${escapeStr(m.slug)}",
     name: "${escapeStr(m.name)}",
-    developer: "${escapeStr(m.developer)}",
+    developer: "${escapeStr(translateDeveloper(m.developer))}",
     developerUrl: "${escapeStr(m.developer_url || "")}",
     params: "${escapeStr(m.params || "非公開")}",
     contextWindow: "${escapeStr(m.context_window || "")}",
@@ -330,7 +360,7 @@ function generatePricingFile(db: ReturnType<typeof getDb>): void {
 
   const outputEntries = entries.map((e) => ({
     modelName: e.model_name,
-    provider: e.provider,
+    provider: translateDeveloper(e.provider),
     billingMode: e.billing_mode,
     inputPrice: e.input_price,
     outputPrice: e.output_price,

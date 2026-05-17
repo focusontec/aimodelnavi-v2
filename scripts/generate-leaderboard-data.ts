@@ -207,6 +207,30 @@ function escapeStr(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n");
 }
 
+// Translate Chinese developer names to Japanese
+const developerJaMap: Record<string, string> = {
+  "阿里巴巴": "アリババ",
+  "智谱AI": "Zhipu AI",
+  "百度": "バイドゥ",
+  "腾讯AI实验室": "テンセントAI研究所",
+  "华为": "ファーウェイ",
+  "亚马逊": "アマゾン",
+  "上海人工智能实验室": "上海人工知能研究所",
+  "普林斯顿大学": "プリンストン大学",
+  "Facebook AI研究实验室": "Meta AI",
+  "DeepSeek-AI": "DeepSeek",
+  "小米": "Xiaomi",
+  "字节跳动": "ByteDance",
+  "网易": "NetEase",
+  "科大讯飞": "iFlytek",
+  "商汤": "SenseTime",
+  "旷视": "Megvii",
+};
+
+function translateDeveloper(dev: string): string {
+  return developerJaMap[dev] || dev;
+}
+
 // ── Main generation ──
 
 function generateLeaderboardData() {
@@ -338,7 +362,7 @@ function generateMainLeaderboard(entries: LeaderboardEntry[]) {
       return {
         rank: i + 1,
         name: m.name,
-        developer: m.developer,
+        developer: translateDeveloper(m.developer),
         hle: m.scores.hle ?? null,
         arcAgi2: m.scores.arcAgi2 ?? null,
         frontierMath: m.scores.frontierMath ?? null,
@@ -412,7 +436,7 @@ function generateBenchmarksData(byPage: Record<string, LeaderboardEntry[]>) {
     const rankings = entries
       .map((e) => ({
         name: e.name,
-        developer: e.developer,
+        developer: translateDeveloper(e.developer),
         score: Object.values(e.scores)[0] ?? 0,
         mode: e.mode,
       }))
