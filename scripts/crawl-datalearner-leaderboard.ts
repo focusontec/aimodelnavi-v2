@@ -199,12 +199,19 @@ async function extractTableData(page: Page, benchmarkKeys: string[]): Promise<Le
       const cells = row.querySelectorAll("td");
       if (cells.length < 3) return;
 
+      // Detect checkbox column: datalearner.com has a checkbox td as cells[0]
+      // Layout: [checkbox, rank, model, scores..., license, details]
+      let offset = 0;
+      if (cells[0]?.querySelector('button[role="checkbox"]')) {
+        offset = 1;
+      }
+
       // Parse rank
-      const rankText = cells[0]?.textContent?.trim() || "";
+      const rankText = cells[offset]?.textContent?.trim() || "";
       const rank = parseInt(rankText) || 0;
 
-      // Parse model name and organization from the second cell
-      const modelCell = cells[1];
+      // Parse model name and organization from the model cell
+      const modelCell = cells[offset + 1];
       let modelName = "";
       let organization = "";
 
@@ -274,15 +281,15 @@ async function extractTableData(page: Page, benchmarkKeys: string[]): Promise<Le
       });
       const mode = modes.length > 0 ? modes.join(" · ") : undefined;
 
-      // Parse scores
+      // Parse scores (offset + 2 = first score cell after checkbox+rank+model)
       const scores: Record<string, number | null> = {};
       for (let i = 0; i < keys.length; i++) {
-        const scoreText = cells[i + 2]?.textContent?.trim() || "";
+        const scoreText = cells[offset + 2 + i]?.textContent?.trim() || "";
         scores[keys[i]] = scoreText === "—" || scoreText === "-" ? null : parseFloat(scoreText) || null;
       }
 
-      // Parse license
-      const license = cells[cells.length - 1]?.textContent?.trim() || "";
+      // Parse license (second-to-last td, before details link)
+      const license = cells[cells.length - 2]?.textContent?.trim() || "";
 
       results.push({ rank, modelName, organization, scores, license, mode });
     });

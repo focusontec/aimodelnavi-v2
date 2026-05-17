@@ -242,6 +242,11 @@ function generateLeaderboardData() {
         source: data.page || "unknown",
       };
 
+      // Skip entries with empty or numeric-only model names (crawl artifacts)
+      if (!entry.name || /^\d+$/.test(entry.name)) {
+        continue;
+      }
+
       allEntries.push(entry);
 
       if (!byPage[entry.source]) {
