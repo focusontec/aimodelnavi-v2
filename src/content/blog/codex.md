@@ -1,9 +1,10 @@
 ---
-title: "データサイエンス業務を加速させるCodex活用術：コード生成からドキュメント化まで"
-date: "2026-05-17"
-tag: "解説"
-excerpt: "OpenAIのCodexをデータサイエンスチームがどのように実務に活用しているかを解説します。単なる実装支援にとどまらず、分析のドキュメント化や効率的なワークフロー構築の手がかりを提示します。"
-source: "https://openai.com/academy/codex-for-work/how-data-science-teams-use-codex"
+title: データサイエンス業務を加速させるCodex活用術：コード生成からドキュメント化まで
+date: '2026-05-17'
+tag: 解説
+excerpt: >-
+  OpenAIのCodexをデータサイエンスチームがどのように実務に活用しているかを解説します。単なる実装支援にとどまらず、分析のドキュメント化や効率的なワークフロー構築の手がかりを提示します。
+source: 'https://openai.com/academy/codex-for-work/how-data-science-teams-use-codex'
 ---
 
 ## データサイエンスにおけるCodexの役割
@@ -41,3 +42,11 @@ source: "https://openai.com/academy/codex-for-work/how-data-science-teams-use-co
 Codexを「単なるコーディング補助」としてではなく、「分析思考のパートナー」として捉えることが、データサイエンスチームの生産性を最大化する鍵となります。コード生成からドキュメント化までを統合的にサポートさせることで、データサイエンティストはより創造的な意思決定に集中できるはずです。
 
 参考：[How data science teams use Codex](https://openai.com/academy/codex-for-work/how-data-science-teams-use-codex)
+
+---
+
+## 関連記事
+
+- [OpenAI Codexを活用した「場所を選ばない」コーディング支援の可能性](/blog/openai-codex)
+- [Sea LimitedがCodexで加速させる「AIネイティブ」なソフトウェア開発の未来](/blog/seas-view-on-the-future-of-agentic-software-development-with-codex)
+- [AI時代のソフトウェア開発： 「Agentic」なアプローチがもたらす変革とは](/blog/ai-agentic)

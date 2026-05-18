@@ -1,9 +1,11 @@
 ---
-title: " OpenAI Codexをどこからでも操作：モバイル活用による開発サイクルの高速化とは"
-date: "2026-05-17"
-tag: "OpenAI"
-excerpt: "OpenAI Codexを場所を問わず利用することで、コードレビューやタスク承認といった開発ワークフローをモバイルから効率化できる可能性を検討します。非同期的な開発スタイルの導入が、チーム全体の生産性にどのような影響を与えるかを探ります。"
-source: "https://openai.com/index/work-with-codex-from-anywhere"
+title: ' OpenAI Codexをどこからでも操作：モバイル活用による開発サイクルの高速化とは'
+date: '2026-05-17'
+tag: OpenAI
+excerpt: >-
+  OpenAI
+  Codexを場所を問わず利用することで、コードレビューやタスク承認といった開発ワークフローをモバイルから効率化できる可能性を検討します。非同期的な開発スタイルの導入が、チーム全体の生産性にどのような影響を与えるかを探ります。
+source: 'https://openai.com/index/work-with-codex-from-anywhere'
 ---
 
 ## モバイルからのコード操作がもたらす開発スタイルの変化
@@ -34,3 +36,11 @@ source: "https://openai.com/index/work-with-codex-from-anywhere"
 ## まとめ
 
 開発者が物理的な制約から解放され、より機動的にコードと向き合う運用は、開発サイクルをより高速に、そして柔軟に進化させる可能性を秘めています。モバイルからのコード操作をワークフローに組み込む試みは、今後の開発スタイルの模索において有用な視点となるでしょう。
+
+---
+
+## 関連記事
+
+- [OpenAI Codexを活用した「場所を選ばない」コーディング支援の可能性](/blog/openai-codex)
+- [データサイエンス業務を加速させるCodex活用術：コード生成からドキュメント化まで](/blog/codex)
+- [Sea LimitedがCodexで加速させる「AIネイティブ」なソフトウェア開発の未来](/blog/seas-view-on-the-future-of-agentic-software-development-with-codex)

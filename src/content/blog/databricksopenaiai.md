@@ -1,9 +1,10 @@
 ---
-title: "Databricksが最新のOpenAIモデルを統合：エンタープライズ向けAIエージェントワークフローの新たな展開"
-date: "2026-05-17"
-tag: "AIエージェント"
-excerpt: "DatabricksがOpenAIの最新モデルをエンタープライズエージェントワークフローに導入しました。高度な推論能力とデータ基盤との統合がもたらすビジネスインパクトを解説します。"
-source: "https://openai.com/index/databricks"
+title: Databricksが最新のOpenAIモデルを統合：エンタープライズ向けAIエージェントワークフローの新たな展開
+date: '2026-05-17'
+tag: AIエージェント
+excerpt: >-
+  DatabricksがOpenAIの最新モデルをエンタープライズエージェントワークフローに導入しました。高度な推論能力とデータ基盤との統合がもたらすビジネスインパクトを解説します。
+source: 'https://openai.com/index/databricks'
 ---
 
 ## 最新AIモデルの登場とエンタープライズAIへの影響
@@ -34,3 +35,11 @@ AIエージェントをエンタープライズレベルで運用する場合、
 
 参考：
 https://databricks.com/blog
+
+---
+
+## 関連記事
+
+- [DatabricksがGPT-4oを導入：エンタープライズAIエージェントの進化とRAGの実用性](/blog/databricksgpt-4oairag)
+- [Databricksが最新モデルを導入：エンタープライズ・エージェントの推論能力はどう進化するか](/blog/databricks)
+- [OpenAIが「Frontier」を公開：AIを「デジタル同僚」に変える企業向けエージェント構築プラットフォームの全貌](/blog/openai-frontier-agent-platform-enterprise)
