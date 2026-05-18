@@ -2,6 +2,7 @@ import { getPostBySlug, getAllPosts } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { CommentSection } from '@/components/comments';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import type { Metadata } from 'next';
@@ -103,6 +104,8 @@ export default async function BlogDetailPage({
       <div className="blog-content">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>
+
+      <CommentSection slug={post.slug} title={post.title} />
 
       <div className="mt-12 pt-8 border-t border-gray-100">
         <Link

@@ -1,0 +1,117 @@
+"use client";
+
+import { useState, useRef, type FormEvent } from "react";
+
+interface CommentFormProps {
+  slug: string;
+  parentId?: number | null;
+  onSuccess?: () => void;
+  onCancel?: () => void;
+}
+
+export default function CommentForm({ slug, parentId = null, onSuccess, onCancel }: CommentFormProps) {
+  const [name, setName] = useState("");
+  const [content, setContent] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const tsRef = useRef(Date.now());
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    setSubmitting(true);
+    setError("");
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/comments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          slug,
+          name: name.trim(),
+          content: content.trim(),
+          parent_id: parentId,
+          _hp: "",
+          _ts: tsRef.current,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "投稿に失敗しました");
+        return;
+      }
+
+      setMessage("コメントを投稿しました。承認後に表示されます。");
+      setName("");
+      setContent("");
+      tsRef.current = Date.now();
+      onSuccess?.();
+    } catch {
+      setError("ネットワークエラーが発生しました");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-3">
+      {parentId === null && (
+        <h3 className="text-sm font-semibold text-gray-700">コメントを投稿</h3>
+      )}
+
+      <input
+        type="text"
+        name="_hp"
+        className="hidden"
+        tabIndex={-1}
+        autoComplete="off"
+        onChange={() => {}}
+      />
+
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="ニックネーム"
+        maxLength={100}
+        required
+        className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+      />
+
+      <textarea
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        placeholder="コメントを入力..."
+        maxLength={2000}
+        rows={parentId ? 3 : 4}
+        required
+        className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg resize-y focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+      />
+
+      <div className="flex items-center gap-2">
+        <button
+          type="submit"
+          disabled={submitting || !name.trim() || !content.trim()}
+          className="px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          {submitting ? "送信中..." : parentId ? "返信する" : "投稿する"}
+        </button>
+        {onCancel && (
+          <button
+            type="button"
+            onClick={onCancel}
+            className="px-4 py-2 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+          >
+            キャンセル
+          </button>
+        )}
+      </div>
+
+      {message && <p className="text-sm text-green-600">{message}</p>}
+      {error && <p className="text-sm text-red-600">{error}</p>}
+    </form>
+  );
+}

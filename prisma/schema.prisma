@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Comment {
+  id        Int       @id @default(autoincrement())
+  slug      String
+  name      String    @db.VarChar(100)
+  content   String
+  parentId  Int?
+  parent    Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies   Comment[] @relation("CommentReplies")
+  status    String    @default("pending") @db.VarChar(20)
+  createdAt DateTime  @default(now()) @map("created_at")
+  ipHash    String?   @db.VarChar(64) @map("ip_hash")
+
+  @@index([slug, status])
+  @@index([parentId])
+  @@map("comments")
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  slug      String
+  target    String   @default("post") @db.VarChar(20)
+  targetId  Int?     @map("target_id")
+  ipHash    String?  @db.VarChar(64) @map("ip_hash")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([slug, target, targetId, ipHash])
+  @@index([slug, target])
+  @@map("likes")
+}
