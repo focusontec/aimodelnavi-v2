@@ -285,8 +285,8 @@ function generateLeaderboardData() {
   console.log(`Parsed ${allEntries.length} entries`);
   console.log(`Pages: ${Object.keys(byPage).join(", ")}`);
 
-  // Generate leaderboard.ts with main leaderboard data
-  generateMainLeaderboard(byPage["main"] || []);
+  // Generate leaderboard.ts with ALL pages merged
+  generateMainLeaderboard(allEntries);
 
   // Generate benchmarks.ts with all benchmark data
   generateBenchmarksData(byPage);
@@ -353,27 +353,37 @@ function generateMainLeaderboard(entries: LeaderboardEntry[]) {
     return "foundation";
   }
 
+  // All benchmark keys
+  const allBenchmarkKeys = [
+    "hle", "arcAgi2", "frontierMath", "sweBenchVerified", "tauBench",
+    "aime2025", "aime2026", "math500", "gsm8k",
+    "mmluPro", "gpqaDiamond",
+    "liveCodeBench", "sweBenchPro",
+    "terminalBench", "aiderPolyglot",
+    "intelligenceIndex", "elo",
+  ];
+
   // Convert to array and sort by HLE score
   const ranked = Array.from(modelScores.values())
-    .map((m, i) => {
+    .map((m) => {
       const slug = m.name.toLowerCase().replace(/\s+/g, "-");
       const type = modelTypes[slug] || inferModelType(m.name);
 
+      const scores: Record<string, number | null> = {};
+      for (const key of allBenchmarkKeys) {
+        scores[key] = m.scores[key] ?? null;
+      }
+
       return {
-        rank: i + 1,
         name: m.name,
         developer: translateDeveloper(m.developer),
-        hle: m.scores.hle ?? null,
-        arcAgi2: m.scores.arcAgi2 ?? null,
-        frontierMath: m.scores.frontierMath ?? null,
-        sweBenchVerified: m.scores.sweBenchVerified ?? null,
-        tauBench: m.scores.tauBench ?? null,
+        ...scores,
         openSource: m.license === "闭源" ? "closed" : m.license === "免费商用" ? "open" : "open-nc",
         type: type as "reasoning" | "foundation" | "chat" | "coder",
         releaseDate: "",
       };
     })
-    .sort((a, b) => (b.hle ?? 0) - (a.hle ?? 0))
+    .sort((a, b) => ((b as Record<string, number | null>).hle ?? 0) - ((a as Record<string, number | null>).hle ?? 0))
     .map((m, i) => ({ ...m, rank: i + 1 }));
 
   const data = JSON.stringify(ranked, null, 2);
@@ -392,6 +402,18 @@ export interface ModelRanking {
   frontierMath: number | null;
   sweBenchVerified: number | null;
   tauBench: number | null;
+  aime2025: number | null;
+  aime2026: number | null;
+  math500: number | null;
+  gsm8k: number | null;
+  mmluPro: number | null;
+  gpqaDiamond: number | null;
+  liveCodeBench: number | null;
+  sweBenchPro: number | null;
+  terminalBench: number | null;
+  aiderPolyglot: number | null;
+  intelligenceIndex: number | null;
+  elo: number | null;
   openSource: "open" | "closed" | "open-nc";
   type: "reasoning" | "foundation" | "chat" | "coder";
   releaseDate: string;
