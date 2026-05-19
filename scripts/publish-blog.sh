@@ -35,6 +35,14 @@ if [ $# -lt 1 ]; then
 fi
 
 FILE="$1"
+AUTO_YES=false
+
+# Check for --yes flag
+for arg in "$@"; do
+  if [ "$arg" = "--yes" ] || [ "$arg" = "-y" ]; then
+    AUTO_YES=true
+  fi
+done
 
 if [ ! -f "$FILE" ]; then
   echo "错误：文件不存在 — $FILE"
@@ -165,11 +173,13 @@ echo ""
 
 # ── 确认发布 ──
 
-read -p "确认发布？(y/N) " -n 1 -r
-echo ""
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-  echo "已取消"
-  exit 0
+if [ "$AUTO_YES" = false ]; then
+  read -p "确认发布？(y/N) " -n 1 -r
+  echo ""
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "已取消"
+    exit 0
+  fi
 fi
 
 # ── 触发 GitHub Actions ──
