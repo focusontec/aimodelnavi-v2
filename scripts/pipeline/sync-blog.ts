@@ -104,7 +104,7 @@ async function analyzeImageWithVision(
   imageUrl: string,
   imageAlt: string,
   articleTitle: string
-): Promise<"promo" | "chinese_text" | "content"> {
+): Promise<"promo" | "chinese_text" | "content" | "unknown_error" | "vision_error"> {
   const key = process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY || "";
   const baseUrl = process.env.LLM_BASE_URL || "https://ollama.com/v1/chat/completions";
 
@@ -113,7 +113,7 @@ async function analyzeImageWithVision(
     const imgRes = await fetch(imageUrl, {
       headers: { "User-Agent": "AIModelsNavi/1.0" },
     });
-    if (!imgRes.ok) return "content"; // can't download, assume OK
+    if (!imgRes.ok) return "vision_error";
     const buf = Buffer.from(await imgRes.arrayBuffer());
     const b64 = buf.toString("base64");
     const mimeType = imgRes.headers.get("content-type") || "image/webp";
@@ -146,15 +146,17 @@ Respond with EXACTLY one word: promo, chinese_text, or content.`;
       }),
     });
 
-    if (!res.ok) return "content";
+    if (!res.ok) return "unknown_error";
     const data = await res.json() as { choices: { message: { content: string } }[] };
     const answer = data.choices[0].message.content.toLowerCase().trim();
 
     if (answer.includes("promo")) return "promo";
     if (answer.includes("chinese")) return "chinese_text";
     return "content";
-  } catch {
-    return "content"; // on error, keep the image
+  } catch (err) {
+    // On error, log and skip the image (better safe than sorry for Japanese audience)
+    console.warn(`      ⚠ Vision analysis failed for ${imageAlt || imageUrl.slice(0, 40)}: ${err}`);
+    return "vision_error";
   }
 }
 
@@ -188,8 +190,8 @@ async function filterImagesByAI(
 
   for (const img of heuristicKeep) {
     const classification = await analyzeImageWithVision(img.src, img.alt, articleTitle);
-    if (classification === "promo" || classification === "chinese_text") {
-      const reason = classification === "promo" ? "promo" : "chinese text";
+    if (classification === "promo" || classification === "chinese_text" || classification === "unknown_error" || classification === "vision_error") {
+      const reason = classification === "promo" ? "promo" : classification === "chinese_text" ? "chinese text" : "vision error";
       console.log(`      ✗ ${reason}: ${img.alt || img.src.split("/").pop()}`);
       rejected++;
     } else {
