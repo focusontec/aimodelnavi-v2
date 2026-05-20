@@ -422,7 +422,7 @@ ${excerptZh ? `Excerpt (Chinese): ${excerptZh}` : ""}
 Article body (Chinese Markdown):
 ${truncatedBody}`;
 
-  const result = await callLLM(system, userMessage, 8192, 120000); // 120s for blog translation
+  const result = await callLLM(system, userMessage, 8192, 300000); // 300s for blog translation (long articles)
   const cleaned = result.replace(/^```json?\s*/i, "").replace(/\s*```$/i, "").trim();
 
   // Attempt 1: direct JSON parse
