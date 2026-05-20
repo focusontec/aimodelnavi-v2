@@ -29,6 +29,7 @@ interface InputParams {
   tag: string;
   excerpt: string;
   body: string;
+  slug?: string;
 }
 
 function parseArgs(): InputParams | null {
@@ -39,11 +40,13 @@ function parseArgs(): InputParams | null {
   const titleIdx = args.indexOf("--title");
   const tagIdx = args.indexOf("--tag");
   const excerptIdx = args.indexOf("--excerpt");
+  const slugIdx = args.indexOf("--slug");
 
   if (stdinFlag || titleIdx !== -1) {
     const title = titleIdx !== -1 ? args[titleIdx + 1] : "";
     const tag = tagIdx !== -1 ? args[tagIdx + 1] : "解説";
     const excerpt = excerptIdx !== -1 ? args[excerptIdx + 1] : "";
+    const slug = slugIdx !== -1 ? args[slugIdx + 1] : undefined;
 
     if (!title) {
       console.error("Error: --title is required");
@@ -57,7 +60,7 @@ function parseArgs(): InputParams | null {
       process.exit(1);
     }
 
-    return { title, tag, excerpt, body };
+    return { title, tag, excerpt, body, slug };
   }
 
   // Mode A: file path argument
@@ -220,7 +223,7 @@ async function main() {
   translated.content = await cleanImageUrls(translated.content);
 
   // Step 2: Generate slug and save
-  const slug = generateSlug(translated.title);
+  const slug = input.slug || generateSlug(translated.title);
   const today = new Date().toISOString().split("T")[0];
 
   saveBlogPost(slug, {

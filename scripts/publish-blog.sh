@@ -204,19 +204,34 @@ if [ "$LOCAL_MODE" = true ]; then
   echo "  1. 中国語→日本語翻訳..."
   cd "$PROJECT_DIR"
 
+  # 从本地图片路径中提取原始 slug（如 /images/blog/100-coding-agent/img-1.png → 100-coding-agent）
+  ORIGINAL_SLUG=""
+  if [ "$LOCAL_COUNT" -gt 0 ]; then
+    ORIGINAL_SLUG=$(echo "$LOCAL_IMAGE_PATHS" | head -1 | grep -oE 'images/blog/[^/]+' | sed 's|images/blog/||')
+  fi
+
   # 构造翻译输入（带 frontmatter）
+  # 用 YAML 安全写法，避免引号转义问题
   TRANSLATE_INPUT=$(mktemp)
-  cat > "$TRANSLATE_INPUT" << TMPEOF
----
-title: "$TITLE"
-tag: "$TAG"
-${EXCERPT:+excerpt: "$EXCERPT"}
----
+  {
+    echo "---"
+    echo "title: \"$TITLE\""
+    echo "tag: \"$TAG\""
+    if [ -n "$EXCERPT" ]; then
+      echo "excerpt: \"$EXCERPT\""
+    fi
+    echo "---"
+    echo ""
+    echo "$BODY"
+  } > "$TRANSLATE_INPUT"
 
-$BODY
-TMPEOF
+  SLUG_ARG=""
+  if [ -n "$ORIGINAL_SLUG" ]; then
+    SLUG_ARG="--slug $ORIGINAL_SLUG"
+    echo "     スラッグ: $ORIGINAL_SLUG (画像パスから取得)"
+  fi
 
-  npx tsx scripts/translate-blog.ts "$TRANSLATE_INPUT"
+  npx tsx scripts/translate-blog.ts "$TRANSLATE_INPUT" $SLUG_ARG
   rm -f "$TRANSLATE_INPUT"
 
   # 找到翻译后的文件
@@ -233,18 +248,13 @@ TMPEOF
   if [ "$LOCAL_COUNT" -gt 0 ]; then
     echo "  2. ローカル画像をコミット..."
 
-    # 检查图片是否已在 public/ 目录
+    # 检查图片目录（slug 保持原始值，图片目录应匹配）
     IMG_DIR="public/images/blog/$SLUG"
     if [ -d "$IMG_DIR" ]; then
       IMG_FILES=$(ls "$IMG_DIR" 2>/dev/null | wc -l | tr -d ' ')
-      echo "     $IMG_FILES 枚の画像を検出"
+      echo "     $IMG_FILES 枚の画像を検出: $IMG_DIR"
     else
-      # 尝试从 fetch-article.ts 的默认位置复制
-      FETCH_IMG_DIR="public/images/blog/$(echo "$SLUG" | sed 's/^blog-//')"
-      if [ -d "$FETCH_IMG_DIR" ]; then
-        mv "$FETCH_IMG_DIR" "$IMG_DIR"
-        echo "     画像を移動: $IMG_DIR"
-      fi
+      echo "     ⚠ 画像ディレクトリが見つかりません: $IMG_DIR"
     fi
   fi
 
