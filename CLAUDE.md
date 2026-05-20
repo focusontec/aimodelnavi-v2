@@ -149,24 +149,75 @@ npx tsx scripts/migrate-seed.ts  # Import hand-curated models (one-time, already
 
 The site supports publishing Chinese-written articles that are automatically translated to Japanese.
 
-### How it works
+### Two publishing modes
 
+**Mode 1: Direct Markdown (no images)**
+```bash
+./scripts/publish-blog.sh <chinese-article.md> --yes
 ```
-Chinese Markdown → GitHub Actions → LLM translation → Japanese blog post → Vercel deploy
+Triggers GitHub Actions to translate and deploy.
+
+**Mode 2: From URL with image filtering (recommended for web articles)**
+```bash
+# Step 1: Fetch article + download images + filter promo images
+npx tsx scripts/fetch-article.ts "<URL>" --filter-images
+
+# Step 2: Local translation + publish
+./scripts/publish-blog.sh _drafts/<slug>.md --local --yes
 ```
 
-### Publish via script (recommended for OpenClaw)
+### fetch-article.ts — URL to Markdown
+
+Fetches article content from a URL using Playwright, downloads images, generates Chinese Markdown.
 
 ```bash
-./scripts/publish-blog.sh <chinese-article.md>
+npx tsx scripts/fetch-article.ts "<URL>"                     # basic fetch
+npx tsx scripts/fetch-article.ts "<URL>" --filter-images     # with AI image filtering
+npx tsx scripts/fetch-article.ts "<URL>" --no-images         # skip image download
+npx tsx scripts/fetch-article.ts "<URL>" --tag "Anthropic"   # set tag
 ```
 
-This script:
-1. Reads Chinese Markdown (with frontmatter: title, tag, excerpt)
-2. Triggers GitHub Actions `publish-blog.yml` via `gh` CLI (authenticated, no extra token needed)
-3. GitHub Actions calls LLM to translate Chinese → Japanese
-4. Saves to `src/content/blog/{slug}.md`
-5. Auto-commits and pushes → Vercel deploys
+Supported sites: WeChat (微信公众号), Zhihu, CSDN, Juejin, sspai, jianshu, and general web pages.
+
+Output: `_drafts/<slug>.md` + `public/images/blog/<slug>/`
+
+### Image filtering (--filter-images)
+
+Two-layer filtering to remove promotional/ad images:
+
+1. **Heuristic filter**: keyword matching (二维码, 扫码, 关注, 公众号, etc.)
+2. **AI Vision filter**: Gemma3:27b-cloud classifies each image as:
+   - `promo` → rejected (QR codes, ads, subscription banners)
+   - `chinese_text` → rejected (images with Chinese text)
+   - `content` → kept (charts, diagrams, technical screenshots)
+
+Requires: `LLM_API_KEY` env var, Ollama with vision model.
+
+### publish-blog.sh — Publish article
+
+```bash
+./scripts/publish-blog.sh <file.md>              # remote mode (GitHub Actions)
+./scripts/publish-blog.sh <file.md> --local      # local mode (translate + commit locally)
+./scripts/publish-blog.sh <file.md> --yes        # skip confirmation prompt
+```
+
+**Remote mode**: Triggers GitHub Actions workflow. Good for articles with remote image URLs.
+**Local mode**: Translates locally, handles downloaded images, commits directly. Good for fetch-article.ts output.
+
+The script auto-detects local image paths (`/images/blog/...`) vs remote URLs (`https://...`).
+
+### translate-blog.ts — CN→JP translation
+
+```bash
+# From file
+npx tsx scripts/translate-blog.ts <file.md>
+
+# From stdin (GitHub Actions mode)
+echo "$CONTENT" | npx tsx scripts/translate-blog.ts --title "标题" --tag "Tag" --stdin
+
+# With custom slug (preserves image directory)
+npx tsx scripts/translate-blog.ts <file.md> --slug my-article-slug
+```
 
 ### Chinese Markdown format
 
@@ -184,12 +235,34 @@ excerpt: "摘要"         # optional, LLM generates Japanese one if empty
 
 OpenAI, Anthropic, Google, オープンソース, ベンチマーク, チュートリアル, AIエージェント, xAI, DeepSeek, 解説, 速報, 料金比較
 
+### Complete workflow for OpenClaw
+
+When given a Chinese article URL:
+
+```bash
+# 1. Fetch article with image filtering
+npx tsx scripts/fetch-article.ts "https://mp.weixin.qq.com/s/xxx" --filter-images
+
+# 2. Review the draft (optional)
+cat _drafts/<slug>.md
+
+# 3. Publish with local translation
+./scripts/publish-blog.sh _drafts/<slug>.md --local --yes
+```
+
+When given Chinese Markdown directly:
+
+```bash
+# Save to file, then publish
+./scripts/publish-blog.sh _drafts/<filename>.md --yes
+```
+
 ### Infrastructure
 
 - **GitHub Actions**: `.github/workflows/publish-blog.yml` (workflow_dispatch)
-- **Translation script**: `scripts/translate-blog.ts`
-- **LLM function**: `translateBlogMarkdown()` in `scripts/lib/anthropic.ts`
-- **LLM_API_KEY**: stored as GitHub Environment Secret in `LLM_API_KEY` environment (shared with daily-pipeline)
+- **Translation**: `scripts/translate-blog.ts` + `translateBlogMarkdown()` in `scripts/lib/anthropic.ts`
+- **Image filter**: `scripts/lib/image-filter.ts` (shared by fetch-article.ts and sync-blog.ts)
+- **LLM_API_KEY**: stored as GitHub Environment Secret in `LLM_API_KEY` environment
 
 ## Known Issues
 
