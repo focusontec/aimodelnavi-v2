@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { MessageCircle, LogOut } from "lucide-react";
+import { FileText, MessageCircle, LogOut } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -24,6 +24,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           Admin Panel
         </Link>
         <div className="flex items-center gap-4">
+          <Link
+            href="/admin/blog"
+            className={`flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-md transition-colors ${
+              pathname.startsWith("/admin/blog")
+                ? "bg-primary-50 text-primary-700"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            <FileText className="w-4 h-4" />
+            ブログ管理
+          </Link>
           <Link
             href="/admin/comments"
             className={`flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-md transition-colors ${
