@@ -65,12 +65,16 @@ async function main() {
   // Stage 3: Translate
   const translateResult = await translateModels("ja");
 
-  // Stage 3.5: Leaderboard & Pricing sync
-  const leaderboardResult = await syncLeaderboard();
+  // Stage 3.5: Pricing sync
   const pricingResult = await syncPricing();
 
-  // Stage 3.6: DataLearner Leaderboard sync (Playwright-based)
-  console.log("\n[Stage 3.6] Syncing DataLearner Leaderboard data...");
+  // Stage 3.5b: Leaderboard sync
+  // NOTE: LMSYS Arena / HuggingFace sync (syncLeaderboard) is deprecated.
+  // Those endpoints are unreliable. DataLearner crawler is the sole source.
+  // The old syncLeaderboard() call has been removed;
+  // leaderboard data comes entirely from DataLearner via crawl-datalearner-leaderboard.ts
+  //   → raw_models (source_id=468) → generate-leaderboard-data.ts → leaderboard.ts
+  console.log("\n[Stage 3.5b] Syncing DataLearner Leaderboard data...");
   try {
     execSync("npx tsx scripts/crawl-datalearner-leaderboard.ts", {
       cwd: process.cwd(),
@@ -106,7 +110,7 @@ async function main() {
   console.log(`  Crawled: ${crawlResult.datalearner.detailPagesFetched} pages, ${totalNew} new/changed`);
   console.log(`  Processed: ${processResult.processed} new models`);
   console.log(`  Translated: ${translateResult.translated}`);
-  console.log(`  Leaderboard: ${leaderboardResult.scoresStored} scores stored`);
+  console.log(`  Leaderboard: synced from DataLearner (see generate-leaderboard-data.ts output)`);
   console.log(`  Pricing: ${pricingResult.totalEntries} entries from ${pricingResult.providerResults.filter(p => p.success).length} providers`);
   console.log(`  Blog: ${blogResult.processed} articles processed`);
   console.log(`  Generated: ${genResult.modelsGenerated} models in TypeScript`);

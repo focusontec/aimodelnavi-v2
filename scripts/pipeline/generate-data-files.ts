@@ -203,10 +203,10 @@ export const allModelSlugs: string[] = ${JSON.stringify(slugs, null, 2)};
 `;
   saveDataFile("model-slugs.ts", slugsTs);
 
-  // Generate leaderboard.ts from leaderboard_scores table
-  generateLeaderboardFile(db);
-
   // Generate pricing.ts from pricing_entries table
+  // NOTE: leaderboard.ts is generated separately by generate-leaderboard-data.ts
+  // (reads from raw_models → DataLearner data, ~656 models with 17 benchmarks)
+  // The leaderboard_scores table is not used — LMSYS/HF sync is unreliable.
   generatePricingFile(db);
 
   console.log(`  Generated ${models.length} models in models.ts and model-slugs.ts`);
