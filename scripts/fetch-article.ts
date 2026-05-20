@@ -167,7 +167,7 @@ async function extractFromDom(page: Page, sourceUrl: string): Promise<ExtractedA
     title: title.trim(),
     author: author.trim(),
     date: dateText.trim(),
-    content,
+    content: content.replace(/\[([^\]]*)\]\(https:\/\/mp\.weixin\.qq\.com\/[^)]+\)/g, "$1"),
     images,
   };
 
