@@ -174,6 +174,28 @@ else
 fi
 echo ""
 
+# ── 重复检查 ──
+
+# 检查是否有相似标题的文章
+EXISTING_MATCH=$(grep -l "title:.*$(echo "$TITLE" | sed 's/[-—・、。]//g' | cut -c1-30)" src/content/blog/*.md 2>/dev/null | head -1 || true)
+if [ -n "$EXISTING_MATCH" ]; then
+  echo "⚠ 警告：似たタイトルの記事が既に存在します:"
+  echo "  $(basename "$EXISTING_MATCH")"
+  echo "  タイトル: $TITLE"
+  echo ""
+  if [ "$AUTO_YES" = true ]; then
+    echo "  重複を検出したため、発行をスキップします"
+    exit 1
+  else
+    read -p "重複の可能性があります。続行しますか？(y/N) " -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+      echo "キャンセルしました"
+      exit 0
+    fi
+  fi
+fi
+
 # ── 确认 ──
 
 if [ "$AUTO_YES" = false ]; then
