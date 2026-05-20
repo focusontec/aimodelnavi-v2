@@ -81,11 +81,14 @@ function parseArgs(): InputParams | null {
   const raw = fs.readFileSync(resolved, "utf-8");
   const { data, content } = matter(raw);
 
+  const slugFromFlag = slugIdx !== -1 ? args[slugIdx + 1] : undefined;
+
   return {
     title: data.title || path.basename(filePath, ".md"),
     tag: data.tag || "解説",
     excerpt: data.excerpt || "",
     body: content.trim(),
+    slug: slugFromFlag,
   };
 }
 
