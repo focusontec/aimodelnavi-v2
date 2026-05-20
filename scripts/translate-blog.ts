@@ -129,6 +129,12 @@ async function cleanImageUrls(content: string): Promise<string> {
   console.log(`\n  Validating ${images.length} image URL(s)...`);
 
   for (const img of images) {
+    // Skip local paths (e.g., /images/blog/...) — these are already downloaded
+    if (img.url.startsWith("/")) {
+      console.log(`  ✓ Local: ${img.url.slice(0, 60)}`);
+      continue;
+    }
+
     // Check if URL is a known image file extension or image host
     const isImageFile = /\.(jpg|jpeg|png|gif|webp|svg|avif)(\?|$)/i.test(img.url) ||
       /images\.unsplash\.com|pbs\.twimg\.com|imgur\.com|cloudinary\.com|cdn\.openai\.com|storage\.googleapis\.com/i.test(img.url);

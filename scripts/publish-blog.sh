@@ -130,7 +130,7 @@ BODY_LEN=${#BODY}
 # ── 检测图片 ──
 
 # 远程图片 URL（http/https）
-REMOTE_IMAGE_URLS=$(echo "$BODY" | grep -oP '!\[[^\]]*\]\(https?://[^)]+\)' | grep -oP 'https?://[^)]+' || true)
+REMOTE_IMAGE_URLS=$(echo "$BODY" | grep -oE '!\[[^\]]*\]\(https?://[^)]+\)' | grep -oE 'https?://[^)]+' || true)
 REMOTE_COUNT=0
 if [ -n "$REMOTE_IMAGE_URLS" ]; then
   # 只保留真正的图片 URL
@@ -150,7 +150,7 @@ if [ -n "$REMOTE_IMAGE_URLS" ]; then
 fi
 
 # 本地图片路径（/images/blog/...）
-LOCAL_IMAGE_PATHS=$(echo "$BODY" | grep -oP '/images/blog/[^)]+' || true)
+LOCAL_IMAGE_PATHS=$(echo "$BODY" | grep -oE '/images/blog/[^)]+' || true)
 LOCAL_COUNT=0
 if [ -n "$LOCAL_IMAGE_PATHS" ]; then
   LOCAL_COUNT=$(echo "$LOCAL_IMAGE_PATHS" | grep -c '.' || echo 0)
