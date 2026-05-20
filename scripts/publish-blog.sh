@@ -130,7 +130,7 @@ BODY_LEN=${#BODY}
 # ── 检测图片 ──
 
 # 远程图片 URL（http/https）
-REMOTE_IMAGE_URLS=$(echo "$BODY" | grep -oE '!\[[^\]]*\]\(https?://[^)]+\)' | grep -oE 'https?://[^)]+' || true)
+REMOTE_IMAGE_URLS=$(echo "$BODY" | grep -oE '!\[[^]]*\]\([^)]+\)' | grep -oE 'https?://[^)]+' || true)
 REMOTE_COUNT=0
 if [ -n "$REMOTE_IMAGE_URLS" ]; then
   # 只保留真正的图片 URL

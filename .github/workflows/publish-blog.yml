@@ -82,7 +82,7 @@ jobs:
             [ -z "$url" ] && continue
 
             # Skip non-image URLs (web pages without image extensions)
-            if ! echo "$url" | grep -qiE '\.(jpg|jpeg|png|gif|webp|svg|avif)(\?|$)|images\.unsplash\.com|pbs\.twimg\.com|imgur\.com|cloudinary\.com|cdn\.openai\.com|storage\.googleapis\.com'; then
+            if ! echo "$url" | grep -qiE '\.(jpg|jpeg|png|gif|webp|svg|avif)(\?|$)|images\.unsplash\.com|pbs\.twimg\.com|imgur\.com|cloudinary\.com|cdn\.openai\.com|storage\.googleapis\.com|mmbiz\.qpic\.cn'; then
               echo "  Skipping non-image URL: $url"
               continue
             fi
