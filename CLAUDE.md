@@ -235,21 +235,32 @@ excerpt: "摘要"         # optional, LLM generates Japanese one if empty
 
 OpenAI, Anthropic, Google, オープンソース, ベンチマーク, チュートリアル, AIエージェント, xAI, DeepSeek, 解説, 速報, 料金比較
 
+### Default workflow for OpenClaw (URL → 微調 → 発布)
+
+**This is the primary workflow. Use it whenever the user provides a URL.**
+
+```bash
+# Step 1: Fetch article + download images + filter promo images
+npx tsx scripts/fetch-article.ts "<user-provided-url>" --filter-images
+
+# Step 2: Review and edit the draft in _drafts/
+# - Remove any WeChat links, video prompts, unwanted sections
+# - Adjust formatting if needed
+# - Keep all images
+
+# Step 3: Publish with local translation
+./scripts/publish-blog.sh _drafts/<slug>.md --local --yes
+```
+
+**Why this workflow:**
+- Images are automatically downloaded and included
+- Content is based on real source material (no hallucination)
+- AI image filtering removes promo/ad images
+- Local translation preserves image paths
+
 ### Writing rules for OpenClaw
 
 **CRITICAL: Every article MUST have images.** Articles without images are unacceptable.
-
-**When writing an article:**
-1. Find the original source URL (official blog, announcement, etc.)
-2. Fetch the source page and extract image URLs (use `fetch-article.ts` or manual inspection)
-3. Include 3-8 relevant images in the article using `![description](image-url)` format
-4. Images should be: product screenshots, benchmark charts, architecture diagrams, official photos
-5. Do NOT use WeChat CDN images (mmbiz.qpic.cn) — they have anti-hotlinking
-
-**If the source has no usable images:**
-- Search for official images from the company's press kit or blog
-- Use benchmark result images from the source
-- At minimum, include a header/hero image
 
 **NEVER include in articles:**
 - WeChat/微信公众号 links (https://mp.weixin.qq.com/s/...)
@@ -259,27 +270,11 @@ OpenAI, Anthropic, Google, オープンソース, ベンチマーク, チュー�
 - Raw video prompts (code blocks with video generation instructions)
 - Video references that cannot be embedded (e.g., "動画ソース：X@...")
 
-**ALWAYS do:**
-- Include images from the original source using `![alt](url)` format
-- Remove video-only content (keep text descriptions, remove raw prompts)
-- Write as original content, not as a translation
-
-### Quick image extraction from source URL
-
-To extract images from a source URL before writing:
-
-```bash
-# Extract article + images from source URL
-npx tsx scripts/fetch-article.ts "<source-url>" --no-images --tag "Google"
-
-# Check what images are available in the source
-# Then manually include the best ones in your article
-```
-
-Or use the source page's og:image at minimum:
-```
-![Article image](https://source-url/og-image.jpg)
-```
+**When editing the fetched draft:**
+- Remove WeChat links (replace with plain text)
+- Remove video-only references that can't be embedded
+- Keep all images (they are already downloaded locally)
+- Do NOT rewrite the article from scratch — make minimal edits
 
 ### Complete workflow for OpenClaw
 
