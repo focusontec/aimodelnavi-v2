@@ -13,8 +13,6 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Models Navi",
-  description: "Compare AI model benchmarks, API pricing, and specifications.",
   metadataBase: new URL("https://aimodelsnavi.com"),
 };
 
