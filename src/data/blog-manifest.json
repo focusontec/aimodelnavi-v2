@@ -12,6 +12,98 @@
     "date": "2026-05-21"
   },
   {
+    "slug": "codex-subagent",
+    "title": "Codex Subagent初心者ガイド：並列処理で開発効率を向上させる実践的手法",
+    "tag": "OpenAI",
+    "excerpt": "Codex Subagentは複雑なタスクを並列処理し、コンテキスト汚染を防止するOpenAIの機能だ。本稿では基本概念からPRレビューなどの実践例、初心者向け練習手順までを解説する。",
+    "topics": [
+      "OpenAI",
+      "AIエージェント",
+      "セキュリティ",
+      "マルチモーダル"
+    ],
+    "date": "2026-05-21"
+  },
+  {
+    "slug": "google-io-2026gemini-35-flashagentic-gemini-eraai",
+    "title": "Google I/O 2026詳解：Gemini 3.5 Flashと「Agentic Gemini era」がもたらすAIエージェントへの転換点",
+    "tag": "Google",
+    "excerpt": "Google I/O 2026で提示された「Agentic Gemini era」の全貌を解説。自律的にタスクを完結させるAIエージェントへの移行と、それを支えるGemini 3.5 Flashの圧倒的なパフォーマンスについて分析します。",
+    "topics": [
+      "Google",
+      "OpenAI",
+      "ベンチマーク",
+      "AIエージェント",
+      "推論"
+    ],
+    "date": "2026-05-21"
+  },
+  {
+    "slug": "google-io-2026gemini-omniantigravity",
+    "title": "Google I/O 2026速報：Gemini OmniとAntigravityが切り拓く「エージェント開発」の新時代",
+    "tag": "Google",
+    "excerpt": "Google I/O 2026で発表されたGemini 3.5 FlashやOmni、そしてエージェント開発プラットフォーム「Google Antigravity」を解説。開発者が注目すべきマルチモーダル統合と自律型エージェントの衝撃をまとめます。",
+    "topics": [
+      "Google",
+      "ベンチマーク",
+      "AIエージェント",
+      "マルチモーダル",
+      "コーディング"
+    ],
+    "date": "2026-05-21"
+  },
+  {
+    "slug": "google-searchai-modeweb",
+    "title": "Google Searchの新時代へ：AI Modeの普及と「インフォメーション・エージェント」が変えるWebトラフィックの未来",
+    "tag": "Google",
+    "excerpt": "Google Search I/O 2026で発表された「AI Mode」の衝撃的な成長と、Webを24時間監視するAIエージェントの登場について解説。検索体験の根本的な変化が、企業のコンテンツ戦略にどのような影響を与えるかを分析します。",
+    "topics": [
+      "Google",
+      "AIエージェント",
+      "マルチモーダル",
+      "コーディング"
+    ],
+    "date": "2026-05-21"
+  },
+  {
+    "slug": "llmpsa",
+    "title": "LLMの「行動健康診断」とは？挙動の安定性を定量化するPSA手法の解説",
+    "tag": "AIエージェント",
+    "excerpt": "精度評価（Eval）だけでは見えないLLMの挙動の不安定さをどう検知するか。Silicon Psyche Labsが提案する「PSA（Posture Sequence Analysis）」を用いた行動分析アプローチを紹介します。",
+    "topics": [
+      "AIエージェント",
+      "ベンチマーク",
+      "セキュリティ",
+      "LLM"
+    ],
+    "date": "2026-05-21"
+  },
+  {
+    "slug": "openaiai",
+    "title": "OpenAIのモデルが離散幾何学の主要な予想を反証：AIによる数学的発見の新時代へ",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIのモデルが、離散幾何学における中心的な予想を反証することに成功しました。単なる計算を超えた「推論」による数学的突破口の事例について解説します。",
+    "topics": [
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-05-21"
+  },
+  {
+    "slug": "rampcodex",
+    "title": "【事例】Ramp社はどのようにCodexを活用してコードレビューを高速化したか",
+    "tag": "AIエージェント",
+    "excerpt": "フィンテック企業のRamp社が、OpenAIのCodexを用いてコードレビューのプロセスを劇的に効率化した事例を紹介します。数時間を要していたレビュー作業を数分に短縮したアプローチについて解説します。",
+    "topics": [
+      "AIエージェント",
+      "OpenAI",
+      "コーディング",
+      "LLM"
+    ],
+    "date": "2026-05-21"
+  },
+  {
     "slug": "advances-in-ai-agent-report-2026-05",
     "title": "AIエージェント設計の最前線：2026年に向けたシステムアーキテクチャと技術トレンド報告書",
     "tag": "AIエージェント",
@@ -218,20 +310,6 @@
       "Google",
       "xAI/Grok",
       "AIエージェント"
-    ],
-    "date": "2026-05-20"
-  },
-  {
-    "slug": "llmpsa",
-    "title": "LLMを「行動ヘルスモニター」で定量評価する：PSAによる行動分析アプローチ",
-    "tag": "解説",
-    "excerpt": "モデルの精度だけでなく「行動」を外部から監視するPSA（Posture Sequence Analysis）について解説。サイバー心理学に基づいた定量的な信頼性担保の手法に迫ります。",
-    "topics": [
-      "Anthropic",
-      "ベンチマーク",
-      "AIエージェント",
-      "セキュリティ",
-      "推論"
     ],
     "date": "2026-05-20"
   },
