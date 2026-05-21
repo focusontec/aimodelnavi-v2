@@ -12,14 +12,22 @@ import {
 } from "lucide-react";
 import blogManifest from "@/data/blog-manifest.json";
 
-export const metadata: Metadata = {
-  title: "AI Models Navi — AI model comparison & rankings",
-  description:
-    "Compare AI model benchmarks, API pricing, and specs. Covers OpenAI, Anthropic, Google, DeepSeek, and more.",
-  alternates: {
-    canonical: "https://aimodelsnavi.com",
-  },
+const PAGE_TITLES: Record<string, string> = {
+  ja: "AI Models Navi — AIモデルの比較・料金・ランキング",
+  en: "AI Models Navi — AI Model Comparison, Pricing & Rankings",
+  zh: "AI Models Navi — AI模型对比、定价与排名",
+  ko: "AI Models Navi — AI 모델 비교, 가격 및 순위",
 };
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    title: PAGE_TITLES[locale] || PAGE_TITLES.ja,
+    description:
+      "Compare AI model benchmarks, API pricing, and specs. Covers OpenAI, Anthropic, Google, DeepSeek, and more.",
+    alternates: { canonical: "https://aimodelsnavi.com" },
+  };
+}
 
 export default async function Home({
   params,
