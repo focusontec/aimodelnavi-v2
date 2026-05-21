@@ -62,7 +62,7 @@ MIMO: `LLM_PROVIDER=mimo LLM_MODEL=mimo-v2.5-pro` at `token-plan-sgp.xiaomimimo.
 - WeChat images require `Referer: https://mp.weixin.qq.com/` header
 - `translateBlogMarkdown()` can return incomplete JSON — regex fallback handles this
 - `leaderboard_scores` table is unused; leaderboard comes from `generate-leaderboard-data.ts`
-- Vision model: use `gemma3:27b-cloud` (not `gemma4:31b-cloud`)
+- Vision model: use `mimo-v2.5` (supports images; `mimo-v2.5-pro` does NOT support images)
 - Image filter: reject on vision API failure to prevent Chinese-text images passing through
 
 ## User Preferences

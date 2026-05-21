@@ -421,8 +421,8 @@ async function main() {
 
       // Try to use vision model for AI filtering
       const apiKey = process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY || "";
-      const baseUrl = process.env.LLM_BASE_URL || "https://ollama.com/v1/chat/completions";
-      const visionModel = process.env.VISION_MODEL || "gemma3:27b-cloud";
+      const baseUrl = process.env.LLM_BASE_URL || "https://token-plan-sgp.xiaomimimo.com/v1/chat/completions";
+      const visionModel = process.env.VISION_MODEL || "mimo-v2.5";
 
       const { kept, rejected } = await filterImages(imageInputs, article.title, {
         useVision: !!apiKey,

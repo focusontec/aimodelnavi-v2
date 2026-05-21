@@ -96,9 +96,9 @@ function isPromoByHeuristic(alt: string, src: string): boolean {
   return false;
 }
 
-// ── AI-based image filter (Gemma4 vision model) ──
+// ── AI-based image filter (MiMo vision model) ──
 
-const VISION_MODEL = "gemma3:27b-cloud";
+const VISION_MODEL = "mimo-v2.5";
 
 async function analyzeImageWithVision(
   imageUrl: string,
@@ -106,7 +106,7 @@ async function analyzeImageWithVision(
   articleTitle: string
 ): Promise<"promo" | "chinese_text" | "content" | "unknown_error" | "vision_error"> {
   const key = process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY || "";
-  const baseUrl = process.env.LLM_BASE_URL || "https://ollama.com/v1/chat/completions";
+  const baseUrl = process.env.LLM_BASE_URL || "https://token-plan-sgp.xiaomimimo.com/v1/chat/completions";
 
   try {
     // Download image and convert to base64
