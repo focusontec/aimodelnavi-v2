@@ -8,7 +8,6 @@ import { Globe } from "lucide-react";
 const LANGUAGES = [
   { code: "ja", label: "日本語" },
   { code: "en", label: "English" },
-  { code: "ko", label: "한국어" },
 ];
 
 export default function LangSwitcher() {
@@ -29,7 +28,7 @@ export default function LangSwitcher() {
   function switchTo(targetLocale: string) {
     // Strip current locale prefix and add new one
     const parts = pathname.split("/").filter(Boolean);
-    if (["ja", "en", "zh", "ko"].includes(parts[0])) parts.shift();
+    if (["ja", "en"].includes(parts[0])) parts.shift();
     const newPath = targetLocale === "ja" ? `/${parts.join("/")}` : `/${targetLocale}/${parts.join("/")}`;
     router.push(newPath || "/");
     setOpen(false);

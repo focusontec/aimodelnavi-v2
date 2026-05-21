@@ -8,8 +8,8 @@
  */
 
 import { migrate, getSourceId, getBlogPostsNeedingProcessing, markBlogPostProcessed } from "../lib/db";
-import { processBlogArticle } from "../lib/anthropic";
-import { saveBlogPost } from "../lib/storage";
+import { processBlogArticle, processBlogArticleEn } from "../lib/anthropic";
+import { saveBlogPost, saveBlogPostEn } from "../lib/storage";
 import { rateLimitedFetch } from "../lib/http";
 import fs from "fs";
 import path from "path";
@@ -332,6 +332,50 @@ export async function syncBlog(): Promise<BlogSyncResult> {
         },
         finalContent
       );
+
+      // Also generate English version
+      try {
+        console.log("    Generating English version...");
+        const blogPostEn = await processBlogArticleEn(
+          post.title_zh || post.external_slug,
+          bodyText,
+          post.source_url,
+          images
+        );
+
+        let finalContentEn = blogPostEn.content;
+        if (images.length > 0) {
+          const imagesInContent = (finalContentEn.match(/!\[[^\]]*\]\(/g) || []).length;
+          if (imagesInContent < images.length) {
+            const missingImages = images.filter(
+              (img) => !finalContentEn.includes(img.localPath)
+            );
+            if (missingImages.length > 0) {
+              const sections = finalContentEn.split(/\n(?=## )/g);
+              for (let k = 0; k < missingImages.length; k++) {
+                const insertIdx = Math.min(k + 1, sections.length - 1);
+                sections[insertIdx] = `\n![](${missingImages[k].localPath})\n` + sections[insertIdx];
+              }
+              finalContentEn = sections.join("\n\n");
+            }
+          }
+        }
+
+        saveBlogPostEn(
+          localSlug,
+          {
+            title: blogPostEn.title,
+            date: new Date().toISOString().split("T")[0],
+            tag: blogPostEn.tag,
+            excerpt: blogPostEn.excerpt,
+            draft: "true",
+          },
+          finalContentEn
+        );
+        console.log(`  ✓ EN: ${blogPostEn.title}`);
+      } catch (enErr) {
+        console.warn(`  ⚠ EN translation failed (JA post still saved): ${enErr}`);
+      }
 
       markBlogPostProcessed(post.id, localSlug);
       result.processed++;

@@ -1,10 +1,47 @@
 'use client';
 
 import { useState } from 'react';
+import { useLocale } from 'next-intl';
 import { leaderboardData } from '@/data/leaderboard';
 import { pricingData } from '@/data/pricing';
 
+const T = {
+  ja: {
+    title: "モデル比較",
+    desc: "2つのAIモデルをベンチマークと料金で直接比較します。",
+    modelA: "モデル A",
+    modelB: "モデル B",
+    selectPlaceholder: "選択してください",
+    benchmarkComparison: "ベンチマーク比較",
+    metric: "指標",
+    winner: "勝者",
+    draw: "引分",
+    pricingComparison: "API料金比較（標準モード）",
+    item: "項目",
+    input: "入力 ($/1M tokens)",
+    output: "出力 ($/1M tokens)",
+  },
+  en: {
+    title: "Model Comparison",
+    desc: "Compare two AI models side by side on benchmarks and pricing.",
+    modelA: "Model A",
+    modelB: "Model B",
+    selectPlaceholder: "Select a model",
+    benchmarkComparison: "Benchmark Comparison",
+    metric: "Metric",
+    winner: "Winner",
+    draw: "Draw",
+    pricingComparison: "API Pricing Comparison (Standard)",
+    item: "Item",
+    input: "Input ($/1M tokens)",
+    output: "Output ($/1M tokens)",
+  },
+};
+
 export default function ModelComparePage() {
+  const locale = useLocale();
+  const t = T[locale as keyof typeof T] || T.ja;
+
   const [modelA, setModelA] = useState('');
   const [modelB, setModelB] = useState('');
 
@@ -29,44 +66,34 @@ export default function ModelComparePage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">モデル比較</h1>
-      <p className="text-gray-500 mb-8">
-        2つのAIモデルをベンチマークと料金で直接比較します。
-      </p>
+      <h1 className="text-3xl font-bold text-gray-900 mb-2">{t.title}</h1>
+      <p className="text-gray-500 mb-8">{t.desc}</p>
 
       {/* Model selectors */}
       <div className="grid sm:grid-cols-2 gap-4 mb-8">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
-            モデル A
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">{t.modelA}</label>
           <select
             value={modelA}
             onChange={(e) => setModelA(e.target.value)}
             className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
           >
-            <option value="">選択してください</option>
+            <option value="">{t.selectPlaceholder}</option>
             {modelNames.map((m) => (
-              <option key={m} value={m}>
-                {m}
-              </option>
+              <option key={m} value={m}>{m}</option>
             ))}
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
-            モデル B
-          </label>
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">{t.modelB}</label>
           <select
             value={modelB}
             onChange={(e) => setModelB(e.target.value)}
             className="w-full rounded-lg border border-gray-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
           >
-            <option value="">選択してください</option>
+            <option value="">{t.selectPlaceholder}</option>
             {modelNames.map((m) => (
-              <option key={m} value={m}>
-                {m}
-              </option>
+              <option key={m} value={m}>{m}</option>
             ))}
           </select>
         </div>
@@ -77,15 +104,15 @@ export default function ModelComparePage() {
           {/* Benchmark comparison */}
           <div className="rounded-xl border border-gray-200 overflow-hidden">
             <div className="px-6 py-3 bg-gray-50 border-b border-gray-100">
-              <h2 className="text-sm font-semibold text-gray-900">ベンチマーク比較</h2>
+              <h2 className="text-sm font-semibold text-gray-900">{t.benchmarkComparison}</h2>
             </div>
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-100">
-                  <th className="px-6 py-2 text-left text-xs font-medium text-gray-500">指標</th>
+                  <th className="px-6 py-2 text-left text-xs font-medium text-gray-500">{t.metric}</th>
                   <th className="px-6 py-2 text-center text-xs font-medium text-primary-600">{a.name}</th>
                   <th className="px-6 py-2 text-center text-xs font-medium text-accent-600">{b.name}</th>
-                  <th className="px-6 py-2 text-center text-xs font-medium text-gray-400">勝者</th>
+                  <th className="px-6 py-2 text-center text-xs font-medium text-gray-400">{t.winner}</th>
                 </tr>
               </thead>
               <tbody>
@@ -117,7 +144,7 @@ export default function ModelComparePage() {
                         ) : winner === 'b' ? (
                           <span className="text-xs font-medium text-accent-600">{b.name}</span>
                         ) : (
-                          <span className="text-xs text-gray-400">引分</span>
+                          <span className="text-xs text-gray-400">{t.draw}</span>
                         )}
                       </td>
                     </tr>
@@ -131,24 +158,24 @@ export default function ModelComparePage() {
           {pa && pb && (
             <div className="rounded-xl border border-gray-200 overflow-hidden">
               <div className="px-6 py-3 bg-gray-50 border-b border-gray-100">
-                <h2 className="text-sm font-semibold text-gray-900">API料金比較（標準モード）</h2>
+                <h2 className="text-sm font-semibold text-gray-900">{t.pricingComparison}</h2>
               </div>
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-gray-100">
-                    <th className="px-6 py-2 text-left text-xs font-medium text-gray-500">項目</th>
+                    <th className="px-6 py-2 text-left text-xs font-medium text-gray-500">{t.item}</th>
                     <th className="px-6 py-2 text-center text-xs font-medium text-primary-600">{a.name}</th>
                     <th className="px-6 py-2 text-center text-xs font-medium text-accent-600">{b.name}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-gray-50">
-                    <td className="px-6 py-3 text-sm font-medium text-gray-700">入力 ($/1M tokens)</td>
+                    <td className="px-6 py-3 text-sm font-medium text-gray-700">{t.input}</td>
                     <td className="px-6 py-3 text-sm text-center font-mono">${pa.inputPrice.toFixed(2)}</td>
                     <td className="px-6 py-3 text-sm text-center font-mono">${pb.inputPrice.toFixed(2)}</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-3 text-sm font-medium text-gray-700">出力 ($/1M tokens)</td>
+                    <td className="px-6 py-3 text-sm font-medium text-gray-700">{t.output}</td>
                     <td className="px-6 py-3 text-sm text-center font-mono">${pa.outputPrice.toFixed(2)}</td>
                     <td className="px-6 py-3 text-sm text-center font-mono">${pb.outputPrice.toFixed(2)}</td>
                   </tr>

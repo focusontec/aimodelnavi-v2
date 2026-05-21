@@ -64,6 +64,7 @@ async function main() {
 
   // Stage 3: Translate
   const translateResult = await translateModels("ja");
+  const translateResultEn = await translateModels("en");
 
   // Stage 3.5: Pricing sync
   const pricingResult = await syncPricing();
@@ -94,8 +95,20 @@ async function main() {
     console.error(`  DataLearner Leaderboard sync failed: ${err}`);
   }
 
-  // Stage 3.6: Blog sync (DataLearnerAI articles → Japanese)
+  // Stage 3.6: Blog sync (DataLearnerAI articles → Japanese + English)
   const blogResult = await syncBlog();
+
+  // Stage 3.7: Generate English blog manifest
+  try {
+    execSync("npx tsx scripts/generate-english-manifest.ts", {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      timeout: 120000,
+    });
+    console.log("  English blog manifest generated");
+  } catch (err) {
+    console.error(`  English manifest generation failed: ${err}`);
+  }
 
   // Stage 4: Generate
   const genResult = generateDataFiles();
@@ -109,7 +122,7 @@ async function main() {
   console.log("═══════════════════════════════════════");
   console.log(`  Crawled: ${crawlResult.datalearner.detailPagesFetched} pages, ${totalNew} new/changed`);
   console.log(`  Processed: ${processResult.processed} new models`);
-  console.log(`  Translated: ${translateResult.translated}`);
+  console.log(`  Translated JA: ${translateResult.translated}, EN: ${translateResultEn.translated}`);
   console.log(`  Leaderboard: synced from DataLearner (see generate-leaderboard-data.ts output)`);
   console.log(`  Pricing: ${pricingResult.totalEntries} entries from ${pricingResult.providerResults.filter(p => p.success).length} providers`);
   console.log(`  Blog: ${blogResult.processed} articles processed`);

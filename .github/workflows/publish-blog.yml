@@ -41,7 +41,7 @@ jobs:
 
       - run: npm ci
 
-      - name: Translate and publish blog post
+      - name: Translate and publish blog post (Japanese)
         id: translate
         env:
           LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'ollama' }}
@@ -57,6 +57,44 @@ jobs:
             --tag "$TAG" \
             --excerpt "$EXCERPT" \
             --stdin
+
+      - name: Generate English blog post
+        id: translate-en
+        env:
+          LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'ollama' }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: ${{ vars.LLM_MODEL || 'gemma4:31b' }}
+        run: |
+          SLUG=$(ls -t src/content/blog/*.md 2>/dev/null | head -1 | xargs -I{} basename {} .md)
+          if [ -z "$SLUG" ]; then
+            echo "No JA blog post found, skipping EN generation"
+            exit 0
+          fi
+
+          echo "Generating EN version for slug: $SLUG"
+          npx tsx -e "
+            const { processBlogArticleEn } = require('./scripts/lib/anthropic');
+            const { saveBlogPostEn } = require('./scripts/lib/storage');
+            const fs = require('fs');
+            const path = require('path');
+            const matter = require('gray-matter');
+
+            async function main() {
+              const jaPath = path.join('src/content/blog', '${SLUG}.md');
+              const raw = fs.readFileSync(jaPath, 'utf-8');
+              const { data, content } = matter(raw);
+
+              const result = await processBlogArticleEn(data.title, content, '');
+              saveBlogPostEn('${SLUG}', {
+                title: result.title,
+                date: data.date || new Date().toISOString().split('T')[0],
+                tag: result.tag || data.tag,
+                excerpt: result.excerpt,
+              }, result.content);
+              console.log('EN version saved: ' + result.title);
+            }
+            main().catch(e => { console.error(e); process.exit(1); });
+          "
 
       - name: Download images
         if: inputs.images != ''
@@ -143,12 +181,17 @@ jobs:
             echo "  Done: $((IMG_NUM - 1)) images processed"
           fi
 
+      - name: Regenerate manifests
+        run: |
+          npx tsx scripts/blog-manifest.ts || true
+          npx tsx scripts/generate-english-manifest.ts || true
+
       - name: Commit and push
         run: |
-          if [ -n "$(git status --porcelain src/content/blog/ public/images/)" ]; then
+          if [ -n "$(git status --porcelain src/content/ public/images/ src/data/blog-manifest*.json)" ]; then
             git config user.name "coder"
             git config user.email "focusteczzc@163.com"
-            git add src/content/blog/ public/images/
+            git add src/content/ public/images/ src/data/blog-manifest*.json
             git commit -m "blog: publish translated post — ${{ inputs.title }}"
             git pull -X ours origin main || true
             git push

@@ -1,19 +1,61 @@
 'use client';
 
 import { useState } from 'react';
+import { useLocale } from 'next-intl';
 import { pricingData, BillingMode } from '@/data/pricing';
 import { Info, ArrowUpDown } from 'lucide-react';
 
-const billingLabels: Record<BillingMode, { label: string; desc: string }> = {
-  standard: { label: '標準', desc: '通常のトークン単位課金' },
-  batch: { label: 'バッチ', desc: '非同期バルク処理（最大50%割引）' },
-  cache: { label: 'キャッシュ', desc: '反復コンテキストの割引料金' },
-  'long-context': { label: '長文', desc: '長い入力超過時の段階料金' },
+const T = {
+  ja: {
+    title: "API料金比較",
+    desc: "主要AIモデルのAPI料金を1Mトークンあたりの価格で比較。データは各社公式サイトに基づきます。",
+    provider: "プロバイダー",
+    billingMode: "課金モード",
+    modelName: "モデル名",
+    inputPrice: "入力料金",
+    outputPrice: "出力料金",
+    inputFormat: "入力形式",
+    outputFormat: "出力形式",
+    text: "テキスト",
+    multimodal: "画像+テキスト",
+    billingTitle: "課金モードについて",
+    note: "※ 価格は各社公式サイトの情報に基づきます。最新の正確な料金は各公式サイトでご確認ください。価格はUSD（米ドル）表示です。",
+    billing: {
+      standard: { label: "標準", desc: "通常のトークン単位課金" },
+      batch: { label: "バッチ", desc: "非同期バルク処理（最大50%割引）" },
+      cache: { label: "キャッシュ", desc: "反復コンテキストの割引料金" },
+      "long-context": { label: "長文", desc: "長い入力超過時の段階料金" },
+    } as Record<BillingMode, { label: string; desc: string }>,
+  },
+  en: {
+    title: "API Pricing Comparison",
+    desc: "Compare API pricing of major AI models per 1M tokens. Data is based on official provider websites.",
+    provider: "Provider",
+    billingMode: "Billing Mode",
+    modelName: "Model Name",
+    inputPrice: "Input Price",
+    outputPrice: "Output Price",
+    inputFormat: "Input Format",
+    outputFormat: "Output Format",
+    text: "Text",
+    multimodal: "Image + Text",
+    billingTitle: "About Billing Modes",
+    note: "※ Prices are based on information from official provider websites. Please check official sites for the most accurate and up-to-date pricing. Prices are shown in USD.",
+    billing: {
+      standard: { label: "Standard", desc: "Regular per-token billing" },
+      batch: { label: "Batch", desc: "Async bulk processing (up to 50% discount)" },
+      cache: { label: "Cache", desc: "Discounted pricing for repeated context" },
+      "long-context": { label: "Long Context", desc: "Tiered pricing for extended input" },
+    } as Record<BillingMode, { label: string; desc: string }>,
+  },
 };
 
 const providers = [...new Set(pricingData.map((p) => p.provider))];
 
 export default function PricingPage() {
+  const locale = useLocale();
+  const t = T[locale as keyof typeof T] || T.ja;
+
   const [selectedProviders, setSelectedProviders] = useState<Set<string>>(
     new Set(providers)
   );
@@ -47,16 +89,14 @@ export default function PricingPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">API料金比較</h1>
-        <p className="mt-2 text-gray-500">
-          主要AIモデルのAPI料金を1Mトークンあたりの価格で比較。データは各社公式サイトに基づきます。
-        </p>
+        <h1 className="text-3xl font-bold text-gray-900">{t.title}</h1>
+        <p className="mt-2 text-gray-500">{t.desc}</p>
       </div>
 
       {/* Filters */}
       <div className="mb-6 space-y-4">
         <div>
-          <span className="text-xs font-medium text-gray-500 mb-2 block">プロバイダー</span>
+          <span className="text-xs font-medium text-gray-500 mb-2 block">{t.provider}</span>
           <div className="flex flex-wrap gap-2">
             {providers.map((p) => (
               <button
@@ -74,9 +114,9 @@ export default function PricingPage() {
           </div>
         </div>
         <div>
-          <span className="text-xs font-medium text-gray-500 mb-2 block">課金モード</span>
+          <span className="text-xs font-medium text-gray-500 mb-2 block">{t.billingMode}</span>
           <div className="flex flex-wrap gap-2">
-            {(Object.entries(billingLabels) as [BillingMode, { label: string; desc: string }][]).map(
+            {(Object.entries(t.billing) as [BillingMode, { label: string; desc: string }][]).map(
               ([mode, { label }]) => (
                 <button
                   key={mode}
@@ -105,18 +145,18 @@ export default function PricingPage() {
                   onClick={() => setSortField('modelName')}
                   className="inline-flex items-center gap-1 hover:text-primary-600"
                 >
-                  モデル名
+                  {t.modelName}
                   <ArrowUpDown className="w-3 h-3" />
                 </button>
               </th>
-              <th>プロバイダー</th>
-              <th>課金モード</th>
+              <th>{t.provider}</th>
+              <th>{t.billingMode}</th>
               <th>
                 <button
                   onClick={() => setSortField('inputPrice')}
                   className="inline-flex items-center gap-1 hover:text-primary-600"
                 >
-                  入力料金
+                  {t.inputPrice}
                   <ArrowUpDown className="w-3 h-3" />
                 </button>
               </th>
@@ -125,12 +165,12 @@ export default function PricingPage() {
                   onClick={() => setSortField('outputPrice')}
                   className="inline-flex items-center gap-1 hover:text-primary-600"
                 >
-                  出力料金
+                  {t.outputPrice}
                   <ArrowUpDown className="w-3 h-3" />
                 </button>
               </th>
-              <th>入力形式</th>
-              <th>出力形式</th>
+              <th>{t.inputFormat}</th>
+              <th>{t.outputFormat}</th>
             </tr>
           </thead>
           <tbody>
@@ -152,7 +192,7 @@ export default function PricingPage() {
                         : 'bg-purple-50 text-purple-700'
                     }`}
                   >
-                    {billingLabels[p.billingMode].label}
+                    {t.billing[p.billingMode].label}
                   </span>
                 </td>
                 <td className="px-4 py-3 text-sm font-mono font-medium text-gray-900">
@@ -162,10 +202,10 @@ export default function PricingPage() {
                   ${p.outputPrice.toFixed(p.outputPrice < 1 ? 3 : 2)}
                 </td>
                 <td className="px-4 py-3 text-sm text-gray-600">
-                  {p.inputModality === 'multimodal' ? '画像+テキスト' : 'テキスト'}
+                  {p.inputModality === 'multimodal' ? t.multimodal : t.text}
                 </td>
                 <td className="px-4 py-3 text-sm text-gray-600">
-                  {p.outputModality === 'multimodal' ? '画像+テキスト' : 'テキスト'}
+                  {p.outputModality === 'multimodal' ? t.multimodal : t.text}
                 </td>
               </tr>
             ))}
@@ -177,10 +217,10 @@ export default function PricingPage() {
       <div className="mt-10 p-6 bg-gray-50 rounded-xl">
         <h2 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
           <Info className="w-4 h-4" />
-          課金モードについて
+          {t.billingTitle}
         </h2>
         <div className="grid sm:grid-cols-2 gap-4">
-          {(Object.entries(billingLabels) as [BillingMode, { label: string; desc: string }][]).map(
+          {(Object.entries(t.billing) as [BillingMode, { label: string; desc: string }][]).map(
             ([mode, { label, desc }]) => (
               <div key={mode}>
                 <dt className="text-sm font-medium text-gray-900">{label}</dt>
@@ -191,10 +231,7 @@ export default function PricingPage() {
         </div>
       </div>
 
-      <p className="mt-6 text-xs text-gray-400">
-        ※ 価格は各社公式サイトの情報に基づきます。最新の正確な料金は各公式サイトでご確認ください。
-        価格はUSD（米ドル）表示です。
-      </p>
+      <p className="mt-6 text-xs text-gray-400">{t.note}</p>
     </div>
   );
 }

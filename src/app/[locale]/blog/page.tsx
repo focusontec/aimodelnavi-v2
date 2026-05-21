@@ -34,7 +34,7 @@ export default async function BlogListPage({
         {paged.map((post: any) => (
           <Link
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={`/${locale === "ja" ? "" : locale + "/"}blog/${post.slug}`}
             className="block p-6 bg-white border border-gray-200 rounded-xl hover:border-primary-300 hover:shadow-sm transition-all"
           >
             <div className="flex items-center gap-3 mb-2">
@@ -60,7 +60,7 @@ export default async function BlogListPage({
         <div className="flex items-center justify-center gap-4 mt-10">
           {currentPage > 1 && (
             <Link
-              href={`/blog?page=${currentPage - 1}`}
+              href={`/${locale === "ja" ? "" : locale + "/"}blog?page=${currentPage - 1}`}
               className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary-600"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -72,7 +72,7 @@ export default async function BlogListPage({
           </span>
           {currentPage < totalPages && (
             <Link
-              href={`/blog?page=${currentPage + 1}`}
+              href={`/${locale === "ja" ? "" : locale + "/"}blog?page=${currentPage + 1}`}
               className="inline-flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700"
             >
               {locale === "en" ? "Next" : "次へ"}

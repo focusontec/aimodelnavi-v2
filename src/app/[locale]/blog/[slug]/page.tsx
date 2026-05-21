@@ -9,19 +9,22 @@ import remarkGfm from 'remark-gfm';
 import type { Metadata } from 'next';
 
 export function generateStaticParams() {
-  return getAllPosts().flatMap((post) =>
-    ["ja", "en", "ko"].map((locale) => ({ slug: post.slug, locale }))
+  const jaPosts = getAllPosts("ja");
+  const enPosts = getAllPosts("en");
+  const allSlugs = new Set([...jaPosts.map((p) => p.slug), ...enPosts.map((p) => p.slug)]);
+  return [...allSlugs].flatMap((slug) =>
+    ["ja", "en"].map((locale) => ({ slug, locale }))
   );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const post = getPostBySlug(slug);
-  if (!post) return { title: "記事が見つかりません" };
+  const { slug, locale } = await params;
+  const post = getPostBySlug(slug, locale);
+  if (!post) return { title: "Post not found" };
 
   return {
     title: post.title,
@@ -47,7 +50,7 @@ export default async function BlogDetailPage({
 }) {
   const { slug, locale } = await params;
   setRequestLocale(locale);
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(slug, locale);
 
   if (!post) notFound();
 
@@ -55,8 +58,8 @@ export default async function BlogDetailPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "ホーム", item: "https://aimodelsnavi.com" },
-      { "@type": "ListItem", position: 2, name: "ブログ", item: "https://aimodelsnavi.com/blog" },
+      { "@type": "ListItem", position: 1, name: locale === "en" ? "Home" : "ホーム", item: "https://aimodelsnavi.com" },
+      { "@type": "ListItem", position: 2, name: locale === "en" ? "Blog" : "ブログ", item: "https://aimodelsnavi.com/blog" },
       { "@type": "ListItem", position: 3, name: post.title },
     ],
   };
@@ -86,11 +89,11 @@ export default async function BlogDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbLd, jsonLd]) }}
       />
       <Link
-        href="/blog"
+        href={`/${locale === "ja" ? "" : locale + "/"}blog`}
         className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary-600 mb-6"
       >
         <ArrowLeft className="w-3 h-3" />
-        ブログ一覧に戻る
+        {locale === "en" ? "Back to Blog" : "ブログ一覧に戻る"}
       </Link>
 
       <div className="mb-8">
@@ -113,11 +116,11 @@ export default async function BlogDetailPage({
 
       <div className="mt-12 pt-8 border-t border-gray-100">
         <Link
-          href="/blog"
+          href={`/${locale === "ja" ? "" : locale + "/"}blog`}
           className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-700"
         >
           <ArrowLeft className="w-3 h-3" />
-          ブログ一覧に戻る
+          {locale === "en" ? "Back to Blog" : "ブログ一覧に戻る"}
         </Link>
       </div>
     </article>

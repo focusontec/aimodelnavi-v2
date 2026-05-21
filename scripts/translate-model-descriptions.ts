@@ -1,15 +1,15 @@
 #!/usr/bin/env tsx
 /**
- * Batch translate model descriptions from Japanese to English/Chinese/Korean.
+ * Batch translate model descriptions from Japanese to English.
  * Populates model_translations table.
- * Usage: npx tsx scripts/translate-model-descriptions.ts [en|zh|ko] [batchSize]
+ * Usage: npx tsx scripts/translate-model-descriptions.ts en [batchSize]
  */
 import Database from "better-sqlite3";
 import { callLLM } from "./lib/anthropic";
 
 const LANG = process.argv[2] || "en";
 const BATCH_SIZE = parseInt(process.argv[3] || "20");
-const LANG_NAMES: Record<string, string> = { en: "English", zh: "Chinese", ko: "Korean" };
+const LANG_NAMES: Record<string, string> = { en: "English" };
 
 async function main() {
   const db = new Database("data/crawler.db");

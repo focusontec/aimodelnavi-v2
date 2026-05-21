@@ -10,7 +10,7 @@ import LeaderboardTable from "@/components/LeaderboardTable";
 
 export function generateStaticParams() {
   return categoryOrder.flatMap((slug) =>
-    ["ja", "en", "ko"].map((locale) => ({ category: slug, locale }))
+    ["ja", "en"].map((locale) => ({ category: slug, locale }))
   );
 }
 
@@ -24,12 +24,15 @@ export async function generateMetadata({
   if (!cat) return {};
   const t = await getTranslations({ locale, namespace: "leaderboard" });
 
+  const catTitle = locale === "en" ? cat.titleEn : cat.title;
+  const catDesc = locale === "en" ? cat.descriptionEn : cat.description;
+
   return {
-    title: `${cat.title} — AI Models Navi`,
-    description: locale === "en" ? `AI model ${cat.slug} benchmark rankings` : cat.description,
+    title: `${catTitle} — AI Models Navi`,
+    description: catDesc,
     openGraph: {
-      title: `${cat.title} | AI Models Navi`,
-      description: locale === "en" ? `AI model ${cat.slug} benchmark rankings` : cat.description,
+      title: `${catTitle} | AI Models Navi`,
+      description: catDesc,
       type: "website",
       images: ["/opengraph-image"],
     },
@@ -61,7 +64,7 @@ export default async function LeaderboardCategoryPage({
     itemListElement: [
       { "@type": "ListItem", position: 1, name: isEn ? "Home" : "ホーム", item: "https://aimodelsnavi.com" },
       { "@type": "ListItem", position: 2, name: isEn ? "Leaderboard" : "ランキング", item: "https://aimodelsnavi.com/leaderboard" },
-      { "@type": "ListItem", position: 3, name: cat.title },
+      { "@type": "ListItem", position: 3, name: isEn ? cat.titleEn : cat.title },
     ],
   };
 
@@ -82,14 +85,14 @@ export default async function LeaderboardCategoryPage({
                 slug === category ? "bg-primary-600 text-white" : "text-gray-600 hover:bg-gray-100"
               }`}>
               <Icon className="w-4 h-4" />
-              {c.title.replace("ランキング", isEn ? "Ranking" : "").trim() || c.title.split("ランキング")[0].trim()}
+              {isEn ? c.titleEn : c.title}
             </Link>
           );
         })}
       </div>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">{cat.title}</h1>
-        <p className="mt-2 text-gray-500">{isEn ? `Benchmark rankings for AI model ${cat.slug} capabilities` : cat.description}</p>
+        <h1 className="text-3xl font-bold text-gray-900">{isEn ? cat.titleEn : cat.title}</h1>
+        <p className="mt-2 text-gray-500">{isEn ? cat.descriptionEn : cat.description}</p>
       </div>
       <LeaderboardTable benchmarks={cat.benchmarks} benchmarkDefs={categoryBenchmarks} />
       {categoryBenchmarks.length > 0 && (

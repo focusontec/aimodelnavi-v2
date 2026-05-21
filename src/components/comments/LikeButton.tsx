@@ -1,7 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale } from "next-intl";
 import { Heart } from "lucide-react";
+
+const T = {
+  ja: {
+    unlike: "いいねを取り消す",
+    like: "いいね",
+  },
+  en: {
+    unlike: "Unlike",
+    like: "Like",
+  },
+};
 
 interface LikeButtonProps {
   slug: string;
@@ -18,6 +30,8 @@ export default function LikeButton({
   initialCount = 0,
   initialLiked = false,
 }: LikeButtonProps) {
+  const locale = useLocale();
+  const t = T[locale as keyof typeof T] || T.ja;
   const [liked, setLiked] = useState(initialLiked);
   const [count, setCount] = useState(initialCount);
   const [loading, setLoading] = useState(false);
@@ -60,7 +74,7 @@ export default function LikeButton({
           ? "text-red-500 hover:text-red-600"
           : "text-gray-400 hover:text-red-400"
       }`}
-      aria-label={liked ? "いいねを取り消す" : "いいね"}
+      aria-label={liked ? t.unlike : t.like}
     >
       <Heart className={`w-4 h-4 ${liked ? "fill-current" : ""}`} />
       {count > 0 && <span>{count}</span>}

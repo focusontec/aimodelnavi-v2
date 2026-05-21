@@ -9,6 +9,7 @@ import path from "path";
 
 const DATA_DIR = path.join(process.cwd(), "src/data");
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
+const BLOG_EN_DIR = path.join(process.cwd(), "src/content/blog-en");
 
 export function saveDataFile(filename: string, content: string): void {
   if (!fs.existsSync(DATA_DIR)) {
@@ -45,6 +46,28 @@ export function saveBlogPost(slug: string, frontmatter: Record<string, string>, 
   const filepath = path.join(BLOG_DIR, `${slug}.md`);
   fs.writeFileSync(filepath, lines.join("\n"), "utf-8");
   console.log(`  → Saved blog: ${slug}.md`);
+}
+
+export function saveBlogPostEn(slug: string, frontmatter: Record<string, string>, content: string): void {
+  if (!fs.existsSync(BLOG_EN_DIR)) {
+    fs.mkdirSync(BLOG_EN_DIR, { recursive: true });
+  }
+
+  const lines = ["---"];
+  for (const [key, value] of Object.entries(frontmatter)) {
+    if (value.includes('"')) {
+      lines.push(`${key}: '${value}'`);
+    } else {
+      lines.push(`${key}: "${value}"`);
+    }
+  }
+  lines.push("---");
+  lines.push("");
+  lines.push(content);
+
+  const filepath = path.join(BLOG_EN_DIR, `${slug}.md`);
+  fs.writeFileSync(filepath, lines.join("\n"), "utf-8");
+  console.log(`  → Saved EN blog: ${slug}.md`);
 }
 
 /**

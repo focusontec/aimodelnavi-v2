@@ -1,19 +1,64 @@
 'use client';
 
 import { useState } from 'react';
+import { useLocale } from 'next-intl';
 import { benchmarksData, Benchmark } from '@/data/benchmarks';
 import { Info, ChevronDown, ChevronUp } from 'lucide-react';
 
-const categories = [
-  { key: 'all', label: 'すべて' },
-  { key: 'math', label: '数学' },
-  { key: 'coding', label: 'プログラミング' },
-  { key: 'reasoning', label: '推論' },
-  { key: 'comprehensive', label: '総合' },
-  { key: 'agent', label: 'エージェント' },
-];
+const T = {
+  ja: {
+    title: "AI モデル評価ベンチマーク",
+    desc: "业界主流の AI モデル評価ベンチマーク一覧。各ベンチマークの説明と、モデルのランキングを確認できます。",
+    categories: [
+      { key: 'all', label: 'すべて' },
+      { key: 'math', label: '数学' },
+      { key: 'coding', label: 'プログラミング' },
+      { key: 'reasoning', label: '推論' },
+      { key: 'comprehensive', label: '総合' },
+      { key: 'agent', label: 'エージェント' },
+    ],
+    categoryMap: { math: '数学', coding: 'プログラミング', reasoning: '推論', comprehensive: '総合', agent: 'エージェント' } as Record<string, string>,
+    models: "モデル",
+    rank: "#",
+    model: "モデル",
+    developer: "開発元",
+    score: "スコア",
+    mode: "モード",
+    morePrefix: "... 他",
+    moreSuffix: "モデル",
+    noData: "ランキングデータがありません",
+    infoTitle: "評価ベンチマークについて",
+    infoDesc: "各評価ベンチマークは、AI モデルの特定の能力を測定するために設計されています。数学推論、コーディング、総合的な理解力など、多様な角度からモデルの性能を評価できます。データは定期的に更新され、最新のモデルのスコアが反映されます。",
+  },
+  en: {
+    title: "AI Model Evaluation Benchmarks",
+    desc: "A list of mainstream AI model evaluation benchmarks. View benchmark descriptions and model rankings.",
+    categories: [
+      { key: 'all', label: 'All' },
+      { key: 'math', label: 'Math' },
+      { key: 'coding', label: 'Coding' },
+      { key: 'reasoning', label: 'Reasoning' },
+      { key: 'comprehensive', label: 'Comprehensive' },
+      { key: 'agent', label: 'Agent' },
+    ],
+    categoryMap: { math: 'Math', coding: 'Coding', reasoning: 'Reasoning', comprehensive: 'Comprehensive', agent: 'Agent' } as Record<string, string>,
+    models: "models",
+    rank: "#",
+    model: "Model",
+    developer: "Developer",
+    score: "Score",
+    mode: "Mode",
+    morePrefix: "... and",
+    moreSuffix: "more",
+    noData: "No ranking data available",
+    infoTitle: "About Evaluation Benchmarks",
+    infoDesc: "Each evaluation benchmark is designed to measure specific capabilities of AI models. You can evaluate model performance from diverse angles including mathematical reasoning, coding, and comprehensive understanding. Data is updated regularly to reflect the latest model scores.",
+  },
+};
 
 export default function BenchmarksPage() {
+  const locale = useLocale();
+  const t = T[locale as keyof typeof T] || T.ja;
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [expandedBenchmark, setExpandedBenchmark] = useState<string | null>(null);
 
@@ -29,16 +74,14 @@ export default function BenchmarksPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">AI モデル評価基准</h1>
-        <p className="mt-2 text-gray-500">
-          业界主流の AI モデル評価基准一覧。各基准の説明と、モデルのランキングを確認できます。
-        </p>
+        <h1 className="text-3xl font-bold text-gray-900">{t.title}</h1>
+        <p className="mt-2 text-gray-500">{t.desc}</p>
       </div>
 
       {/* Category filters */}
       <div className="flex flex-wrap items-center gap-3 mb-6">
         <div className="flex rounded-lg border border-gray-200 overflow-hidden">
-          {categories.map((cat) => (
+          {t.categories.map((cat) => (
             <button
               key={cat.key}
               onClick={() => setFilterCategory(cat.key)}
@@ -72,14 +115,10 @@ export default function BenchmarksPage() {
                   <p className="text-sm text-gray-500 mt-0.5">{benchmark.nameJa}</p>
                 </div>
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
-                  {benchmark.category === 'math' ? '数学' :
-                   benchmark.category === 'coding' ? 'プログラミング' :
-                   benchmark.category === 'reasoning' ? '推論' :
-                   benchmark.category === 'comprehensive' ? '総合' :
-                   benchmark.category === 'agent' ? 'エージェント' : benchmark.category}
+                  {t.categoryMap[benchmark.category] || benchmark.category}
                 </span>
                 <span className="text-sm text-gray-400">
-                  {benchmark.totalModels} モデル
+                  {benchmark.totalModels} {t.models}
                 </span>
               </div>
               {expandedBenchmark === benchmark.key ? (
@@ -103,11 +142,11 @@ export default function BenchmarksPage() {
                     <table className="w-full">
                       <thead>
                         <tr className="border-b border-gray-200">
-                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-500">#</th>
-                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-500">モデル</th>
-                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-500">開発元</th>
-                          <th className="text-right py-2 px-3 text-xs font-medium text-gray-500">スコア</th>
-                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-500">モード</th>
+                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-500">{t.rank}</th>
+                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-500">{t.model}</th>
+                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-500">{t.developer}</th>
+                          <th className="text-right py-2 px-3 text-xs font-medium text-gray-500">{t.score}</th>
+                          <th className="text-left py-2 px-3 text-xs font-medium text-gray-500">{t.mode}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -126,14 +165,12 @@ export default function BenchmarksPage() {
                     </table>
                     {benchmark.rankings.length > 20 && (
                       <p className="mt-3 text-sm text-gray-500 text-center">
-                        ... 他 {benchmark.rankings.length - 20} モデル
+                        {t.morePrefix} {benchmark.rankings.length - 20} {t.moreSuffix}
                       </p>
                     )}
                   </div>
                 ) : (
-                  <p className="text-sm text-gray-500 text-center py-4">
-                    ランキングデータがありません
-                  </p>
+                  <p className="text-sm text-gray-500 text-center py-4">{t.noData}</p>
                 )}
               </div>
             )}
@@ -145,13 +182,9 @@ export default function BenchmarksPage() {
       <div className="mt-10 p-6 bg-gray-50 rounded-xl">
         <h2 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
           <Info className="w-4 h-4" />
-          評価基准について
+          {t.infoTitle}
         </h2>
-        <p className="text-sm text-gray-600">
-          各評価基准は、AI モデルの特定の能力を測定するために設計されています。
-          数学推論、コーディング、総合的な理解力など、多様な角度からモデルの性能を評価できます。
-          データは定期的に更新され、最新のモデルのスコアが反映されます。
-        </p>
+        <p className="text-sm text-gray-600">{t.infoDesc}</p>
       </div>
     </div>
   );

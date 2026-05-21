@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ツール",
+  title: "Tools",
   description:
-    "APIコスト計算、モデル比較、トークンカウンターなどAIモデル選定を支援する無料ツール集。",
+    "Free tools for AI model selection: cost calculator, model comparison, and token counter.",
   openGraph: {
-    title: "ツール | AI Models Navi",
+    title: "Tools | AI Models Navi",
     description:
-      "AIモデル選定を支援する無料ツール：コスト計算、モデル比較、トークンカウンター。",
+      "Free tools for AI model selection: cost calculator, model comparison, and token counter.",
   },
 };
 

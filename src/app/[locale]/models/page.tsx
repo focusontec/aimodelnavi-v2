@@ -1,16 +1,66 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
+import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { ArrowRight, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { modelDetails } from '@/data/models';
 
 const ITEMS_PER_PAGE = 30;
 
-const sourceLabels: Record<string, string> = {
+const T = {
+  ja: {
+    title: "モデル一覧",
+    desc: "主要AIモデルの仕様・ライセンス・性能概要を一覧で比較できます。",
+    search: "モデル名・開発元で検索...",
+    license: "ライセンス:",
+    all: "すべて",
+    openSource: "オープンソース",
+    conditional: "条件付オープン",
+    proprietary: "プロプライエタリ",
+    region: "地域:",
+    allRegions: "全地域",
+    domestic: "🇯🇵 国産",
+    global: "🌍 グローバル",
+    count: "件",
+    noResults: "該当するモデルが見つかりません",
+    modelName: "モデル名",
+    developer: "開発元",
+    params: "パラメータ",
+    contextWindow: "コンテキスト長",
+  },
+  en: {
+    title: "Model List",
+    desc: "Compare specifications, licenses, and performance summaries of major AI models.",
+    search: "Search by model name or developer...",
+    license: "License:",
+    all: "All",
+    openSource: "Open Source",
+    conditional: "Conditional",
+    proprietary: "Proprietary",
+    region: "Region:",
+    allRegions: "All Regions",
+    domestic: "🇯🇵 Domestic",
+    global: "🌍 Global",
+    count: "models",
+    noResults: "No matching models found",
+    modelName: "Model",
+    developer: "Developer",
+    params: "Parameters",
+    contextWindow: "Context",
+  },
+};
+
+const sourceLabelsJa: Record<string, string> = {
   open: 'オープンソース',
   'open-nc': '条件付オープン',
   closed: 'プロプライエタリ',
+};
+
+const sourceLabelsEn: Record<string, string> = {
+  open: 'Open Source',
+  'open-nc': 'Conditional',
+  closed: 'Proprietary',
 };
 
 const sourceBadgeColors: Record<string, string> = {
@@ -19,7 +69,20 @@ const sourceBadgeColors: Record<string, string> = {
   closed: 'bg-gray-100 text-gray-600',
 };
 
+// Translate Japanese data values to English for EN locale
+function tv(value: string, locale: string): string {
+  if (locale !== "en") return value;
+  const map: Record<string, string> = {
+    "非公開": "Undisclosed",
+  };
+  return map[value] || value;
+}
+
 export default function ModelsPage() {
+  const locale = useLocale();
+  const t = T[locale as keyof typeof T] || T.ja;
+  const sourceLabels = locale === "en" ? sourceLabelsEn : sourceLabelsJa;
+
   const [filterSource, setFilterSource] = useState<string>('all');
   const [filterRegion, setFilterRegion] = useState<string>('all');
   const [search, setSearch] = useState('');
@@ -50,7 +113,6 @@ export default function ModelsPage() {
   const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
   const safePage = Math.min(page, totalPages);
 
-  // Clamp page when filters reduce total pages
   useEffect(() => {
     if (page > totalPages) setPage(totalPages);
   }, [totalPages, page]);
@@ -74,13 +136,10 @@ export default function ModelsPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">モデル一覧</h1>
-        <p className="mt-1 text-sm text-gray-500">
-          主要AIモデルの仕様・ライセンス・性能概要を一覧で比較できます。
-        </p>
+        <h1 className="text-2xl font-bold text-gray-900">{t.title}</h1>
+        <p className="mt-1 text-sm text-gray-500">{t.desc}</p>
       </div>
 
-      {/* Search + Filters */}
       <div className="space-y-3 mb-6">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -88,12 +147,12 @@ export default function ModelsPage() {
             type="text"
             value={search}
             onChange={(e) => handleSearch(e.target.value)}
-            placeholder="モデル名・開発元で検索..."
+            placeholder={t.search}
             className="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
           />
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs text-gray-400 mr-1">ライセンス:</span>
+          <span className="text-xs text-gray-400 mr-1">{t.license}</span>
           {['all', 'open', 'open-nc', 'closed'].map((s) => (
             <button
               key={s}
@@ -104,11 +163,11 @@ export default function ModelsPage() {
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
-              {s === 'all' ? 'すべて' : sourceLabels[s]}
+              {s === 'all' ? t.all : sourceLabels[s]}
             </button>
           ))}
           <span className="text-xs text-gray-300 mx-1">|</span>
-          <span className="text-xs text-gray-400 mr-1">地域:</span>
+          <span className="text-xs text-gray-400 mr-1">{t.region}</span>
           {['all', 'global', 'jp'].map((r) => (
             <button
               key={r}
@@ -119,51 +178,48 @@ export default function ModelsPage() {
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
-              {r === 'all' ? '全地域' : r === 'jp' ? '🇯🇵 国産' : '🌍 グローバル'}
+              {r === 'all' ? t.allRegions : r === 'jp' ? t.domestic : t.global}
             </button>
           ))}
           <span className="text-xs text-gray-400 ml-auto">
-            {filtered.length} 件
+            {filtered.length} {t.count}
           </span>
         </div>
       </div>
 
-      {/* Model list */}
       <div className="border border-gray-200 rounded-xl overflow-hidden">
-        {/* Table header (desktop) */}
         <div className="hidden sm:grid grid-cols-[1fr_120px_90px_100px_90px_40px] gap-3 px-4 py-2.5 bg-gray-50 text-xs font-medium text-gray-500 border-b border-gray-200">
-          <span>モデル名</span>
-          <span>開発元</span>
-          <span>パラメータ</span>
-          <span>コンテキスト長</span>
-          <span>ライセンス</span>
+          <span>{t.modelName}</span>
+          <span>{t.developer}</span>
+          <span>{t.params}</span>
+          <span>{t.contextWindow}</span>
+          <span>{t.license}</span>
           <span />
         </div>
 
         {displayModels.length === 0 ? (
           <div className="px-4 py-12 text-center text-sm text-gray-400">
-            該当するモデルが見つかりません
+            {t.noResults}
           </div>
         ) : (
           displayModels.map((model, i) => (
             <Link
               key={model.slug}
-              href={`/models/${model.slug}`}
+              href={`/${locale === "ja" ? "" : locale + "/"}models/${model.slug}`}
               className={`grid sm:grid-cols-[1fr_120px_90px_100px_90px_40px] gap-3 px-4 py-3 items-center hover:bg-gray-50 transition-colors ${
                 i < displayModels.length - 1 ? 'border-b border-gray-100' : ''
               }`}
             >
-              {/* Model name + pricing hint on mobile */}
               <div className="sm:min-w-0">
                 <div className="font-medium text-sm text-gray-900 truncate group-hover:text-primary-600 transition-colors">
                   {model.name}
                 </div>
                 <div className="text-xs text-gray-400 mt-0.5 sm:hidden">
-                  {model.developer} · {model.params}
+                  {model.developer} · {tv(model.params, locale)}
                 </div>
               </div>
               <div className="hidden sm:block text-xs text-gray-600 truncate">{model.developer}</div>
-              <div className="hidden sm:block text-xs text-gray-600 truncate">{model.params}</div>
+              <div className="hidden sm:block text-xs text-gray-600 truncate">{tv(model.params, locale)}</div>
               <div className="hidden sm:block text-xs text-gray-600 truncate">{model.contextWindow}</div>
               <div className="hidden sm:block">
                 <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-medium ${sourceBadgeColors[model.openSource]}`}>
@@ -178,7 +234,6 @@ export default function ModelsPage() {
         )}
       </div>
 
-      {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex items-center justify-center gap-1 mt-6">
           <button

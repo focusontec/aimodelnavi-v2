@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale } from "next-intl";
 import { MessageCircle } from "lucide-react";
 import LikeButton from "./LikeButton";
 import CommentForm from "./CommentForm";
@@ -22,7 +23,29 @@ interface CommentItemProps {
   depth?: number;
 }
 
-function relativeTime(dateStr: string): string {
+const T = {
+  ja: {
+    justNow: "たった今",
+    minutesAgo: (n: number) => `${n}分前`,
+    hoursAgo: (n: number) => `${n}時間前`,
+    daysAgo: (n: number) => `${n}日前`,
+    reply: "返信",
+    replySubmitted: "返信を投稿しました。承認後に表示されます。",
+    dateLocale: "ja-JP",
+  },
+  en: {
+    justNow: "just now",
+    minutesAgo: (n: number) => `${n}m ago`,
+    hoursAgo: (n: number) => `${n}h ago`,
+    daysAgo: (n: number) => `${n}d ago`,
+    reply: "Reply",
+    replySubmitted: "Reply submitted. It will be displayed after approval.",
+    dateLocale: "en-US",
+  },
+};
+
+function relativeTime(dateStr: string, locale: string): string {
+  const t = T[locale as keyof typeof T] || T.ja;
   const now = Date.now();
   const then = new Date(dateStr).getTime();
   const diff = now - then;
@@ -31,14 +54,16 @@ function relativeTime(dateStr: string): string {
   const hour = 60 * minute;
   const day = 24 * hour;
 
-  if (diff < minute) return "たった今";
-  if (diff < hour) return `${Math.floor(diff / minute)}分前`;
-  if (diff < day) return `${Math.floor(diff / hour)}時間前`;
-  if (diff < 30 * day) return `${Math.floor(diff / day)}日前`;
-  return new Date(dateStr).toLocaleDateString("ja-JP");
+  if (diff < minute) return t.justNow;
+  if (diff < hour) return t.minutesAgo(Math.floor(diff / minute));
+  if (diff < day) return t.hoursAgo(Math.floor(diff / hour));
+  if (diff < 30 * day) return t.daysAgo(Math.floor(diff / day));
+  return new Date(dateStr).toLocaleDateString(t.dateLocale);
 }
 
 export default function CommentItem({ comment, slug, depth = 0 }: CommentItemProps) {
+  const locale = useLocale();
+  const t = T[locale as keyof typeof T] || T.ja;
   const [showReplyForm, setShowReplyForm] = useState(false);
   const [replySubmitted, setReplySubmitted] = useState(false);
 
@@ -47,7 +72,7 @@ export default function CommentItem({ comment, slug, depth = 0 }: CommentItemPro
       <div className="py-3">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-sm font-semibold text-gray-800">{comment.name}</span>
-          <span className="text-xs text-gray-400">{relativeTime(comment.created_at)}</span>
+          <span className="text-xs text-gray-400">{relativeTime(comment.created_at, locale)}</span>
         </div>
 
         <p className="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
@@ -67,7 +92,7 @@ export default function CommentItem({ comment, slug, depth = 0 }: CommentItemPro
               className="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-primary-600 transition-colors"
             >
               <MessageCircle className="w-4 h-4" />
-              返信
+              {t.reply}
             </button>
           )}
         </div>
@@ -87,7 +112,7 @@ export default function CommentItem({ comment, slug, depth = 0 }: CommentItemPro
         )}
 
         {replySubmitted && (
-          <p className="mt-2 text-xs text-green-600">返信を投稿しました。承認後に表示されます。</p>
+          <p className="mt-2 text-xs text-green-600">{t.replySubmitted}</p>
         )}
       </div>
 

@@ -368,6 +368,71 @@ Respond as JSON:
 }
 
 /**
+ * Process a Chinese blog article into an English blog post.
+ * Translates and adapts for English AI developer audience.
+ */
+export async function processBlogArticleEn(
+  titleZh: string,
+  bodyText: string,
+  sourceUrl: string,
+  images?: { alt: string; localPath: string }[]
+): Promise<{ title: string; content: string; excerpt: string; tag: string }> {
+  let imageInstructions = "";
+  if (images && images.length > 0) {
+    const imageList = images.map((img, i) =>
+      `  ${i + 1}. ![](${img.localPath}) — alt: "${img.alt}"`
+    ).join("\n");
+    imageInstructions = `
+# Required images (YOU MUST INCLUDE ALL OF THESE)
+The following images MUST be inserted at appropriate positions in the article body.
+Use the EXACT markdown syntax shown for each image.
+Choose logical insertion points: after a heading, between paragraphs describing a concept, etc.
+Do NOT skip any image. Every image listed below MUST appear somewhere in the content.
+
+${imageList}
+
+VERIFY: after writing the article, count that you included ${images.length} image references.`;
+  }
+
+  const system = `You are an English tech journalist specializing in AI/ML. You are translating and adapting a Chinese AI blog article for English readers.
+
+Process:
+1. Translate the article from Chinese to natural, fluent English
+2. Preserve the structure (sections, key points) but adapt expressions for English readers
+3. Keep all technical terms accurate — use standard English AI/ML terminology
+4. DO NOT add any attribution note, source link, or "translated from" disclaimer at the end. Write as if the article is original content for AI Models Navi.
+5. Title should be SEO-friendly English (not literal translation — make it natural for English readers)
+6. Provide an excerpt (2-3 English sentences summarizing the key point)
+7. Choose ONE most appropriate tag: OpenAI, Anthropic, Google, Open Source, Pricing, Benchmark, Tutorial, AI Agent
+${imageInstructions}
+Respond as JSON:
+{
+  "title": "English title",
+  "content": "English article body in markdown (NO H1 heading — title rendered separately)",
+  "excerpt": "2-3 sentence English summary",
+  "tag": "tag name"
+}`;
+
+  const maxBodyLen = 12000;
+  const truncatedBody = bodyText.length > maxBodyLen
+    ? bodyText.slice(0, maxBodyLen) + "\n\n[Article truncated due to length]"
+    : bodyText;
+
+  const result = await callLLM(
+    system,
+    `Original title: ${titleZh}\n\nArticle content:\n${truncatedBody}`,
+    8192
+  );
+
+  const cleaned = result
+    .replace(/^```json?\s*/i, "")
+    .replace(/\s*```$/i, "")
+    .trim();
+
+  return JSON.parse(cleaned);
+}
+
+/**
  * Translate a user-written Chinese Markdown blog post into Japanese.
  * Unlike processBlogArticle() (which handles crawled HTML), this preserves
  * the author's Markdown structure faithfully during translation.

@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 
 const blogDir = path.join(process.cwd(), 'src/content/blog');
+const blogEnDir = path.join(process.cwd(), 'src/content/blog-en');
 
 export interface BlogPost {
   slug: string;
@@ -13,32 +14,10 @@ export interface BlogPost {
   content: string;
 }
 
-export function getAllPosts(): BlogPost[] {
-  const files = fs.readdirSync(blogDir).filter((f) => f.endsWith('.md'));
-
-  const posts = files.map((file) => {
-    const raw = fs.readFileSync(path.join(blogDir, file), 'utf-8');
-    const { data, content } = matter(raw);
-    const slug = file.replace(/\.md$/, '');
-
-    return {
-      slug,
-      title: data.title,
-      date: data.date,
-      tag: data.tag,
-      excerpt: data.excerpt,
-      content,
-    };
-  });
-
-  return posts.sort((a, b) => (a.date > b.date ? -1 : 1));
-}
-
-export function getPostBySlug(slug: string): BlogPost | null {
+function loadPostFromFile(filepath: string, slug: string): BlogPost | null {
   try {
-    const raw = fs.readFileSync(path.join(blogDir, `${slug}.md`), 'utf-8');
+    const raw = fs.readFileSync(filepath, 'utf-8');
     const { data, content } = matter(raw);
-
     return {
       slug,
       title: data.title,
@@ -50,4 +29,38 @@ export function getPostBySlug(slug: string): BlogPost | null {
   } catch {
     return null;
   }
+}
+
+export function getAllPosts(locale: string = 'ja'): BlogPost[] {
+  if (locale === 'en') {
+    // EN: only return posts that have actual EN translations
+    if (!fs.existsSync(blogEnDir)) return [];
+    const files = fs.readdirSync(blogEnDir).filter((f) => f.endsWith('.md'));
+    return files
+      .map((file) => {
+        const slug = file.replace(/\.md$/, '');
+        return loadPostFromFile(path.join(blogEnDir, file), slug);
+      })
+      .filter((p): p is BlogPost => p !== null)
+      .sort((a, b) => (a.date > b.date ? -1 : 1));
+  }
+
+  // JA: read from blog/
+  const files = fs.readdirSync(blogDir).filter((f) => f.endsWith('.md'));
+  return files
+    .map((file) => {
+      const slug = file.replace(/\.md$/, '');
+      return loadPostFromFile(path.join(blogDir, file), slug);
+    })
+    .filter((p): p is BlogPost => p !== null)
+    .sort((a, b) => (a.date > b.date ? -1 : 1));
+}
+
+export function getPostBySlug(slug: string, locale: string = 'ja'): BlogPost | null {
+  if (locale === 'en') {
+    // EN: only return if actual EN version exists
+    const enPath = path.join(blogEnDir, `${slug}.md`);
+    return loadPostFromFile(enPath, slug);
+  }
+  return loadPostFromFile(path.join(blogDir, `${slug}.md`), slug);
 }
