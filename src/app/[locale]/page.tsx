@@ -1,3 +1,4 @@
+import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -12,13 +13,21 @@ import {
 import blogManifest from "@/data/blog-manifest.json";
 
 export const metadata: Metadata = {
-  title: "AI Models Navi — AIモデルの比較・料金・ランキング",
+  title: "AI Models Navi — AI model comparison & rankings",
   description:
-    "最新のAIモデル（LLM）のスペック、ベンチマーク性能、API料金を日本語で比較。OpenAI、Anthropic、Google、DeepSeek、アリババなど250以上のモデルを網羅。",
+    "Compare AI model benchmarks, API pricing, and specs. Covers OpenAI, Anthropic, Google, DeepSeek, and more.",
   alternates: {
     canonical: "https://aimodelsnavi.com",
   },
 };
+
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
 function JsonLd() {
   const schema = {
@@ -43,7 +52,6 @@ function JsonLd() {
   );
 }
 
-export default function Home() {
   return (
     <div>
       <JsonLd />
