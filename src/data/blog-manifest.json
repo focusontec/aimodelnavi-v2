@@ -1,5 +1,33 @@
 [
   {
+    "slug": "google-io-2026100ai-ultra",
+    "title": "Google I/O 2026速報：月額100ドルから始まる新プラン「AI Ultra」の衝撃と開発者への価値",
+    "tag": "Google",
+    "excerpt": "Google I/O 2026にて、月額100ドルおよび200ドルの新プラン「AI Ultra」が発表されました。大幅な利用制限の緩和や、次世代AIエージェント「Gemini Spark」の提供など、ビジネス・開発者向けに特化した価値を分析します。",
+    "topics": [
+      "Google",
+      "AIエージェント",
+      "マルチモーダル",
+      "音声",
+      "コーディング"
+    ],
+    "date": "2026-05-22"
+  },
+  {
+    "slug": "qwen37-max-35-10",
+    "title": "Qwen3.7-Max発表：35時間の自律的カーネル最適化で推論性能が10倍に",
+    "tag": "解説",
+    "excerpt": "アリババがエージェント特化型の最新旗艦モデルQwen3.7-Maxを発表。未学習チップ上で35時間自律的に最適化を実施し、Triton演算子性能を10倍に向上させる実験に成功した。主要ベンチマークでClaudeやDeepSeekのトップモデルを上回り、国産モデル初のArena総合1位を獲得した。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "Qwen/Alibaba"
+    ],
+    "date": "2026-05-22"
+  },
+  {
     "slug": "xai-grok-37-agent-ai",
     "title": "xAI、37万星のオープンソースエージェントプラットフォームOpenClawにGrokを全面統合：サブスクライバーは追加コストなしで利用可能に",
     "tag": "xAI",
@@ -76,6 +104,18 @@
       "AIエージェント",
       "マルチモーダル",
       "コーディング"
+    ],
+    "date": "2026-05-21"
+  },
+  {
+    "slug": "google-io-2026gemini",
+    "title": "Google I/O 2026速報：Geminiが「エージェント時代」へ突入。開発フローはどう変わるか",
+    "tag": "Google",
+    "excerpt": "Google I/O 2026にて、Geminiがより主体的に動作する「エージェント機能」の強化が発表されました。24時間体制のプロアクティブな支援やGemini APIの新機能など、開発者のワークフローに影響を与える最新アップデートを解説します。",
+    "topics": [
+      "Google",
+      "AIエージェント",
+      "LLM"
     ],
     "date": "2026-05-21"
   },
