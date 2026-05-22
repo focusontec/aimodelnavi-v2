@@ -543,6 +543,8 @@ function generateBenchmarksData(byPage: Record<string, LeaderboardEntry[]>, deve
     "terminalbench-hard": "terminalBench",
     "aider-benchmark": "aiderPolyglot",
     "arcada-code": "arcadaCode",
+    "aa-quality-index": "intelligenceIndex",
+    "text-generation": "elo",
   };
 
   // Map multi-benchmark pages to their benchmark keys
