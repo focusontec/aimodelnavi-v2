@@ -37,7 +37,18 @@ const PAGE_TITLES: Record<string, string> = {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  return { title: PAGE_TITLES[locale as keyof typeof PAGE_TITLES] || PAGE_TITLES.ja, description: T[locale as keyof typeof T]?.heroSub || T.ja.heroSub, alternates: { canonical: "https://aimodelsnavi.com" } };
+  const t = T[locale as keyof typeof T] || T.ja;
+  return {
+    title: PAGE_TITLES[locale as keyof typeof PAGE_TITLES] || PAGE_TITLES.ja,
+    description: t.heroSub,
+    alternates: {
+      canonical: `https://aimodelsnavi.com${locale === "ja" ? "" : `/${locale}`}`,
+      languages: {
+        ja: "https://aimodelsnavi.com",
+        en: "https://aimodelsnavi.com/en",
+      },
+    },
+  };
 }
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {

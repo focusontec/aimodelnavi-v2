@@ -37,7 +37,11 @@ export async function generateMetadata({
       images: ["/opengraph-image"],
     },
     alternates: {
-      canonical: `https://aimodelsnavi.com/leaderboard/${category}`,
+      canonical: `https://aimodelsnavi.com${locale === "ja" ? "" : `/${locale}`}/leaderboard/${category}`,
+      languages: {
+        ja: `https://aimodelsnavi.com/leaderboard/${category}`,
+        en: `https://aimodelsnavi.com/en/leaderboard/${category}`,
+      },
     },
   };
 }

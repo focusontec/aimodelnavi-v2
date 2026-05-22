@@ -38,7 +38,11 @@ export async function generateMetadata({
       images: ["/opengraph-image"],
     },
     alternates: {
-      canonical: `https://aimodelsnavi.com/blog/${post.slug}`,
+      canonical: `https://aimodelsnavi.com${locale === "ja" ? "" : `/${locale}`}/blog/${post.slug}`,
+      languages: {
+        ja: `https://aimodelsnavi.com/blog/${post.slug}`,
+        en: `https://aimodelsnavi.com/en/blog/${post.slug}`,
+      },
     },
   };
 }
@@ -54,12 +58,13 @@ export default async function BlogDetailPage({
 
   if (!post) notFound();
 
+  const baseUrl = locale === "en" ? "https://aimodelsnavi.com/en" : "https://aimodelsnavi.com";
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: locale === "en" ? "Home" : "ホーム", item: "https://aimodelsnavi.com" },
-      { "@type": "ListItem", position: 2, name: locale === "en" ? "Blog" : "ブログ", item: "https://aimodelsnavi.com/blog" },
+      { "@type": "ListItem", position: 2, name: locale === "en" ? "Blog" : "ブログ", item: `${baseUrl}/blog` },
       { "@type": "ListItem", position: 3, name: post.title },
     ],
   };

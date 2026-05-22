@@ -69,7 +69,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${model.name} (${model.developer})`,
     description: `${desc} ${model.developer} ${typeLabel} ${locale === "en" ? "model" : "モデル"}.`.slice(0, 160),
     openGraph: { title: `${model.name} | AI Models Navi`, description: desc.slice(0, 200), type: "article", images: ["/opengraph-image"] },
-    alternates: { canonical: `https://aimodelsnavi.com/models/${model.slug}` },
+    alternates: {
+      canonical: `https://aimodelsnavi.com${locale === "ja" ? "" : `/${locale}`}/models/${model.slug}`,
+      languages: {
+        ja: `https://aimodelsnavi.com/models/${model.slug}`,
+        en: `https://aimodelsnavi.com/en/models/${model.slug}`,
+      },
+    },
   };
 }
 

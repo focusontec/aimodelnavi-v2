@@ -9,23 +9,26 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LangSwitcher from "@/components/LangSwitcher";
 
-const SITE_TITLES: Record<string, string> = {
-  ja: "AI Models Navi — AIモデルの比較・料金・ランキング",
-  en: "AI Models Navi — AI Model Comparison, Pricing & Rankings",
-};
-
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const isEn = locale === "en";
   return {
-    title: SITE_TITLES[locale] || SITE_TITLES.ja,
-    description: "Compare AI model benchmarks, API pricing, and specifications.",
+    title: {
+      default: isEn
+        ? "AI Models Navi — AI Model Comparison, Pricing & Rankings"
+        : "AI Models Navi — AIモデルの比較・料金・ランキング",
+      template: isEn ? "%s — AI Models Navi" : "%s — AI Models Navi",
+    },
+    description: isEn
+      ? "Compare AI model benchmarks, API pricing, and specifications."
+      : "AIモデルのベンチマーク比較、API料金、モデル仕様を日本語で比較。",
     metadataBase: new URL("https://aimodelsnavi.com"),
     alternates: {
-      canonical: "https://aimodelsnavi.com",
+      canonical: `/${locale === "ja" ? "" : locale}`,
       languages: {
         ja: "https://aimodelsnavi.com",
         en: "https://aimodelsnavi.com/en",
@@ -48,10 +51,12 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!routing.locales.includes(locale as any)) notFound();
 
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
+      <script dangerouslySetInnerHTML={{ __html: `document.documentElement.lang="${locale}"` }} />
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
