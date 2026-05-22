@@ -1,5 +1,21 @@
 [
   {
+    "slug": "gemini-3-1-pro-reasoning-benchmarks",
+    "title": "Gemini 3.1 Proの詳細解説：ARC-AGI-2で77.1%を記録し推論能力が前世代の2倍に",
+    "tag": "Google",
+    "excerpt": "Googleの最新推論モデルGemini 3.1 ProがARC-AGI-2で77.1%、GPQA Diamondで94.3%を記録。SWE-Bench Verifiedでは80.6%を達成し、Claude Opus 4.6やGPT-5.3-Codexに匹敵する性能を実現した。",
+    "topics": [
+      "Google",
+      "Anthropic",
+      "OpenAI",
+      "Qwen/Alibaba",
+      "ベンチマーク"
+    ],
+    "date": "2026-05-23",
+    "title_en": "Gemini 3.1 Proの詳細解説：ARC-AGI-2で77.1%を記録し推論能力が前世代の2倍に",
+    "excerpt_en": "Googleの最新推論モデルGemini 3.1 ProがARC-AGI-2で77.1%、GPQA Diamondで94.3%を記録。SWE-Bench Verifiedでは80.6%を達成し、Claude Opus 4.6やGPT-5.3-Codexに匹敵する性能を実現した。"
+  },
+  {
     "slug": "openaiai",
     "title": "OpenAIのモデルが離散幾何学の主要な予想を反証：AIによる数学的証明の突破口とその意義",
     "tag": "OpenAI",
