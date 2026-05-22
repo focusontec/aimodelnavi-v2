@@ -1,8 +1,10 @@
 ---
-title: "Claude Subagent 初心者向け入門ガイド"
-date: "2026-05-20"
-tag: "Anthropic"
-excerpt: "Claude CodeのSubagent機能は、独立したコンテキストウィンドウでタスクを実行するサブエージェントを活用し、メインダイアログの保護、並列処理、権限制御を可能にします。本記事では、初心者向けにSubagentの概念、使い方、実践的な例を解説します。"
+title: Claude Subagent 初心者向け入門ガイド
+date: '2026-05-20'
+tag: Anthropic
+excerpt: >-
+  Claude
+  CodeのSubagent機能は、独立したコンテキストウィンドウでタスクを実行するサブエージェントを活用し、メインダイアログの保護、並列処理、権限制御を可能にします。本記事では、初心者向けにSubagentの概念、使い方、実践的な例を解説します。
 ---
 
 ![Claude Codeの動作イメージ](/images/blog/claude-subagent/img-1.png)
@@ -140,3 +142,11 @@ memory:
 Subagentの核心的価値は、主に3つの点にある：**メインダイアログのコンテキストを保護し、並列実行を可能にし、権限を制御する。**
 
 最初から複雑に考えすぎる必要はない。最もシンプルなコードレビューSubagentから始め、コミットするたびに自動的に実行させてみよう。慣れれば、自然と次のアイデアが浮かぶはずだ——「この作業も担当者に任せるのが良さそうだ」と。
+
+---
+
+## 関連記事
+
+- [Codex Subagent初心者ガイド：並列処理で開発効率を向上させる実践的手法](/blog/codex-subagent)
+- [Claude Opus 4.7 発表：MythosアーキテクチャとManaged Agentsの全貌](/blog/claude-opus-4-7-overview)
+- [AIエージェント設計の最前線：2026年に向けたシステムアーキテクチャと技術トレンド報告書](/blog/advances-in-ai-agent-report-2026-05)

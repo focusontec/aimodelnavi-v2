@@ -1,8 +1,10 @@
 ---
-title: "Codex Subagent初心者ガイド：並列処理で開発効率を向上させる実践的手法"
-date: "2026-05-21"
-tag: "OpenAI"
-excerpt: "Codex Subagentは複雑なタスクを並列処理し、コンテキスト汚染を防止するOpenAIの機能だ。本稿では基本概念からPRレビューなどの実践例、初心者向け練習手順までを解説する。"
+title: Codex Subagent初心者ガイド：並列処理で開発効率を向上させる実践的手法
+date: '2026-05-21'
+tag: OpenAI
+excerpt: >-
+  Codex
+  Subagentは複雑なタスクを並列処理し、コンテキスト汚染を防止するOpenAIの機能だ。本稿では基本概念からPRレビューなどの実践例、初心者向け練習手順までを解説する。
 ---
 
 ![画像](/images/blog/codex-subagent/img-1.png)
@@ -194,3 +196,11 @@ Codex CLIでは`/agent`コマンドでエージェントスレッドの表示・
 ```
 
 このチュートリアルを読んだら、実際のプロジェクトで体験してみることをお勧めする。
+
+---
+
+## 関連記事
+
+- [【事例】Ramp社はどのようにCodexを活用してコードレビューを高速化したか](/blog/rampcodex)
+- [OpenAI Codexを活用した「場所を選ばない」コーディング支援の可能性](/blog/openai-codex)
+- [データサイエンス業務を加速させるCodex活用術：コード生成からドキュメント化まで](/blog/codex)

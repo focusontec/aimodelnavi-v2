@@ -1,9 +1,12 @@
 ---
-title: "Google I/O 2026詳説：Gemini Omniと「エージェント特化型」開発プラットフォームが切り拓く新時代"
-date: "2026-05-21"
-tag: "Google"
-excerpt: "Google I/O 2026で発表されたGemini OmniやGemini 3.5 Flash、そして新プラットフォーム「Google Antigravity」を解説。単なるAIツールから「行動するエージェント」へ移行するGoogleの最新戦略をエンジニア視点で分析します。"
-source: "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/"
+title: Google I/O 2026詳説：Gemini Omniと「エージェント特化型」開発プラットフォームが切り拓く新時代
+date: '2026-05-21'
+tag: Google
+excerpt: >-
+  Google I/O 2026で発表されたGemini OmniやGemini 3.5 Flash、そして新プラットフォーム「Google
+  Antigravity」を解説。単なるAIツールから「行動するエージェント」へ移行するGoogleの最新戦略をエンジニア視点で分析します。
+source: >-
+  https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/
 ---
 
 2026年5月19日に開催されたGoogle I/O 2026では、AIの役割が「記述の補助」から「行動の実行」へと決定的にシフトしたことが示されました。Googleが掲げる「anyone can be a builder（誰もがビルダーになれる）」というビジョンのもと、開発者が注目すべき技術的ブレイクスルーを解説します。
@@ -45,3 +48,11 @@ Google I/O 2026の内容を総括すると、AIは「チャットボット」と
 
 参考：
 Google I/O 2026: News and announcements — https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/
+
+---
+
+## 関連記事
+
+- [Google I/O 2026速報：Gemini OmniとAntigravityが切り拓く「エージェント開発」の新時代](/blog/google-io-2026gemini-omniantigravity)
+- [Google I/O 2026詳解：Gemini 3.5 Flashと「Agentic Gemini era」がもたらすAIエージェントへの転換点](/blog/google-io-2026gemini-35-flashagentic-gemini-eraai)
+- [Google I/O 2026速報：Geminiが「エージェント時代」へ突入。開発フローはどう変わるか](/blog/google-io-2026gemini)

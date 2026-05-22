@@ -1,9 +1,9 @@
 ---
-title: "OpenAIのモデルが離散幾何学の主要な予想を反証：AIによる数学的発見の新時代へ"
-date: "2026-05-21"
-tag: "OpenAI"
-excerpt: "OpenAIのモデルが、離散幾何学における中心的な予想を反証することに成功しました。単なる計算を超えた「推論」による数学的突破口の事例について解説します。"
-source: "https://openai.com/index/model-disproves-discrete-geometry-conjecture"
+title: OpenAIのモデルが離散幾何学の主要な予想を反証：AIによる数学的発見の新時代へ
+date: '2026-05-21'
+tag: OpenAI
+excerpt: OpenAIのモデルが、離散幾何学における中心的な予想を反証することに成功しました。単なる計算を超えた「推論」による数学的突破口の事例について解説します。
+source: 'https://openai.com/index/model-disproves-discrete-geometry-conjecture'
 ---
 
 ## AIが離散幾何学の難問に挑む：予想の反証という快挙
@@ -36,3 +36,11 @@ OpenAIのモデルによる離散幾何学の予想反証は、AIの能力が「
 
 参考：
 https://openai.com/index/model-disproves-discrete-geometry-conjecture
+
+---
+
+## 関連記事
+
+- [ChatGPTが80年未解決の数学的予想を覆す：フィールズ賞受賞者も『AI数学のマイルストーン』と絶賛](/blog/chatgpt-80-ai)
+- [ARC-AGI-3登場：AIの「真の推論能力」を測る初のインタラクティブ・ベンチマークとは](/blog/arc-agi-3-benchmark-launch-2026)
+- [OpenAIが「GPT-5.5（コードネーム：Spud）」をリリース：エージェント能力が大幅向上、API提供は安全審査のため順次開始へ](/blog/openai-gpt-5-5-spud-release)

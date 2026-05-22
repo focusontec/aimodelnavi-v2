@@ -1,9 +1,12 @@
 ---
-title: "Google I/O 2026速報：Gemini OmniとAntigravityが切り拓く「エージェント開発」の新時代"
-date: "2026-05-21"
-tag: "Google"
-excerpt: "Google I/O 2026で発表されたGemini 3.5 FlashやOmni、そしてエージェント開発プラットフォーム「Google Antigravity」を解説。開発者が注目すべきマルチモーダル統合と自律型エージェントの衝撃をまとめます。"
-source: "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/"
+title: Google I/O 2026速報：Gemini OmniとAntigravityが切り拓く「エージェント開発」の新時代
+date: '2026-05-21'
+tag: Google
+excerpt: >-
+  Google I/O 2026で発表されたGemini 3.5 FlashやOmni、そしてエージェント開発プラットフォーム「Google
+  Antigravity」を解説。開発者が注目すべきマルチモーダル統合と自律型エージェントの衝撃をまとめます。
+source: >-
+  https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/
 ---
 
 Google I/O 2026にて、GoogleからAIエコシステムを根本から変える膨大な新機能が発表されました。特に日本の開発者が注目すべきは、単なるチャットボットを超えた「AIエージェント」への移行と、あらゆる入出力を統合する「マルチモーダル統合」の加速です。
@@ -34,3 +37,11 @@ AIは検索体験（AI Search）においても劇的な進化を遂げていま
 Google I/O 2026での発表を俯瞰すると、AIは「LLMのAPIを叩く」段階から、「Antigravityのようなプラットフォーム上で自律的なエージェントを構築する」段階へ移行したと言えます。特にGemini 3.5 Flashのコストパフォーマンスとエージェント性能の向上は、実用的なAIアプリケーションの開発コストを劇的に下げる可能性があります。2026年夏にかけて順次リリースされるGenerative UIやUniversal Cartなどの機能を活用し、次世代のユーザー体験を設計することが求められます。
 
 参考：[100 things we announced at Google I/O 2026 — Google Blog](https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/)
+
+---
+
+## 関連記事
+
+- [Google I/O 2026詳説：Gemini Omniと「エージェント特化型」開発プラットフォームが切り拓く新時代](/blog/google-io-2026gemini-omni)
+- [Google I/O 2026詳解：Gemini 3.5 Flashと「Agentic Gemini era」がもたらすAIエージェントへの転換点](/blog/google-io-2026gemini-35-flashagentic-gemini-eraai)
+- [Google I/O 2026速報：Geminiが「エージェント時代」へ突入。開発フローはどう変わるか](/blog/google-io-2026gemini)

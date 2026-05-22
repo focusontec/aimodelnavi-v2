@@ -1,5 +1,15 @@
 [
   {
+    "slug": "ai",
+    "title": "AIエコシステム構築から学ぶ戦略的視点：国家レベルでの導入事例を考察する",
+    "tag": "OpenAI",
+    "excerpt": "国家戦略としてAIを導入し、エコシステムを構築しようとする諸国の事例から、日本が参照すべきポイントを考察します。",
+    "topics": [
+      "OpenAI"
+    ],
+    "date": "2026-05-22"
+  },
+  {
     "slug": "google-io-2026100ai-ultra",
     "title": "Google I/O 2026速報：月額100ドルから始まる新プラン「AI Ultra」の衝撃と開発者への価値",
     "tag": "Google",
@@ -14,16 +24,13 @@
     "date": "2026-05-22"
   },
   {
-    "slug": "qwen37-max-35-10",
-    "title": "Qwen3.7-Max発表：35時間の自律的カーネル最適化で推論性能が10倍に",
-    "tag": "解説",
-    "excerpt": "アリババがエージェント特化型の最新旗艦モデルQwen3.7-Maxを発表。未学習チップ上で35時間自律的に最適化を実施し、Triton演算子性能を10倍に向上させる実験に成功した。主要ベンチマークでClaudeやDeepSeekのトップモデルを上回り、国産モデル初のArena総合1位を獲得した。",
+    "slug": "openaiadventhealth",
+    "title": "OpenAI活用で医療現場はどう変わるか？AdventHealthによる「対人ケア最大化」へのアプローチ",
+    "tag": "OpenAI",
+    "excerpt": "米国の大手医療プロバイダーAdventHealthがOpenAIを導入し、事務作業の効率化を通じて患者への向き合い時間を増やす取り組みを分析します。LLMを医療現場に実装する具体例を紹介します。",
     "topics": [
-      "Anthropic",
       "OpenAI",
-      "Google",
-      "DeepSeek",
-      "Qwen/Alibaba"
+      "LLM"
     ],
     "date": "2026-05-22"
   },

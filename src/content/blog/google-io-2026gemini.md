@@ -1,9 +1,12 @@
 ---
-title: "Google I/O 2026速報：Geminiが「エージェント時代」へ突入。開発フローはどう変わるか"
-date: "2026-05-21"
-tag: "Google"
-excerpt: "Google I/O 2026にて、Geminiがより主体的に動作する「エージェント機能」の強化が発表されました。24時間体制のプロアクティブな支援やGemini APIの新機能など、開発者のワークフローに影響を与える最新アップデートを解説します。"
-source: "https://blog.google/products-and-platforms/products/google-ai-subscriptions/"
+title: Google I/O 2026速報：Geminiが「エージェント時代」へ突入。開発フローはどう変わるか
+date: '2026-05-21'
+tag: Google
+excerpt: >-
+  Google I/O
+  2026にて、Geminiがより主体的に動作する「エージェント機能」の強化が発表されました。24時間体制のプロアクティブな支援やGemini
+  APIの新機能など、開発者のワークフローに影響を与える最新アップデートを解説します。
+source: 'https://blog.google/products-and-platforms/products/google-ai-subscriptions/'
 ---
 
 ## 「エージェント時代のGemini」がもたらす変化
@@ -40,3 +43,11 @@ Google I/O 2026で示された方向性は、「AIに指示を出す」段階か
 
 参考：
 Official Google AI news and updates | Google Blog — https://blog.google/technology/ai/
+
+---
+
+## 関連記事
+
+- [Google I/O 2026詳解：Gemini 3.5 Flashと「Agentic Gemini era」がもたらすAIエージェントへの転換点](/blog/google-io-2026gemini-35-flashagentic-gemini-eraai)
+- [Google I/O 2026分析：Geminiが切り拓く「エージェント時代」とB2Bワークフローへの影響](/blog/google-io-2026geminib2b)
+- [Gemini 3.5登場：単なるチャットから「AIエージェント」へ、開発ワークフローはどう変わるか](/blog/gemini-35ai)

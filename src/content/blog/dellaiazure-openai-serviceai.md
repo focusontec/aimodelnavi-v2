@@ -1,9 +1,11 @@
 ---
-title: "DellがAIインフラを強化：Azure OpenAI Serviceなどの活用でエンタープライズAI利用が加速へ"
-date: "2026-05-20"
-tag: "OpenAI"
-excerpt: "Dell Technologiesは、AIインフラストラクチャの提供を通じて、企業がAzure OpenAI Serviceなどの高度なAIモデルを効率的に導入・運用することを支援しています。厳格なセキュリティ要件を持つ企業にとって、AI導入を加速させる重要な取り組みです。"
-source: "https://openai.com/index/dell-codex-enterprise-partnership"
+title: DellがAIインフラを強化：Azure OpenAI Serviceなどの活用でエンタープライズAI利用が加速へ
+date: '2026-05-20'
+tag: OpenAI
+excerpt: >-
+  Dell Technologiesは、AIインフラストラクチャの提供を通じて、企業がAzure OpenAI
+  Serviceなどの高度なAIモデルを効率的に導入・運用することを支援しています。厳格なセキュリティ要件を持つ企業にとって、AI導入を加速させる重要な取り組みです。
+source: 'https://openai.com/index/dell-codex-enterprise-partnership'
 ---
 
 ## DellによるAIインフラストラクチャ戦略の概要
@@ -33,3 +35,11 @@ Dellが提供するAI最適化インフラとクラウドAIサービスの連携
 クラウドの利便性とオンプレミスの安全性を両立させるハイブリッド戦略は、エンタープライズAI導入における決定的なブレイクスルーとなる可能性があります。Dellの堅牢なハードウェアと最新のAIサービスが融合することで、「セキュリティ上の懸念でAI導入を見送っていた」層にとって、強力な選択肢が提示されたと言えます。
 
 今後の詳細な実装事例や、日本国内での展開事例に注目が集まります。
+
+---
+
+## 関連記事
+
+- [DellのAIインフラストラクチャで加速する企業向けAI開発：セキュアなAI導入の選択肢](/blog/dellaiaiai)
+- [OpenAIとDellが提携：Codexをハイブリッド・オンプレミス環境で提供へ。エンタープライズAIの新たな選択肢](/blog/openaidellcodexai)
+- [OpenAIが「Frontier」を公開：AIを「デジタル同僚」に変える企業向けエージェント構築プラットフォームの全貌](/blog/openai-frontier-agent-platform-enterprise)

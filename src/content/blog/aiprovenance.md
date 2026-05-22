@@ -1,9 +1,11 @@
 ---
-title: "AI生成コンテンツの信頼性をどう担保するか？コンテンツ由来（Provenance）証明の重要性と具体策"
-date: "2026-05-20"
-tag: "解説"
-excerpt: "AIによるコンテンツ生成が加速する中、情報の真偽を判断する「コンテンツ由来（Provenance）」の証明が急務となっています。Google DeepMindが取り組むSynthID等の技術的アプローチと、エコシステム全体の透明性確保に向けた展望を解説します。"
-source: "https://openai.com/index/advancing-content-provenance"
+title: AI生成コンテンツの信頼性をどう担保するか？コンテンツ由来（Provenance）証明の重要性と具体策
+date: '2026-05-20'
+tag: 解説
+excerpt: >-
+  AIによるコンテンツ生成が加速する中、情報の真偽を判断する「コンテンツ由来（Provenance）」の証明が急務となっています。Google
+  DeepMindが取り組むSynthID等の技術的アプローチと、エコシステム全体の透明性確保に向けた展望を解説します。
+source: 'https://openai.com/index/advancing-content-provenance'
 ---
 
 ## AI時代の新たな課題：コンテンツの「信頼性」の担保
@@ -37,3 +39,11 @@ AIの利便性を最大化しつつ、社会的な信頼を損なわないため
 参考：
 Advancing content provenance for a safer, more transparent AI AI ecosystem
 https://openai.com/index/advancing-content-provenance
+
+---
+
+## 関連記事
+
+- [Google I/O 2026詳説：Gemini Omniと「エージェント特化型」開発プラットフォームが切り拓く新時代](/blog/google-io-2026gemini-omni)
+- [OpenAIが「Daybreak」をリリース：AIセキュリティ分野でAnthropicと激突](/blog/openai-daybreak-ai-anthropic)
+- [超高速なAIガードレール「GLiGuard」登場：3億パラメータで巨大モデルに匹敵する性能を実現](/blog/company-behind-gliner-model-released-open-source-model-for-running-llm-guardrail)

@@ -1,9 +1,12 @@
 ---
-title: "Google I/O 2026詳解：Gemini 3.5 Flashと「Agentic Gemini era」がもたらすAIエージェントへの転換点"
-date: "2026-05-21"
-tag: "Google"
-excerpt: "Google I/O 2026で提示された「Agentic Gemini era」の全貌を解説。自律的にタスクを完結させるAIエージェントへの移行と、それを支えるGemini 3.5 Flashの圧倒的なパフォーマンスについて分析します。"
-source: "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/"
+title: Google I/O 2026詳解：Gemini 3.5 Flashと「Agentic Gemini era」がもたらすAIエージェントへの転換点
+date: '2026-05-21'
+tag: Google
+excerpt: >-
+  Google I/O 2026で提示された「Agentic Gemini
+  era」の全貌を解説。自律的にタスクを完結させるAIエージェントへの移行と、それを支えるGemini 3.5
+  Flashの圧倒的なパフォーマンスについて分析します。
+source: 'https://blog.google/innovation-and-ai/sundar-pichai-io-2026/'
 ---
 
 ## 「Agentic Gemini era」の到来とAIエージェントへの移行
@@ -40,3 +43,11 @@ source: "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/"
 参考：
 - Google I/O 2026: Sundar Pichai’s opening keynote (https://blog.google/innovation-and-ai/sundar-pichai-io-2026/)
 - Official Google AI news and updates | Google Blog (https://blog.google/technology/ai/)
+
+---
+
+## 関連記事
+
+- [Gemini 3.5登場：単なるチャットから「AIエージェント」へ、開発ワークフローはどう変わるか](/blog/gemini-35ai)
+- [Google I/O 2026速報：Geminiが「エージェント時代」へ突入。開発フローはどう変わるか](/blog/google-io-2026gemini)
+- [Gemini 3.5登場：単なるチャットから「自律型エージェント」へ。Action機能が切り拓く次世代ワークフロー](/blog/gemini-35action)
