@@ -34,14 +34,23 @@ Pipeline flow: `DataLearnerAI → SQLite → src/data/*.ts → SSG pages`
 npx tsx scripts/fetch-article.ts "<URL>" --filter-images
 ./scripts/publish-blog.sh _drafts/<slug>.md --local --yes
 
+# With watermark blur (WeChat articles)
+npx tsx scripts/fetch-article.ts "<URL>" --filter-images --blur-watermark
+
+# Backfill missing English translations
+npx tsx scripts/backfill-en-blog.ts --dry-run  # preview
+npx tsx scripts/backfill-en-blog.ts --limit 5  # process 5 posts
+npx tsx scripts/backfill-en-blog.ts            # process all
+
 # From markdown
 ./scripts/publish-blog.sh _drafts/<file>.md --local --yes
 ```
 
 - `fetch-article.ts` — URL → CN markdown + download images
 - `publish-blog.sh` — translate + commit + push
-- `translate-blog.ts` — CN→JP via LLM
+- `translate-blog.ts` — CN→JP + EN via LLM (saves to both `blog/` and `blog-en/`)
 - `image-filter.ts` — heuristic + AI vision filter
+- `watermark.ts` — blur WeChat watermarks (bottom-right region)
 
 ## LLM Providers
 
@@ -64,6 +73,7 @@ MIMO: `LLM_PROVIDER=mimo LLM_MODEL=mimo-v2.5-pro` at `token-plan-sgp.xiaomimimo.
 - `leaderboard_scores` table is unused; leaderboard comes from `generate-leaderboard-data.ts`
 - Vision model: use `mimo-v2.5` (supports images; `mimo-v2.5-pro` does NOT support images)
 - Image filter: reject on vision API failure to prevent Chinese-text images passing through
+- WeChat watermarks: use `--blur-watermark` flag to blur bottom-right watermarks
 
 ## User Preferences
 

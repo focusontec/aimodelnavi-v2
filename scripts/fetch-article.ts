@@ -20,6 +20,7 @@ import fs from "fs";
 import path from "path";
 import { chromium, type Browser, type Page } from "playwright";
 import { filterImages, type ImageToFilter } from "./lib/image-filter";
+import { blurWatermark, isWatermarkedSource } from "./lib/watermark";
 
 // ── CLI args ──
 
@@ -28,6 +29,7 @@ const url = args.find((a) => !a.startsWith("--"));
 const NO_IMAGES = args.includes("--no-images");
 const USE_LLM = args.includes("--llm");
 const FILTER_IMAGES = args.includes("--filter-images");
+const BLUR_WATERMARK = args.includes("--blur-watermark");
 const tagIdx = args.indexOf("--tag");
 const TAG = tagIdx !== -1 ? args[tagIdx + 1] : "";
 
@@ -347,7 +349,18 @@ async function downloadImages(
         continue;
       }
 
-      fs.writeFileSync(filePath, buffer);
+      // Blur watermark if enabled and source is WeChat
+      let finalBuffer = buffer;
+      if (BLUR_WATERMARK && isWatermarkedSource(imgUrl)) {
+        try {
+          finalBuffer = await blurWatermark(buffer);
+          console.log(`    ✓ Watermark blurred`);
+        } catch {
+          console.log(`    ⚠ Blur failed, using original`);
+        }
+      }
+
+      fs.writeFileSync(filePath, finalBuffer);
       const localPath = `/images/blog/${slug}/${filename}`;
       results.push({ localPath, originalUrl: imgUrl });
       console.log(`  ✓ ${filename} (${(buffer.length / 1024).toFixed(0)}KB)`);

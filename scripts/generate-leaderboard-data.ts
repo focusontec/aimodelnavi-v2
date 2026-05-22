@@ -210,14 +210,23 @@ function escapeStr(s: string): string {
 // Translate Chinese developer names to Japanese
 const developerJaMap: Record<string, string> = {
   "阿里巴巴": "アリババ",
+  "Alibaba": "アリババ",
   "智谱AI": "Zhipu AI",
+  "Zhipu AI": "Zhipu AI",
   "百度": "バイドゥ",
+  "Baidu": "バイドゥ",
   "腾讯AI实验室": "テンセントAI研究所",
+  "Tencent": "テンセント",
+  "Tencent ARC": "テンセント",
   "华为": "ファーウェイ",
+  "Huawei": "ファーウェイ",
   "亚马逊": "アマゾン",
+  "Amazon": "アマゾン",
   "上海人工智能实验室": "上海人工知能研究所",
   "普林斯顿大学": "プリンストン大学",
+  "Princeton": "プリンストン大学",
   "Facebook AI研究实验室": "Meta AI",
+  "Meta": "Meta AI",
   "DeepSeek-AI": "DeepSeek",
   "小米": "Xiaomi",
   "字节跳动": "ByteDance",
@@ -225,10 +234,47 @@ const developerJaMap: Record<string, string> = {
   "科大讯飞": "iFlytek",
   "商汤": "SenseTime",
   "旷视": "Megvii",
+  "Google Deep Mind": "Google DeepMind",
+  "DeepMind": "Google DeepMind",
+  "Google": "Google",
+  "Nvidia": "NVIDIA",
+  "MistralAI": "Mistral",
+  "Moonshot AI": "Moonshot AI",
+  "MiniMaxAI": "MiniMax",
+  "StepFunAI": "StepFun",
+  "IBM": "IBM",
+  "xAI": "xAI",
+  "OpenAI": "OpenAI",
+  "Anthropic": "Anthropic",
 };
 
 function translateDeveloper(dev: string): string {
   return developerJaMap[dev] || dev;
+}
+
+// Translate Chinese mode strings to Japanese
+const modeJaMap: Record<string, string> = {
+  "思考水平": "思考レベル",
+  "扩展思考": "拡張思考",
+  "开启思考": "思考有効",
+  "常规模式": "通常モード",
+  "深度思考模式": "深度思考モード",
+  "极高": "極高",
+  "高": "高",
+  "中": "中",
+  "低": "低",
+  "工具": "ツール",
+  "联网": "ウェブ検索",
+  "搜索": "検索",
+};
+
+function translateMode(mode: string): string {
+  if (!mode) return mode;
+  let result = mode;
+  for (const [cn, ja] of Object.entries(modeJaMap)) {
+    result = result.replace(new RegExp(cn, "g"), ja);
+  }
+  return result;
 }
 
 // ── Main generation ──
@@ -285,11 +331,23 @@ function generateLeaderboardData() {
   console.log(`Parsed ${allEntries.length} entries`);
   console.log(`Pages: ${Object.keys(byPage).join(", ")}`);
 
+  // Build a developer lookup map from all entries that have developers
+  const developerLookup = new Map<string, string>();
+  for (const entry of allEntries) {
+    if (entry.developer) {
+      const key = entry.name.toLowerCase().replace(/\s+/g, "-");
+      if (!developerLookup.has(key)) {
+        developerLookup.set(key, entry.developer);
+      }
+    }
+  }
+  console.log(`Developer lookup: ${developerLookup.size} models with known developers`);
+
   // Generate leaderboard.ts with ALL pages merged
   generateMainLeaderboard(allEntries);
 
   // Generate benchmarks.ts with all benchmark data
-  generateBenchmarksData(byPage);
+  generateBenchmarksData(byPage, developerLookup);
 
   console.log("\n=== Generation Complete ===");
 }
@@ -318,6 +376,10 @@ function generateMainLeaderboard(entries: LeaderboardEntry[]) {
       });
     }
     const model = modelScores.get(key)!;
+    // Prefer non-empty developer/license/mode from any entry
+    if (!model.developer && entry.developer) model.developer = entry.developer;
+    if (!model.license && entry.license) model.license = entry.license;
+    if (!model.mode && entry.mode) model.mode = entry.mode;
     Object.assign(model.scores, entry.scores);
   }
 
@@ -378,7 +440,7 @@ function generateMainLeaderboard(entries: LeaderboardEntry[]) {
         name: m.name,
         developer: translateDeveloper(m.developer),
         ...scores,
-        openSource: m.license === "闭源" ? "closed" : m.license === "免费商用" ? "open" : "open-nc",
+        openSource: m.license === "闭源" ? "closed" : m.license === "免费商用" ? "open" : m.license === "不可商用" ? "open-nc" : "closed",
         type: type as "reasoning" | "foundation" | "chat" | "coder",
         releaseDate: "",
       };
@@ -426,7 +488,7 @@ export const leaderboardData: ModelRanking[] = ${data};
   console.log(`  Written ${ranked.length} entries to leaderboard.ts`);
 }
 
-function generateBenchmarksData(byPage: Record<string, LeaderboardEntry[]>) {
+function generateBenchmarksData(byPage: Record<string, LeaderboardEntry[]>, developerLookup: Map<string, string>) {
   console.log("\nGenerating benchmarks.ts...");
 
   // Build benchmark rankings
@@ -456,12 +518,16 @@ function generateBenchmarksData(byPage: Record<string, LeaderboardEntry[]>) {
     if (!benchmarkKey) continue;
 
     const rankings = entries
-      .map((e) => ({
-        name: e.name,
-        developer: translateDeveloper(e.developer),
-        score: Object.values(e.scores)[0] ?? 0,
-        mode: e.mode,
-      }))
+      .map((e) => {
+        const key = e.name.toLowerCase().replace(/\s+/g, "-");
+        const dev = e.developer || developerLookup.get(key) || "";
+        return {
+          name: e.name,
+          developer: translateDeveloper(dev),
+          score: Object.values(e.scores)[0] ?? 0,
+          mode: e.mode ? translateMode(e.mode) : undefined,
+        };
+      })
       .filter((r) => r.score > 0)
       .sort((a, b) => b.score - a.score);
 

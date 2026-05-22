@@ -19,8 +19,8 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { translateBlogMarkdown } from "./lib/anthropic";
-import { saveBlogPost } from "./lib/storage";
+import { translateBlogMarkdown, processBlogArticleEn } from "./lib/anthropic";
+import { saveBlogPost, saveBlogPostEn } from "./lib/storage";
 
 // ── CLI argument parsing ──
 
@@ -236,8 +236,41 @@ async function main() {
     excerpt: translated.excerpt || "",
   }, translated.content);
 
-  console.log(`\n  ✓ Published: src/content/blog/${slug}.md`);
-  console.log(`  ✓ URL: /blog/${slug}`);
+  console.log(`  ✓ Published: src/content/blog/${slug}.md`);
+
+  // Step 3: Generate English translation
+  console.log("\n  Translating to English...");
+  try {
+    // Extract image paths from the Japanese content
+    const imageRegex = /!\[([^\]]*)\]\((\/images\/blog\/[^)]+)\)/g;
+    const images: { alt: string; localPath: string }[] = [];
+    let match;
+    while ((match = imageRegex.exec(translated.content)) !== null) {
+      images.push({ alt: match[1] || "Blog image", localPath: match[2] });
+    }
+
+    const enResult = await processBlogArticleEn(
+      input.title,
+      input.body,
+      "",
+      images.length > 0 ? images : undefined
+    );
+
+    saveBlogPostEn(slug, {
+      title: enResult.title,
+      date: today,
+      tag: enResult.tag || translated.tag || "AI",
+      excerpt: enResult.excerpt || "",
+    }, enResult.content);
+
+    console.log(`  ✓ Published: src/content/blog-en/${slug}.md`);
+  } catch (err) {
+    console.error(`  ⚠ English translation failed: ${err}`);
+    console.log(`  → Japanese version published successfully`);
+  }
+
+  console.log(`\n  ✓ URL: /blog/${slug}`);
+  console.log(`  ✓ EN URL: /en/blog/${slug}`);
   console.log(`\n  Done!`);
 }
 

@@ -241,13 +241,16 @@ async function extractTableData(page: Page, benchmarkKeys: string[]): Promise<Le
         '[class*="mt-0.5"][class*="truncate"][class*="text-xs"]',
         '[class*="text-xs"][class*="text-slate-400"]',
         'div[class*="text-xs"][class*="truncate"]',
+        'span[class*="text-xs"]',
+        'div[class*="text-xs"]',
+        'p[class*="text-xs"]',
       ];
 
       for (const selector of orgSelectors) {
         const el = modelCell?.querySelector(selector);
         if (el) {
           const text = el.textContent?.trim();
-          if (text && text.length > 0) {
+          if (text && text.length > 0 && text !== modelName) {
             organization = text;
             break;
           }
@@ -263,7 +266,13 @@ async function extractTableData(page: Page, benchmarkKeys: string[]): Promise<Le
           modelName = lines[0];
         }
         if (!organization && lines.length >= 2) {
-          organization = lines[1];
+          // Find the first line that's not the model name and looks like an org name
+          for (const line of lines.slice(1)) {
+            if (line !== modelName && !/^\d+[\s.%]/.test(line) && line.length > 1) {
+              organization = line;
+              break;
+            }
+          }
         }
       }
 
