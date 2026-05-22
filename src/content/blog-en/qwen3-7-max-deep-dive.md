@@ -28,9 +28,9 @@ Qwen3.7-Max-Preview appeared on Arena AI (formerly LMArena) on May 19, 2026, imm
 
 **Vision Ranking**: Qwen3.7-Plus-Preview at #16
 
-![Qwen3.7-Max Arena AI Rankings](https://i.qbitai.com/wp-content/uploads/2026/05/60ae40faa7aa1115b102dd11ef764d74.webp)
+![Qwen3.7-Max Arena AI Rankings](/images/blog/qwen3-7/arena-ranking.webp)
 
-![Qwen3.7-Max Sub-category Rankings](https://i.qbitai.com/wp-content/uploads/2026/05/a0f852571527fd9dd8b9c3856839942f.webp)
+![Qwen3.7-Max Sub-category Rankings](/images/blog/qwen3-7/subcategory-ranking.webp)
 
 According to Artificial Analysis, Qwen3.7-Max scored 56.6 overall — approaching GPT, Claude, and Gemini's strongest models, ranking #1 domestically and #5 globally.
 
@@ -244,7 +244,7 @@ Qwen3.7-Max supports `preserve_thinking`, which retains thinking content from al
 
 Qwen3.7-Max arrived as the third consecutive monthly flagship release:
 
-![Qwen3.7-Max Release Timeline](https://i.qbitai.com/wp-content/uploads/2026/05/e7b41a582b5ac9f61aebf1a71708a4e4.webp)
+![Qwen3.7-Max Release Timeline](/images/blog/qwen3-7/release-timeline.webp)
 
 | Date | Model | Theme |
 |---|---|---|
