@@ -560,6 +560,79 @@ ${truncatedBody}`;
   };
 }
 
+// ── Web Search (MiMo OpenAI-compatible endpoint) ──
+
+interface WebSearchResult {
+  text: string;
+  citations: { url: string; title: string; summary: string }[];
+}
+
+// Use the same base as the Anthropic endpoint but with /v1/chat/completions path
+const MIMO_OPENAI_URL = BASE_URLS.mimo.replace("/anthropic/v1/messages", "/v1/chat/completions");
+
+/**
+ * Call MiMo with web search enabled.
+ * Uses the OpenAI-compatible endpoint (not Anthropic) because web_search
+ * tool is only available on the OpenAI API format.
+ *
+ * Requires: LLM_PROVIDER=mimo, LLM_API_KEY set, web search plugin enabled in MiMo console.
+ */
+export async function callLLMWithWebSearch(
+  query: string,
+  options: { forceSearch?: boolean; maxKeyword?: number; limit?: number } = {}
+): Promise<WebSearchResult> {
+  if (!API_KEY) throw new Error("LLM_API_KEY not set");
+  if (PROVIDER !== "mimo") throw new Error("Web search only supported with LLM_PROVIDER=mimo");
+
+  const res = await fetchWithTimeout(MIMO_OPENAI_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "api-key": API_KEY,
+    },
+    body: JSON.stringify({
+      model: MODEL,
+      messages: [{ role: "user", content: query }],
+      tools: [
+        {
+          type: "web_search",
+          max_keyword: options.maxKeyword || 3,
+          force_search: options.forceSearch !== false,
+          limit: options.limit || 5,
+        },
+      ],
+      max_completion_tokens: 4096,
+      temperature: 0.7,
+      stream: false,
+    }),
+  }, 60000);
+
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`MiMo web search API error ${res.status}: ${body}`);
+  }
+
+  const data = await res.json();
+  const message = data.choices?.[0]?.message;
+  const text = message?.content || "";
+
+  // Extract citations from annotations
+  const citations: { url: string; title: string; summary: string }[] = [];
+  if (message?.annotations) {
+    for (const ann of message.annotations) {
+      if (ann.type === "url_citation" && ann.url) {
+        citations.push({
+          url: ann.url,
+          title: ann.title || "",
+          summary: ann.summary || "",
+        });
+      }
+    }
+  }
+
+  return { text, citations };
+}
+
 /**
  * Simple validation check — does the extracted data look reasonable?
  */
