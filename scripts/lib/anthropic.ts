@@ -567,28 +567,29 @@ interface WebSearchResult {
   citations: { url: string; title: string; summary: string }[];
 }
 
-// Use the same base as the Anthropic endpoint but with /v1/chat/completions path
-const MIMO_OPENAI_URL = BASE_URLS.mimo.replace("/anthropic/v1/messages", "/v1/chat/completions");
+// Web search requires the main API endpoint (not token-plan) and a separate key
+const MIMO_WEBSEARCH_KEY = process.env.MIMO_WEBSEARCH_KEY || API_KEY;
+const MIMO_OPENAI_URL = "https://api.xiaomimimo.com/v1/chat/completions";
 
 /**
  * Call MiMo with web search enabled.
  * Uses the OpenAI-compatible endpoint (not Anthropic) because web_search
  * tool is only available on the OpenAI API format.
  *
- * Requires: LLM_PROVIDER=mimo, LLM_API_KEY set, web search plugin enabled in MiMo console.
+ * Requires: MIMO_WEBSEARCH_KEY (or LLM_API_KEY) set, web search plugin enabled in MiMo console.
+ * Note: web search uses api.xiaomimimo.com (not token-plan endpoint).
  */
 export async function callLLMWithWebSearch(
   query: string,
   options: { forceSearch?: boolean; maxKeyword?: number; limit?: number } = {}
 ): Promise<WebSearchResult> {
-  if (!API_KEY) throw new Error("LLM_API_KEY not set");
-  if (PROVIDER !== "mimo") throw new Error("Web search only supported with LLM_PROVIDER=mimo");
+  if (!MIMO_WEBSEARCH_KEY) throw new Error("MIMO_WEBSEARCH_KEY or LLM_API_KEY not set");
 
   const res = await fetchWithTimeout(MIMO_OPENAI_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "api-key": API_KEY,
+      "api-key": MIMO_WEBSEARCH_KEY,
     },
     body: JSON.stringify({
       model: MODEL,
