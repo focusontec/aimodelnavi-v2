@@ -1,9 +1,11 @@
 import { setRequestLocale } from "next-intl/server";
 import { getModelBySlug, modelDetails } from "@/data/models";
+import { getModelAnalysis } from "@/data/model-analyses";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, CheckCircle, AlertTriangle, Lightbulb } from "lucide-react";
 import type { Metadata } from "next";
+import ModelAnalysisSection from "@/components/ModelAnalysisSection";
 
 function t(key: string, locale: string): string {
   const dict: Record<string, Record<string, string>> = {
@@ -167,6 +169,13 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
           <ul className="space-y-1.5">{useCases.map((u: string) => (<li key={u} className="text-sm text-sky-700">・{u}</li>))}</ul>
         </div>
       </div>
+
+      {/* Deep Analysis Section */}
+      {(() => {
+        const analysis = getModelAnalysis(slug);
+        if (!analysis) return null;
+        return <ModelAnalysisSection analysis={analysis} locale={locale} />;
+      })()}
     </div>
   );
 }

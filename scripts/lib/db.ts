@@ -168,6 +168,21 @@ export function migrate(): void {
       updated_at    TEXT    NOT NULL DEFAULT (datetime('now')),
       UNIQUE(source_id, external_slug)
     );
+
+    CREATE TABLE IF NOT EXISTS model_analyses (
+      id              INTEGER PRIMARY KEY AUTOINCREMENT,
+      model_id        INTEGER NOT NULL REFERENCES models(id),
+      language        TEXT    NOT NULL DEFAULT 'en',
+      summary         TEXT    NOT NULL,
+      performance     TEXT,
+      comparisons     TEXT,
+      community       TEXT,
+      use_case_deep   TEXT,
+      latest_news     TEXT,
+      sources_json    TEXT,
+      generated_at    TEXT    NOT NULL DEFAULT (datetime('now')),
+      UNIQUE(model_id, language)
+    );
   `);
 
   // Seed data_sources — insert any that don't exist yet
