@@ -1046,6 +1046,97 @@ export const modelAnalysesEn: Record<string, ModelAnalysis> = {
         }
     ],
     "generatedAt": "2026-05-24 15:00:00"
+},
+  "qwen3-7-plus-preview": {
+    "keyMetrics": [
+        {
+            "label": "Arena Vision",
+            "value": "#16 overall",
+            "context": "Qwen Vision Lab ranking: #5"
+        },
+        {
+            "label": "Context Window",
+            "value": "256K tokens",
+            "context": "262,144 tokens; smaller than Qwen3.7-Max's 1M context"
+        },
+        {
+            "label": "API Pricing",
+            "value": "Not yet public",
+            "context": "Expected after May 20, 2026 launch; Qwen3.7-Max is $2.50/$7.50 per 1M tokens"
+        },
+        {
+            "label": "Model Type",
+            "value": "Reasoning (thinking mode)",
+            "context": "Thinking mode enabled by default; no standard mode available"
+        },
+        {
+            "label": "License",
+            "value": "Closed",
+            "context": "Not open source; unlike earlier Qwen models which were Apache 2.0"
+        },
+        {
+            "label": "Provider",
+            "value": "Alibaba",
+            "context": "Part of Qwen3.7 family alongside Qwen3.7-Max (flagship)"
+        }
+    ],
+    "pros": [
+        "Strong reasoning capabilities with thinking mode enabled by default, suitable for complex multi-step reasoning tasks",
+        "256K context window for long document analysis and processing",
+        "Part of the Qwen3.7 family with cross-harness agent capabilities and unified agent generalization",
+        "Available on Qwen Chat (chat.qwen.ai) and Arena AI (arena.ai) for free testing"
+    ],
+    "cons": [
+        "Preview status only — no stable API available yet, limiting production use",
+        "Not open source (closed license), unlike earlier Qwen models released under Apache 2.0",
+        "Limited benchmark data publicly available beyond Arena rankings",
+        "Only thinking mode available — no standard mode for lower-latency applications",
+        "No pricing published yet, making cost comparison with competitors impossible"
+    ],
+    "competitorTable": [
+        {
+            "name": "Qwen3.7-Max",
+            "arena": "#13 (~1475)",
+            "swe": "80.4%",
+            "gpqa": "92.4%",
+            "price": "$2.50/$7.50"
+        },
+        {
+            "name": "DeepSeek V4 Pro",
+            "arena": "N/A",
+            "swe": "80.6%",
+            "gpqa": "77.3%",
+            "price": "$1.74/$3.48"
+        },
+        {
+            "name": "Kimi K2.6",
+            "arena": "~1462",
+            "swe": "89.2%*",
+            "gpqa": "75.9%",
+            "price": "$0.95/$4"
+        }
+    ],
+    "summary": "Qwen3.7-Plus-Preview, released May 20, 2026, is the high-performance tier of Alibaba's Qwen3.7 family, positioned below the flagship Qwen3.7-Max. It was launched simultaneously with Qwen3.7-Max at the Alibaba Cloud Summit in Hangzhou. The model features a 256K context window, reasoning capabilities with thinking mode enabled by default, and is available for testing through Qwen Chat and Arena AI.\n\nUnlike Qwen3.7-Max which targets enterprise agent workloads with its 1M context and 35-hour autonomous execution capabilities, Qwen3.7-Plus focuses on delivering strong reasoning performance in a more accessible package. The model ranks #16 on Arena AI's vision benchmark and is part of the broader Qwen3.7 ecosystem that emphasizes cross-harness agent generalization.\n\nHowever, the model is currently in preview status with no stable API, no published pricing, and only thinking mode available. It is not open source, unlike earlier Qwen models which were Apache 2.0. Detailed benchmark scores beyond Arena rankings have not been publicly disclosed, making direct comparison with competitors difficult. The model is expected to become more accessible as API access rolls out following the May 20 launch.",
+    "performance": "### Arena Rankings\n\n| Benchmark | Qwen3.7-Plus-Preview | Qwen3.7-Max | Notes |\n|---|---|---|---|\n| Arena Overall | Not separately published | #13 (~1475) | Max ranked higher on text tasks |\n| Arena Vision | #16 overall | Not separately published | Plus has dedicated vision ranking |\n| Arena Math | Not separately published | #7 | Max has dedicated math ranking |\n| Qwen Vision Lab | #5 | n/a | Internal Qwen benchmark |\n\n### Qwen3.7 Family Comparison\n\n| Dimension | Qwen3.7-Plus-Preview | Qwen3.7-Max-Preview |\n|---|---|---|\n| Positioning | High-performance preview | Flagship model preview |\n| Text ranking | Not separately published | #13 overall |\n| Vision ranking | #16 overall | Not separately published |\n| Math ranking | Not separately published | #7 |\n| Available modes | Thinking only | Thinking only |\n| Context window | 256K | 1M |\n\n### Known Benchmark Data\n\nDetailed benchmark scores for Qwen3.7-Plus-Preview have not been publicly disclosed beyond Arena rankings. Compared to the Qwen3.7-Max sibling:\n- Qwen3.7-Max: Arena #13 (~1475), SWE-Bench 80.4%, GPQA Diamond 92.4%, Math #7\n- Qwen3.7-Plus-Preview: Arena Vision #16, Qwen Vision Lab #5\n- The Plus model appears to have stronger relative vision performance while Max leads on text and math tasks\n\nNote: The lack of publicly available detailed benchmarks makes comprehensive performance comparison difficult. The Arena Vision #16 ranking and Qwen Vision Lab #5 position are the primary quantitative indicators available.",
+    "comparisons": "### Qwen3.7-Plus-Preview vs Qwen3.7-Max\n\n| Dimension | Qwen3.7-Plus-Preview | Qwen3.7-Max | Winner |\n|---|---|---|---|\n| Arena Text | Not separately published | #13 (~1475) | Max |\n| Arena Vision | #16 | Not separately published | Plus (only data available) |\n| Math | Not separately published | #7 | Max |\n| Context Window | 256K | 1M | Max (4x larger) |\n| Autonomous Execution | Not specified | 35 hours | Max |\n| Pricing | Not yet public | $2.50/$7.50 | Max (known pricing) |\n| Availability | Qwen Chat, Arena AI | Qwen Chat, Arena AI | Tied |\n\n**Analysis:** Qwen3.7-Max is the clearly superior model in the Qwen3.7 family, with Arena #13 text ranking, Math #7, 1M context, and 35-hour autonomous execution. Qwen3.7-Plus-Preview occupies a lower tier with Arena Vision #16 as its primary published benchmark. The 4x smaller context window (256K vs 1M) and absence of published text/math rankings suggest significant capability gaps. However, without published pricing for Plus, the value proposition cannot be compared. Both models are in preview status with thinking mode only.\n\n---\n\n### Qwen3.7-Plus-Preview vs DeepSeek V4 Pro\n\n| Dimension | Qwen3.7-Plus-Preview | DeepSeek V4 Pro | Winner |\n|---|---|---|---|\n| Arena | Vision #16 | N/A | Insufficient data |\n| SWE-Bench | Not published | 80.6% | DeepSeek (only data available) |\n| GPQA Diamond | Not published | 77.3% | DeepSeek (only data available) |\n| Context Window | 256K | Not specified | Unknown |\n| Pricing | Not yet public | $1.74/$3.48 | DeepSeek (known pricing) |\n| Open Source | No | No | Tied |\n\n**Analysis:** Direct comparison is difficult due to limited benchmark data for Qwen3.7-Plus-Preview. DeepSeek V4 Pro has published SWE-Bench (80.6%) and GPQA Diamond (77.3%) scores, while Qwen3.7-Plus-Preview's detailed benchmarks remain undisclosed. DeepSeek V4 Pro's pricing at $1.74/$3.48 per 1M tokens is known, while Qwen3.7-Plus has no published pricing. Both models use closed licenses. DeepSeek V4 Pro appears to offer better transparency through published benchmarks and pricing.\n\n---\n\n### Qwen3.7-Plus-Preview vs Kimi K2.6\n\n| Dimension | Qwen3.7-Plus-Preview | Kimi K2.6 | Winner |\n|---|---|---|---|\n| Arena | Vision #16 | ~1462 | Kimi (overall ranking available) |\n| SWE-Bench | Not published | 89.2%* | Kimi (only data available) |\n| GPQA Diamond | Not published | 75.9% | Kimi (only data available) |\n| Context Window | 256K | Not specified | Unknown |\n| Pricing | Not yet public | $0.95/$4 | Kimi (known pricing) |\n| Open Source | No | Not specified | Unknown |\n\n**Analysis:** Kimi K2.6 has the strongest published SWE-Bench score (89.2%*) among the three competitors, with known pricing at $0.95/$4 per 1M tokens. Qwen3.7-Plus-Preview's primary competitive indicator is Arena Vision #16, which is not directly comparable to Kimi's overall Arena ranking (~1462). Kimi K2.6 offers significantly lower pricing and more transparent benchmark data. Without published SWE-Bench or GPQA scores for Qwen3.7-Plus, a definitive capability comparison is not possible. *Kimi K2.6 SWE-Bench score may be from a different benchmark variant.",
+    "community": "The community has been watching Qwen3.7 closely after the Max model's impressive 35-hour autonomous execution demo at the Alibaba Cloud Summit. Qwen3.7-Plus is seen as the more accessible option for developers who want to experiment with the Qwen3.7 family without committing to the flagship tier.\n\n**Anticipation and Access:** The simultaneous launch of both Max and Plus models generated significant interest. Developers appreciated that Alibaba made both available on Qwen Chat and Arena AI for free testing, allowing hands-on evaluation before API access becomes available. The Arena AI availability was particularly noted as it enables direct comparison with other frontier models.\n\n**Benchmark Criticism:** A recurring criticism is the lack of detailed benchmark data for the Plus model. While Qwen3.7-Max has published Arena #13, SWE-Bench 80.4%, and GPQA 92.4% scores, the Plus model only has Arena Vision #16 and Qwen Vision Lab #5. Community members have expressed frustration that Alibaba did not release comprehensive benchmark scores, making it difficult to evaluate the model's true capabilities against competitors like DeepSeek V4 Pro and Kimi K2.6.\n\n**Closed License Disappointment:** The closed license drew notable criticism from the open-source community. Earlier Qwen models (Qwen2.5, Qwen3) were released under Apache 2.0, which contributed significantly to their adoption and ecosystem growth. The decision to keep Qwen3.7 proprietary was seen as a step backward by many developers who had built workflows around open Qwen models. Some speculate this is a temporary measure during the preview phase.\n\n**Thinking Mode Concerns:** The exclusive availability of thinking mode (no standard mode) was discussed as a potential limitation. While thinking mode excels at complex reasoning, it introduces additional latency and cost that may not be justified for simpler tasks. Developers noted that having a standard mode option would make the model more versatile for production workloads.\n\n**Positioning Questions:** Some community members questioned the positioning of the Plus model within the Qwen3.7 family. With Max offering 1M context, 35-hour autonomous execution, and strong benchmark scores, the Plus model's 256K context and limited benchmark data make it unclear what specific use cases it serves better than Max. The general consensus is that pricing will be the key differentiator once API access becomes available.",
+    "useCaseDeep": "### 1. Reasoning Tasks\n**When to choose Qwen3.7-Plus-Preview:** When you need strong reasoning capabilities for complex multi-step problems and want to test the Qwen3.7 family before API pricing is announced.\n**Example:** A research team evaluates Qwen3.7-Plus-Preview on Arena AI for mathematical reasoning and logical deduction tasks, comparing its thinking mode outputs with Qwen3.7-Max to determine if the Plus tier meets their accuracy requirements.\n**Why not alternatives:** Qwen3.7-Max has stronger published benchmarks but may be overkill for evaluation purposes. DeepSeek V4 Pro and Kimi K2.6 have known pricing but may not match the Qwen3.7 family's agent capabilities.\n\n### 2. Long Document Analysis\n**When to choose Qwen3.7-Plus-Preview:** When processing documents within the 256K context window and reasoning quality is the primary concern.\n**Example:** A legal tech startup analyzes 100-page contracts using Qwen3.7-Plus-Preview's thinking mode to identify complex clause interactions and potential risks. The 256K context handles most standard documents without truncation.\n**Why not alternatives:** Qwen3.7-Max offers 4x larger context (1M) for truly massive documents. For documents under 256K, the Plus model's thinking mode may provide sufficient reasoning depth at potentially lower cost (once pricing is announced).\n\n### 3. Evaluation and Testing via Arena AI\n**When to choose Qwen3.7-Plus-Preview:** When you want to benchmark the Qwen3.7 family's capabilities against other frontier models using Arena AI's standardized evaluation framework.\n**Example:** An AI evaluation team uses Arena AI to compare Qwen3.7-Plus-Preview (Vision #16) against other vision-capable models for image understanding tasks. The free access via Arena AI enables cost-free experimentation.\n**Why not alternatives:** Direct API access is not yet available for Qwen3.7-Plus-Preview. Arena AI provides the only standardized comparison platform. Qwen Chat allows interactive testing but lacks systematic benchmarking.\n\n### 4. Qwen Ecosystem Evaluation\n**When to choose Qwen3.7-Plus-Preview:** When evaluating the broader Qwen3.7 ecosystem for potential adoption, using Plus as a lower-commitment entry point before investing in Max-tier capabilities.\n**Example:** An enterprise architecture team tests Qwen3.7-Plus-Preview on Qwen Chat to assess the family's reasoning quality, agent capabilities, and cross-harness generalization before committing to Qwen3.7-Max for production agent workloads.\n**Why not alternatives:** Starting with Qwen3.7-Max requires larger commitment. DeepSeek V4 Pro and Kimi K2.6 are individual models without the ecosystem integration that Qwen3.7 family offers.",
+    "latestNews": "**May 20, 2026 — Alibaba Cloud Summit Launch**\n- Qwen3.7-Plus-Preview launched simultaneously with Qwen3.7-Max at the Alibaba Cloud Summit in Hangzhou\n- Positioned as the high-performance tier below the flagship Qwen3.7-Max\n- Available for testing on Qwen Chat (chat.qwen.ai) and Arena AI (arena.ai)\n- Arena Vision #16 overall, Qwen Vision Lab #5\n\n**May 2026 — Qwen3.7 Family Context**\n- Qwen3.7-Max (flagship): Arena #13, SWE-Bench 80.4%, GPQA 92.4%, 1M context, 35-hour autonomous execution\n- Qwen3.7-Plus-Preview: Arena Vision #16, 256K context, thinking mode only\n- Both models launched in preview status with thinking mode as the only available mode\n- API access expected to roll out after the May 20 launch\n\n**Key Details**\n- Not open source — closed license, departing from earlier Qwen models' Apache 2.0 licensing\n- No published pricing yet; Qwen3.7-Max pricing is $2.50/$7.50 per 1M tokens\n- Only thinking mode available; no standard mode for lower-latency use cases\n- Part of the broader Qwen3.7 ecosystem emphasizing cross-harness agent generalization\n\n**Upcoming**\n- API availability expected following the preview period\n- Pricing announcement anticipated to clarify Plus vs Max value proposition\n- Community awaiting detailed benchmark disclosures beyond Arena rankings",
+    "sources": [
+        {
+            "title": "Qwen3.7-Plus-Preview — DataLearner AI Model Profile",
+            "url": "https://www.datalearner.com/ai-models/pretrained-models/qwen3-7-plus-preview"
+        },
+        {
+            "title": "Qwen3.7: The Agent Frontier — Alibaba Cloud Blog",
+            "url": "https://www.alibabacloud.com/blog/qwen3-7-the-agent-frontier_603154"
+        },
+        {
+            "title": "What Is Qwen 3.7? — Apidog Blog",
+            "url": "https://apidog.com/blog/what-is-qwen-3-7/"
+        }
+    ],
+    "generatedAt": "2026-05-24 15:00:00"
 }
 };
 export const modelAnalysesJa: Record<string, ModelAnalysis> = {
@@ -2062,6 +2153,97 @@ export const modelAnalysesJa: Record<string, ModelAnalysis> = {
         {
             "title": "Gemini 3.5 Flash Deep Dive — Appwrite Blog",
             "url": "https://appwrite.io/blog/post/gemini-3-5-flash-deep-dive"
+        }
+    ],
+    "generatedAt": "2026-05-24 15:00:00"
+},
+  "qwen3-7-plus-preview": {
+    "keyMetrics": [
+        {
+            "label": "Arena Vision",
+            "value": "#16 全体",
+            "context": "Qwen Vision Lab ランキング: #5"
+        },
+        {
+            "label": "コンテキストウィンドウ",
+            "value": "256Kトークン",
+            "context": "262,144トークン。Qwen3.7-Maxの1Mコンテキストより小さい"
+        },
+        {
+            "label": "API価格",
+            "value": "未公開",
+            "context": "2026年5月20日のローンチ後に公開予定。Qwen3.7-Maxは$2.50/$7.50/1Mトークン"
+        },
+        {
+            "label": "モデルタイプ",
+            "value": "推論モデル（思考モード）",
+            "context": "デフォルトで思考モード有効。通常モードは利用不可"
+        },
+        {
+            "label": "ライセンス",
+            "value": "クローズド",
+            "context": "オープンソースではない。以前のQwenモデル（Apache 2.0）とは異なる"
+        },
+        {
+            "label": "プロバイダー",
+            "value": "Alibaba",
+            "context": "フラッグシップのQwen3.7-Maxと共にQwen3.7ファミリーに属する"
+        }
+    ],
+    "pros": [
+        "デフォルトで有効な思考モードによる強力な推論能力。複雑な多段階推論タスクに適する",
+        "長文書の分析・処理に有効な256Kコンテキストウィンドウ",
+        "クロスハーネスエージェント機能と統一されたエージェント汎化を重視するQwen3.7ファミリーの一員",
+        "Qwen Chat（chat.qwen.ai）およびArena AI（arena.ai）で無料テストが可能"
+    ],
+    "cons": [
+        "プレビュー版のみで安定版APIは未提供。本番環境での利用が制限される",
+        "オープンソースではなくクローズドライセンス。Apache 2.0でリリースされた以前のQwenモデルとは異なる",
+        "Arenaランキング以外のベンチマークデータが公開されていない",
+        "思考モードのみ利用可能。低レイテンシアプリケーション向けの通常モードがない",
+        "価格が未公開のため、競合とのコスト比較が不可能"
+    ],
+    "competitorTable": [
+        {
+            "name": "Qwen3.7-Max",
+            "arena": "#13 (~1475)",
+            "swe": "80.4%",
+            "gpqa": "92.4%",
+            "price": "$2.50/$7.50"
+        },
+        {
+            "name": "DeepSeek V4 Pro",
+            "arena": "N/A",
+            "swe": "80.6%",
+            "gpqa": "77.3%",
+            "price": "$1.74/$3.48"
+        },
+        {
+            "name": "Kimi K2.6",
+            "arena": "~1462",
+            "swe": "89.2%*",
+            "gpqa": "75.9%",
+            "price": "$0.95/$4"
+        }
+    ],
+    "summary": "2026年5月20日にリリースされたQwen3.7-Plus-Previewは、AlibabaのQwen3.7ファミリーの高性能ティアで、フラッグシップのQwen3.7-Maxの下位に位置づけられます。杭州で開催されたAlibaba Cloud SummitでQwen3.7-Maxと同時にローンチされました。256Kコンテキストウィンドウ、デフォルトで有効な思考モードによる推論機能を備え、Qwen ChatおよびArena AIを通じてテスト可能です。\n\n1Mコンテキストと35時間の自律実行機能でエンタープライズエージェントワークロードを標的とするQwen3.7-Maxとは異なり、Qwen3.7-Plusはよりアクセシブルなパッケージで強力な推論性能の提供に焦点を当てています。Arena AIのVisionベンチマークで#16にランクインし、クロスハーネスエージェント汎化を重視するQwen3.7エコシステムの一部です。\n\nただし、現在プレビュー版であり、安定版APIも公開価格もなく、思考モードのみ利用可能です。Apache 2.0の以前のQwenモデルとは異なり、オープンソースではありません。Arenaランキング以外の詳細なベンチマークスコアは公開されておらず、競合との直接比較が困難です。5月20日のローンチ後にAPIアクセスが順次展開されると、より利用しやすくなる見込みです。",
+    "performance": "### Arenaランキング\n\n| ベンチマーク | Qwen3.7-Plus-Preview | Qwen3.7-Max | 備考 |\n|---|---|---|---|\n| Arena全体 | 別途公開なし | #13 (~1475) | Maxはテキストタスクでより高いランク |\n| Arena Vision | #16 全体 | 別途公開なし | Plusに専用のVisionランキングあり |\n| Arena 数学 | 別途公開なし | #7 | Maxに専用の数学ランキングあり |\n| Qwen Vision Lab | #5 | n/a | Qwen内部ベンチマーク |\n\n### Qwen3.7ファミリー比較\n\n| 次元 | Qwen3.7-Plus-Preview | Qwen3.7-Max-Preview |\n|---|---|---|\n| 位置づけ | 高性能プレビュー | フラッグシップモデルプレビュー |\n| テキストランキング | 別途公開なし | #13 全体 |\n| Visionランキング | #16 全体 | 別途公開なし |\n| 数学ランキング | 別途公開なし | #7 |\n| 利用可能なモード | 思考モードのみ | 思考モードのみ |\n| コンテキストウィンドウ | 256K | 1M |\n\n### 既知のベンチマークデータ\n\nQwen3.7-Plus-Previewの詳細なベンチマークスコアは、Arenaランキング以外公開されていません。兄弟モデルのQwen3.7-Maxとの比較:\n- Qwen3.7-Max: Arena #13 (~1475)、SWE-Bench 80.4%、GPQA Diamond 92.4%、数学 #7\n- Qwen3.7-Plus-Preview: Arena Vision #16、Qwen Vision Lab #5\n- PlusモデルはVision性能で比較的強みを持ち、Maxはテキスト・数学タスクでリード\n\n注: 公開されている詳細ベンチマークが不足しているため、包括的な性能比較が困難です。Arena Vision #16とQwen Vision Lab #5のポジションが、利用可能な主要な定量的指標です。",
+    "comparisons": "### Qwen3.7-Plus-Preview vs Qwen3.7-Max\n\n| 次元 | Qwen3.7-Plus-Preview | Qwen3.7-Max | 勝者 |\n|---|---|---|---|\n| Arena テキスト | 別途公開なし | #13 (~1475) | Max |\n| Arena Vision | #16 | 別途公開なし | Plus（利用可能なデータのみ） |\n| 数学 | 別途公開なし | #7 | Max |\n| コンテキストウィンドウ | 256K | 1M | Max（4倍大きい） |\n| 自律実行 | 指定なし | 35時間 | Max |\n| 価格 | 未公開 | $2.50/$7.50 | Max（価格判明済み） |\n| 利用可能性 | Qwen Chat、Arena AI | Qwen Chat、Arena AI | 同率 |\n\n**分析:** Qwen3.7-MaxはQwen3.7ファミリーの中で明らかに優れたモデルで、Arena #13のテキストランキング、数学 #7、1Mコンテキスト、35時間の自律実行を備えています。Qwen3.7-Plus-PreviewはArena Vision #16を主要な公開ベンチマークとして下位ティアに位置します。4倍小さなコンテキストウィンドウ（256K vs 1M）と公開されたテキスト/数学ランキングの欠如は、大幅な能力差を示唆しています。ただし、Plusの価格が未公開のため、価値提案の比較ができません。両モデルともプレビュー版で思考モードのみです。\n\n---\n\n### Qwen3.7-Plus-Preview vs DeepSeek V4 Pro\n\n| 次元 | Qwen3.7-Plus-Preview | DeepSeek V4 Pro | 勝者 |\n|---|---|---|---|\n| Arena | Vision #16 | N/A | データ不足 |\n| SWE-Bench | 未公開 | 80.6% | DeepSeek（利用可能なデータのみ） |\n| GPQA Diamond | 未公開 | 77.3% | DeepSeek（利用可能なデータのみ） |\n| コンテキストウィンドウ | 256K | 未指定 | 不明 |\n| 価格 | 未公開 | $1.74/$3.48 | DeepSeek（価格判明済み） |\n| オープンソース | いいえ | いいえ | 同率 |\n\n**分析:** Qwen3.7-Plus-Previewのベンチマークデータが限られているため、直接比較が困難です。DeepSeek V4 ProはSWE-Bench（80.6%）とGPQA Diamond（77.3%）のスコアを公開していますが、Qwen3.7-Plus-Previewの詳細ベンチマークは未公開です。DeepSeek V4 Proは$1.74/$3.48/1Mトークンの価格が判明していますが、Qwen3.7-Plusには公開価格がありません。両モデルともクローズドライセンスです。DeepSeek V4 Proは公開ベンチマークと価格により透明性が高いようです。\n\n---\n\n### Qwen3.7-Plus-Preview vs Kimi K2.6\n\n| 次元 | Qwen3.7-Plus-Preview | Kimi K2.6 | 勝者 |\n|---|---|---|---|\n| Arena | Vision #16 | ~1462 | Kimi（全体ランキングあり） |\n| SWE-Bench | 未公開 | 89.2%* | Kimi（利用可能なデータのみ） |\n| GPQA Diamond | 未公開 | 75.9% | Kimi（利用可能なデータのみ） |\n| コンテキストウィンドウ | 256K | 未指定 | 不明 |\n| 価格 | 未公開 | $0.95/$4 | Kimi（価格判明済み） |\n| オープンソース | いいえ | 未指定 | 不明 |\n\n**分析:** Kimi K2.6は3つの競合の中で最も高い公開SWE-Benchスコア（89.2%*）を持ち、$0.95/$4/1Mトークンの価格が判明しています。Qwen3.7-Plus-Previewの主要な競争指標はArena Vision #16ですが、KimiのArena全体ランキング（~1462）とは直接比較できません。Kimi K2.6は大幅に低価格で、より透明性の高いベンチマークデータを提供しています。Qwen3.7-PlusにSWE-BenchやGPQAスコアが公開されていないため、決定的な能力比較は不可能です。*Kimi K2.6のSWE-Benchスコアは異なるベンチマークバリアントの可能性があります。",
+    "community": "Qwen3.7-Maxの印象的な35時間自律実行デモがAlibaba Cloud Summitで披露された後、コミュニティはQwen3.7を注目しています。Qwen3.7-Plusは、フラッグシップティアにコミットする前にQwen3.7ファミリーを試したい開発者にとって、よりアクセシブルなオプションと見なされています。\n\n**期待とアクセス:** MaxとPlusの両モデルの同時ローンチは大きな関心を生み出ました。Alibabaが両方をQwen ChatとArena AIで無料テスト可能にしたことは、APIアクセスが利用可能になる前に実地評価できる点で開発者に歓迎されました。Arena AIでの利用可能性は、他のフロンティアモデルとの直接比較が可能になるとして特に注目されました。\n\n**ベンチマークへの批判:** Plusモデルの詳細ベンチマークデータの欠如は繰り返し指摘される批判です。Qwen3.7-MaxはArena #13、SWE-Bench 80.4%、GPQA 92.4%のスコアを公開していますが、PlusモデルはArena Vision #16とQwen Vision Lab #5のみです。コミュニティメンバーは、Alibabaが包括的なベンチマークスコアを公開しなかったことで、DeepSeek V4 ProやKimi K2.6などの競合とモデルの真の能力を評価することが困難になっていると不満を表明しました。\n\n**クローズドライセンスへの失望:** クローズドライセンスはオープンソースコミュニティから顕著な批判を受けました。以前のQwenモデル（Qwen2.5、Qwen3）はApache 2.0でリリースされており、その採用とエコシステムの成長に大きく貢献していました。Qwen3.7をプロプライエタリにする決定は、オープンなQwenモデルを中心にワークフローを構築してきた多くの開発者にとって後退と見なされました。一時的な措置ではないかとの憶測もあります。\n\n**思考モードへの懸念:** 思考モードのみの利用可能性（通常モードなし）は潜在的な制限として議論されました。思考モードは複雑な推論に優れていますが、より簡単なタスクには正当化されない追加のレイテンシとコストをもたらします。開発者は、通常モードのオプションがあればモデルが本番ワークロードに対応できると指摘しました。\n\n**位置づけの疑問:** 一部のコミュニティメンバーは、Qwen3.7ファミリー内でのPlusモデルの位置づけに疑問を呈しました。Maxが1Mコンテキスト、35時間の自律実行、強力なベンチマークスコアを提供する中、Plusモデルの256Kコンテキストと限られたベンチマークデータでは、Maxより優れた特定のユースケースが不明確です。一般的なコンセンサスは、APIアクセスが利用可能になった際の価格が重要な差別化要因になるということです。",
+    "useCaseDeep": "### 1. 推論タスク\n**Qwen3.7-Plus-Previewを選ぶべき場合:** 複雑な多段階問題に対する強力な推論能力が必要で、API価格が発表される前にQwen3.7ファミリーをテストしたい場合。\n**例:** 研究チームがArena AIでQwen3.7-Plus-Previewを数学的推論と論理演繹タスクに評価し、思考モードの出力をQwen3.7-Maxと比較して、Plusティアが精度要件を満たすかどうかを判断します。\n**代替案が適さない理由:** Qwen3.7-Maxはより強力な公開ベンチマークを持ちますが、評価目的には過剰かもしれません。DeepSeek V4 ProとKimi K2.6は価格が判明していますが、Qwen3.7ファミリーのエージェント機能に匹敵しない可能性があります。\n\n### 2. 長文書分析\n**Qwen3.7-Plus-Previewを選ぶべき場合:** 256Kコンテキストウィンドウ内の文書を処理し、推論品質が最優先事項の場合。\n**例:** 法律テック企業がQwen3.7-Plus-Previewの思考モードを使用して100ページの契約書を分析し、複雑な条項の相互作用と潜在的リスクを特定します。256Kコンテキストはほとんどの標準文書を切り詰めずに処理します。\n**代替案が適さない理由:** Qwen3.7-Maxは4倍大きなコンテキスト（1M）を提供し、本当に巨大な文書に対応します。256K未満の文書では、Plusモデルの思考モードが潜在的に低コストで十分な推論深度を提供する可能性があります（価格が発表された場合）。\n\n### 3. Arena AIによる評価・テスト\n**Qwen3.7-Plus-Previewを選ぶべき場合:** Arena AIの標準化された評価フレームワークを使用して、Qwen3.7ファミリーの能力を他のフロンティアモデルとベンチマークしたい場合。\n**例:** AI評価チームがArena AIを使用して、画像理解タスクのためにQwen3.7-Plus-Preview（Vision #16）を他のVision対応モデルと比較します。Arena AI経由の無料アクセスにより、コストなしの実験が可能です。\n**代替案が適さない理由:** Qwen3.7-Plus-Previewの直接APIアクセスはまだ利用できません。Arena AIは唯一の標準化された比較プラットフォームを提供します。Qwen Chatではインタラクティブなテストができますが、系統的なベンチマークには対応していません。\n\n### 4. Qwenエコシステム評価\n**Qwen3.7-Plus-Previewを選ぶべき場合:** Maxティアの機能にコミットする前に、Plusを低コミットメントのエントリーポイントとして使用し、より広いQwen3.7エコシステムの採用を評価する場合。\n**例:** エンタープライズアーキテクチャチームがQwen ChatでQwen3.7-Plus-Previewをテストし、ファミリーの推論品質、エージェント機能、クロスハーネス汎化を評価してから、本番エージェントワークロード用にQwen3.7-Maxにコミットします。\n**代替案が適さない理由:** Qwen3.7-Maxから始めるとより大きなコミットメントが必要です。DeepSeek V4 ProとKimi K2.6はQwen3.7ファミリーが提供するエコシステム統合のない個別モデルです。",
+    "latestNews": "**2026年5月20日 — Alibaba Cloud Summitローンチ**\n- Qwen3.7-Plus-Previewが杭州でのAlibaba Cloud SummitでQwen3.7-Maxと同時にローンチ\n- フラッグシップのQwen3.7-Maxの下位の高性能ティアとして位置づけ\n- Qwen Chat（chat.qwen.ai）およびArena AI（arena.ai）でテスト可能\n- Arena Vision #16 全体、Qwen Vision Lab #5\n\n**2026年5月 — Qwen3.7ファミリーの概要**\n- Qwen3.7-Max（フラッグシップ）: Arena #13、SWE-Bench 80.4%、GPQA 92.4%、1Mコンテキスト、35時間自律実行\n- Qwen3.7-Plus-Preview: Arena Vision #16、256Kコンテキスト、思考モードのみ\n- 両モデルともプレビュー版で思考モードのみ利用可能\n- 5月20日のローンチ後にAPIアクセスが順次展開予定\n\n**主要な詳細**\n- オープンソースではなくクローズドライセンス。以前のQwenモデルのApache 2.0ライセンスからの転換\n- 価格は未公開。Qwen3.7-Maxの価格は$2.50/$7.50/1Mトークン\n- 思考モードのみ利用可能。低レイテンシ用途向けの通常モードなし\n- クロスハーネスエージェント汎化を重視するQwen3.7エコシステムの一部\n\n**今後の予定**\n- プレビューアピリオド後にAPI利用可能性が予定\n- 価格発表によりPlus vs Maxの価値提案が明確化される見込み\n- コミュニティはArenaランキング以外の詳細ベンチマーク公開を待っている",
+    "sources": [
+        {
+            "title": "Qwen3.7-Plus-Preview — DataLearner AI Model Profile",
+            "url": "https://www.datalearner.com/ai-models/pretrained-models/qwen3-7-plus-preview"
+        },
+        {
+            "title": "Qwen3.7: The Agent Frontier — Alibaba Cloud Blog",
+            "url": "https://www.alibabacloud.com/blog/qwen3-7-the-agent-frontier_603154"
+        },
+        {
+            "title": "What Is Qwen 3.7? — Apidog Blog",
+            "url": "https://apidog.com/blog/what-is-qwen-3-7/"
         }
     ],
     "generatedAt": "2026-05-24 15:00:00"
