@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { getModelBySlug, modelDetails } from "@/data/models";
+import { getModelBySlug, modelDetails, type ModelDetail } from "@/data/models";
 import { getModelAnalysis } from "@/data/model-analyses";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -174,7 +174,10 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
       {(() => {
         const analysis = getModelAnalysis(slug, locale);
         if (!analysis) return null;
-        return <ModelAnalysisSection analysis={analysis} locale={locale} />;
+        const modelNameToSlug = Object.fromEntries(
+          modelDetails.map((m: ModelDetail) => [m.name, m.slug])
+        );
+        return <ModelAnalysisSection analysis={analysis} locale={locale} modelNameToSlug={modelNameToSlug} />;
       })()}
     </div>
   );

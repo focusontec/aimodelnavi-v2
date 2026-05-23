@@ -4,8 +4,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { setRequestLocale } from "next-intl/server";
 import { CommentSection } from '@/components/comments';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import ModelLinkMarkdown from '@/components/ModelLinkMarkdown';
 import type { Metadata } from 'next';
 
 export function generateStaticParams() {
@@ -115,7 +114,7 @@ export default async function BlogDetailPage({
       </div>
 
       <div className="blog-content">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+        <ModelLinkMarkdown content={post.content} locale={locale} />
       </div>
 
       <CommentSection slug={post.slug} title={post.title} />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ChevronDown, ChevronUp, TrendingUp, TrendingDown, BarChart3, Users, Lightbulb, Newspaper, BookOpen } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -37,6 +38,7 @@ interface Analysis {
 interface Props {
   analysis: Analysis;
   locale: string;
+  modelNameToSlug?: Record<string, string>;
 }
 
 function Collapsible({ title, icon, children, defaultOpen = false }: {
@@ -59,7 +61,7 @@ function Collapsible({ title, icon, children, defaultOpen = false }: {
   );
 }
 
-export default function ModelAnalysisSection({ analysis, locale }: Props) {
+export default function ModelAnalysisSection({ analysis, locale, modelNameToSlug }: Props) {
   const l = locale === "en" ? {
     title: "Deep Analysis",
     pros: "Strengths",
@@ -154,15 +156,22 @@ export default function ModelAnalysisSection({ analysis, locale }: Props) {
               </tr>
             </thead>
             <tbody>
-              {analysis.competitorTable.map((row, i) => (
+              {analysis.competitorTable.map((row, i) => {
+                const competitorSlug = modelNameToSlug?.[row.name];
+                return (
                 <tr key={i} className={i === 0 ? "bg-primary-50 font-medium" : ""}>
-                  <td className="px-3 py-2 border-b border-gray-100">{row.name}</td>
+                  <td className="px-3 py-2 border-b border-gray-100">
+                    {competitorSlug ? (
+                      <Link href={`/${locale === "ja" ? "" : locale + "/"}models/${competitorSlug}`} className="text-primary-600 hover:text-primary-800 hover:underline">{row.name}</Link>
+                    ) : row.name}
+                  </td>
                   {row.arena && <td className="text-center px-3 py-2 border-b border-gray-100">{row.arena}</td>}
                   {row.swe && <td className="text-center px-3 py-2 border-b border-gray-100">{row.swe}</td>}
                   {row.gpqa && <td className="text-center px-3 py-2 border-b border-gray-100">{row.gpqa}</td>}
                   {row.price && <td className="text-center px-3 py-2 border-b border-gray-100">{row.price}</td>}
                 </tr>
-              ))}
+              );
+              })}
             </tbody>
           </table>
         </div>
