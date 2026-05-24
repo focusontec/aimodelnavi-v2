@@ -1,5 +1,50 @@
 [
   {
+    "slug": "llmknowledge-graphrag",
+    "title": "ローカルLLMで実現する知識グラフ(Knowledge Graph)連携RAGの可能性と実装アプローチ",
+    "tag": "AIエージェント",
+    "excerpt": "クラウド依存を避けつつ高精度なナレッジベースを構築したい開発者向けに、ローカルLLMと知識グラフを組み合わせたRAGエージェントの構成案を紹介します。プライバシー保護と高度なコンテキスト理解を両立させる手法を解説します。",
+    "topics": [
+      "AIエージェント",
+      "セキュリティ",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-05-24",
+    "title_en": "Possibilities and Implementation Approaches for Knowledge Graph-Integrated RAG via Local LLMs",
+    "excerpt_en": "This post introduces a configuration proposal for RAG agents combining local LLMs and knowledge graphs for developers wanting to build high-precision knowledge bases without cloud dependency. It explains methods to achieve both privacy protection and advanced context understanding."
+  },
+  {
+    "slug": "openaigartner",
+    "title": "OpenAIがGartnerの「エンタープライズ向けコーディングエージェント」リーダーに選出：開発自律化への転換点",
+    "tag": "AIエージェント",
+    "excerpt": "Gartnerによる最新の評価でOpenAIがエンタープライズ向けコーディングエージェントのリーダーに認定されました。単なるコード補完から自律型エージェントへと移行するトレンドと、その評価基準について解説します。",
+    "topics": [
+      "AIエージェント",
+      "OpenAI",
+      "ベンチマーク",
+      "セキュリティ",
+      "推論"
+    ],
+    "date": "2026-05-24",
+    "title_en": "OpenAI Named a Leader in Gartner's \"Enterprise Coding Agents\": A Turning Point Toward Autonomous Development",
+    "excerpt_en": "OpenAI has been recognized as a leader in enterprise coding agents in the latest Gartner evaluation. We explain the trend of transitioning from simple code completion to autonomous agents and the criteria used for this evaluation."
+  },
+  {
+    "slug": "rag",
+    "title": "ローカル環境で実現するRAGとナレッジグラフ連携エージェントの可能性",
+    "tag": "AIエージェント",
+    "excerpt": "プライバシーとセキュリティを重視し、クラウドに頼らずローカルで動作するRAGおよびナレッジグラフ連携エージェントの実装例を紹介します。構造化データの活用による回答精度の向上について解説します。",
+    "topics": [
+      "AIエージェント",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-05-24",
+    "title_en": "The Possibilities of RAG and Knowledge Graph Integration Agents in Local Environments",
+    "excerpt_en": "We introduce implementation examples of RAG and knowledge graph integration agents that operate locally without relying on the cloud, emphasizing privacy and security. The post explains how the utilization of structured data improves response accuracy."
+  },
+  {
     "slug": "claude-opus-4-7-deep-dive",
     "title": "Claude Opus 4.7レビュー：Anthropic最強のAIモデル、エージェントコーディングを支配するも、非公開コスト増加に批判の声",
     "tag": "Anthropic",
@@ -58,8 +103,8 @@
       "音声"
     ],
     "date": "2026-05-23",
-    "title_en": "The Future of Hybrid Meetings Paved by Google Beam: Enhancing Experiences via Spatial Audio and Life-Sized Imagery",
-    "excerpt_en": "An explanation of the latest Google Beam experiments announced at Google I/O 2026. We explore an approach that drastically improves the presence of remote participants and strengthens social connections through AI-driven spatial audio and life-sized rendering."
+    "title_en": "The Future of Hybrid Meetings Opened by Google Beam: Enhancing Experience via Spatial Audio and Life-Sized Video",
+    "excerpt_en": "This post explains the latest experiments with \"Google Beam\" announced at Google I/O 2026. We explore an approach to dramatically increase the presence of remote participants and strengthen social connections through AI-driven spatial audio and life-sized rendering."
   },
   {
     "slug": "google-io-2026gemini-35antigravity",
@@ -73,8 +118,8 @@
       "マルチモーダル"
     ],
     "date": "2026-05-23",
-    "title_en": "Google I/O 2026 Detailed Report: A Shift in the Development Paradigm Brought by Gemini 3.5 and the Next-Generation Platform \"Antigravity\"",
-    "excerpt_en": "Focusing on Gemini 3.5 Flash, Gemini Omni, and the agent-specialized platform \"Google Antigravity\" announced at Google I/O 2026. This article explains the technical breakthroughs and their impact on implementation."
+    "title_en": "Google I/O 2026 Detailed Report: The Paradigm Shift in Development Brought by Gemini 3.5 and Next-Gen Platform \"Antigravity\"",
+    "excerpt_en": "This report focuses on Gemini 3.5 Flash, Gemini Omni, and the agent-specialized platform \"Google Antigravity\" announced at Google I/O 2026. It explains the technical breakthroughs and their impact on implementation."
   },
   {
     "slug": "google-io-2026geminiai",
@@ -87,8 +132,8 @@
       "LLM"
     ],
     "date": "2026-05-23",
-    "title_en": "[Google I/O 2026] \"Gemini in the Age of Agents\" and the Next-Generation Stack Paved by Physical AI and Quantum Computing",
-    "excerpt_en": "The integration strategies for Gemini's \"agentification,\" physical AI, and quantum computing were announced on the Dialogues stage at Google I/O 2026. We explain the next-generation technical trends that developers should keep an eye on."
+    "title_en": "[Google I/O 2026] \"Gemini in the Age of Agents\" and the Next-Generation Stack Opened by Physical AI and Quantum Computing",
+    "excerpt_en": "Strategies for the \"agentization\" of Gemini, physical AI, and the integration of quantum computing were announced at the Dialogues stage of Google I/O 2026. We explain the next-generation technical trends that developers should watch."
   },
   {
     "slug": "virgin-atlanticcodex",
@@ -101,8 +146,8 @@
       "コーディング"
     ],
     "date": "2026-05-23",
-    "title_en": "Behind the Scenes of Virgin Atlantic's Development Efficiency and Accelerated Test Creation Using Codex",
-    "excerpt_en": "A case study on how the airline Virgin Atlantic introduced OpenAI Codex to simultaneously improve development speed and quality. We focus on the approach to increasing productivity and reducing developer workload through unit test automation."
+    "title_en": "Behind the Scenes of Virgin Atlantic's Development Efficiency and Accelerated Test Creation via Codex",
+    "excerpt_en": "This post explains a case study where the airline Virgin Atlantic introduced OpenAI's Codex to simultaneously improve development speed and quality. We focus on the approach to reducing developer load through automated unit testing and increasing productivity."
   },
   {
     "slug": "virgin-atlanticcodexp1",
@@ -115,8 +160,8 @@
       "コーディング"
     ],
     "date": "2026-05-23",
-    "title_en": "Reducing \"P1 Bugs\" and Achieving Test Automation: Virgin Atlantic's Success with Codex",
-    "excerpt_en": "An explanation of how Virgin Atlantic improved development velocity and quality by streamlining unit test creation using OpenAI Codex. We highlight practical results, specifically the acceleration of test creation and the reduction of critical bugs."
+    "title_en": "Results of \"P1 Bug Reduction\" and Test Automation Achieved by Virgin Atlantic using Codex",
+    "excerpt_en": "This post explains how Virgin Atlantic used OpenAI Codex to improve development speed and quality by streamlining unit test creation. We highlight practical results, specifically the acceleration of test creation and the reduction of critical bugs."
   },
   {
     "slug": "ai",
@@ -269,24 +314,8 @@
       "マルチモーダル"
     ],
     "date": "2026-05-22",
-    "title_en": "Google I/O 2026 Summary: A New Era of Multimodal Development Brought by Gemini Omni and 3.5 Flash",
-    "excerpt_en": "An overview of the latest models and agent foundations developers should note from Google I/O 2026, such as Gemini 3.5 Flash and Gemini Omni. We delve into the new ecosystem that achieves frontend-level intelligence with low cost and low latency."
-  },
-  {
-    "slug": "openaigartner",
-    "title": "OpenAIがGartner社の「エンタープライズ向けコーディングエージェント」リーダーに選出：開発トレンドの転換点とは",
-    "tag": "OpenAI",
-    "excerpt": "OpenAIがGartner社の評価において、エンタープライズ向けコーディングエージェントのリーダーに選出されました。単なるコード補完ツールから、自律的にタスクを遂行する「エージェント」へと進化する最新トレンドを解説します。",
-    "topics": [
-      "OpenAI",
-      "xAI/Grok",
-      "AIエージェント",
-      "セキュリティ",
-      "コーディング"
-    ],
-    "date": "2026-05-22",
-    "title_en": "OpenAI Named a Gartner Leader in \"Enterprise Coding Agents\": The Turning Point for Development Trends",
-    "excerpt_en": "OpenAI has been selected as a leader in enterprise coding agents according to Gartner's evaluation. We explain the latest trend shifting from simple code completion tools to \"agents\" that autonomously execute tasks."
+    "title_en": "Google I/O 2026 Summary: A New Era of Multimodal Development with Gemini Omni and 3.5 Flash",
+    "excerpt_en": "We explain the latest models and agent foundations developers should notice, such as Gemini 3.5 Flash and Gemini Omni from Google I/O 2026. We dive into the new ecosystem that achieves frontend-grade intelligence with low cost and low latency."
   },
   {
     "slug": "chatgpt-80-ai",
@@ -454,8 +483,8 @@
       "コーディング"
     ],
     "date": "2026-05-21",
-    "title_en": "Google I/O 2026 Breaking News: A New Era of \"Agent Development\" Paved by Gemini Omni and Antigravity",
-    "excerpt_en": "An explanation of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. We summarize the impact of autonomous agents and multimodal integration that developers must watch."
+    "title_en": "Google I/O 2026 Breaking News: Gemini Omni and Antigravity Open a New Era of \"Agent Development\"",
+    "excerpt_en": "This post covers Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. We summarize the impact of multimodal integration and autonomous agents that developers must watch."
   },
   {
     "slug": "aiprovenance",
@@ -702,7 +731,7 @@
     ],
     "date": "2026-05-20",
     "title_en": "The Forefront of AI Agent Design: System Architecture and Technical Trend Report for 2026",
-    "excerpt_en": "The design philosophy for AI agents toward 2026 is shifting from \"all-purpose standalone models\" to \"configurable, observable, and constrained systems.\" This report details the latest architectures for separating planners from executors, trajectory-based evaluation, and enhancing real-world robustness."
+    "excerpt_en": "Design philosophy for AI agents toward 2026 is shifting from \"all-purpose single models\" to \"configurable, observable, and constrainable systems.\" This report details the latest architectures for separating planners from executors, trajectory-based evaluation, and increasing real-world robustness."
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",
