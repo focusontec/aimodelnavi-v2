@@ -1,8 +1,15 @@
 ---
-title: "Claude Opus 4.7レビュー：Anthropic最強のAIモデル、エージェントコーディングを支配するも、非公開コスト増加に批判の声"
-date: "2026-05-23"
-tag: "Anthropic"
-excerpt: "Claude Opus 4.7 is Anthropic's most powerful AI model yet, dominating agentic coding benchmarks with an industry-leading 64.3% on SWE-bench Pro and 77.3% on MCP-Atlas. However, a hidden tokenizer cost increase of up to 35%, collapsing long-context retrieval scores, and over-aggressive safety guardrails have drawn sharp criticism from the developer community, making it a model that excels for enterprise workflows but demands careful evaluation for individual use cases."
+title: Claude Opus 4.7レビュー：Anthropic最強のAIモデル、エージェントコーディングを支配するも、非公開コスト増加に批判の声
+date: '2026-05-23'
+tag: Anthropic
+excerpt: >-
+  Claude Opus 4.7 is Anthropic's most powerful AI model yet, dominating agentic
+  coding benchmarks with an industry-leading 64.3% on SWE-bench Pro and 77.3% on
+  MCP-Atlas. However, a hidden tokenizer cost increase of up to 35%, collapsing
+  long-context retrieval scores, and over-aggressive safety guardrails have
+  drawn sharp criticism from the developer community, making it a model that
+  excels for enterprise workflows but demands careful evaluation for individual
+  use cases.
 ---
 
 ## はじめに：Anthropicの最も大胆なリリース
@@ -183,3 +190,11 @@ Claude Opus 4.7は、エージェントAIにおけるAnthropicのリーダーシ
 しかし、このリリースはまた、Anthropicの戦略における成長する緊張も明らかにしています。隠れたトークナイザーコストの増加、崩壊する長コンテキスト検索スコア、過度に攻撃的なセーフティガード、そして可視的な推論過程などの開発者向けコントロールの削除は、個人開発者コミュニティを犠牲にしてエンタープライズ契約のためにますます最適化していく企業の姿を示唆しています。より強力なモデルが存在するが、テストされている間は差し控えていると明確に認めることは、競合他社が利用する戦略的複雑性を追加します。
 
 本番エージェントシステムを構築するエンタープライズチームにとって、Opus 4.7は今日利用可能な最良のツールです — 議論の余地はありません。個人開発者、研究者、作家、セキュリティ専門家にとって、その価値提案ははるかに不明確であり、Opus 4.6は依然として実行可能で、いくつかの側面では優れた代替案です。集計ベンチマークスコアではなく、あなた固有のワークロードに基づいて選択してください。
+
+---
+
+## 関連記事
+
+- [Anthropicが「Claude Opus 4.7」をリリース：コーディング能力と視覚解像度が大幅向上、初のサイバーセキュリティ保護機能を搭載](/blog/anthropic-claude-opus-4-7-software-engineering)
+- [Claude Opus 4.7 発表：MythosアーキテクチャとManaged Agentsの全貌](/blog/claude-opus-4-7-overview)
+- [【2026年5月版】主要AIモデルAPI料金の完全比較一覧](/blog/api-pricing-may-2026)

@@ -1,9 +1,11 @@
 ---
-title: "Virgin AtlanticがCodexで実現した開発効率化とテスト作成加速の舞台裏"
-date: "2026-05-23"
-tag: "OpenAI"
-excerpt: "航空会社Virgin AtlanticがOpenAIのCodexを導入し、開発スピードと品質を同時に向上させた事例を解説します。ユニットテスト自動化による開発者の負荷軽減と、生産性向上のアプローチに注目します。"
-source: "https://openai.com/index/virgin-atlantic"
+title: Virgin AtlanticがCodexで実現した開発効率化とテスト作成加速の舞台裏
+date: '2026-05-23'
+tag: OpenAI
+excerpt: >-
+  航空会社Virgin
+  AtlanticがOpenAIのCodexを導入し、開発スピードと品質を同時に向上させた事例を解説します。ユニットテスト自動化による開発者の負荷軽減と、生産性向上のアプローチに注目します。
+source: 'https://openai.com/index/virgin-atlantic'
 ---
 
 ## エンタープライズ開発におけるAI導入の挑戦
@@ -35,3 +37,11 @@ Virgin Atlanticの事例は、AIコーディングエージェントが単なる
 
 参考：
 https://openai.com/index/virgin-atlantic
+
+---
+
+## 関連記事
+
+- [Virgin AtlanticがCodexで実現した「P1バグの削減」とテスト自動化の成果](/blog/virgin-atlanticcodexp1)
+- [OpenAIエンジニアが伝授するCodexを最大限に活用するための実践ガイド](/blog/openai-codex)
+- [【事例】Ramp社はどのようにCodexを活用してコードレビューを高速化したか](/blog/rampcodex)

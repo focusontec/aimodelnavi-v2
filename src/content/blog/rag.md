@@ -1,9 +1,10 @@
 ---
-title: "ローカル環境で実現するRAGとナレッジグラフ連携エージェントの可能性"
-date: "2026-05-24"
-tag: "AIエージェント"
-excerpt: "プライバシーとセキュリティを重視し、クラウドに頼らずローカルで動作するRAGおよびナレッジグラフ連携エージェントの実装例を紹介します。構造化データの活用による回答精度の向上について解説します。"
-source: "https://news.ycombinator.com/item?id=48248801"
+title: ローカル環境で実現するRAGとナレッジグラフ連携エージェントの可能性
+date: '2026-05-24'
+tag: AIエージェント
+excerpt: >-
+  プライバシーとセキュリティを重視し、クラウドに頼らずローカルで動作するRAGおよびナレッジグラフ連携エージェントの実装例を紹介します。構造化データの活用による回答精度の向上について解説します。
+source: 'https://news.ycombinator.com/item?id=48248801'
 ---
 
 ## ローカルLLM環境におけるRAGとナレッジグラフの融合
@@ -35,3 +36,11 @@ Hacker Newsに投稿された「I built a RAG and knowledge graph agent that run
 
 参考：
 https://news.ycombinator.com/item?id=48248801
+
+---
+
+## 関連記事
+
+- [ローカルLLMで実現する知識グラフ(Knowledge Graph)連携RAGの可能性と実装アプローチ](/blog/llmknowledge-graphrag)
+- [DatabricksがGPT-4oを導入：エンタープライズAIエージェントの進化とRAGの実用性](/blog/databricksgpt-4oairag)
+- [OpenAIとDellが提携：Codexをハイブリッド・オンプレミス環境で提供へ。エンタープライズAIの新たな選択肢](/blog/openaidellcodexai)
