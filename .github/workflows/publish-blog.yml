@@ -193,7 +193,7 @@ jobs:
             git config user.email "focusteczzc@163.com"
             git add src/content/ public/images/ src/data/blog-manifest*.json
             git commit -m "blog: publish translated post — ${{ inputs.title }}"
-            git pull -X ours origin main || true
+            git pull --rebase origin main || true
             git push
             echo "✓ Blog post published and pushed"
           else

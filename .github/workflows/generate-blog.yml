@@ -47,9 +47,9 @@ jobs:
           if [ -n "$(git status --porcelain src/content/ src/data/blog-manifest.json)" ]; then
             git config user.name "coder"
             git config user.email "focusteczzc@163.com"
-            git add src/content/ src/data/blog-manifest.json
+            git add src/content/ src/data/blog-manifest*.json
             git commit -m "auto: generate blog post $(date +%Y-%m-%d)"
-            git pull -X ours origin main || true
+            git pull --rebase origin main || true
             git push
             echo "✓ Blog post committed and pushed"
           else
