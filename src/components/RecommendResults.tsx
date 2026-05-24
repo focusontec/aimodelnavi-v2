@@ -135,7 +135,9 @@ function RecommendationCard({
               {rec.model.name}
             </Link>
           </div>
-          <p className="text-sm text-gray-500 mb-3">{rec.model.developer}</p>
+          <p className="text-sm text-gray-500 mb-3">
+            {locale === "en" ? (rec.model.developerEn || rec.model.developer) : rec.model.developer}
+          </p>
 
           <div className="flex items-center gap-2 mb-2">
             <span className="text-xs font-semibold text-gray-500">{l.score}:</span>
@@ -155,7 +157,7 @@ function RecommendationCard({
           {rec.matchedUseCases.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-2">
               <span className="text-xs font-semibold text-gray-500">{l.matchedUseCases}:</span>
-              {rec.matchedUseCases.slice(0, 3).map((uc) => (
+              {(locale === "en" ? rec.matchedUseCasesEn : rec.matchedUseCases).slice(0, 3).map((uc) => (
                 <span key={uc} className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">
                   {uc}
                 </span>

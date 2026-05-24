@@ -7,6 +7,7 @@ export interface Recommendation {
   model: ModelDetail;
   score: number;
   matchedUseCases: string[];
+  matchedUseCasesEn: string[];
   topBenchmark: { key: string; score: number } | null;
 }
 
@@ -37,19 +38,25 @@ function getKeywordMatchScore(
   model: ModelDetail,
   keywordsJa: string[],
   keywordsEn: string[],
-): { score: number; matched: string[] } {
-  const matched: string[] = [];
+): { score: number; matchedJa: string[]; matchedEn: string[] } {
+  const matchedJa: string[] = [];
+  const matchedEn: string[] = [];
   const allUseCases = [...model.useCases, ...model.useCasesEn].map((u) => u.toLowerCase());
 
   for (const kw of [...keywordsJa, ...keywordsEn]) {
     const kwLower = kw.toLowerCase();
     if (allUseCases.some((uc) => uc.includes(kwLower))) {
-      matched.push(kw);
+      // Find the matching use case in both languages
+      const matchedUcJa = model.useCases.find((uc) => uc.toLowerCase().includes(kwLower));
+      const matchedUcEn = model.useCasesEn.find((uc) => uc.toLowerCase().includes(kwLower));
+      if (matchedUcJa && !matchedJa.includes(matchedUcJa)) matchedJa.push(matchedUcJa);
+      if (matchedUcEn && !matchedEn.includes(matchedUcEn)) matchedEn.push(matchedUcEn);
     }
   }
 
-  const score = Math.min(30, (matched.length / Math.max(keywordsJa.length + keywordsEn.length, 1)) * 30);
-  return { score, matched };
+  const totalMatched = matchedJa.length + matchedEn.length;
+  const score = Math.min(30, (totalMatched / Math.max(keywordsJa.length + keywordsEn.length, 1)) * 30);
+  return { score, matchedJa, matchedEn };
 }
 
 function getTypeAffinityScore(model: ModelDetail, preferredTypes: string[]): number {
@@ -121,7 +128,7 @@ export function getRecommendations(scenarioSlug: string, locale: string = "ja"):
   const results: Recommendation[] = [];
 
   for (const model of modelDetails) {
-    const { score: kwScore, matched } = getKeywordMatchScore(
+    const { score: kwScore, matchedJa, matchedEn } = getKeywordMatchScore(
       model,
       scenario.matchKeywordsJa,
       scenario.matchKeywordsEn,
@@ -140,7 +147,8 @@ export function getRecommendations(scenarioSlug: string, locale: string = "ja"):
       results.push({
         model,
         score: totalScore,
-        matchedUseCases: matched,
+        matchedUseCases: matchedJa,
+        matchedUseCasesEn: matchedEn,
         topBenchmark,
       });
     }
