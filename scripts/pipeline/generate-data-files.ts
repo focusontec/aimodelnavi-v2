@@ -131,7 +131,12 @@ export function generateDataFiles(): GenerateResult {
       mt_en.translated_text as description_en,
       mt_s.translated_text as strengths_en,
       mt_w.translated_text as weaknesses_en,
-      mt_u.translated_text as use_cases_en
+      mt_u.translated_text as use_cases_en,
+      pe.input_price as pe_input_price,
+      pe.output_price as pe_output_price,
+      pe.currency as pe_currency,
+      pe.source_url as pe_source_url,
+      pe.billing_mode as pe_billing_mode
     FROM models m
     LEFT JOIN model_translations mt_en ON mt_en.model_id = m.id
       AND mt_en.language = 'en' AND mt_en.field_name = 'description'
@@ -141,19 +146,45 @@ export function generateDataFiles(): GenerateResult {
       AND mt_w.language = 'en' AND mt_w.field_name = 'weaknesses'
     LEFT JOIN model_translations mt_u ON mt_u.model_id = m.id
       AND mt_u.language = 'en' AND mt_u.field_name = 'use_cases'
+    LEFT JOIN (
+      SELECT model_id, input_price, output_price, currency, source_url, billing_mode,
+        ROW_NUMBER() OVER (PARTITION BY model_id ORDER BY output_price DESC, updated_at DESC) as rn
+      FROM pricing_entries
+      WHERE billing_mode = 'standard' AND model_id IS NOT NULL
+    ) pe ON pe.model_id = m.id AND pe.rn = 1
     ORDER BY m.priority DESC, m.is_japanese ASC, m.release_date DESC NULLS LAST, m.name`
   ).all() as ModelRow[];
 
   // Generate src/data/models.ts
   const modelEntries = models.map((m) => {
     const links = parseJSON<Record<string, string>>(m.links_json, {});
-    const pricing = parseJSON<{
+    // Prefer pricing_entries (scraped from provider pages) over models.pricing_json (DataLearner)
+    let pricing: {
       inputPer1M: number | null;
       outputPer1M: number | null;
       currency: string;
       billingMode: string;
       url: string | null;
-    } | null>(m.pricing_json, null);
+    } | null = null;
+    const peInput = (m as any).pe_input_price as number | null;
+    const peOutput = (m as any).pe_output_price as number | null;
+    if (peInput != null) {
+      pricing = {
+        inputPer1M: peInput,
+        outputPer1M: peOutput && peOutput > 0 ? peOutput : null,
+        currency: (m as any).pe_currency || "USD",
+        billingMode: (m as any).pe_billing_mode || "standard",
+        url: (m as any).pe_source_url || null,
+      };
+    } else {
+      pricing = parseJSON<{
+        inputPer1M: number | null;
+        outputPer1M: number | null;
+        currency: string;
+        billingMode: string;
+        url: string | null;
+      } | null>(m.pricing_json, null);
+    }
     const strengths = parseJSON<string[]>(m.strengths, []);
     const weaknesses = parseJSON<string[]>(m.weaknesses, []);
     const useCases = parseJSON<string[]>(m.use_cases, []);

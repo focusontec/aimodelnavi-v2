@@ -13,6 +13,8 @@
  *   npx tsx scripts/sync-all.ts              # incremental (default)
  *   npx tsx scripts/sync-all.ts --full       # full crawl
  *   npx tsx scripts/sync-all.ts --generate   # only regenerate TypeScript files
+ *   npx tsx scripts/sync-all.ts --analyze    # generate model analyses (requires LLM_API_KEY + OLLAMA_API_KEY)
+ *   npx tsx scripts/sync-all.ts --analyze --analyze-limit 10  # analyze up to 10 models
  */
 
 import { migrate, getModelCount, getRawModelCount, closeDb } from "./lib/db";
@@ -23,6 +25,7 @@ import { generateDataFiles } from "./pipeline/generate-data-files";
 import { syncLeaderboard } from "./pipeline/sync-leaderboard";
 import { syncPricing } from "./pipeline/sync-pricing";
 import { syncBlog } from "./pipeline/sync-blog";
+import { generateModelAnalyses } from "./pipeline/generate-model-analyses";
 
 // Import the new leaderboard crawler (Playwright-based)
 import { execSync } from "child_process";
@@ -30,6 +33,11 @@ import { execSync } from "child_process";
 const args = process.argv.slice(2);
 const fullMode = args.includes("--full") || process.env.CRAWL_MODE === "full";
 const generateOnly = args.includes("--generate");
+const analyzeMode = args.includes("--analyze");
+const analyzeLimit = (() => {
+  const idx = args.indexOf("--analyze-limit");
+  return idx !== -1 ? parseInt(args[idx + 1]) || 5 : 5;
+})();
 
 async function main() {
   console.log("═══════════════════════════════════════");
@@ -110,6 +118,19 @@ async function main() {
     console.error(`  English manifest generation failed: ${err}`);
   }
 
+  // Stage 3.8: Generate model analyses (optional, requires --analyze flag)
+  let analysisResult = { analyzed: 0, blogGenerated: 0, errors: 0 };
+  if (analyzeMode) {
+    try {
+      analysisResult = await generateModelAnalyses({
+        limit: analyzeLimit,
+        generateBlog: false,
+      });
+    } catch (err) {
+      console.error(`  Model analyses failed: ${err}`);
+    }
+  }
+
   // Stage 4: Generate
   const genResult = generateDataFiles();
 
@@ -126,6 +147,7 @@ async function main() {
   console.log(`  Leaderboard: synced from DataLearner (see generate-leaderboard-data.ts output)`);
   console.log(`  Pricing: ${pricingResult.totalEntries} entries from ${pricingResult.providerResults.filter(p => p.success).length} providers`);
   console.log(`  Blog: ${blogResult.processed} articles processed`);
+  if (analyzeMode) console.log(`  Analyses: ${analysisResult.analyzed} new, ${analysisResult.errors} errors`);
   console.log(`  Generated: ${genResult.modelsGenerated} models in TypeScript`);
   console.log(`  DB: ${dbModelsBefore} → ${dbModelsAfter} models, ${dbRawBefore} → ${dbRawAfter} raw`);
 

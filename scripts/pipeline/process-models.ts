@@ -281,7 +281,7 @@ export interface ProcessResult {
   errors: number;
 }
 
-export async function processModels(): Promise<ProcessResult> {
+export async function processModels(opts?: { reEnrich?: boolean }): Promise<ProcessResult> {
   migrate();
   const db = getDb();
   const sourceId = getSourceId("datalearner");
@@ -310,14 +310,31 @@ export async function processModels(): Promise<ProcessResult> {
       const name = (app.name as string) || raw.external_id;
       const slug = slugify(name);
 
-      // Skip if already processed (unless re-processing is needed)
+      // Skip if already processed (unless re-enriching)
       if (existingSlugs.has(slug)) {
         // Update datalearner_slug if missing
         db.prepare(
           "UPDATE models SET datalearner_slug = ? WHERE slug = ? AND datalearner_slug IS NULL"
         ).run(raw.external_id, slug);
-        result.skipped++;
-        continue;
+
+        if (!opts?.reEnrich) {
+          result.skipped++;
+          continue;
+        }
+
+        // Re-enrich mode: skip if already has a good description
+        const existing = db.prepare(
+          "SELECT description_ja, strengths, weaknesses, use_cases FROM models WHERE slug = ?"
+        ).get(slug) as { description_ja: string; strengths: string; weaknesses: string; use_cases: string } | undefined;
+        if (existing) {
+          const hasGoodDesc = existing.description_ja && existing.description_ja.length > 50 && !existing.description_ja.match(/の.*モデル。$/);
+          const hasStrengths = existing.strengths && existing.strengths !== "[]";
+          if (hasGoodDesc && hasStrengths) {
+            result.skipped++;
+            continue;
+          }
+        }
+        // Fall through to re-enrichment
       }
 
       const developer = (app.author as any)?.name || "Unknown";
@@ -381,12 +398,34 @@ export async function processModels(): Promise<ProcessResult> {
       const weaknesses = enrichment?.weaknesses || [];
       const useCases = enrichment?.useCases || [];
 
+      let modelId: number;
+
+      if (opts?.reEnrich && existingSlugs.has(slug)) {
+        // Re-enrichment: only update AI-generated fields
+        const existing = db.prepare("SELECT id FROM models WHERE slug = ?").get(slug) as { id: number } | undefined;
+        if (!existing) { result.errors++; continue; }
+        modelId = existing.id;
+        db.prepare(`
+          UPDATE models SET description_ja = ?, strengths = ?, weaknesses = ?, use_cases = ?, updated_at = datetime('now')
+          WHERE id = ?
+        `).run(
+          descriptionJa,
+          JSON.stringify(strengths),
+          JSON.stringify(weaknesses),
+          JSON.stringify(useCases),
+          modelId
+        );
+        result.processed++;
+        console.log(`  ${name} (${developer}) - re-enriched`);
+        continue;
+      }
+
       // Determine developer URL
       const developerUrl = sameAs.find((u) =>
         u.includes("anthropic.com") || u.includes("openai.com") || u.includes("deepmind.google") || u.includes("deepseek.com") || u.includes("x.ai")
       ) || null;
 
-      const modelId = upsertModel({
+      modelId = upsertModel({
         slug,
         name,
         developer,
@@ -456,4 +495,15 @@ export async function processModels(): Promise<ProcessResult> {
   );
 
   return result;
+}
+
+// CLI entry point
+if (process.argv[1]?.endsWith("process-models.ts")) {
+  const reEnrich = process.argv.includes("--re-enrich");
+  processModels({ reEnrich }).then(r => {
+    console.log("\nResult:", r);
+  }).catch(err => {
+    console.error("Fatal:", err);
+    process.exit(1);
+  });
 }

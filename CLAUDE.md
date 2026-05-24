@@ -58,6 +58,26 @@ npx tsx scripts/backfill-en-blog.ts            # process all
 
 MIMO: `LLM_PROVIDER=mimo LLM_MODEL=mimo-v2.5-pro` at `token-plan-sgp.xiaomimimo.com/anthropic/v1/messages`
 
+## Web Search & Data Enrichment
+
+Use the `web-search` skill for verifying and enriching model data. Always cross-check before writing to `src/data/`.
+
+```bash
+# Single query
+bash ~/.claude/skills/web-search/scripts/search.sh "GPT-5.4 pricing API 2026"
+
+# Batch queries (up to 4 parallel)
+bash ~/.claude/skills/web-search/scripts/search-batch.sh '["query1", "query2", "query3"]'
+```
+
+**When to search:**
+- Model pricing: verify input/output token costs from official sources
+- Benchmarks: cross-check SWE-bench, GPQA, Arena Elo scores
+- Specifications: context window, release dates, parameter counts
+- Deep analysis: community reception, competitive comparisons, latest news
+
+**Policy:** For any model data written to `models.ts` or `model-analyses.ts`, search to verify at least one authoritative source. Never fabricate benchmark numbers or pricing.
+
 ## Hard Constraints
 
 - NEVER edit `src/data/*.ts` — auto-generated
