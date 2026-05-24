@@ -30,6 +30,14 @@ jobs:
           LLM_MODEL: ${{ vars.LLM_MODEL || 'gemma4:31b' }}
         run: npx tsx scripts/generate-blog.ts
 
+      - name: Backfill missing English blog translations
+        if: always()
+        env:
+          LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'ollama' }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: ${{ vars.LLM_MODEL || 'gemma4:31b' }}
+        run: npx tsx scripts/backfill-en-blog.ts
+
       - name: Update blog manifest and internal links
         if: always()
         env:
