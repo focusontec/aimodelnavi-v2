@@ -5,6 +5,8 @@ import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { ArrowRight, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { modelDetails } from '@/data/models';
+import { jpCapabilityData, getJpCapabilityBySlug } from '@/data/jp-capability';
+import JpCapabilityBadge from '@/components/JpCapabilityBadge';
 
 const ITEMS_PER_PAGE = 30;
 
@@ -28,6 +30,11 @@ const T = {
     developer: "開発元",
     params: "パラメータ",
     contextWindow: "コンテキスト長",
+    jpCapability: "日本語:",
+    jpAll: "すべて",
+    jpNative: "ネイティブJP",
+    jpHigh: "高品質日本語",
+    jpModerate: "多言語対応",
   },
   en: {
     title: "Model List",
@@ -48,6 +55,11 @@ const T = {
     developer: "Developer",
     params: "Parameters",
     contextWindow: "Context",
+    jpCapability: "Japanese:",
+    jpAll: "All",
+    jpNative: "Native JP",
+    jpHigh: "High-Quality JP",
+    jpModerate: "Multilingual",
   },
 };
 
@@ -85,6 +97,7 @@ export default function ModelsPage() {
 
   const [filterSource, setFilterSource] = useState<string>('all');
   const [filterRegion, setFilterRegion] = useState<string>('all');
+  const [filterJp, setFilterJp] = useState<string>('all');
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
 
@@ -100,6 +113,10 @@ export default function ModelsPage() {
         const jpDevs = ['Preferred Networks', 'Sakana AI', 'ELYZA', 'rinna', 'NTT', '富士通'];
         if (jpDevs.includes(m.developer)) return false;
       }
+      if (filterJp !== 'all') {
+        const jpCap = getJpCapabilityBySlug(m.slug);
+        if (!jpCap || jpCap.jpLevel !== filterJp) return false;
+      }
       if (q) {
         return (
           m.name.toLowerCase().includes(q) ||
@@ -108,7 +125,7 @@ export default function ModelsPage() {
       }
       return true;
     });
-  }, [filterSource, filterRegion, search]);
+  }, [filterSource, filterRegion, filterJp, search]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
   const safePage = Math.min(page, totalPages);
@@ -122,10 +139,11 @@ export default function ModelsPage() {
     return filtered.slice(start, start + ITEMS_PER_PAGE);
   }, [filtered, safePage]);
 
-  const handleFilterChange = (type: 'source' | 'region', value: string) => {
+  const handleFilterChange = (type: 'source' | 'region' | 'jp', value: string) => {
     setPage(1);
     if (type === 'source') setFilterSource(value);
-    else setFilterRegion(value);
+    else if (type === 'region') setFilterRegion(value);
+    else setFilterJp(value);
   };
 
   const handleSearch = (value: string) => {
@@ -181,6 +199,21 @@ export default function ModelsPage() {
               {r === 'all' ? t.allRegions : r === 'jp' ? t.domestic : t.global}
             </button>
           ))}
+          <span className="text-xs text-gray-300 mx-1">|</span>
+          <span className="text-xs text-gray-400 mr-1">{t.jpCapability}</span>
+          {['all', 'native', 'high', 'moderate'].map((j) => (
+            <button
+              key={j}
+              onClick={() => handleFilterChange('jp', j)}
+              className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
+                filterJp === j
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              {j === 'all' ? t.jpAll : j === 'native' ? t.jpNative : j === 'high' ? t.jpHigh : t.jpModerate}
+            </button>
+          ))}
           <span className="text-xs text-gray-400 ml-auto">
             {filtered.length} {t.count}
           </span>
@@ -211,8 +244,17 @@ export default function ModelsPage() {
               }`}
             >
               <div className="sm:min-w-0">
-                <div className="font-medium text-sm text-gray-900 truncate group-hover:text-primary-600 transition-colors">
-                  {model.name}
+                <div className="flex items-center gap-2">
+                  <span className="font-medium text-sm text-gray-900 truncate group-hover:text-primary-600 transition-colors">
+                    {model.name}
+                  </span>
+                  {(() => {
+                    const jpCap = getJpCapabilityBySlug(model.slug);
+                    if (jpCap && jpCap.jpLevel === 'native') {
+                      return <JpCapabilityBadge level={jpCap.jpLevel} badge={locale === 'ja' ? jpCap.badgeJa : jpCap.badgeEn} showEmoji={false} />;
+                    }
+                    return null;
+                  })()}
                 </div>
                 <div className="text-xs text-gray-400 mt-0.5 sm:hidden">
                   {model.developer} · {tv(model.params, locale)}

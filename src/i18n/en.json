@@ -12,7 +12,8 @@
     "tools": "Tools",
     "about": "About",
     "benchmarks": "Benchmarks",
-    "info": "Info"
+    "info": "Info",
+    "recommend": "Recommend"
   },
   "home": {
     "stats": "Site Statistics",
@@ -77,6 +78,18 @@
     "costCalculator": "API Cost Calculator",
     "modelCompare": "Model Comparison",
     "tokenCounter": "Token Counter"
+  },
+  "recommend": {
+    "title": "Scenario-Based Recommendations",
+    "description": "Find the best AI model for your specific use case."
+  },
+  "value": {
+    "title": "Cost-Effectiveness Ranking",
+    "description": "AI model performance-to-cost ratio ranking"
+  },
+  "jpCapability": {
+    "title": "Japanese Language Performance Rating",
+    "description": "Compare Japanese language processing capabilities of AI models"
   },
   "common": {
     "openSource": "Open Source",

@@ -12,7 +12,8 @@
     "tools": "ツール",
     "about": "について",
     "benchmarks": "ベンチマーク一覧",
-    "info": "情報"
+    "info": "情報",
+    "recommend": "おすすめ"
   },
   "home": {
     "stats": "サイト統計",
@@ -77,6 +78,18 @@
     "costCalculator": "APIコスト計算",
     "modelCompare": "モデル比較",
     "tokenCounter": "トークンカウンター"
+  },
+  "recommend": {
+    "title": "用途別おすすめモデル",
+    "description": "あなたの使いたい目的に最適なAIモデルを提案します。"
+  },
+  "value": {
+    "title": "コスパランキング",
+    "description": "AIモデルの性能対コスト比ランキング"
+  },
+  "jpCapability": {
+    "title": "日本語性能レーティング",
+    "description": "AIモデルの日本語処理能力を比較"
   },
   "common": {
     "openSource": "オープンソース",

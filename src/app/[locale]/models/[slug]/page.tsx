@@ -1,11 +1,13 @@
 import { setRequestLocale } from "next-intl/server";
 import { getModelBySlug, modelDetails, type ModelDetail } from "@/data/models";
 import { getModelAnalysis } from "@/data/model-analyses";
+import { getJpCapabilityBySlug } from "@/data/jp-capability";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, CheckCircle, AlertTriangle, Lightbulb } from "lucide-react";
+import { ArrowLeft, ExternalLink, CheckCircle, AlertTriangle, Lightbulb, Languages } from "lucide-react";
 import type { Metadata } from "next";
 import ModelAnalysisSection from "@/components/ModelAnalysisSection";
+import JpCapabilityBadge from "@/components/JpCapabilityBadge";
 
 function t(key: string, locale: string): string {
   const dict: Record<string, Record<string, string>> = {
@@ -132,6 +134,48 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
           </div>
         ))}
       </div>
+
+      {/* Japanese Language Capability */}
+      {(() => {
+        const jpCap = getJpCapabilityBySlug(slug);
+        if (!jpCap) return null;
+        return (
+          <div className="bg-blue-50 border border-blue-100 rounded-xl p-6 mb-6">
+            <h2 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+              <Languages className="w-5 h-5 text-blue-600" />
+              {locale === "en" ? "Japanese Language Capability" : "日本語性能"}
+            </h2>
+            <div className="flex items-center gap-3 mb-3">
+              <JpCapabilityBadge level={jpCap.jpLevel} badge={locale === "en" ? jpCap.badgeEn : jpCap.badgeJa} />
+            </div>
+            <p className="text-sm text-gray-700">
+              {locale === "en" ? jpCap.descriptionEn : jpCap.descriptionJa}
+            </p>
+            {(jpCap.japaneseMtBench || jpCap.jglue || jpCap.jmmlu) && (
+              <div className="mt-4 grid grid-cols-3 gap-3">
+                {jpCap.japaneseMtBench && (
+                  <div className="text-center p-2 bg-white rounded-lg">
+                    <p className="text-xs text-gray-500">Japanese MT-Bench</p>
+                    <p className="text-lg font-bold text-blue-700">{jpCap.japaneseMtBench}</p>
+                  </div>
+                )}
+                {jpCap.jglue && (
+                  <div className="text-center p-2 bg-white rounded-lg">
+                    <p className="text-xs text-gray-500">JGLUE</p>
+                    <p className="text-lg font-bold text-blue-700">{jpCap.jglue}</p>
+                  </div>
+                )}
+                {jpCap.jmmlu && (
+                  <div className="text-center p-2 bg-white rounded-lg">
+                    <p className="text-xs text-gray-500">JMMLU</p>
+                    <p className="text-lg font-bold text-blue-700">{jpCap.jmmlu}</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        );
+      })()}
 
       {model.pricing ? (
         <div className="bg-primary-50 border border-primary-100 rounded-xl p-6 mb-6">

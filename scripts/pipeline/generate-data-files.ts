@@ -389,11 +389,15 @@ export const allModelSlugs: string[] = ${JSON.stringify(slugs, null, 2)};
   // The leaderboard_scores table is not used — LMSYS/HF sync is unreliable.
   generatePricingFile(db);
 
+  // Generate value-ranking.ts and jp-capability.ts
+  generateValueRankingFile(db);
+  generateJpCapabilityFile(db);
+
   console.log(`  Generated ${models.length} models in models.ts and model-slugs.ts`);
 
   return {
     modelsGenerated: models.length,
-    filesWritten: ["src/data/models.ts", "src/data/model-slugs.ts", "src/data/leaderboard.ts", "src/data/pricing.ts"],
+    filesWritten: ["src/data/models.ts", "src/data/model-slugs.ts", "src/data/leaderboard.ts", "src/data/pricing.ts", "src/data/value-ranking.ts", "src/data/jp-capability.ts"],
   };
 }
 
@@ -576,6 +580,292 @@ export const pricingData: PricingEntry[] = ${data};
 
   saveDataFile("pricing.ts", pricingTs);
   console.log(`  Generated ${entries.length} pricing entries`);
+}
+
+// ── Value ranking generation ──
+
+interface ValueRankingRow {
+  slug: string;
+  name: string;
+  developer: string;
+  developer_en: string;
+  open_source: string;
+  category: string;
+  input_price: number | null;
+  output_price: number | null;
+}
+
+function generateValueRankingFile(db: ReturnType<typeof getDb>): void {
+  console.log("  Generating value-ranking.ts...");
+
+  // Cross-reference models with leaderboard scores and pricing
+  const rows = db.prepare(`
+    SELECT m.slug, m.name, m.developer,
+      COALESCE(mt.translated_text, m.developer) as developer_en,
+      m.license_status as open_source, m.category,
+      pe.input_price, pe.output_price
+    FROM models m
+    INNER JOIN leaderboard_scores ls ON ls.model_id = m.id
+    LEFT JOIN model_translations mt ON mt.model_id = m.id
+      AND mt.language = 'en' AND mt.field_name = 'developer'
+    LEFT JOIN (
+      SELECT model_id, input_price, output_price,
+        ROW_NUMBER() OVER (PARTITION BY model_id ORDER BY output_price DESC, updated_at DESC) as rn
+      FROM pricing_entries
+      WHERE billing_mode = 'standard' AND model_id IS NOT NULL
+    ) pe ON pe.model_id = m.id AND pe.rn = 1
+    WHERE m.is_core = 1
+    GROUP BY m.id
+    ORDER BY m.name
+  `).all() as ValueRankingRow[];
+
+  if (rows.length === 0) {
+    console.log("  No value-ranking data, skipping");
+    return;
+  }
+
+  // Get all scores for composite calculation
+  const allScores = db.prepare(`
+    SELECT m.slug, ls.benchmark, ls.score
+    FROM leaderboard_scores ls
+    JOIN models m ON m.id = ls.model_id
+    WHERE m.is_core = 1
+  `).all() as { slug: string; benchmark: string; score: number }[];
+
+  const scoreMap = new Map<string, Record<string, number>>();
+  for (const s of allScores) {
+    if (!scoreMap.has(s.slug)) scoreMap.set(s.slug, {});
+    scoreMap.get(s.slug)![s.benchmark] = s.score;
+  }
+
+  // Benchmark weights for composite score
+  const weights: Record<string, number> = {
+    hle: 0.25,
+    sweBenchVerified: 0.20,
+    gpqaDiamond: 0.15,
+    aime2025: 0.15,
+    elo: 0.15,
+    mmluPro: 0.10,
+  };
+
+  const typeMap: Record<string, string> = {
+    reasoning: "reasoning", foundation: "foundation", chat: "chat", coder: "coder",
+    embedding: "foundation", multimodal: "foundation", voice: "foundation",
+  };
+
+  const entries = rows
+    .filter((r) => r.input_price != null && r.output_price != null)
+    .map((r) => {
+      const scores = scoreMap.get(r.slug) || {};
+
+      // Compute weighted composite score (redistribute weights among available benchmarks)
+      let totalWeight = 0;
+      let weightedSum = 0;
+      for (const [key, weight] of Object.entries(weights)) {
+        const val = scores[key];
+        if (typeof val === "number" && val > 0) {
+          weightedSum += val * weight;
+          totalWeight += weight;
+        }
+      }
+      const compositeScore = totalWeight > 0 ? Math.round((weightedSum / totalWeight) * 100) / 100 : null;
+
+      // Blended cost: (input + 2*output) / 3
+      const blendedCost = (r.input_price + 2 * r.output_price) / 3;
+      const valueScore = compositeScore != null && blendedCost > 0
+        ? Math.round((compositeScore / blendedCost) * 100) / 100
+        : null;
+
+      return {
+        name: r.name,
+        developer: translateDeveloper(r.developer),
+        slug: r.slug,
+        openSource: r.open_source as "open" | "closed" | "open-nc",
+        type: (typeMap[r.category || "foundation"] || "foundation") as "reasoning" | "foundation" | "chat" | "coder",
+        compositeScore,
+        inputPrice: r.input_price,
+        outputPrice: r.output_price,
+        valueScore,
+        hle: scores.hle ?? null,
+        sweBenchVerified: scores.sweBenchVerified ?? null,
+        gpqaDiamond: scores.gpqaDiamond ?? null,
+      };
+    })
+    .filter((e) => e.valueScore != null)
+    .sort((a, b) => (b.valueScore ?? 0) - (a.valueScore ?? 0));
+
+  const data = JSON.stringify(entries, null, 2);
+
+  const valueTs = `// Auto-generated by pipeline/generate-data-files.ts
+// Last updated: ${new Date().toISOString()}
+// Source: Cross-reference of leaderboard_scores + pricing_entries
+// DO NOT EDIT MANUALLY
+
+export interface ValueRankedModel {
+  name: string;
+  developer: string;
+  slug: string;
+  openSource: "open" | "closed" | "open-nc";
+  type: "reasoning" | "foundation" | "chat" | "coder";
+  compositeScore: number | null;
+  inputPrice: number | null;
+  outputPrice: number | null;
+  valueScore: number | null;
+  hle: number | null;
+  sweBenchVerified: number | null;
+  gpqaDiamond: number | null;
+}
+
+export const valueRankingData: ValueRankedModel[] = ${data};
+`;
+
+  saveDataFile("value-ranking.ts", valueTs);
+  console.log(`  Generated ${entries.length} value-ranked entries`);
+}
+
+// ── JP capability generation ──
+
+type JpCapabilityLevel = "native" | "high" | "moderate" | "low" | "untested";
+
+interface JpCapabilityRow {
+  slug: string;
+  name: string;
+  developer: string;
+  developer_en: string;
+  is_japanese: number;
+  category: string | null;
+}
+
+const japaneseDevelopers = [
+  "PFN", "Preferred Networks", "Sakana AI", "Sakana", "ELYZA", "rinna",
+  "NTT", "富士通", "Fujitsu", "Preferred",
+];
+
+const highJpDevelopers = [
+  "Alibaba", "Alibaba Cloud", "Baidu", "Google", "OpenAI", "Anthropic",
+  "Meta", "Microsoft", "xAI", "DeepSeek", "ByteDance", "Zhipu",
+];
+
+const highJpNamePatterns = ["qwen", "gemini", "gpt-4", "gpt-5", "claude", "mistral", "deepseek"];
+
+function classifyJpLevel(model: JpCapabilityRow): JpCapabilityLevel {
+  // Native: Japanese companies or explicitly Japanese models
+  if (model.is_japanese === 1) return "native";
+  if (japaneseDevelopers.some((d) => model.developer.includes(d) || model.developer_en.includes(d))) {
+    return "native";
+  }
+
+  // High: known strong multilingual models
+  if (highJpDevelopers.some((d) => model.developer.includes(d))) {
+    return "high";
+  }
+  if (highJpNamePatterns.some((p) => model.name.toLowerCase().includes(p))) {
+    return "high";
+  }
+
+  // Moderate: other models with some multilingual capability
+  return "moderate";
+}
+
+function generateJpCapabilityFile(db: ReturnType<typeof getDb>): void {
+  console.log("  Generating jp-capability.ts...");
+
+  const rows = db.prepare(`
+    SELECT m.slug, m.name, m.developer,
+      COALESCE(mt.translated_text, m.developer) as developer_en,
+      m.is_japanese, m.category
+    FROM models m
+    LEFT JOIN model_translations mt ON mt.model_id = m.id
+      AND mt.language = 'en' AND mt.field_name = 'developer'
+    WHERE m.is_core = 1
+    ORDER BY m.is_japanese DESC, m.name
+  `).all() as JpCapabilityRow[];
+
+  if (rows.length === 0) {
+    console.log("  No JP capability data, skipping");
+    return;
+  }
+
+  const badgeMap: Record<JpCapabilityLevel, { ja: string; en: string }> = {
+    native: { ja: "ネイティブJP", en: "Native JP" },
+    high: { ja: "高品質日本語", en: "High-Quality JP" },
+    moderate: { ja: "多言語対応", en: "Multilingual" },
+    low: { ja: "限定的日本語", en: "Limited JP" },
+    untested: { ja: "未検証", en: "Untested" },
+  };
+
+  const descriptionMap: Record<JpCapabilityLevel, { ja: string; en: string }> = {
+    native: {
+      ja: "日本企業が開発したモデルまたは日本語に特化したモデル。日本語の理解・生成能力が最も高い。",
+      en: "Model developed by a Japanese company or specialized for Japanese. Highest Japanese understanding and generation capability.",
+    },
+    high: {
+      ja: "多言語対応モデルのうち、日本語処理に優れた性能を持つモデル。",
+      en: "Multilingual model with strong Japanese language processing capabilities.",
+    },
+    moderate: {
+      ja: "一般的な多言語対応モデル。基本的な日本語処理は可能だが、特化モデルには劣る。",
+      en: "General multilingual model. Basic Japanese processing is possible, but inferior to specialized models.",
+    },
+    low: {
+      ja: "日本語サポートが限定的なモデル。",
+      en: "Model with limited Japanese support.",
+    },
+    untested: {
+      ja: "日本語性能の検証データがないモデル。",
+      en: "Model without verified Japanese performance data.",
+    },
+  };
+
+  const entries = rows.map((r) => {
+    const level = classifyJpLevel(r);
+    return {
+      slug: r.slug,
+      name: r.name,
+      developer: translateDeveloper(r.developer),
+      jpLevel: level,
+      badgeJa: badgeMap[level].ja,
+      badgeEn: badgeMap[level].en,
+      japaneseMtBench: null as number | null,
+      jglue: null as number | null,
+      jmmlu: null as number | null,
+      descriptionJa: descriptionMap[level].ja,
+      descriptionEn: descriptionMap[level].en,
+    };
+  });
+
+  const data = JSON.stringify(entries, null, 2);
+
+  const jpTs = `// Auto-generated by pipeline/generate-data-files.ts
+// Last updated: ${new Date().toISOString()}
+// Source: Models table (is_japanese, developer, category)
+// DO NOT EDIT MANUALLY
+
+export type JpCapabilityLevel = "native" | "high" | "moderate" | "low" | "untested";
+
+export interface JpCapability {
+  slug: string;
+  name: string;
+  developer: string;
+  jpLevel: JpCapabilityLevel;
+  badgeJa: string;
+  badgeEn: string;
+  japaneseMtBench: number | null;
+  jglue: number | null;
+  jmmlu: number | null;
+  descriptionJa: string;
+  descriptionEn: string;
+}
+
+export const jpCapabilityData: JpCapability[] = ${data};
+
+export function getJpCapabilityBySlug(slug: string): JpCapability | undefined {
+  return jpCapabilityData.find((c) => c.slug === slug);
+}
+`;
+
+  saveDataFile("jp-capability.ts", jpTs);
+  console.log(`  Generated ${entries.length} JP capability entries`);
 }
 
 // Allow direct execution
