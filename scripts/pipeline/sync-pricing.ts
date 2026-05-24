@@ -87,11 +87,15 @@ async function fetchPagePlaywright(url: string): Promise<string> {
 
   const browser = await playwright.chromium.launch({ headless: true });
   const page = await browser.newPage();
-  await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
-  await page.waitForTimeout(2000);
-  const html = await page.content();
-  await browser.close();
-  return html;
+  try {
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
+    // Wait for content to render, but don't wait for all network activity
+    await page.waitForTimeout(5000);
+    const html = await page.content();
+    return html;
+  } finally {
+    await browser.close();
+  }
 }
 
 async function fetchPage(url: string, needsJS: boolean): Promise<string> {
