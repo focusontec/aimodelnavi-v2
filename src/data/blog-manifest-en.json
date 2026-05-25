@@ -1,5 +1,36 @@
 [
   {
+    "slug": "ai-agent-engineer-report-2026-05",
+    "title": "AIエージェント開発の最前線：プロンプトエンジニアリングから「ランタイムエンジニアリング」への転換",
+    "tag": "AIエージェント",
+    "excerpt": "AIエージェント開発は「プロンプトの工夫」から、状態管理や観測可能性を重視した「ランタイムエンジニアリング」へと進化しています。本記事では、主要AIベンダーの動向を踏まえ、プロダクション導入に不可欠な7つの技術領域とコスト最適化の新戦略を解説します。",
+    "topics": [
+      "AIエージェント",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "Qwen/Alibaba"
+    ],
+    "date": "2026-05-25",
+    "title_en": "From Prompt Engineering to Runtime Engineering: The State of AI Agents in 2025",
+    "excerpt_en": "The AI Agent paradigm is shifting from prompt engineering to runtime engineering, focusing on observability, state management, and governance. To move from demo to production, teams must prioritize workflows and evaluations over raw autonomy."
+  },
+  {
+    "slug": "ai-agent-memory-design-2026-05",
+    "title": "AIエージェントにおける「記憶」の設計と実装戦略：短期・長期メモリの最適構成とは",
+    "tag": "AIエージェント",
+    "excerpt": "AIエージェントの記憶設計は、単なる履歴保存から「作業・エピソード・意味・手続き」の多層構造へと進化しています。本記事では、主要プロダクトの傾向を分析し、実務的なハイブリッドメモリ設計の要点を解説します。",
+    "topics": [
+      "AIエージェント",
+      "Anthropic",
+      "OpenAI",
+      "コーディング"
+    ],
+    "date": "2026-05-25",
+    "title_en": "Engineering Long-Term Memory for AI Agents: Architecture and Design Patterns",
+    "excerpt_en": "AI Agent memory is evolving from simple context stuffing to complex multi-layer architectures. This report analyzes the four primary design patterns and the shift toward hybrid retrieval systems to optimize for latency and cost."
+  },
+  {
     "slug": "article-2026-05-25-fk3o3v",
     "title": "華為の『τ定律』：7nm工場で1.4nm級の密度を実現する『論理折りたたみ』技術とは",
     "tag": "解説",
@@ -14,20 +45,19 @@
     "excerpt_en": "Huawei has announced the 'τ (tau) Law,' a new chip design philosophy that shifts focus from shrinking transistors to shortening signal delays. Its core technology, 'Logic Folding,' stacks circuit layers vertically within a single chip to achieve 1.4nm equivalent transistor density using 7nm fabrication. This approach challenges the semiconductor industry's fundamental scaling methods and signals Huawei's move from survival to innovation leadership."
   },
   {
-    "slug": "deepseek-v4-100-nvidia",
-    "title": "DeepSeek V4が発表：100万トークンのコンテキストと华为チップへの最適化でNVIDIA独占を打破へ",
-    "tag": "DeepSeek",
-    "excerpt": "DeepSeekがV4シリーズを公開。100万トークンのコンテキストウィンドウと高度な思考モードを搭載し、コーディングや推論でトップレベルの性能を実現した。特筆すべきは、NVIDIAではなく中国国産チップ（昇騰）への最適化を優先し、ハードウェアの脱依存を加速させている点だ。",
+    "slug": "llmragai",
+    "title": "ローカルLLMで実現するRAGとナレッジグラフの統合：プライバシー重視のAIエージェント構築",
+    "tag": "AIエージェント",
+    "excerpt": "データのプライバシーを確保しつつ、高度な知識管理を可能にする「ローカルLLM + RAG + ナレッジグラフ」の構成について解説します。構造化データと非構造化データを組み合わせた次世代のAIエージェント実装アプローチに迫ります。",
     "topics": [
-      "DeepSeek",
-      "Anthropic",
-      "OpenAI",
-      "Google",
-      "ベンチマーク"
+      "AIエージェント",
+      "オープンソース",
+      "推論",
+      "LLM"
     ],
     "date": "2026-05-25",
-    "title_en": "DeepSeek V4 Unveiled: 1M Context Window and a Strategic Shift Toward Non-NVIDIA Hardware",
-    "excerpt_en": "DeepSeek V4 introduces a massive 1M token context window and state-of-the-art agentic coding capabilities that rival top-tier closed models. Crucially, the series is optimized for domestic Chinese hardware, signaling a strategic move to break NVIDIA's market dominance."
+    "title_en": "Combining Local LLMs with RAG and Knowledge Graphs for Privacy-First AI Agents",
+    "excerpt_en": "Explore how combining vector-based RAG with Knowledge Graphs allows local LLMs to handle complex relationships and structured data without compromising privacy. Learn the architectural blueprints for building a high-reasoning, private AI agent."
   },
   {
     "slug": "gartneropenai",
@@ -82,9 +112,9 @@
     "topics": [
       "AIエージェント",
       "Anthropic",
-      "セキュリティ",
-      "推論",
-      "マルチモーダル"
+      "Qwen/Alibaba",
+      "オープンソース",
+      "セキュリティ"
     ],
     "date": "2026-05-24",
     "title_en": "Claw-Coder: Boosting Local LLM Reasoning with RAG and Knowledge Graphs",
@@ -113,9 +143,10 @@
     "excerpt": "クラウドに依存せず、ローカル環境で動作するRAGとナレッジグラフを統合したAIエージェントの構築事例を紹介。機密情報の保持と高度な知識抽出を両立させる新しいアプローチを分析します。",
     "topics": [
       "AIエージェント",
+      "OpenAI",
+      "xAI/Grok",
       "セキュリティ",
-      "推論",
-      "LLM"
+      "推論"
     ],
     "date": "2026-05-24",
     "title_en": "Beyond the Cloud: Integrating RAG and Knowledge Graphs for Local AI Agents",
@@ -546,8 +577,8 @@
       "コーディング"
     ],
     "date": "2026-05-21",
-    "title_en": "Google I/O 2026 Quick Report: The New Era of \"Agent Development\" Opened by Gemini Omni and Antigravity",
-    "excerpt_en": "This article explains Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. It summarizes the impact of multimodal integration and autonomous agents that developers should pay attention to."
+    "title_en": "Google I/O 2026速報：Gemini OmniとAntigravityが切り拓く「エージェント開発」の新時代",
+    "excerpt_en": "Google I/O 2026で発表されたGemini 3.5 FlashやOmni、そしてエージェント開発プラットフォーム「Google Antigravity」を解説。開発者が注目すべきマルチモーダル統合と自律型エージェントの衝撃をまとめます。"
   },
   {
     "slug": "aiprovenance",
@@ -793,8 +824,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-20",
-    "title_en": "The Forefront of AI Agent Design: A Report on System Architecture and Technical Trends for 2026",
-    "excerpt_en": "The design philosophy for AI agents heading into 2026 is shifting from a \"monolithic, universal model\" to a \"composable, observable, and constrained system.\" This report details the latest architectures aimed at separating planners from executors, employing trace-based evaluation, and enhancing robustness in real-world applications."
+    "title_en": "AIエージェント設計の最前線：2026年に向けたシステムアーキテクチャと技術トレンド報告書",
+    "excerpt_en": "2026年に向けたAIエージェントの設計思想は、「万能な単体モデル」から「構成・観測・制約可能なシステム」へと転換しています。本レポートでは、プランナーと実行者の分離、軌跡ベースの評価、そして現実世界での堅牢性を高めるための最新アーキテクチャを詳説します。"
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",
@@ -1521,6 +1552,22 @@
     "date": "2026-05-01",
     "title_en": "The Great Price War: A May 2026 Deep Dive into AI Model API Costs and Strategic Selection",
     "excerpt_en": "As of May 2026, the LLM API market is characterized by intense price wars and performance leaps. This deep dive analyzes the pricing structures of major models like GPT-5.2 Pro, Claude Opus 4.7, and Gemini 3.0 Flash, exploring the factors driving costs down and providing a strategic framework for developers to select the right model based on their specific use case and budget."
+  },
+  {
+    "slug": "deepseek-v4-100-nvidia",
+    "title": "DeepSeek V4が発表：100万トークンのコンテキストと华为チップへの最適化でNVIDIA独占を打破へ",
+    "tag": "DeepSeek",
+    "excerpt": "DeepSeekがV4シリーズを公開。100万トークンのコンテキストウィンドウと高度な思考モードを搭載し、コーディングや推論でトップレベルの性能を実現した。特筆すべきは、NVIDIAではなく中国国産チップ（昇騰）への最適化を優先し、ハードウェアの脱依存を加速させている点だ。",
+    "topics": [
+      "DeepSeek",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "ベンチマーク"
+    ],
+    "date": "2026-04-24",
+    "title_en": "DeepSeek V4 Unveiled: 1M Context Window and a Strategic Shift Toward Non-NVIDIA Hardware",
+    "excerpt_en": "DeepSeek V4 introduces a massive 1M token context window and state-of-the-art agentic coding capabilities that rival top-tier closed models. Crucially, the series is optimized for domestic Chinese hardware, signaling a strategic move to break NVIDIA's market dominance."
   },
   {
     "slug": "claude-opus-4-7-overview",
