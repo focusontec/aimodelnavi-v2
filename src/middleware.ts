@@ -32,6 +32,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Public API routes: skip intl middleware
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.next();
+  }
+
   // All other routes: run intl middleware
   return intlMiddleware(request);
 }
