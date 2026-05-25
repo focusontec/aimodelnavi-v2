@@ -191,6 +191,24 @@ jobs:
             echo "  Done: $((IMG_NUM - 1)) images processed"
           fi
 
+      - name: Filter promotional images
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ vars.LLM_BASE_URL || '' }}
+        run: |
+          SLUG=$(ls -t src/content/blog/*.md 2>/dev/null | head -1 | xargs -I{} basename {} .md)
+          if [ -z "$SLUG" ]; then
+            echo "No blog post found, skipping filter"
+            exit 0
+          fi
+
+          for LANG_FILE in "src/content/blog/${SLUG}.md" "src/content/blog-en/${SLUG}.md"; do
+            if [ -f "$LANG_FILE" ]; then
+              echo "Filtering promo images in $LANG_FILE..."
+              npx tsx scripts/lib/filter-blog-images.ts "$LANG_FILE"
+            fi
+          done
+
       - name: Regenerate manifests
         run: |
           npx tsx scripts/blog-manifest.ts || true

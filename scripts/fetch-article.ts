@@ -28,13 +28,14 @@ const args = process.argv.slice(2);
 const url = args.find((a) => !a.startsWith("--"));
 const NO_IMAGES = args.includes("--no-images");
 const USE_LLM = args.includes("--llm");
-const FILTER_IMAGES = args.includes("--filter-images");
+const NO_FILTER = args.includes("--no-filter-images");
+const FILTER_IMAGES = !NO_FILTER; // filter by default
 const BLUR_WATERMARK = args.includes("--blur-watermark");
 const tagIdx = args.indexOf("--tag");
 const TAG = tagIdx !== -1 ? args[tagIdx + 1] : "";
 
 if (!url) {
-  console.error("Usage: npx tsx scripts/fetch-article.ts <URL> [--no-images] [--tag Tag] [--llm] [--filter-images]");
+  console.error("Usage: npx tsx scripts/fetch-article.ts <URL> [--no-images] [--tag Tag] [--llm] [--no-filter-images]");
   process.exit(1);
 }
 

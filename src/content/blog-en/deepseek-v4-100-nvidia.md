@@ -100,12 +100,9 @@ The API supports both OpenAI ChatCompletions and Anthropic interfaces. Users can
 
 Beyond the technical specifications, the most strategic aspect of DeepSeek V4 is its primary optimization for domestic Chinese hardware (Huawei Ascend) rather than NVIDIA GPUs.
 
-![Domestic Chip Support](/images/blog/deepseek-v4-ai/img-14.png)
-
 By granting domestic chipmakers early access, DeepSeek is fostering an ecosystem where the algorithms are proprietary, the code is open-source, and the hardware is domestically produced.
 
 NVIDIA CEO Jensen Huang recently signaled that DeepSeek's progress is a point of concern, specifically the risk that AI models optimized for Chinese hardware could proliferate globally, potentially establishing Chinese technology as a global standard.
 
 The successful operation of a trillion-parameter model on Ascend chips provides a massive boost to China's computational resource ecosystem and is expected to accelerate adoption by other chipmakers like Cambricon and Hygon.
 
-![Technical Report Cover](/images/blog/deepseek-v4-ai/img-15.png)
