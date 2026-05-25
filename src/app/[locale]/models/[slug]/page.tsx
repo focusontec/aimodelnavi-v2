@@ -56,6 +56,102 @@ function tv(value: string, locale: string): string {
   return map[value] || value;
 }
 
+
+// ── JSON-LD Structured Data ──
+
+function buildSoftwareApplicationLd(model: any, locale: string, devName: string): any {
+  const ld: any = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": model.name,
+    "description": (locale === "en" ? (model.descriptionEn || model.descriptionJa) : model.descriptionJa).slice(0, 300),
+    "applicationCategory": "AIApplication",
+    "operatingSystem": "Any",
+    "softwareVersion": model.releaseDate || "latest",
+    "author": {
+      "@type": "Organization",
+      "name": devName,
+    },
+    "offers": model.pricing ? {
+      "@type": "Offer",
+      "price": String(model.pricing.inputPer1M),
+      "priceCurrency": model.pricing.currency === "JPY" ? "JPY" : "USD",
+      "description": `API pricing: ${model.pricing.currency === "JPY" ? "¥" : "$"}${model.pricing.inputPer1M} input / ${model.pricing.currency === "JPY" ? "¥" : "$"}${model.pricing.outputPer1M} output per 1M tokens`,
+    } : undefined,
+  };
+  if (model.releaseDate) {
+    ld.datePublished = model.releaseDate;
+  }
+  return ld;
+}
+
+function buildBreadcrumbLd(slug: string, modelName: string, locale: string): any {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": locale === "en" ? "Home" : "ホーム",
+        "item": "https://aimodelsnavi.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": locale === "en" ? "Models" : "モデル一覧",
+        "item": `https://aimodelsnavi.com${locale === "ja" ? "" : "/en"}/models`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": modelName,
+        "item": `https://aimodelsnavi.com${locale === "ja" ? "" : "/en"}/models/${slug}`,
+      },
+    ],
+  };
+}
+
+function buildFaqLd(strengths: string[], weaknesses: string[], useCases: string[], locale: string): any {
+  const qas = [];
+  if (strengths.length > 0) {
+    qas.push({
+      "@type": "Question",
+      "name": locale === "en" ? `What are the strengths of this model?` : `このモデルの強みは何ですか？`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": strengths.join(" "),
+      },
+    });
+  }
+  if (weaknesses.length > 0) {
+    qas.push({
+      "@type": "Question",
+      "name": locale === "en" ? `What are the weaknesses of this model?` : `このモデルの弱みは何ですか？`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": weaknesses.join(" "),
+      },
+    });
+  }
+  if (useCases.length > 0) {
+    qas.push({
+      "@type": "Question",
+      "name": locale === "en" ? `What are the best use cases?` : `どんな用途に最適ですか？`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": useCases.join(" "),
+      },
+    });
+  }
+  if (qas.length === 0) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": qas,
+  };
+}
+
 export function generateStaticParams() {
   return modelDetails.flatMap((model) =>
     ["ja", "en"].map((locale) => ({ slug: model.slug, locale }))
@@ -74,7 +170,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${model.name} (${devName})`,
     description: `${desc} ${devName} ${typeLabel} ${locale === "en" ? "model" : "モデル"}.`.slice(0, 160),
-    openGraph: { title: `${model.name} | AI Models Navi`, description: desc.slice(0, 200), type: "article", images: ["/opengraph-image"] },
+    keywords: [model.name, devName, typeLabel, "AI model", "benchmark", "API pricing", "LLM", locale === "ja" ? "大規模言語モデル" : "large language model"],
+    openGraph: {
+      title: `${model.name} | AI Models Navi`,
+      description: desc.slice(0, 200),
+      type: "article",
+      images: ["/opengraph-image"],
+      url: `https://aimodelsnavi.com${locale === "ja" ? "" : `/${locale}`}/models/${model.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${model.name} | AI Models Navi`,
+      description: desc.slice(0, 200),
+      images: ["/opengraph-image"],
+    },
     alternates: {
       canonical: `https://aimodelsnavi.com${locale === "ja" ? "" : `/${locale}`}/models/${model.slug}`,
       languages: {
@@ -213,6 +322,30 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
           <ul className="space-y-1.5">{useCases.map((u: string) => (<li key={u} className="text-sm text-sky-700">・{u}</li>))}</ul>
         </div>
       </div>
+
+      {/* Structured Data Scripts */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildBreadcrumbLd(slug, model.name, locale)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildSoftwareApplicationLd(model, locale, devName)),
+        }}
+      />
+      {(() => {
+        const faqLd = buildFaqLd(strengths, weaknesses, useCases, locale);
+        if (!faqLd) return null;
+        return (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+          />
+        );
+      })()}
 
       {/* Deep Analysis Section */}
       {(() => {

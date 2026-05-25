@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/tools/cost-calculator`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6, alternates: langs("/tools/cost-calculator", "/en/tools/cost-calculator") },
     { url: `${BASE_URL}/tools/model-compare`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6, alternates: langs("/tools/model-compare", "/en/tools/model-compare") },
     { url: `${BASE_URL}/tools/token-counter`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6, alternates: langs("/tools/token-counter", "/en/tools/token-counter") },
+    { url: `${BASE_URL}/compare`, lastModified: new Date(), changeFrequency: "daily", priority: 0.8, alternates: langs("/compare", "/en/compare") },
   ];
 
   // Leaderboard category pages

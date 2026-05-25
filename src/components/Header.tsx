@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { BarChart3, BookOpen, Calculator, ChevronDown, Menu, X, Zap, Target, Sparkles } from "lucide-react";
+import { BarChart3, BookOpen, Calculator, GitCompare, ChevronDown, Menu, X, Zap, Target, Sparkles } from "lucide-react";
 import { useState } from "react";
 
 const blogTags = [
@@ -22,6 +22,7 @@ export default function Header() {
 
   const navItems = [
     { href: `${prefix}/leaderboard`, label: t("leaderboard"), icon: BarChart3 },
+    { href: `${prefix}/compare`, label: t("compare") || (locale === "ja" ? "比較" : "Compare"), icon: GitCompare },
     { href: `${prefix}/recommend`, label: t("recommend"), icon: Sparkles },
     { href: `${prefix}/benchmarks`, label: t("benchmarks"), icon: Target },
     { href: `${prefix}/pricing`, label: t("pricing"), icon: Zap },
