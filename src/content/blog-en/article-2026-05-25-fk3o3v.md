@@ -5,8 +5,6 @@ tag: "Benchmark"
 excerpt: "Huawei has announced the 'τ (tau) Law,' a new chip design philosophy that shifts focus from shrinking transistors to shortening signal delays. Its core technology, 'Logic Folding,' stacks circuit layers vertically within a single chip to achieve 1.4nm equivalent transistor density using 7nm fabrication. This approach challenges the semiconductor industry's fundamental scaling methods and signals Huawei's move from survival to innovation leadership."
 ---
 
-![華為のチップ](/images/blog/article-2026-05-25-fk3o3v/img-1.png)
-
 Twice in a single month, Huawei's chips have made major headlines.
 
 First, DeepSeek announced its V4 series, open-sourcing a 1.6-trillion-parameter model. But what the industry noticed most was a different fact: **the hardware DeepSeek first optimized for wasn't from NVIDIA—it was Huawei's Ascend chips.**
@@ -14,8 +12,6 @@ First, DeepSeek announced its V4 series, open-sourcing a 1.6-trillion-parameter 
 NVIDIA's CEO Jensen Huang had previously warned in an interview that "it would be a fearful outcome" if top models began running on Huawei chips. Now, that scenario has become a reality.
 
 And today, at ISCAS 2026, Huawei Semiconductor President He Tingbo unveiled the **"τ (tau) Law,"** confirming that its upcoming **Kirin 2026** chip will be the first to fully implement the revolutionary **"Logic Folding"** technology.
-
-![何庭波氏](/images/blog/article-2026-05-25-fk3o3v/img-2.jpg)
 
 ## What is the "τ Law"?
 
@@ -53,8 +49,6 @@ Because Huawei controls HarmonyOS, the compiler, and the chip microarchitecture,
 **Layer 4: System**
 A mechanism called the "Unified Bus (Lingqu Bus)" replaces the traditional layered stack of PCIe + NVLink + Ethernet + software remote memory with a single, unified protocol.
 
-![四層構造](/images/blog/article-2026-05-25-fk3o3v/img-4.png)
-
 These four layers are like the four cylinders of an engine. Running just one provides limited benefit. Igniting all four simultaneously unleashes the true performance.
 
 ## Logic Folding: From Flat to Three-Dimensional
@@ -66,8 +60,6 @@ Traditional chip circuits are laid out on a single flat plane. It's like a giant
 Logic Folding is the technique of "folding" this unfolded map. By folding it, distant parts come together. Centimeters become millimeters.
 
 The chip's circuit logic is split into upper and lower layers, with frequently interacting units connected directly via short vertical channels (through-silicon vias). This replaces the long, planar detours. **The wiring distance for critical paths is reduced by approximately 30%.**
-
-![論理折りたたみ](/images/blog/article-2026-05-25-fk3o3v/img-5.png)
 
 When distance decreases, resistance drops, capacitance drops, and τ shrinks. When τ shrinks, the chip gets faster.
 
@@ -82,8 +74,6 @@ When distance decreases, resistance drops, capacitance drops, and τ shrinks. Wh
 However, all existing technologies stack **different functional modules**. Cache is cache, compute cores are compute cores, I/O is I/O. Each is manufactured independently and bonded with packaging technology. It's like building a skywalk between two separate buildings.
 
 Huawei's approach is more radical—**it's renovating a single building into a duplex.** Instead of bonding two chips, it transforms the internal circuitry of a single chip from one layer into two. Adjacent stages of a CPU pipeline might be placed on an upper and lower floor, connected directly by a vertical shaft (an elevator). Functionally, it remains one unit; physically, it becomes three-dimensional.
-
-![AMDと華為の比較](/images/blog/article-2026-05-25-fk3o3v/img-6.png)
 
 **AMD builds a bridge between two buildings; Huawei installs an elevator inside one building. It's a fundamentally different approach.**
 
@@ -102,8 +92,6 @@ The value of this number isn't in its "quantity" but in its **"breadth."** The m
 381 types means Huawei has completed a massive validation matrix. A company making only smartphone chips lacks base station scenarios. A company making only AI chips lacks the constraints of low-power terminals.
 
 The Kirin 2026 isn't the "first attempt" at Logic Folding—it's the **"first successful implementation."**
-
-![381チップ](/images/blog/article-2026-05-25-fk3o3v/img-8.png)
 
 ## Why Announce This Now?
 
@@ -127,8 +115,6 @@ He Tingbo also showed a roadmap: the Kirin 2026 uses two layers, but the future 
 
 In other words: **Using a 7nm-class fab to achieve 1.4nm-class density.** AI hardware integration density will increase by over 100x by 2035—this is the prediction of the τ Law.
 
-![ロードマップ](/images/blog/article-2026-05-25-fk3o3v/img-7.png)
-
 ## Implications for the Industry
 
 This development cannot be overlooked.
@@ -142,5 +128,3 @@ Third, **a paradigm shift in semiconductor strategy.** The τ Law challenges the
 The 2019 internal email read: "There is no more time to spend another decade building a spare tire before swapping it. The buffer zone is gone."
 
 Seven years later, the spare tire has its own name and is walking its own path.
-
-![チップと魂](/images/blog/article-2026-05-25-fk3o3v/img-9.png)
