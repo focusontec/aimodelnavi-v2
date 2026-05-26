@@ -16,6 +16,22 @@
     "excerpt_en": "MiniMax's upcoming M3 model targets the office productivity market with ~1 trillion parameters, 1M context windows, and multimodal vision — a strategic pivot away from coding. Building on M2.5's cost leadership ($0.15/M tokens, 1/100th of Claude Opus pricing), M3 aims to challenge GPT and Claude where Chinese models have been virtually absent: Word, Excel, and PowerPoint workflows."
   },
   {
+    "slug": "claude-sonnet-48",
+    "title": "Claude Sonnet 4.8のリークから判明した次期主力モデルの全貌と性能予測",
+    "tag": "Anthropic",
+    "excerpt": "Claude Sonnet 4.8の存在がClaude Codeのnpmパッケージ内で発見され、1Mコンテキスト、3.75MP画像対応、SWE-bench 82-84%の性能が予想されている。Opus 4.7の能力を$3/$15の価格帯に持ち込む可能性があり、Sonnetティアで最強のコーディングモデルとなる見通しだ。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "ベンチマーク"
+    ],
+    "date": "2026-05-26",
+    "title_en": "Claude Sonnet 4.8: What Leaks Reveal About Anthropic's Next Major Model",
+    "excerpt_en": "Based on leaked code and technical analysis, this article examines Claude Sonnet 4.8, Anthropic's upcoming mid-tier model. Predictions suggest it could achieve 82-84% on SWE-bench Verified—surpassing previous Opus versions—while maintaining the $3/$15 price point and adding major vision and coding improvements."
+  },
+  {
     "slug": "gemini-35-flash-google-i-o-2026",
     "title": "Gemini 3.5 Flash: Google I/O 2026で発表されたエージェント特化型フロンティアモデルの全貌",
     "tag": "Google",
@@ -625,8 +641,8 @@
       "コーディング"
     ],
     "date": "2026-05-21",
-    "title_en": "Google I/O 2026 Flash Report: The New Era of \"Agent Development\" Pioneered by Gemini Omni and Antigravity",
-    "excerpt_en": "An explanation of the Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. This summary covers the impact of multimodal integration and autonomous agents that developers should focus on."
+    "title_en": "Google I/O 2026 Speed Report: The New Era of \"Agent Development\" Pioneered by Gemini Omni and Antigravity",
+    "excerpt_en": "A breakdown of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. This summary covers the impact of multimodal integration and autonomous agents that developers should focus on."
   },
   {
     "slug": "aiprovenance",
@@ -872,8 +888,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-20",
-    "title_en": "The Forefront of AI Agent Design: A 2026 System Architecture and Technology Trend Report",
-    "excerpt_en": "The design philosophy for AI agents heading into 2026 is shifting from \"a single, all-purpose model\" to a \"composable, observable, and constrained system.\" This report details the latest architectures for planner-executor separation, trajectory-based evaluation, and enhancing real-world robustness."
+    "title_en": "The Forefront of AI Agent Design: A Report on System Architecture and Technology Trends for 2026",
+    "excerpt_en": "The design philosophy for AI agents toward 2026 is shifting from \"monolithic, all-purpose models\" to \"composable, observable, constrained systems.\" This report details the latest architectures, including the separation of planners and executors, trajectory-based evaluation, and methods to enhance robustness in the real world."
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",

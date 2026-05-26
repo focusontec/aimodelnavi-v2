@@ -14,6 +14,20 @@
     "date": "2026-05-26"
   },
   {
+    "slug": "claude-sonnet-48",
+    "title": "Claude Sonnet 4.8のリークから判明した次期主力モデルの全貌と性能予測",
+    "tag": "Anthropic",
+    "excerpt": "Claude Sonnet 4.8の存在がClaude Codeのnpmパッケージ内で発見され、1Mコンテキスト、3.75MP画像対応、SWE-bench 82-84%の性能が予想されている。Opus 4.7の能力を$3/$15の価格帯に持ち込む可能性があり、Sonnetティアで最強のコーディングモデルとなる見通しだ。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "ベンチマーク"
+    ],
+    "date": "2026-05-26"
+  },
+  {
     "slug": "gemini-35-flash-google-i-o-2026",
     "title": "Gemini 3.5 Flash: Google I/O 2026で発表されたエージェント特化型フロンティアモデルの全貌",
     "tag": "Google",
