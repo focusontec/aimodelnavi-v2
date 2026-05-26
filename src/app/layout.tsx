@@ -27,7 +27,7 @@ function OrganizationSchema() {
     "logo": "https://aimodelsnavi.com/opengraph-image",
     "description": "AIモデルの比較・料金・ランキングを日本語で提供するポータルサイト",
     "sameAs": [
-      "https://github.com/aimodelsnavi",
+      "https://github.com/focusontec/aimodelnavi",
     ],
     "contactPoint": {
       "@type": "ContactPoint",

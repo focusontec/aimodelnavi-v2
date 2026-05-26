@@ -22,7 +22,7 @@ export default function Header() {
 
   const navItems = [
     { href: `${prefix}/leaderboard`, label: t("leaderboard"), icon: BarChart3 },
-    { href: `${prefix}/compare`, label: t("compare") || (locale === "ja" ? "比較" : "Compare"), icon: GitCompare },
+    { href: `${prefix}/compare`, label: t("compare"), icon: GitCompare },
     { href: `${prefix}/recommend`, label: t("recommend"), icon: Sparkles },
     { href: `${prefix}/benchmarks`, label: t("benchmarks"), icon: Target },
     { href: `${prefix}/pricing`, label: t("pricing"), icon: Zap },
