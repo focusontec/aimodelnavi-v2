@@ -55,6 +55,20 @@
     "date": "2026-05-26"
   },
   {
+    "slug": "swe-bench-verified-2026-90",
+    "title": "SWE-bench Verified 2026最新ランキング：90モデルのコーディング性能を徹底比較",
+    "tag": "ベンチマーク",
+    "excerpt": "AIコーディング能力のゴールドスタンダードであるSWE-bench Verifiedの2026年5月最新ランキングを分析。Claude Mythos Previewが93.9%で首位に立つ一方、DeepSeekやMiniMaxといった中国勢モデルの急激な台頭と、圧倒的なコストパフォーマンスの向上が明らかになった。",
+    "topics": [
+      "ベンチマーク",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek"
+    ],
+    "date": "2026-05-26"
+  },
+  {
     "slug": "ai-agent-engineer-report-2026-05",
     "title": "AIエージェント開発の最前線：プロンプトエンジニアリングから「ランタイムエンジニアリング」への転換",
     "tag": "AIエージェント",

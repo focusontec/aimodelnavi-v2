@@ -63,6 +63,22 @@
     "excerpt_en": "Explore the benefits of combining RAG with Knowledge Graphs in a fully local environment to enhance AI reasoning while ensuring total data privacy. This approach moves beyond simple vector search to provide structured, transparent, and secure AI agents."
   },
   {
+    "slug": "swe-bench-verified-2026-90",
+    "title": "SWE-bench Verified 2026最新ランキング：90モデルのコーディング性能を徹底比較",
+    "tag": "ベンチマーク",
+    "excerpt": "AIコーディング能力のゴールドスタンダードであるSWE-bench Verifiedの2026年5月最新ランキングを分析。Claude Mythos Previewが93.9%で首位に立つ一方、DeepSeekやMiniMaxといった中国勢モデルの急激な台頭と、圧倒的なコストパフォーマンスの向上が明らかになった。",
+    "topics": [
+      "ベンチマーク",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek"
+    ],
+    "date": "2026-05-26",
+    "title_en": "SWE-bench Verified 2026 Leaderboard: Analyzing the Coding Prowess of 90 AI Models",
+    "excerpt_en": "The May 2026 SWE-bench Verified leaderboard shows Anthropic dominating the top tier with the Mythos model, while Chinese LLMs make a massive leap into the top 10. The data reveals a significant shift toward high-performance, low-cost open-source coding models."
+  },
+  {
     "slug": "ai-agent-engineer-report-2026-05",
     "title": "AIエージェント開発の最前線：プロンプトエンジニアリングから「ランタイムエンジニアリング」への転換",
     "tag": "AIエージェント",
@@ -641,8 +657,8 @@
       "コーディング"
     ],
     "date": "2026-05-21",
-    "title_en": "Google I/O 2026 Speed Report: The New Era of \"Agent Development\" Pioneered by Gemini Omni and Antigravity",
-    "excerpt_en": "A breakdown of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. This summary covers the impact of multimodal integration and autonomous agents that developers should focus on."
+    "title_en": "Google I/O 2026 Breaking News: A New Era of \"Agent Development\" Opened by Gemini Omni and Antigravity",
+    "excerpt_en": "An explanation of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. We summarize the impact of multimodal integration and autonomous agents that developers should keep an eye on."
   },
   {
     "slug": "aiprovenance",
@@ -888,8 +904,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-20",
-    "title_en": "The Forefront of AI Agent Design: A Report on System Architecture and Technology Trends for 2026",
-    "excerpt_en": "The design philosophy for AI agents toward 2026 is shifting from \"monolithic, all-purpose models\" to \"composable, observable, constrained systems.\" This report details the latest architectures, including the separation of planners and executors, trajectory-based evaluation, and methods to enhance robustness in the real world."
+    "title_en": "The Forefront of AI Agent Design: System Architecture and Technical Trend Report for 2026",
+    "excerpt_en": "The design philosophy for AI agents toward 2026 is shifting from \"all-purpose single models\" to \"configurable, observable, and constraint-based systems.\" This report details the latest architectures for separating planners from executors, trajectory-based evaluation, and enhancing robustness in real-world applications."
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",
