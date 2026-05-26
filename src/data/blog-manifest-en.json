@@ -1,5 +1,21 @@
 [
   {
+    "slug": "article-2026-05-26-minimax-m3",
+    "title": "MiniMax M3がオフィスAIの未来を変える：1兆パラメータとマルチモーダルでGPTやClaudeに挑戦",
+    "tag": "解説",
+    "excerpt": "MiniMax社の次期フラッグシップモデルM3が2026年5月中にリリース予定。1兆パラメータ、100万トークンのコンテキストウィンドウ、マルチモーダルビジョン機能を搭載し、オフィスシナリオに特化する。M2.5が築いたコスト競争力とコーディング性能を継承し、GPTやClaudeが支配するオフィスAI市場に挑戦する。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "Qwen/Alibaba"
+    ],
+    "date": "2026-05-26",
+    "title_en": "MiniMax M3: The 1-Trillion-Parameter Model Betting Everything on Office AI",
+    "excerpt_en": "MiniMax's upcoming M3 model targets the office productivity market with ~1 trillion parameters, 1M context windows, and multimodal vision — a strategic pivot away from coding. Building on M2.5's cost leadership ($0.15/M tokens, 1/100th of Claude Opus pricing), M3 aims to challenge GPT and Claude where Chinese models have been virtually absent: Word, Excel, and PowerPoint workflows."
+  },
+  {
     "slug": "ai-agent-engineer-report-2026-05",
     "title": "AIエージェント開発の最前線：プロンプトエンジニアリングから「ランタイムエンジニアリング」への転換",
     "tag": "AIエージェント",
@@ -46,12 +62,13 @@
   },
   {
     "slug": "llmragai",
-    "title": "ローカルLLMで実現するRAGとナレッジグラフの統合：プライバシー重視のAIエージェント構築",
-    "tag": "AIエージェント",
-    "excerpt": "データのプライバシーを確保しつつ、高度な知識管理を可能にする「ローカルLLM + RAG + ナレッジグラフ」の構成について解説します。構造化データと非構造化データを組み合わせた次世代のAIエージェント実装アプローチに迫ります。",
+    "title": "ローカルLLMで完結するRAGとナレッジグラフ導入の手法：プライバシー重視のAIエージェント構築へ",
+    "tag": "オープンソース",
+    "excerpt": "外部APIに依存せず、ローカル環境でRAG（検索拡張生成）とナレッジグラフを組み合わせたAIエージェントを構築する手法について解説します。データプライバシーを最優先しつつ、高度な知識管理を実現したい開発者向けのアプローチです。",
     "topics": [
-      "AIエージェント",
       "オープンソース",
+      "AIエージェント",
+      "セキュリティ",
       "推論",
       "LLM"
     ],
@@ -577,8 +594,8 @@
       "コーディング"
     ],
     "date": "2026-05-21",
-    "title_en": "Google I/O 2026 Breaking News: A New Era of \"Agent Development\" Opened by Gemini Omni and Antigravity",
-    "excerpt_en": "An explanation of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. We summarize the impact of multimodal integration and autonomous agents that developers should watch."
+    "title_en": "Google I/O 2026 Speed Report: A New Era of \"Agent Development\" Opened by Gemini Omni and Antigravity",
+    "excerpt_en": "This article explains Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity,\" announced at Google I/O 2026. It summarizes the impact of multimodal integration and autonomous agents that developers should focus on."
   },
   {
     "slug": "aiprovenance",
@@ -824,8 +841,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-20",
-    "title_en": "The Forefront of AI Agent Design: System Architecture and Technology Trend Report for 2026",
-    "excerpt_en": "The design philosophy for AI agents moving toward 2026 is shifting from \"all-purpose single models\" to \"configurable, observable, and constraint-based systems.\" This report details the separation of planners and executors, trajectory-based evaluation, and the latest architectures for increasing real-world robustness."
+    "title_en": "The Forefront of AI Agent Design: A Report on System Architecture and Technical Trends Toward 2026",
+    "excerpt_en": "The design philosophy for AI agents is shifting from \"all-in-one monolithic models\" to \"systems that are composable, observable, and constrained.\" This report details the latest architectures aimed at planner-executor separation, trace-based evaluation, and enhancing robustness in real-world applications."
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",
