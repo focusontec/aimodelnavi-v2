@@ -1,5 +1,21 @@
 [
   {
+    "slug": "qwen37-vs-claude-opus-47-vs-gpt-55-2026",
+    "title": "Qwen3.7 vs Claude Opus 4.7 vs GPT-5.5：2026年のフロンティアモデル性能比較",
+    "tag": "ベンチマーク",
+    "excerpt": "2026年5月にリリースされたQwen3.7-Max、Claude Opus 4.7、GPT-5.5などの最新フロンティアモデルを比較。コーディング、推論、エージェント性能、コストパフォーマンスの観点から、各モデルの強みと最適な選択指針を解説する。",
+    "topics": [
+      "ベンチマーク",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek"
+    ],
+    "date": "2026-05-27",
+    "title_en": "Qwen3.7 vs. Claude Opus 4.7 vs. GPT-5.5: The State of Frontier Models in 2026",
+    "excerpt_en": "A detailed comparison of 2026's leading frontier models, including Qwen3.7-Max, Claude Opus 4.7, and GPT-5.5. We analyze coding, reasoning, and agentic performance to determine which model wins in specific use cases."
+  },
+  {
     "slug": "2026-5-ai-api",
     "title": "2026年5月 AI API料金完全比較：全フロンティアモデルの価格一覧",
     "tag": "ベンチマーク",
@@ -12,8 +28,8 @@
       "DeepSeek"
     ],
     "date": "2026-05-26",
-    "title_en": "AI API Pricing Guide May 2026: Comparing Frontier Models and Performance-to-Cost Ratios",
-    "excerpt_en": "AI API pricing has shifted dramatically by May 2026, with frontier-level performance now available at fractionally lower costs. This guide analyzes the cost-performance ratios of the latest models, highlighting the emergence of high-efficiency options and the growing importance of prompt caching."
+    "title_en": "AI API Pricing Guide May 2026: Comparing Every Frontier Model",
+    "excerpt_en": "As of May 2026, the gap between frontier-level performance and affordability has vanished, with 80%+ SWE-bench models now available for as low as $0.30/1M tokens. This guide breaks down the cost-performance ratios and caching strategies for the leading AI models today."
   },
   {
     "slug": "article-2026-05-26-minimax-m3",
@@ -28,8 +44,8 @@
       "Qwen/Alibaba"
     ],
     "date": "2026-05-26",
-    "title_en": "MiniMax M3: The 1-Trillion Parameter Powerhouse Targeting the Future of Office AI",
-    "excerpt_en": "MiniMax is set to release M3, a 1-trillion parameter multimodal model designed to dominate office productivity tasks. Moving beyond simple chat, M3 aims to integrate deeply with office software to provide a high-performance, low-cost agentic experience."
+    "title_en": "MiniMax M3: The 1-Trillion-Parameter Model Betting Everything on Office AI",
+    "excerpt_en": "MiniMax's upcoming M3 model targets the office productivity market with ~1 trillion parameters, 1M context windows, and multimodal vision — a strategic pivot away from coding. Building on M2.5's cost leadership ($0.15/M tokens, 1/100th of Claude Opus pricing), M3 aims to challenge GPT and Claude where Chinese models have been virtually absent: Word, Excel, and PowerPoint workflows."
   },
   {
     "slug": "claude-sonnet-48",
@@ -44,8 +60,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-26",
-    "title_en": "Leaked: Everything We Know About the Upcoming Claude Sonnet 4.8",
-    "excerpt_en": "Leaked data from Claude Code suggests the upcoming Sonnet 4.8 will bridge the gap between mid-tier pricing and top-tier performance. Expected upgrades include 3.75MP vision resolution and a significant jump in SWE-bench coding scores to 82-84%."
+    "title_en": "Claude Sonnet 4.8: What Leaks Reveal About Anthropic's Next Major Model",
+    "excerpt_en": "Based on leaked code and technical analysis, this article examines Claude Sonnet 4.8, Anthropic's upcoming mid-tier model. Predictions suggest it could achieve 82-84% on SWE-bench Verified—surpassing previous Opus versions—while maintaining the $3/$15 price point and adding major vision and coding improvements."
   },
   {
     "slug": "gemini-35-flash-google-i-o-2026",
@@ -60,22 +76,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-26",
-    "title_en": "Deep Dive: Gemini 3.5 Flash—Google's Agent-Centric Frontier Model Debuts at I/O 2026",
-    "excerpt_en": "Google's new Gemini 3.5 Flash is a frontier model specifically optimized for AI agents, offering 4x faster speeds and aggressive pricing. It outperforms the Pro version in coding and tool-use benchmarks, signaling a shift toward operational efficiency over pure academic reasoning."
-  },
-  {
-    "slug": "openaiai",
-    "title": "OpenAIがブラジルの大手メディアグループと提携：AI検索における「信頼できる情報源」の重要性と影響",
-    "tag": "OpenAI",
-    "excerpt": "OpenAIがブラジルの大手メディアであるGrupo FolhaおよびGrupo UOLとの戦略的コンテンツ提携を発表しました。本記事では、この提携がAI検索における信頼性の向上と、メディア企業のRAG最適化にどのような影響を与えるか分析します。",
-    "topics": [
-      "OpenAI",
-      "AIエージェント",
-      "LLM"
-    ],
-    "date": "2026-05-26",
-    "title_en": "OpenAI's AI Model Disproves Key Discrete Geometry Conjecture: Pioneering Mathematical Discovery",
-    "excerpt_en": "OpenAI's AI model has disproved a major conjecture in discrete geometry by constructing a counterexample, demonstrating advanced reasoning that goes beyond computation. This marks a significant step towards AI-driven mathematical discovery, with the potential to transform scientific research by acting as a collaborative partner in hypothesis testing and theory refinement."
+    "title_en": "Gemini 3.5 Flash: Google's Agent-Optimized Frontier Model, Unveiled at I/O 2026",
+    "excerpt_en": ""
   },
   {
     "slug": "ragai",
@@ -105,8 +107,8 @@
       "DeepSeek"
     ],
     "date": "2026-05-26",
-    "title_en": "SWE-bench Verified 2026 Rankings: Comparing Coding Performance Across 90 AI Models",
-    "excerpt_en": "The May 2026 SWE-bench Verified rankings reveal Anthropic's dominance with its Mythos model and the rapid ascent of Chinese models like DeepSeek and MiniMax. The data shows a significant shift toward open-source parity and a dramatic increase in cost-performance efficiency."
+    "title_en": "SWE-bench Verified 2026 Leaderboard: Analyzing the Coding Prowess of 90 AI Models",
+    "excerpt_en": "The May 2026 SWE-bench Verified leaderboard shows Anthropic dominating the top tier with the Mythos model, while Chinese LLMs make a massive leap into the top 10. The data reveals a significant shift toward high-performance, low-cost open-source coding models."
   },
   {
     "slug": "ai-agent-engineer-report-2026-05",
@@ -443,6 +445,22 @@
     "excerpt_en": "AdventHealth leverages OpenAI to streamline administrative tasks in healthcare, freeing up time for professionals to focus on patient-centered care. This approach not only boosts efficiency but also enables whole-person care by prioritizing human interaction and emotional support. It highlights how AI can strategically enhance human roles rather than replace them."
   },
   {
+    "slug": "openaiai",
+    "title": "OpenAIのモデルが離散幾何学の主要な予想を反証：AIによる数学的証明の突破口とその意義",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIのモデルが、離散幾何学における中心的な予想を反証することに成功しました。単なるテキスト生成を超え、高度な論理推論によって未知の定理を証明した今回の事例が、AIの「思考プロセス」にどのような進化をもたらすかを解説します。",
+    "topics": [
+      "OpenAI",
+      "ベンチマーク",
+      "AIエージェント",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-05-22",
+    "title_en": "OpenAI's AI Model Disproves Key Discrete Geometry Conjecture: Pioneering Mathematical Discovery",
+    "excerpt_en": "OpenAI's AI model has disproved a major conjecture in discrete geometry by constructing a counterexample, demonstrating advanced reasoning that goes beyond computation. This marks a significant step towards AI-driven mathematical discovery, with the potential to transform scientific research by acting as a collaborative partner in hypothesis testing and theory refinement."
+  },
+  {
     "slug": "qwen3-7-max-deep-dive",
     "title": "Qwen3.7完全ガイド：Max・Plusの性能・料金・API利用法を徹底解説",
     "tag": "Alibaba",
@@ -671,8 +689,8 @@
       "コーディング"
     ],
     "date": "2026-05-21",
-    "title_en": "Google I/O 2026 Breaking News: A New Era of \"Agent Development\" Opened by Gemini Omni and Antigravity",
-    "excerpt_en": "An explanation of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. We summarize the impact of multimodal integration and autonomous agents that developers should watch."
+    "title_en": "Google I/O 2026 Breaking News: The New Era of \"Agent Development\" Opened by Gemini Omni and Antigravity",
+    "excerpt_en": "An explanation of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. We summarize the impact of multimodal integration and autonomous agents that developers should focus on."
   },
   {
     "slug": "aiprovenance",
@@ -918,8 +936,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-20",
-    "title_en": "The Frontline of AI Agent Design: System Architecture and Technical Trend Report for 2026",
-    "excerpt_en": "The design philosophy for AI agents heading into 2026 is shifting from \"all-purpose single models\" to \"configurable, observable, and constrained systems.\" This report details the separation of planners and executors, trajectory-based evaluation, and the latest architectures to increase robustness in the real world."
+    "title_en": "The Forefront of AI Agent Design: System Architecture and Technical Trend Report for 2026",
+    "excerpt_en": "The design philosophy for AI agents moving toward 2026 is shifting from \"all-purpose single models\" to \"configurable, observable, and constrainable systems.\" This report details the separation of planners and executors, trajectory-based evaluation, and the latest architectures for improving real-world robustness."
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",

@@ -1,5 +1,19 @@
 [
   {
+    "slug": "qwen37-vs-claude-opus-47-vs-gpt-55-2026",
+    "title": "Qwen3.7 vs Claude Opus 4.7 vs GPT-5.5：2026年のフロンティアモデル性能比較",
+    "tag": "ベンチマーク",
+    "excerpt": "2026年5月にリリースされたQwen3.7-Max、Claude Opus 4.7、GPT-5.5などの最新フロンティアモデルを比較。コーディング、推論、エージェント性能、コストパフォーマンスの観点から、各モデルの強みと最適な選択指針を解説する。",
+    "topics": [
+      "ベンチマーク",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek"
+    ],
+    "date": "2026-05-27"
+  },
+  {
     "slug": "2026-5-ai-api",
     "title": "2026年5月 AI API料金完全比較：全フロンティアモデルの価格一覧",
     "tag": "ベンチマーク",
