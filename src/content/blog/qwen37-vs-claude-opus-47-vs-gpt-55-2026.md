@@ -1,8 +1,10 @@
 ---
-title: "Qwen3.7 vs Claude Opus 4.7 vs GPT-5.5：2026年のフロンティアモデル性能比較"
-date: "2026-05-27"
-tag: "ベンチマーク"
-excerpt: "2026年5月にリリースされたQwen3.7-Max、Claude Opus 4.7、GPT-5.5などの最新フロンティアモデルを比較。コーディング、推論、エージェント性能、コストパフォーマンスの観点から、各モデルの強みと最適な選択指針を解説する。"
+title: Qwen3.7 vs Claude Opus 4.7 vs GPT-5.5：2026年のフロンティアモデル性能比較
+date: '2026-05-27'
+tag: ベンチマーク
+excerpt: >-
+  2026年5月にリリースされたQwen3.7-Max、Claude Opus
+  4.7、GPT-5.5などの最新フロンティアモデルを比較。コーディング、推論、エージェント性能、コストパフォーマンスの観点から、各モデルの強みと最適な選択指針を解説する。
 ---
 
 2026年5月、AI業界は異常な同時多発リリースを迎えた。
@@ -115,3 +117,11 @@ Artificial Analysisの評価によると、Qwen3.7-Maxは評価中に約9,700万
 ---
 
 *各モデルの最新ベンチマークスコアとAPI料金の詳細は、[AI Models Naviのベンチマーク比較ページ](https://aimodelsnavi.com/benchmarks)で確認できる。*
+
+---
+
+## 関連記事
+
+- [OpenAIが「GPT-5.5（コードネーム：Spud）」をリリース：エージェント能力が大幅向上、API提供は安全審査のため順次開始へ](/blog/openai-gpt-5-5-spud-release)
+- [Anthropicが「Claude Opus 4.7」をリリース：コーディング能力と視覚解像度が大幅向上、初のサイバーセキュリティ保護機能を搭載](/blog/anthropic-claude-opus-4-7-software-engineering)
+- [Qwen3.7完全ガイド：Max・Plusの性能・料金・API利用法を徹底解説](/blog/qwen3-7-max-deep-dive)

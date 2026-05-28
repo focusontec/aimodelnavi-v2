@@ -1,9 +1,11 @@
 ---
-title: "CiscoがOpenAI Codexを導入し、エンタープライズ開発を再定義：欠陥修正の自動化へのアプローチ"
-date: "2026-05-28"
-tag: "OpenAI"
-excerpt: "CiscoがOpenAI Codexを開発パイプラインに統合し、ソフトウェアエンジニアリングの効率化を図っています。特に欠陥修正（バグフィックス）の自動化など、大規模組織におけるAIネイティブな開発手法の実践例を解説します。"
-source: "https://openai.com/index/cisco"
+title: CiscoがOpenAI Codexを導入し、エンタープライズ開発を再定義：欠陥修正の自動化へのアプローチ
+date: '2026-05-28'
+tag: OpenAI
+excerpt: >-
+  CiscoがOpenAI
+  Codexを開発パイプラインに統合し、ソフトウェアエンジニアリングの効率化を図っています。特に欠陥修正（バグフィックス）の自動化など、大規模組織におけるAIネイティブな開発手法の実践例を解説します。
+source: 'https://openai.com/index/cisco'
 ---
 
 ## エンタープライズ規模でのAI導入：Ciscoの挑戦
@@ -34,3 +36,11 @@ AIネイティブな開発体制への移行は、単なるツールの導入で
 
 参考：
 https://openai.com/index/cisco
+
+---
+
+## 関連記事
+
+- [Virgin AtlanticがCodexで実現した開発効率化とテスト作成加速の舞台裏](/blog/virgin-atlanticcodex)
+- [OpenAIがGartnerの「エンタープライズ向けコーディングエージェント」リーダーに選出：開発自律化への転換点](/blog/openaigartner)
+- [OpenAIエンジニアが伝授するCodexを最大限に活用するための実践ガイド](/blog/openai-codex)

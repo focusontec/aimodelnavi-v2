@@ -1,8 +1,9 @@
 ---
-title: "清華大学チームがAgent OS「PilotDeck」をオープンソース化、Tokenコストを最大70%削減"
-date: "2026-05-28"
-tag: "オープンソース"
-excerpt: "清華大学チームが開発したAIエージェントOS「PilotDeck」がオープンソースで公開された。独立したワークスペースとインテリジェントルーティングにより、推論効率を維持したままトークンコストを最大75%削減することが可能だ。"
+title: 清華大学チームがAgent OS「PilotDeck」をオープンソース化、Tokenコストを最大70%削減
+date: '2026-05-28'
+tag: オープンソース
+excerpt: >-
+  清華大学チームが開発したAIエージェントOS「PilotDeck」がオープンソースで公開された。独立したワークスペースとインテリジェントルーティングにより、推論効率を維持したままトークンコストを最大75%削減することが可能だ。
 ---
 
 ![Agentシステムの概要](/images/blog/agent-token-70/img-1.png)
@@ -91,3 +92,11 @@ GitHub: [https://github.com/OpenBMB/PilotDeck](https://github.com/OpenBMB/PilotD
 公式サイト: [https://pilotdeck.openbmb.cn/](https://pilotdeck.openbmb.cn/)
 
 ![フッター画像1](/images/blog/agent-token-70/img-20.jpg) ![フッター画像2](/images/blog/agent-token-70/img-21.jpg)
+
+---
+
+## 関連記事
+
+- [AIエージェント開発の最前線：プロンプトエンジニアリングから「ランタイムエンジニアリング」への転換](/blog/ai-agent-engineer-report-2026-05)
+- [2026年AI価格競争：中国勢が突きつける「超低コスト」の衝撃と実効性能の正体](/blog/blog-2026-05-28-ws3hli)
+- [Alibabaが「Qwen3.6-35B-A3B」をオープンソース化：3Bの活性化パラメータでエージェント性能が大幅向上](/blog/qwen3-6-35b-a3b-open-source-agent)

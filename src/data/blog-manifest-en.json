@@ -1,19 +1,18 @@
 [
   {
-    "slug": "agent-token-70",
-    "title": "清華大学チームがAgent OS「PilotDeck」をオープンソース化、Tokenコストを最大70%削減",
-    "tag": "オープンソース",
-    "excerpt": "清華大学チームが開発したAIエージェントOS「PilotDeck」がオープンソースで公開された。独立したワークスペースとインテリジェントルーティングにより、推論効率を維持したままトークンコストを最大75%削減することが可能だ。",
+    "slug": "aiopenai2024",
+    "title": "AIによる選挙干渉への対策に学ぶ：OpenAIが示す2024年に向けたガードレール設計の指針",
+    "tag": "解説",
+    "excerpt": "OpenAIが公開した2024年の選挙に向けたセーフガード策を分析。AIによる誤情報の拡散防止や透明性の確保など、エンタープライズAI導入におけるリスク管理に適用可能な設計思想を解説します。",
     "topics": [
-      "オープンソース",
-      "Anthropic",
+      "OpenAI",
+      "ベンチマーク",
       "AIエージェント",
-      "推論",
-      "マルチモーダル"
+      "セキュリティ"
     ],
     "date": "2026-05-28",
-    "title_en": "Cut Token Costs by 70%: Tsinghua University Team Open-Sources PilotDeck, the Next-Gen Agent OS",
-    "excerpt_en": "Tsinghua University's new open-source PilotDeck OS tackles the biggest hurdles in AI agent deployment: cost, memory isolation, and context management. Through sub-agent routing and a white-box memory system, it reduces token expenditures by up to 70% without sacrificing performance."
+    "title_en": "Lessons in AI Guardrails: Analyzing OpenAI's Strategy for Election Integrity",
+    "excerpt_en": "OpenAI's 2024 election integrity framework provides a blueprint for implementing technical guardrails against misinformation and malicious use. These strategies offer critical lessons for enterprise AI governance, particularly in managing hallucinations and security vulnerabilities."
   },
   {
     "slug": "blog-2026-05-28-ws3hli",
@@ -28,8 +27,23 @@
       "Qwen/Alibaba"
     ],
     "date": "2026-05-28",
-    "title_en": "The 2026 AI Price War: Deciphering China's Hyper-Low Cost Strategy and Actual Performance",
-    "excerpt_en": "China's AI API market is witnessing a massive price war, with some models costing 90% less than Western counterparts. While these models excel in specialized tasks and cost-efficiency, developers must navigate risks regarding inference speed and data privacy laws."
+    "title_en": "The Great Token War: Analyzing the Impact of China's Ultra-Low-Cost AI Pricing",
+    "excerpt_en": "China's AI providers are triggering a global price war with tokens priced up to 90% lower than Western rivals. This analysis explores the trade-offs between ultra-low costs, hardware localization via Huawei, and the critical security risks associated with data sovereignty."
+  },
+  {
+    "slug": "ciscoopenai-codex",
+    "title": "CiscoがOpenAI Codexを導入し、エンタープライズ開発を再定義：欠陥修正の自動化へのアプローチ",
+    "tag": "OpenAI",
+    "excerpt": "CiscoがOpenAI Codexを開発パイプラインに統合し、ソフトウェアエンジニアリングの効率化を図っています。特に欠陥修正（バグフィックス）の自動化など、大規模組織におけるAIネイティブな開発手法の実践例を解説します。",
+    "topics": [
+      "OpenAI",
+      "AIエージェント",
+      "コーディング",
+      "LLM"
+    ],
+    "date": "2026-05-28",
+    "title_en": "How Cisco is Redefining Enterprise Development with OpenAI Codex",
+    "excerpt_en": "Cisco is leveraging OpenAI Codex to transform its software engineering lifecycle, specifically targeting the automation of bug fixes. This AI-native approach shifts engineers from manual coding to high-level review, significantly accelerating enterprise development."
   },
   {
     "slug": "qwen37-plus-ai",
@@ -44,8 +58,8 @@
       "Qwen/Alibaba"
     ],
     "date": "2026-05-28",
-    "title_en": "Qwen3.7-Plus: Alibaba's Leap into Multimodal AI",
-    "excerpt_en": "Alibaba has introduced Qwen3.7-Plus, adding critical multimodal capabilities to its high-performance model series. With a 1-million-token context window and strong vision performance, it aims to challenge industry leaders in UI automation and document analysis."
+    "title_en": "Introducing Qwen3.7-Plus: Alibaba's New Frontier in Multimodal AI",
+    "excerpt_en": "Alibaba introduces Qwen3.7-Plus, adding vision capabilities and a 1-million-token context window to the Qwen3.7 family. This multimodal expansion allows the series to tackle complex screenshot analysis and UI agent workflows while maintaining a competitive cost structure."
   },
   {
     "slug": "qwen37-plus-qwen37-max",
@@ -60,8 +74,39 @@
       "Qwen/Alibaba"
     ],
     "date": "2026-05-28",
-    "title_en": "Qwen 3.7 Max vs. Plus: Which Model Should You Use for Your Project?",
-    "excerpt_en": "Alibaba Cloud's Qwen 3.7 series introduces Max and Plus models, splitting the focus between extreme text reasoning and multimodal capabilities. Learn how to choose between them based on benchmarks, pricing, and vision requirements."
+    "title_en": "Qwen3.7-Max vs. Qwen3.7-Plus: Which Model Should You Choose for Your AI Workflow?",
+    "excerpt_en": "Alibaba Cloud's new Qwen3.7 series splits its capabilities between the high-reasoning Max model and the multimodal Plus model. While Max dominates in coding and scientific benchmarks, Plus provides the vision capabilities necessary for UI agents and document analysis."
+  },
+  {
+    "slug": "warpai",
+    "title": "Warpが描く「次世代AIモデル」時代のオープンソース開発と次世代コーディングエージェントの展望",
+    "tag": "AIエージェント",
+    "excerpt": "モダンターミナル「Warp」が、GPT-4oなどの高度な推論能力を持つモデルを活用したオープンソース開発の自動化に注力しています。次世代のAIモデルが、開発ワークフローやオーケストレーションをどう変えるのかを解説します。",
+    "topics": [
+      "AIエージェント",
+      "オープンソース",
+      "推論",
+      "コーディング"
+    ],
+    "date": "2026-05-28",
+    "title_en": "From Code Completion to Autonomous Agents: How Warp is Reimagining the Developer Workflow",
+    "excerpt_en": "Warp is evolving beyond code completion to build autonomous coding agents integrated directly into the terminal. By orchestrating local, cloud, and OSS environments, they aim to transform AI from a mere assistant into a full-scale development partner."
+  },
+  {
+    "slug": "agent-token-70",
+    "title": "清華大学チームがAgent OS「PilotDeck」をオープンソース化、Tokenコストを最大70%削減",
+    "tag": "オープンソース",
+    "excerpt": "清華大学チームが開発したAIエージェントOS「PilotDeck」がオープンソースで公開された。独立したワークスペースとインテリジェントルーティングにより、推論効率を維持したままトークンコストを最大75%削減することが可能だ。",
+    "topics": [
+      "オープンソース",
+      "Anthropic",
+      "AIエージェント",
+      "推論",
+      "マルチモーダル"
+    ],
+    "date": "2026-05-28",
+    "title_en": "Tsinghua University Team Open-Sources Agent OS \"PilotDeck,\" Reducing Token Costs by up to 70%",
+    "excerpt_en": "The AI agent OS \"PilotDeck,\" developed by a team from Tsinghua University, has been released as open source. Through independent workspaces and intelligent routing, it is possible to reduce token costs by up to 75% while maintaining inference efficiency."
   },
   {
     "slug": "biopetalsbittorrentllm",
@@ -95,6 +140,22 @@
     "excerpt_en": "Discover how to build high-precision AI agents for specialized domains using self-improving loops. This framework moves beyond prompt engineering to a code-generation and verification cycle that eliminates hallucinations in professional tax and legal workflows."
   },
   {
+    "slug": "qwen37-max-35",
+    "title": "Qwen3.7-Maxが35時間の自律実行を達成。中国製モデルのエージェント性能がフロンティアに迫る",
+    "tag": "DeepSeek",
+    "excerpt": "AlibabaのQwen3.7-Maxが、未知のハードウェア上でのカーネル最適化において35時間の自律実行と10倍の性能向上を達成。タスク・ハーネス・検証器を分離した訓練手法により、高い汎化性能とエージェント能力を実現している。",
+    "topics": [
+      "DeepSeek",
+      "Anthropic",
+      "Qwen/Alibaba",
+      "ベンチマーク",
+      "AIエージェント"
+    ],
+    "date": "2026-05-27",
+    "title_en": "Qwen3.7-Max Hits 35-Hour Autonomous Streak: Pushing the Boundaries of AI Agent Performance",
+    "excerpt_en": "Alibaba's Qwen3.7-Max demonstrated a breakthrough in AI agency by autonomously optimizing a hardware kernel for 35 hours without human intervention. Through a new 'Environment Scaling' training approach, it achieved a 10x speedup, outperforming other frontier models in persistence and generalization."
+  },
+  {
     "slug": "qwen37-vs-claude-opus-47-vs-gpt-55-2026",
     "title": "Qwen3.7 vs Claude Opus 4.7 vs GPT-5.5：2026年のフロンティアモデル性能比較",
     "tag": "ベンチマーク",
@@ -109,22 +170,6 @@
     "date": "2026-05-27",
     "title_en": "Qwen3.7 vs. Claude Opus 4.7 vs. GPT-5.5: The State of Frontier Models in 2026",
     "excerpt_en": "A detailed comparison of 2026's leading frontier models, including Qwen3.7-Max, Claude Opus 4.7, and GPT-5.5. We analyze coding, reasoning, and agentic performance to determine which model wins in specific use cases."
-  },
-  {
-    "slug": "qwen37-max-35",
-    "title": "Qwen3.7-Maxが35時間の自律実行を達成。中国製モデルのエージェント性能がフロンティアに迫る",
-    "tag": "DeepSeek",
-    "excerpt": "AlibabaのQwen3.7-Maxが、未知のハードウェア上でのカーネル最適化において35時間の自律実行と10倍の性能向上を達成。タスク・ハーネス・検証器を分離した訓練手法により、高い汎化性能とエージェント能力を実現している。",
-    "topics": [
-      "DeepSeek",
-      "Anthropic",
-      "Qwen/Alibaba",
-      "ベンチマーク",
-      "AIエージェント"
-    ],
-    "date": "2026-05-27",
-    "title_en": "Qwen3.7-Max Achieves 35 Hours of Autonomous Execution: Chinese Model's Agent Performance Approaches the Frontier",
-    "excerpt_en": "Alibaba's Qwen3.7-Max achieved 35 hours of autonomous execution and a 10x performance increase in kernel optimization on unknown hardware. Its training method, which separates task, harness, and verifier, delivers high generalization performance and agent capabilities."
   },
   {
     "slug": "2026-5-ai-api",
@@ -800,8 +845,8 @@
       "コーディング"
     ],
     "date": "2026-05-21",
-    "title_en": "Google I/O 2026 Breaking News: Gemini Omni and Antigravity Usher in a New Era of Agent Development",
-    "excerpt_en": "An overview of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. We summarize the impact of multimodal integration and autonomous agents that developers should watch."
+    "title_en": "Google I/O 2026 Flash Report: Gemini Omni and Antigravity Usher in a New Era of \"Agent Development\"",
+    "excerpt_en": "An explanation of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. We summarize the impact of multimodal integration and autonomous agents that developers should watch."
   },
   {
     "slug": "aiprovenance",
@@ -1048,7 +1093,7 @@
     ],
     "date": "2026-05-20",
     "title_en": "The Forefront of AI Agent Design: System Architecture and Technical Trend Report for 2026",
-    "excerpt_en": "AI agent design philosophy for 2026 is shifting from \"all-powerful single models\" to \"configurable, observable, and constrained systems.\" This report details the separation of planners and executors, trajectory-based evaluation, and the latest architectures for increasing real-world robustness."
+    "excerpt_en": "AI agent design philosophy for 2026 is shifting from \"all-purpose single models\" to \"configurable, observable, and constrainable systems.\" This report details the separation of planners and executors, trajectory-based evaluation, and the latest architectures to increase real-world robustness."
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",
