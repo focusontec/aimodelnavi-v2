@@ -1,5 +1,19 @@
 [
   {
+    "slug": "blog-2026-05-28-ws3hli",
+    "title": "2026年AI価格競争：中国勢が突きつける「超低コスト」の衝撃と実効性能の正体",
+    "tag": "DeepSeek",
+    "excerpt": "中国のAI APIが欧米勢を大幅に下回る超低価格戦略を加速させている。DeepSeek V4-Flashなどのモデルが示す破壊的なコストパフォーマンスの背景と、推論速度やデータセキュリティといった開発者が直面するトレードオフを分析する。",
+    "topics": [
+      "DeepSeek",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "Qwen/Alibaba"
+    ],
+    "date": "2026-05-28"
+  },
+  {
     "slug": "qwen37-plus-ai",
     "title": "Qwen3.7-Plusが登場：画像理解能力を備えたマルチモーダルAIの最前線",
     "tag": "オープンソース",
@@ -26,6 +40,33 @@
       "Qwen/Alibaba"
     ],
     "date": "2026-05-28"
+  },
+  {
+    "slug": "biopetalsbittorrentllm",
+    "title": "BioPetals登場：BitTorrent方式で生物学特化LLMを分散運用する新アプローチ",
+    "tag": "オープンソース",
+    "excerpt": "生物学特化モデル「OpenBioLLM」を分散環境で動作させるBioPetalsが登場。BitTorrentのようなネットワーク構成により、低コストでの推論とファインチューニングを実現する仕組みを解説します。",
+    "topics": [
+      "オープンソース",
+      "ベンチマーク",
+      "AIエージェント",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-05-27"
+  },
+  {
+    "slug": "codexaiai",
+    "title": "Codexを用いた「自己改善型」税務AIエージェントの構築手法：専門ドメインへのAI適用パターン",
+    "tag": "AIエージェント",
+    "excerpt": "Codexのようなコード生成AIを利用した税務AIエージェントの概念的な設計事例を解説。単なる自動化に留まらず、フィードバックループを通じて精度を向上させる「自己改善」の設計に焦点を当てます。",
+    "topics": [
+      "AIエージェント",
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-05-27"
   },
   {
     "slug": "qwen37-max-35",

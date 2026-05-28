@@ -1,5 +1,21 @@
 [
   {
+    "slug": "blog-2026-05-28-ws3hli",
+    "title": "2026年AI価格競争：中国勢が突きつける「超低コスト」の衝撃と実効性能の正体",
+    "tag": "DeepSeek",
+    "excerpt": "中国のAI APIが欧米勢を大幅に下回る超低価格戦略を加速させている。DeepSeek V4-Flashなどのモデルが示す破壊的なコストパフォーマンスの背景と、推論速度やデータセキュリティといった開発者が直面するトレードオフを分析する。",
+    "topics": [
+      "DeepSeek",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "Qwen/Alibaba"
+    ],
+    "date": "2026-05-28",
+    "title_en": "The 2026 AI Price War: Deciphering China's Hyper-Low Cost Strategy and Actual Performance",
+    "excerpt_en": "China's AI API market is witnessing a massive price war, with some models costing 90% less than Western counterparts. While these models excel in specialized tasks and cost-efficiency, developers must navigate risks regarding inference speed and data privacy laws."
+  },
+  {
     "slug": "qwen37-plus-ai",
     "title": "Qwen3.7-Plusが登場：画像理解能力を備えたマルチモーダルAIの最前線",
     "tag": "オープンソース",
@@ -32,6 +48,37 @@
     "excerpt_en": "Alibaba Cloud's Qwen 3.7 series introduces Max and Plus models, splitting the focus between extreme text reasoning and multimodal capabilities. Learn how to choose between them based on benchmarks, pricing, and vision requirements."
   },
   {
+    "slug": "biopetalsbittorrentllm",
+    "title": "BioPetals登場：BitTorrent方式で生物学特化LLMを分散運用する新アプローチ",
+    "tag": "オープンソース",
+    "excerpt": "生物学特化モデル「OpenBioLLM」を分散環境で動作させるBioPetalsが登場。BitTorrentのようなネットワーク構成により、低コストでの推論とファインチューニングを実現する仕組みを解説します。",
+    "topics": [
+      "オープンソース",
+      "ベンチマーク",
+      "AIエージェント",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-05-27",
+    "title_en": "BioPetals: Scaling Biological LLMs via BitTorrent-Style Distributed Inference",
+    "excerpt_en": "BioPetals introduces a decentralized approach to running biology-specialized LLMs by distributing model blocks across a peer-to-peer network. This BitTorrent-inspired framework reduces hardware barriers and increases inference speeds for complex biological research."
+  },
+  {
+    "slug": "codexaiai",
+    "title": "Codexを用いた「自己改善型」税務AIエージェントの構築手法：専門ドメインへのAI適用パターン",
+    "tag": "AIエージェント",
+    "excerpt": "Codexのようなコード生成AIを利用した税務AIエージェントの概念的な設計事例を解説。単なる自動化に留まらず、フィードバックループを通じて精度を向上させる「自己改善」の設計に焦点を当てます。",
+    "topics": [
+      "AIエージェント",
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-05-27",
+    "title_en": "Building Self-Improving AI Agents for Specialized Domains: A Framework for Tax Compliance",
+    "excerpt_en": "Discover how to build high-precision AI agents for specialized domains using self-improving loops. This framework moves beyond prompt engineering to a code-generation and verification cycle that eliminates hallucinations in professional tax and legal workflows."
+  },
+  {
     "slug": "qwen37-vs-claude-opus-47-vs-gpt-55-2026",
     "title": "Qwen3.7 vs Claude Opus 4.7 vs GPT-5.5：2026年のフロンティアモデル性能比較",
     "tag": "ベンチマーク",
@@ -60,8 +107,8 @@
       "AIエージェント"
     ],
     "date": "2026-05-27",
-    "title_en": "Qwen3.7-Max Achieves 35 Hours of Autonomous Execution: Chinese Model Agent Performance Approaches the Frontier",
-    "excerpt_en": "Alibaba's Qwen3.7-Max achieved 35 hours of autonomous execution and a 10x performance increase in kernel optimization on unknown hardware. A training method that separates the task harness and verifier has realized high generalization performance and agent capabilities."
+    "title_en": "Qwen3.7-Max Achieves 35 Hours of Autonomous Execution: Chinese Model's Agent Performance Approaches the Frontier",
+    "excerpt_en": "Alibaba's Qwen3.7-Max achieved 35 hours of autonomous execution and a 10x performance increase in kernel optimization on unknown hardware. It achieves high generalization and agent capabilities through a training method that separates the task, harness, and verifier."
   },
   {
     "slug": "2026-5-ai-api",
@@ -738,7 +785,7 @@
     ],
     "date": "2026-05-21",
     "title_en": "Google I/O 2026 Breaking News: Gemini Omni and Antigravity Open a New Era of \"Agent Development\"",
-    "excerpt_en": "An explanation of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. This summary covers the impact of multimodal integration and autonomous agents that developers should watch."
+    "excerpt_en": "An explanation of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. We summarize the impact of multimodal integration and autonomous agents that developers should focus on."
   },
   {
     "slug": "aiprovenance",
@@ -984,8 +1031,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-20",
-    "title_en": "The Forefront of AI Agent Design: System Architecture and Technical Trend Report for 2026",
-    "excerpt_en": "The design philosophy for AI agents heading into 2026 is shifting from \"all-purpose single models\" to \"configurable, observable, and constrained systems.\" This report details the latest architectures for separating planners and executors, trajectory-based evaluation, and increasing real-world robustness."
+    "title_en": "Frontlines of AI Agent Design: System Architecture and Technical Trend Report for 2026",
+    "excerpt_en": "The design philosophy for AI agents heading into 2026 is shifting from \"all-purpose single models\" to \"configurable, observable, and constrained systems.\" This report details the separation of planners and executors, trajectory-based evaluation, and the latest architectures to increase real-world robustness."
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",
