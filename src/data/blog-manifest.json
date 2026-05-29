@@ -37,6 +37,20 @@
     "date": "2026-05-29"
   },
   {
+    "slug": "claude-opus-48",
+    "title": "Claude Opus 4.8実測：作業能力は向上も、コミュニケーションに課題",
+    "tag": "解説",
+    "excerpt": "",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "DeepSeek",
+      "ベンチマーク",
+      "AIエージェント"
+    ],
+    "date": "2026-05-29"
+  },
+  {
     "slug": "endava",
     "title": "Endavaが実践する「エージェント組織」への変革：要件定義を数週間から数時間に短縮した戦略",
     "tag": "AIエージェント",
