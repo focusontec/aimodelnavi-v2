@@ -27,6 +27,22 @@
     "excerpt_en": "Cisco is leveraging OpenAI Codex to move beyond simple code completion toward 'AI-native engineering.' By automating defect remediation, they are transforming the developer's role from manual coding to AI orchestration and verification."
   },
   {
+    "slug": "claude-opus-4-8",
+    "title": "Claude Opus 4.8 発表：SWE-Bench Pro 69.2%、GPT-5.5に10.6ポイント差 — Anthropicが示す「エージェント品質」の新基準",
+    "tag": "Anthropic",
+    "excerpt": "AnthropicがClaude Opus 4.8を公開。エージェントコーディングのSWE-Bench Proで69.2%を記録し、GPT-5.5に10.6ポイント差をつける。価格据え置き、Fast Modeは2.5倍速・3分の1コスト。数百の並列サブエージェントを操るDynamic Workflowsも発表された。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "ベンチマーク",
+      "AIエージェント"
+    ],
+    "date": "2026-05-29",
+    "title_en": "Claude Opus 4.8 Released: SWE-Bench Pro 69.2%, 10.6-Point Lead Over GPT-5.5 — Anthropic's New Standard for Agent Quality",
+    "excerpt_en": "Anthropic has released Claude Opus 4.8, scoring 69.2% on SWE-Bench Pro with a 10.6-point margin over GPT-5.5. Same pricing, Fast Mode at 2.5x speed and one-third the cost. Dynamic Workflows launching hundreds of parallel subagents also announced."
+  },
+  {
     "slug": "endava",
     "title": "Endavaが実践する「エージェント組織」への変革：要件定義を数週間から数時間に短縮した戦略",
     "tag": "AIエージェント",
