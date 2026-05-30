@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LangSwitcher from "@/components/LangSwitcher";
+import SidebarAd from "@/components/SidebarAd";
 
 export async function generateMetadata({
   params,
@@ -59,7 +60,10 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <NextIntlClientProvider locale={locale} messages={messages}>
       <Header />
-      <main className="flex-1">{children}</main>
+      <div className="flex max-w-[1400px] mx-auto">
+        <main className="flex-1 min-w-0">{children}</main>
+        <SidebarAd />
+      </div>
       <Footer />
       <LangSwitcher />
       <Analytics />
