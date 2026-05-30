@@ -1,5 +1,21 @@
 [
   {
+    "slug": "ai-nsfw-ai",
+    "title": "AI安全性突破の技術解剖：NSFW AIチャットサービスはいかにして安全制限を回避するか",
+    "tag": "解説",
+    "excerpt": "NSFW AIチャットサービスが主流モデルの安全制限を回避する技術的仕組みを、三層防御モデルと六大攻撃手法の観点から詳細に解剖する記事。訓練時から出力フィルタリングまでの多層防御を、アブレーションやローリソース言語攻撃といった具体的手法で突破する原理を解説する。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Qwen/Alibaba",
+      "オープンソース",
+      "推論"
+    ],
+    "date": "2026-05-30",
+    "title_en": "How NSFW AI Chat Services Bypass Safety Filters: A Technical Deep Dive",
+    "excerpt_en": "NSFW AI chat services bypass standard safety filters not by hacking them, but by constructing models without such restrictions from the start. This article dissects the technical methods, from fine-tuning on uncensored datasets and \"abliteration\" to prompt engineering, and explains the layered architecture these platforms typically use. It highlights the ongoing, co-evolutionary arms race between jailbreaking techniques and safety defenses."
+  },
+  {
     "slug": "ai",
     "title": "【技術解説】高精度ドメインにおける「自己改善型AIエージェント」の構築アプローチと精度担保の仕組み",
     "tag": "AIエージェント",
@@ -920,8 +936,8 @@
       "コーディング"
     ],
     "date": "2026-05-21",
-    "title_en": "Google I/O 2026速報：Gemini OmniとAntigravityが切り拓く「エージェント開発」の新時代",
-    "excerpt_en": "Google I/O 2026で発表されたGemini 3.5 FlashやOmni、そしてエージェント開発プラットフォーム「Google Antigravity」を解説。開発者が注目すべきマルチモーダル統合と自律型エージェントの衝撃をまとめます。"
+    "title_en": "Google I/O 2026 Quick Report: The New Era of 'Agent Development' Pioneered by Gemini Omni and Antigravity",
+    "excerpt_en": "We explain the Gemini 3.5 Flash and Omni announced at Google I/O 2026, along with the agent development platform 'Google Antigravity'. This summary covers the impact of multi-modal integration and autonomous agents that developers should focus on."
   },
   {
     "slug": "aiprovenance",
@@ -1167,8 +1183,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-20",
-    "title_en": "AIエージェント設計の最前線：2026年に向けたシステムアーキテクチャと技術トレンド報告書",
-    "excerpt_en": "2026年に向けたAIエージェントの設計思想は、「万能な単体モデル」から「構成・観測・制約可能なシステム」へと転換しています。本レポートでは、プランナーと実行者の分離、軌跡ベースの評価、そして現実世界での堅牢性を高めるための最新アーキテクチャを詳説します。"
+    "title_en": "The Cutting Edge of AI Agent Design: A Report on System Architecture and Technology Trends for 2026",
+    "excerpt_en": "The design philosophy for AI agents aimed at 2026 is shifting from 'versatile monolithic models' to 'composable, observable, and constraint-capable systems'. This report details the latest architectures for separating planners and executors, trajectory-based evaluation, and enhancing real-world robustness."
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",
