@@ -118,6 +118,8 @@ export default async function BlogDetailPage({
         <ModelLinkMarkdown content={post.content} locale={locale} />
       </div>
 
+      <AdSlot position="blog-inline" className="my-8 flex justify-center" />
+
       <AdSlot position="blog-bottom" className="my-8 flex justify-center" />
 
       <CommentSection slug={post.slug} title={post.title} />
