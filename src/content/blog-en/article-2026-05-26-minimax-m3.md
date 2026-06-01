@@ -1,138 +1,193 @@
 ---
-title: "MiniMax M3: The 1-Trillion-Parameter Model Betting Everything on Office AI"
-date: "2026-05-26"
-tag: "Open Source"
-excerpt: "MiniMax's upcoming M3 model targets the office productivity market with ~1 trillion parameters, 1M context windows, and multimodal vision — a strategic pivot away from coding. Building on M2.5's cost leadership ($0.15/M tokens, 1/100th of Claude Opus pricing), M3 aims to challenge GPT and Claude where Chinese models have been virtually absent: Word, Excel, and PowerPoint workflows."
+title: "MiniMax M3 Review: The Cost-Effective Multimodal Model with 1M Token Context and Blazing Fast Decoding"
+date: "2026-06-01"
+tag: "Benchmark"
+excerpt: "MiniMax M3 introduces a groundbreaking architecture that processes up to 1 million tokens with 15.6x faster decoding speeds, making it highly competitive in benchmarks against models like GPT-5.2 and Claude Opus 4.7. With its affordable pricing, starting at $0.30 per 1 million tokens during launch, it offers a cost-effective alternative for developers seeking powerful multimodal capabilities."
 ---
 
-In April, a single tweet sent ripples through the AI industry.
+On June 1, 2026, Chinese AI startup MiniMax (Shanghai) officially unveiled its flagship model, MiniMax M3. Unlike its M2.x series, which focused on code generation, M3 is positioned as a "full-office scenario" model, natively supporting text, images, video, and computer use as a multimodal model.
 
-MiniMax engineer Skyler Miao confirmed on X that the company's next flagship model, **M3**, will feature multimodal vision capabilities — marking an official declaration that the Chinese AI lab is ready to challenge Claude and GPT on their own turf.
+This article provides a detailed breakdown of M3's unique MSA (MiniMax Sparse Attention) architecture, key benchmark results, API pricing, and comparisons with existing models.
 
-Coming right on the heels of M2.7's text-only performance rivaling Claude Opus in coding benchmarks, the news electrified the developer community.
+![MiniMax M3 architecture](/images/blog/article-2026-05-26-minimax-m3/img-1-hero.png)
 
----
+## What is MiniMax M3?
 
-## The Path M2.5 Blazed Open
+MiniMax M3 is a next-generation multimodal large language model that completely revamps the M2.x series. Key specifications include:
 
-Before diving into M3, you need to understand the foundation it's built on — M2.5 and M2.7.
+| Item | Specification |
+|------|---------------|
+| Developer | MiniMax (Shanghai, China) |
+| Release Date | June 1, 2026 |
+| Context Length | Up to 1 million tokens |
+| Multimodal Support | Text, images, video, computer use |
+| Architecture | MSA (MiniMax Sparse Attention) |
+| API Price (Regular) | Input: $0.60 per 1M tokens, Output: $2.40 per 1M tokens |
+| API Price (Launch Discount) | Input: $0.30 per 1M tokens, Output: $1.20 per 1M tokens |
+| Open Weights | Scheduled for release within about 10 days after launch |
 
-**M2.5**, released in February 2026, was the model that changed MiniMax's trajectory. According to OpenRouter data, it consumed **3.07 trillion tokens** within just one week of launch, topping global API call volumes and pushing MiniMax's annual recurring revenue (ARR) to $150 million.
+The biggest innovation in M3 is its proprietary "MSA (MiniMax Sparse Attention)" architecture, which fundamentally differs from traditional full-attention mechanisms, reducing per-token computation to 1/20th for processing 1 million token contexts.
 
-![](/images/blog/article-2026-05-26-minimax-m3/img-2-benchmark.jpg)
+## MSA Architecture: Why 1 Million Tokens is Practical
 
-The defining trait of M2.5 in a single sentence: **frontier-tier coding capability with just 10B effective parameters.**
+### Limitations of Previous Architectures
 
-On SWE-Bench Verified, it scored 80.2%. In the Droid harness, it hit 79.7%, edging past Opus 4.6's 78.9%. On Multi-SWE-Bench for multilingual coding, it set an industry-leading 51.3%.
+The M2.x series used a "full-attention" method, which offers high accuracy but incurs quadratic computational cost as context length increases, making processing of 1 million token-level texts impractical.
 
-But the real shock was the cost. Running continuously for one hour at 100 TPS costs roughly **one dollar**. At 50 TPS, it's 30 cents. MiniMax called it "the first frontier model where users never have to think about cost."
+Particularly during reinforcement learning (RL) training, linear attention or conventional sparse attention caused numerical convergence issues, leading to accuracy degradation in complex multi-step reasoning.
 
-## M2.7: The Birth of Self-Evolution
+### Design Philosophy of MSA
 
-Released in March 2026, **M2.7** pushed the envelope further.
+MSA addresses these challenges fundamentally. Its core aspects include:
 
-Its most significant innovation was a mechanism MiniMax calls **self-evolution**. Internally, M2.7 built its own reinforcement learning (RL) experiment harnesses, fed experiment results back into its own learning process, and iterated in a closed loop. Human researchers set the direction; the model executed, analyzed, and improved. M2.7 ended up autonomously handling 30–50% of the RL team's workflow.
+1. **Context Compression**: Efficiently compressing 1 million token inputs to extract and process only necessary information.
 
-![](/images/blog/article-2026-05-26-minimax-m3/img-4-mle-bench.png)
+2. **Dynamic Sparsity**: Dynamically allocating computational resources, focusing on important tokens.
 
-Benchmark results tell the story:
+3. **RL Compatibility**: Designed to ensure numerical stability during reinforcement learning.
 
-| Benchmark | M2.7 Score | What It Measures |
-|-------------|-----------|------|
-| SWE-Pro | 56.22% | Real-world software engineering |
-| TerminalBench 2 | 57.0% | Terminal-based agent tasks |
-| VIBE-Pro | 55.6% | End-to-end project delivery |
-| GDPval-AA | ELO 1495 | Office document creation (open-source leading score) |
+### Speed Improvements Proven by Benchmarks
 
-Office capabilities also saw major upgrades. M2.7 handles complex editing in Word, Excel, and PowerPoint; multi-round revisions; and high-fidelity edits — all while maintaining a **97% skill compliance rate** across 40+ complex skills (each exceeding 2,000 tokens).
+The effects of MSA have been quantitatively measured:
 
-## What to Expect from M3
+- **Prefill Speed**: Over **9x faster** compared to previous models.
 
-Multiple sources confirm M3 is slated for release **sometime in May 2026**. MiniMax founder "adao" reportedly told internal groups that "M3 is not far off" and "it's just the beginning," while engineer Skyler Miao officially confirmed multimodal vision capabilities.
+- **Decode Speed**: **15.6x faster** compared to previous models.
 
-Expected specifications:
+- **Computation per Token**: For 1 million token contexts, **1/20th** of previous computation.
 
-| Dimension | Projected Spec |
-|------|------------|
-| Parameters | ~1 trillion (1T) |
-| Context Window | 1 million tokens |
-| Multimodal | Text + Vision (document and spreadsheet screenshot analysis) |
-| Target Scenario | Office (document comprehension, spreadsheets, presentation generation) |
-| Pricing Strategy | Continuing M2.5's cost-competitive approach |
+These are not just theoretical values but directly impact real-world API response times. For example, summarizing a 1 million token document that previously took minutes with other models might now be completed in seconds with M3.
 
-A Morgan Stanley research note predicts M3 will "resolve knowledge capacity issues through additional pre-training and architectural innovations, support robust multimodal understanding, and deliver overall performance that squarely challenges the world's top flagship models."
+## Benchmark Results: Rivaling Top Models
 
-## Why Office? Why Now?
+### Code Generation Capabilities
 
-M3's strategic bet is unmistakable — **prioritize office scenarios over coding.**
+M3 has achieved top-tier results in code generation benchmarks:
 
-Three market shifts in 2026 explain why this makes sense.
+![Benchmark comparison](/images/blog/article-2026-05-26-minimax-m3/img-2-benchmark.jpg)
 
-**First**, Microsoft Agent 365 reached general availability, causing enterprise demand for office AI to explode.
+| Benchmark | M3 | GPT-5.5 | Claude Opus 4.7 | DeepSeek V3.2 |
+|-----------|-----|---------|-----------------|---------------|
+| SWE-Bench Pro | **59.0%** | 58.6% | 64.3% | 49.2% |
+| Terminal-Bench 2.1 | **66.0%** | 62.1% | 68.5% | 54.8% |
 
-**Second**, Claude Code's success proved the value of "agent execution." Models that actually *do* the work rather than merely advising in chat deliver ten times the value.
+On SWE-Bench Pro, M3 slightly outperforms GPT-5.5 and nearly matches Claude Opus 4.7, marking an unprecedented achievement for a Chinese-developed model.
 
-**Third**, Chinese models are virtually absent from the office scenario. GPT and Claude dominate general conversation; M2.5 and GLM-5 compete in coding — but the vast, untouched third territory is office productivity.
+### Agent Capabilities
 
-![](/images/blog/article-2026-05-26-minimax-m3/img-5-coding-bench.png)
+M3 also excels in agent applications:
 
-MiniMax has also open-sourced its Office Skills engine under the MIT license. Supporting Word, Excel, PowerPoint, and PDF, it bypasses legacy libraries to generate output that directly conforms to Office standards. M3 is expected to integrate deeply with this engine.
+| Benchmark | M3 | GPT-5.2 | Claude Opus 4.7 |
+|-----------|-----|---------|-----------------|
+| MCP Atlas | **74.2%** | 71.8% | 76.1% |
+| BrowseComp | **83.5** | 80.2 | 85.3 |
 
-## The May Model War
+On MCP Atlas (tool calling accuracy), M3 scores 74.2%, ensuring sufficient precision for practical agent development.
 
-M3's release window coincides with one of the most intense launch periods in AI history.
+### Multimodal Capabilities
 
-| Model | Company | Why It Matters |
-|--------|------|-------------|
-| GPT-5.6 | OpenAI | Parameter retuning, Terminal-Bench refresh |
-| Sonnet 4.8 | Anthropic | Enhanced coding capability |
-| Gemini 3.5 | Google | Pre-Google I/O warmup, multimodal upgrades |
-| MiniMax M3 | MiniMax | Chinese flagship, agent-native, cost-efficient |
+It also demonstrates high performance in image and video understanding:
 
-This marks the first time a Chinese model is competing head-to-head with all three US flagships in the same release window.
+![MLE-Bench results](/images/blog/article-2026-05-26-minimax-m3/img-4-mle-bench.png)
 
-## The Divergence of Chinese Models
+| Benchmark | M3 | GPT-5.2 | Gemini 3.0 Pro |
+|-----------|-----|---------|----------------|
+| PostTrainBench | **0.37** | 0.35 | 0.39 |
+| MLE-Bench | **52.1%** | 48.7% | 54.3% |
 
-M3's arrival symbolizes a broader structural shift across the Chinese model ecosystem.
+### Practicality of 1 Million Token Context
 
-| Model | Primary Focus | Current Status |
-|--------|---------|-----------|
-| Qwen 3.6 | Coding + Agents | 1M context, Fireworks integration |
-| Kimi K2.6 | Coding + Vision | SWE-bench leader, Swarm preview |
-| DeepSeek V4 | Reasoning + Cost Efficiency | 1T MoE, cache price cuts |
-| GLM-5 | Long-horizon Agents | Autonomous engineering capabilities |
-| **MiniMax M3** | **Office Scenarios** | **Releasing soon** |
+M3's 1 million token context is not just a marketing figure. In demonstrations, the following were showcased:
 
-Chinese models once fought a war of attrition in the same lane. But by May 2026, each company is carving out a distinctly differentiated position. M3 chose "office" — arguably the largest unoccupied territory of all.
+- **24-hour CUDA Kernel Optimization**: Reading a legacy codebase with 1 million tokens, achieving a 9.4x speed improvement.
 
-![](/images/blog/article-2026-05-26-minimax-m3/img-6-office-bench.png)
+- **12-hour Paper Restoration**: Completely re-implementing code from academic papers from scratch.
 
-## What This Means for the Broader Market
+These demos indicate M3's capability to effectively utilize long-context processing.
 
-M3's arrival is too significant to ignore, especially for enterprise buyers.
+## Price Comparison: About 1/3 the Cost of GPT-5.2
 
-**Cost competitiveness is staggering.** M2.5's input pricing is $0.15 per million tokens. Compared to Claude Opus 4.7's $15, that's **1/100th the price**. If M3 maintains this price point while pushing office-scenario quality to frontier levels, enterprise AI adoption costs drop dramatically.
+M3's API pricing is highly competitive compared to models of similar quality:
 
-**Office compatibility opens integration pathways.** MiniMax has open-sourced its Office Skills engine under MIT, meaning integration with WPS and other business systems is technically feasible. However, enterprise compliance requirements — data security, audit logging — could remain adoption barriers.
+| Model | Input (per 1M tokens) | Output (per 1M tokens) | Notes |
+|-------|-----------------------|------------------------|-------|
+| **MiniMax M3** | **$0.30** | **$1.20** | Launch discount applied |
+| MiniMax M3 (Regular) | $0.60 | $2.40 | After discount ends |
+| GPT-5.2 | $2.50 | $10.00 | OpenAI |
+| Claude Opus 4.7 | $15.00 | $75.00 | Anthropic |
+| Gemini 3.0 Pro | $1.25 | $5.00 | Google |
+| DeepSeek V3.2 | $0.27 | $1.10 | DeepSeek |
 
-**Multimodal vision reshapes knowledge work.** Parsing spreadsheets from document screenshots and auto-generating presentations is the kind of capability that can fundamentally transform how office workers operate.
+With the launch discount, M3 is about 1/8 the cost of GPT-5.2, and even at regular pricing, it's about 1/4. Compared to DeepSeek V3.2, M3 maintains much higher benchmark scores while achieving comparable pricing levels.
 
-## Challenges and Risks
+Token plans are also available, with monthly subscriptions at $20, $50, and $120. The $50 plan, in particular, offers sufficient quota for daily usage of around 100,000 tokens.
 
-Caveats apply.
+## Real-World Use Cases and Experiences
 
-**Release delays are real.** Chinese models have a pattern of slipping past announced timelines. M3 missing the May window remains entirely possible.
+### Use Cases for Developers
 
-**Office scenarios are deceptively hard.** Raw model capability isn't enough — deep integration with the Office/WPS ecosystem is essential. Microsoft Agent 365 is already in GA with an overwhelming ecosystem advantage.
+M3 excels particularly in the following scenarios:
 
-**Knowledge capacity tradeoffs persist.** M2.5's 10B effective parameter design came with reported knowledge limitations. Scaling to 1 trillion parameters should resolve this, but balancing knowledge density against inference cost becomes the new challenge.
+**Understanding Large Codebases**: With 1 million token context, it can read entire repositories at once. Ideal for refactoring legacy code or reviewing large pull requests.
 
-## The Bottom Line
+![Coding benchmarks](/images/blog/article-2026-05-26-minimax-m3/img-5-coding-bench.png)
 
-MiniMax M3 marks a turning point: Chinese models are graduating from competing on cost alone to differentiating by scenario.
+**Agent Development**: With MCP Atlas accuracy of 74.2%, it provides a practical level for agent applications that heavily use tool calling. BrowseComp's 83.5 indicates reliability for web-operating agents.
 
-![](/images/blog/article-2026-05-26-minimax-m3/img-1-hero.png)
+**Multimodal Processing**: Native support for images and videos enables use in document screenshot analysis or automated UI testing.
 
-One trillion parameters, one million tokens, multimodal vision — on paper, the specs stand shoulder-to-shoulder with GPT-5.5 and Claude Opus 4.7. But M3's real winning formula isn't the specs. **It's how fast and how cheaply MiniMax can fill the vast, unoccupied territory of office productivity.**
+### Expansion into Office Scenarios
 
-Just as Huawei built a "spare tire" in 2019 when chips were cut off, MiniMax is building another lane. After coding, the next frontier is office. And MiniMax is betting the farm on it.
+MiniMax designed M3 for "full-office scenarios." Specifically:
+
+- Cross-analysis of multiple spreadsheets and documents.
+
+- Automated generation of presentation materials.
+
+- Summarization of email threads and creation of reply drafts.
+
+- Extraction of action items from meeting transcripts.
+
+![Office benchmarks](/images/blog/article-2026-05-26-minimax-m3/img-6-office-bench.png)
+
+While these use cases were possible with previous models, M3's 1 million token context and fast decoding allow processing of larger volumes of documents more quickly.
+
+## M3 vs. Existing Models: Which to Choose?
+
+### GPT-5.2 vs. M3
+
+- **Accuracy**: GPT-5.2 may slightly outperform in some areas, but M3 is at a comparable level.
+
+- **Speed**: M3 is 15x faster (with 1 million token context).
+
+- **Price**: M3 is about 1/3 to 1/8 the cost of GPT-5.2.
+
+- **Conclusion**: Choose M3 for cost efficiency, GPT-5.2 for maximum accuracy.
+
+### Claude Opus 4.7 vs. M3
+
+- **Accuracy**: Claude Opus 4.7 outperforms overall (e.g., SWE-Bench Pro 64.3% vs. 59.0%).
+
+- **Speed**: M3 is significantly faster.
+
+- **Price**: M3 is about 1/25 to 1/50 the cost of Claude.
+
+- **Conclusion**: Choose Claude for highest quality, M3 for cost-performance ratio.
+
+### DeepSeek V3.2 vs. M3
+
+- **Accuracy**: M3 clearly outperforms.
+
+- **Speed**: Similar (both are fast).
+
+- **Price**: Similar levels.
+
+- **Conclusion**: At the same price range, M3 offers higher performance.
+
+## Conclusion
+
+As of June 2026, MiniMax M3 is one of the most cost-effective multimodal models available. Its MSA architecture enabling 1 million token support and 15.6x faster decoding speeds provide significant practical advantages. With code generation capability of 59.0% on SWE-Bench Pro and agent capability of 74.2% on MCP Atlas, it rivals top models like GPT-5.2 and Claude Opus 4.7.
+
+Particularly noteworthy is its pricing. The $0.30/$1.20 per 1M tokens with launch discount is about 1/8 of GPT-5.2 and 1/50 of Claude Opus 4.7. Open weights are also planned, making on-premises deployment feasible.
+
+For developers considering processing large codebases, analyzing long documents, or developing cost-efficient agents, M3 is one of the most promising models to watch this summer.
