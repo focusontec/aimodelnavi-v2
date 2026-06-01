@@ -1,5 +1,19 @@
 [
   {
+    "slug": "article-2026-05-26-minimax-m3",
+    "title": "MiniMax M3レビュー：100万トークン対応と15倍高速デコードが実現する次世代マルチモーダルAI",
+    "tag": "解説",
+    "excerpt": "MiniMax社は2026年6月にフラッグシップモデルM3を発表した。MSAアーキテクチャにより100万トークン対応と15.6倍の高速デコードを実現し、SWE-Bench Proで59.0%を記録。価格はGPT-5.2の約1/3とコストパフォーマンスに優れる。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "ベンチマーク"
+    ],
+    "date": "2026-06-01"
+  },
+  {
     "slug": "rtx-spark-pc",
     "title": "NVIDIA RTX Spark発表：統合メモリとCUDAで個人PCの新時代を切り開く",
     "tag": "解説",
@@ -292,20 +306,6 @@
       "OpenAI",
       "Google",
       "DeepSeek"
-    ],
-    "date": "2026-05-26"
-  },
-  {
-    "slug": "article-2026-05-26-minimax-m3",
-    "title": "MiniMax M3がオフィスAIの未来を変える：1兆パラメータとマルチモーダルでGPTやClaudeに挑戦",
-    "tag": "解説",
-    "excerpt": "MiniMax社の次期フラッグシップモデルM3が2026年5月中にリリース予定。1兆パラメータ、100万トークンのコンテキストウィンドウ、マルチモーダルビジョン機能を搭載し、オフィスシナリオに特化する。M2.5が築いたコスト競争力とコーディング性能を継承し、GPTやClaudeが支配するオフィスAI市場に挑戦する。",
-    "topics": [
-      "Anthropic",
-      "OpenAI",
-      "Google",
-      "DeepSeek",
-      "Qwen/Alibaba"
     ],
     "date": "2026-05-26"
   },
