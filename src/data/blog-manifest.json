@@ -1,5 +1,19 @@
 [
   {
+    "slug": "rtx-spark-pc",
+    "title": "NVIDIA RTX Spark発表：統合メモリとCUDAで個人PCの新時代を切り開く",
+    "tag": "解説",
+    "excerpt": "NVIDIAがGTC Taipei 2026で消費者向けAIチップ「RTX Spark」を発表した。128GBの統合メモリとフルCUDAエコシステムを搭載し、従来不可だった大規模モデルのローカル実行を可能にする。Microsoftとの協力によりWindows上のエージェント環境も再構築され、パーソナルコンピューティングの新時代が始まる。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "AIエージェント",
+      "オープンソース",
+      "セキュリティ"
+    ],
+    "date": "2026-06-01"
+  },
+  {
     "slug": "ai-nsfw-ai",
     "title": "AI安全性突破の技術解剖：NSFW AIチャットサービスはいかにして安全制限を回避するか",
     "tag": "解説",

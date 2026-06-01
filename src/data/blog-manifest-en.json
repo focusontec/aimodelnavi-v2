@@ -1,5 +1,21 @@
 [
   {
+    "slug": "rtx-spark-pc",
+    "title": "NVIDIA RTX Spark発表：統合メモリとCUDAで個人PCの新時代を切り開く",
+    "tag": "解説",
+    "excerpt": "NVIDIAがGTC Taipei 2026で消費者向けAIチップ「RTX Spark」を発表した。128GBの統合メモリとフルCUDAエコシステムを搭載し、従来不可だった大規模モデルのローカル実行を可能にする。Microsoftとの協力によりWindows上のエージェント環境も再構築され、パーソナルコンピューティングの新時代が始まる。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "AIエージェント",
+      "オープンソース",
+      "セキュリティ"
+    ],
+    "date": "2026-06-01",
+    "title_en": "NVIDIA RTX Spark Announced: Unified Memory and CUDA Usher in a New Era for Personal PCs",
+    "excerpt_en": "At GTC Taipei 2026, NVIDIA unveiled the consumer AI chip \"RTX Spark.\" Featuring 128GB of unified memory and the full CUDA ecosystem, it enables local execution of large-scale models that were previously impossible. Through collaboration with Microsoft, the agent environment on Windows has also been rebuilt, marking the dawn of a new era in personal computing."
+  },
+  {
     "slug": "ai-nsfw-ai",
     "title": "AI安全性突破の技術解剖：NSFW AIチャットサービスはいかにして安全制限を回避するか",
     "tag": "解説",
@@ -952,8 +968,8 @@
       "コーディング"
     ],
     "date": "2026-05-21",
-    "title_en": "Google I/O 2026 News Flash: Gemini Omni and Antigravity Usher in a New Era of \"Agent Development\"",
-    "excerpt_en": "We break down Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. We summarize the multimodal integration and the groundbreaking impact of autonomous agents that developers should watch closely."
+    "title_en": "Google I/O 2026 Report: How Gemini Omni and Antigravity Are Pioneering a New Era of \"Agent Development\"",
+    "excerpt_en": "We break down Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. This article summarizes the impact of multimodal integration and autonomous agents that developers should watch closely."
   },
   {
     "slug": "aiprovenance",
@@ -1199,8 +1215,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-20",
-    "title_en": "The Cutting Edge of AI Agent Design: A Report on System Architecture and Technology Trends for 2026",
-    "excerpt_en": "The design philosophy for AI agents heading into 2026 is shifting from \"monolithic universal models\" to \"systems that are composable, observable, and constrainable.\" This report details the latest architectures, including the separation of planners and executors, trajectory-based evaluation, and approaches for enhancing robustness in the real world."
+    "title_en": "Frontiers of AI Agent Design: A Report on System Architectures and Technology Trends for 2026",
+    "excerpt_en": "The design philosophy for AI agents in 2026 is shifting from \"monolithic all-purpose models\" to \"composable, observable, and constrainable systems.\" This report details the latest architectures, including the separation of planners and executors, trajectory-based evaluation, and techniques to enhance real-world robustness."
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",
