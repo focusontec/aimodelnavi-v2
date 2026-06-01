@@ -1,9 +1,12 @@
 ---
-title: "Gemini OmniとGemini 3.5発表：マルチモーダル生成と「AIエージェント」が切り拓く次世代アプリ実装"
-date: "2026-06-01"
-tag: "Google"
-excerpt: "Google I/O 2026で発表されたGemini OmniとGemini 3.5ファミリーの実用的なユースケースを解説。高度なビデオ生成能力と、自律的にタスクを遂行する「Antigravity」エンジンによるエージェント機能の衝撃に迫ります。"
-source: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/"
+title: Gemini OmniとGemini 3.5発表：マルチモーダル生成と「AIエージェント」が切り拓く次世代アプリ実装
+date: '2026-06-01'
+tag: Google
+excerpt: >-
+  Google I/O 2026で発表されたGemini OmniとGemini
+  3.5ファミリーの実用的なユースケースを解説。高度なビデオ生成能力と、自律的にタスクを遂行する「Antigravity」エンジンによるエージェント機能の衝撃に迫ります。
+source: >-
+  https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/
 ---
 
 ## Gemini OmniとGemini 3.5がもたらすパラダイムシフト
@@ -44,3 +47,11 @@ Gemini Omniによる「一貫性のあるビデオ生成」と、Gemini 3.5（An
 参考：
 [1] Watch 9 Google videos of Gemini Omni and Gemini 3.5 Flash — https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/
 [2] Official Google AI news and updates | Google Blog — https://blog.google/technology/ai/
+
+---
+
+## 関連記事
+
+- [Google I/O 2026速報：Gemini OmniとAntigravityが切り拓く「エージェント開発」の新時代](/blog/google-io-2026gemini-omniantigravity)
+- [Gemini 3.5登場：AIエージェント時代の幕開けと「実行力（Action）」が変えるアプリ設計](/blog/gemini-35aiaction)
+- [Google I/O 2026詳説：Gemini Omniと「エージェント特化型」開発プラットフォームが切り拓く新時代](/blog/google-io-2026gemini-omni)
