@@ -80,7 +80,7 @@ export default function BenchmarksPage() {
 
       {/* Category filters */}
       <div className="flex flex-wrap items-center gap-3 mb-6">
-        <div className="flex rounded-lg border border-gray-200 overflow-hidden">
+        <div className="flex rounded-lg border border-gray-200 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
           {t.categories.map((cat) => (
             <button
               key={cat.key}

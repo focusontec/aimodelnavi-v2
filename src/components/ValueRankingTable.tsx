@@ -94,7 +94,7 @@ export default function ValueRankingTable() {
             className="w-full pl-9 pr-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
           />
         </div>
-        <div className="flex rounded-lg border border-gray-200 overflow-hidden">
+        <div className="flex rounded-lg border border-gray-200 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
           {TYPE_KEYS.map((t) => (
             <button
               key={t}

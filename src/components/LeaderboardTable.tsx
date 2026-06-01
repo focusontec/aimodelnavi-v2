@@ -71,7 +71,7 @@ export default function LeaderboardTable({ benchmarks, benchmarkDefs }: Leaderbo
             placeholder={l.search}
             className="w-full pl-9 pr-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" />
         </div>
-        <div className="flex rounded-lg border border-gray-200 overflow-hidden">
+        <div className="flex rounded-lg border border-gray-200 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
           {TYPE_KEYS.map((t) => (
             <button key={t} onClick={() => { setFilterType(t); setVisibleCount(PAGE_SIZE); }}
               className={`px-3 py-1.5 text-xs font-medium transition-colors ${filterType === t ? "bg-primary-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50"}`}>
@@ -79,7 +79,7 @@ export default function LeaderboardTable({ benchmarks, benchmarkDefs }: Leaderbo
             </button>
           ))}
         </div>
-        <div className="flex rounded-lg border border-gray-200 overflow-hidden">
+        <div className="flex rounded-lg border border-gray-200 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
           {[{ value: "all", label: l.all }, { value: "open", label: l.openSource }, { value: "closed", label: l.closed }].map((s) => (
             <button key={s.value} onClick={() => { setFilterSource(s.value); setVisibleCount(PAGE_SIZE); }}
               className={`px-3 py-1.5 text-xs font-medium transition-colors ${filterSource === s.value ? "bg-primary-600 text-white" : "bg-white text-gray-600 hover:bg-gray-50"}`}>

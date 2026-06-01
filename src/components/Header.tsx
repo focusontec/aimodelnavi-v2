@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { BarChart3, BookOpen, Calculator, GitCompare, ChevronDown, Menu, X, Zap, Target, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const blogTags = [
   "OpenAI", "AIエージェント", "Google", "解説", "Anthropic",
@@ -17,6 +17,35 @@ export default function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [blogDropdownOpen, setBlogDropdownOpen] = useState(false);
+  const [blogTagsExpanded, setBlogTagsExpanded] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    function handleClickOutside(e: MouseEvent) {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target as Node)) {
+        setMobileOpen(false);
+      }
+    }
+    function handleEscape(e: KeyboardEvent) {
+      if (e.key === "Escape") setMobileOpen(false);
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [mobileOpen]);
 
   const prefix = locale === "ja" ? "" : `/${locale}`;
 
@@ -113,31 +142,41 @@ export default function Header() {
 
       {/* Mobile nav */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-gray-100 bg-white px-4 pb-4">
+        <div ref={mobileMenuRef} className="md:hidden border-t border-gray-100 bg-white px-4 pb-4 max-h-[70vh] overflow-y-auto">
           {navItems.map((item) => {
             if (item.label === t("blog")) {
               return (
                 <div key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="flex items-center gap-2 px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg"
-                  >
-                    <item.icon className="w-4 h-4" />
-                    {item.label}
-                  </Link>
-                  <div className="pl-8 pb-1">
-                    {blogTags.map((tag) => (
-                      <Link
-                        key={tag}
-                        href={`${item.href}?tag=${encodeURIComponent(tag)}`}
-                        onClick={() => setMobileOpen(false)}
-                        className="block px-3 py-1.5 text-xs text-gray-500 hover:text-primary-600"
-                      >
-                        {tag}
-                      </Link>
-                    ))}
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center gap-2 px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg"
+                    >
+                      <item.icon className="w-4 h-4" />
+                      {item.label}
+                    </Link>
+                    <button
+                      onClick={() => setBlogTagsExpanded(!blogTagsExpanded)}
+                      className="p-2 text-gray-400 hover:text-gray-600"
+                    >
+                      <ChevronDown className={`w-4 h-4 transition-transform ${blogTagsExpanded ? "rotate-180" : ""}`} />
+                    </button>
                   </div>
+                  {blogTagsExpanded && (
+                    <div className="pl-8 pb-1">
+                      {blogTags.map((tag) => (
+                        <Link
+                          key={tag}
+                          href={`${item.href}?tag=${encodeURIComponent(tag)}`}
+                          onClick={() => setMobileOpen(false)}
+                          className="block px-3 py-1.5 text-xs text-gray-500 hover:text-primary-600"
+                        >
+                          {tag}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
               );
             }

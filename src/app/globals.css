@@ -59,7 +59,7 @@ body {
 .blog-content code { @apply bg-gray-100 text-primary-700 px-1.5 py-0.5 rounded text-sm font-mono; }
 .blog-content pre { @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4 text-sm; }
 .blog-content pre code { @apply bg-transparent text-gray-100 px-0 py-0; }
-.blog-content table { @apply w-full border-collapse mb-4; }
+.blog-content table { @apply w-full border-collapse mb-4 block overflow-x-auto; }
 .blog-content th { @apply px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase bg-gray-50 border border-gray-200; }
 .blog-content td { @apply px-4 py-2 text-sm text-gray-700 border border-gray-200; }
 .blog-content hr { @apply my-8 border-gray-200; }
@@ -94,6 +94,20 @@ body {
   scrollbar-width: none;
 }
 .analysis-tabs-nav::-webkit-scrollbar { display: none; }
+.analysis-tabs-nav-wrap {
+  position: relative;
+}
+.analysis-tabs-nav-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 2rem;
+  background: linear-gradient(to right, transparent, white);
+  pointer-events: none;
+  z-index: 1;
+}
 .analysis-tab {
   @apply flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium whitespace-nowrap
          border-b-2 border-transparent text-gray-500 hover:text-gray-700

@@ -63,7 +63,7 @@ export default async function LocaleLayout({
       <Header />
       <AdSlot position="header-banner" className="w-full flex justify-center py-2" />
       <div className="flex max-w-[1400px] mx-auto">
-        <main className="flex-1 min-w-0">{children}</main>
+        <main className="flex-1 min-w-0 pb-16 xl:pb-0">{children}</main>
         <AdSlot
           position="sidebar"
           className="hidden xl:block w-[160px] shrink-0 sticky top-24"

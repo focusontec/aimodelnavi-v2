@@ -53,7 +53,7 @@ export default function TokenCounterPage() {
         className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-y"
       />
 
-      <div className="mt-6 grid grid-cols-3 gap-4">
+      <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-4">
         <div className="p-5 bg-primary-50 rounded-xl text-center">
           <p className="text-xs font-medium text-primary-600 mb-1">{t.estimatedTokens}</p>
           <p className="text-3xl font-bold text-primary-700">{tokenEstimate.toLocaleString()}</p>

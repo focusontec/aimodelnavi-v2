@@ -52,9 +52,10 @@ export default function MobileAd({ position }: { position: string }) {
   if (!ad) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 flex justify-center bg-white/90 backdrop-blur-sm border-t border-gray-200 xl:hidden">
+    <div className="fixed bottom-0 left-0 right-0 z-50 flex justify-center bg-white/90 backdrop-blur-sm border-t border-gray-200 xl:hidden overflow-hidden">
       <div
         ref={containerRef}
+        className="max-w-full"
         style={{
           width: ad.width || 320,
           height: ad.height || 50,

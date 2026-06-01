@@ -59,10 +59,11 @@ export default function AdSlot({ position, className = "" }: AdSlotProps) {
   return (
     <div
       ref={containerRef}
-      className={className}
+      className={`overflow-hidden ${className}`}
       style={{
         width: ad.width || undefined,
         height: ad.height || undefined,
+        maxWidth: '100%',
       }}
     />
   );

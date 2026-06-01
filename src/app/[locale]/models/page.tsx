@@ -175,7 +175,7 @@ export default function ModelsPage() {
             <button
               key={s}
               onClick={() => handleFilterChange('source', s)}
-              className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
+              className={`px-3 py-2 text-xs font-medium rounded-md transition-colors ${
                 filterSource === s
                   ? 'bg-primary-600 text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -190,7 +190,7 @@ export default function ModelsPage() {
             <button
               key={r}
               onClick={() => handleFilterChange('region', r)}
-              className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
+              className={`px-3 py-2 text-xs font-medium rounded-md transition-colors ${
                 filterRegion === r
                   ? 'bg-accent-600 text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -205,7 +205,7 @@ export default function ModelsPage() {
             <button
               key={j}
               onClick={() => handleFilterChange('jp', j)}
-              className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
+              className={`px-3 py-2 text-xs font-medium rounded-md transition-colors ${
                 filterJp === j
                   ? 'bg-blue-600 text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -264,6 +264,11 @@ export default function ModelsPage() {
               <div className="hidden sm:block text-xs text-gray-600 truncate">{tv(model.params, locale)}</div>
               <div className="hidden sm:block text-xs text-gray-600 truncate">{model.contextWindow}</div>
               <div className="hidden sm:block">
+                <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-medium ${sourceBadgeColors[model.openSource]}`}>
+                  {sourceLabels[model.openSource]}
+                </span>
+              </div>
+              <div className="sm:hidden">
                 <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-medium ${sourceBadgeColors[model.openSource]}`}>
                   {sourceLabels[model.openSource]}
                 </span>

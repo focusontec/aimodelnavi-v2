@@ -262,7 +262,7 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
               {locale === "en" ? jpCap.descriptionEn : jpCap.descriptionJa}
             </p>
             {(jpCap.japaneseMtBench || jpCap.jglue || jpCap.jmmlu) && (
-              <div className="mt-4 grid grid-cols-3 gap-3">
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {jpCap.japaneseMtBench && (
                   <div className="text-center p-2 bg-white rounded-lg">
                     <p className="text-xs text-gray-500">Japanese MT-Bench</p>

@@ -162,7 +162,7 @@ export default function BlogListClient({ posts, locale, labels }: Props) {
             <Link
               key={post.slug}
               href={`${blogBase}/${post.slug}`}
-              className="block p-6 bg-white border border-gray-200 rounded-xl hover:border-primary-300 hover:shadow-sm transition-all"
+              className="block p-4 sm:p-6 bg-white border border-gray-200 rounded-xl hover:border-primary-300 hover:shadow-sm transition-all"
             >
               <div className="flex items-center gap-3 mb-2">
                 <span className="px-2 py-0.5 bg-primary-50 text-primary-700 text-xs font-medium rounded-full">

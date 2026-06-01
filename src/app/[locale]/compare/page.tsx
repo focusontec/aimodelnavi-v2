@@ -128,7 +128,7 @@ export default async function ComparePage({ params }: { params: Promise<{ locale
             key={`${pair.a}-${pair.b}`}
             className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow"
           >
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
               <div className="flex-1">
                 <Link
                   href={`/${locale === "ja" ? "" : locale + "/"}models/${pair.modelA!.slug}`}
@@ -157,7 +157,7 @@ export default async function ComparePage({ params }: { params: Promise<{ locale
                 )}
               </div>
 
-              <div className="flex-1 text-right">
+              <div className="flex-1 sm:text-right">
                 <Link
                   href={`/${locale === "ja" ? "" : locale + "/"}models/${pair.modelB!.slug}`}
                   className="text-lg font-bold text-primary-700 hover:underline"

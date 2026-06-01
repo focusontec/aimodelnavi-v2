@@ -75,7 +75,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 {t.comparePricing}
               </Link>
             </div>
-            <div className="mt-12 grid grid-cols-3 gap-8">
+            <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-8">
               {[{ value: "200+", label: t.modelsListed }, { value: "160+", label: t.pricingData }, { value: t.dailyUpdateVal, label: t.dailyUpdate }].map((stat) => (
                 <div key={stat.label} className="text-white"><div className="text-2xl lg:text-3xl font-bold">{stat.value}</div><div className="text-sm text-primary-200 mt-1">{stat.label}</div></div>
               ))}
