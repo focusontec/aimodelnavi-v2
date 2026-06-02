@@ -21,6 +21,7 @@ import path from "path";
 import matter from "gray-matter";
 import { translateBlogMarkdown, processBlogArticleEn } from "./lib/anthropic";
 import { saveBlogPost, saveBlogPostEn } from "./lib/storage";
+import { captionImages, injectCaptions } from "./lib/image-caption";
 
 // ── CLI argument parsing ──
 
@@ -200,6 +201,14 @@ async function main() {
   console.log(`  Title: ${input.title}`);
   console.log(`  Tag: ${input.tag}`);
   console.log(`  Body: ${input.body.length} chars`);
+
+
+  // Step 0.5: Generate captions for images with Chinese text
+  const captionMap = await captionImages(input.body, input.title);
+  if (captionMap.size > 0) {
+    input.body = injectCaptions(input.body, captionMap);
+    console.log(`  ✓ ${captionMap.size} image captions injected`);
+  }
 
   // Step 1: Translate
   console.log("\n  Translating to Japanese...");
