@@ -14,6 +14,20 @@
     "excerpt_en": "Explore how enterprises can integrate OpenAI's advanced models into their existing AWS infrastructure. This guide covers data pipeline construction, security management, and the strategic balance between multi-cloud agility and platform integration."
   },
   {
+    "slug": "claude-code-workflows",
+    "title": "Claude Code /workflows に任せるべき作業とは？並列エージェントで効率を爆上げる活用法",
+    "tag": "Anthropic",
+    "excerpt": "Claude Codeの/workflows機能は、並列エージェントを使って大規模なタスクを効率的に処理する。コードベースの古いバグ検索や調査報告書の作成に適しており、AIの「体力」を増強し、苦労する作業を自動化する。难题に直面したら、/workflowsと/deep-researchを組み合わせることで、驚異的な効果が得られる。",
+    "topics": [
+      "Anthropic",
+      "AIエージェント",
+      "マルチモーダル"
+    ],
+    "date": "2026-06-02",
+    "title_en": "Scaling Productivity with Claude Code: Mastering Parallel Agents and /workflows",
+    "excerpt_en": "Explore how Claude Code's /workflows feature transforms AI capabilities by shifting the focus from raw intelligence to 'stamina' through parallel agent deployment. Learn how to combine /workflows and /deep-research to tackle massive codebases and complex technical problems."
+  },
+  {
     "slug": "codex-mac-cleanup-skill",
     "title": "CleanMyMacの費用を節約するために、PCクリーニング機能をオープンソースのAIスキルにした話",
     "tag": "解説",
@@ -44,20 +58,6 @@
     "date": "2026-06-02",
     "title_en": "How Step-3.7 Flash Cuts Agent Costs to 1/9 of Claude Opus While Boosting Performance",
     "excerpt_en": "Step-3.7 Flash redefines the role of a 'Flash' model for the agent era, prioritizing production-ready features like high throughput, low cost, and robust tool calling over mere benchmark performance. With an active parameter count of just 11B, it achieves near-flagship coding capabilities at approximately 1/9th the per-task cost of Claude Opus 4.6. This makes it a foundational, agentic model designed for the high-frequency, multi-step demands of real-world AI agent workflows."
-  },
-  {
-    "slug": "claude-code-workflows",
-    "title": "Claude Code /workflows に任せるべき作業とは？並列エージェントで効率を爆上げる活用法",
-    "tag": "Anthropic",
-    "excerpt": "Claude Codeの/workflows機能は、並列エージェントを使って大規模なタスクを効率的に処理する。コードベースの古いバグ検索や調査報告書の作成に適しており、AIの「体力」を増強し、苦労する作業を自動化する。难题に直面したら、/workflowsと/deep-researchを組み合わせることで、驚異的な効果が得られる。",
-    "topics": [
-      "Anthropic",
-      "AIエージェント",
-      "マルチモーダル"
-    ],
-    "date": "2026-06-02",
-    "title_en": "Claude Code /workflows に任せるべき作業とは？並列エージェントで効率を爆上げる活用法",
-    "excerpt_en": "Claude Codeの/workflows機能は、並列エージェントを使って大規模なタスクを効率的に処理する。コードベースの古いバグ検索や調査報告書の作成に適しており、AIの「体力」を増強し、苦労する作業を自動化する。难题に直面したら、/workflowsと/deep-researchを組み合わせることで、驚異的な効果が得られる。"
   },
   {
     "slug": "article-2026-05-26-minimax-m3",
