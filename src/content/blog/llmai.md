@@ -1,9 +1,10 @@
 ---
-title: "LLMはなぜビデオゲームに弱いのか？動的環境における技術的限界とAIエージェントの課題"
-date: "2026-06-01"
-tag: "AIエージェント"
-excerpt: "LLMはコーディングでは高い能力を発揮しますが、ビデオゲームのような動的環境では苦戦します。空間推論の欠如や学習データの不足など、AIが「ゲーム」という環境で直面している技術的課題を分析します。"
-source: "https://spectrum.ieee.org/ai-video-games-llms-togelius"
+title: LLMはなぜビデオゲームに弱いのか？動的環境における技術的限界とAIエージェントの課題
+date: '2026-06-01'
+tag: AIエージェント
+excerpt: >-
+  LLMはコーディングでは高い能力を発揮しますが、ビデオゲームのような動的環境では苦戦します。空間推論の欠如や学習データの不足など、AIが「ゲーム」という環境で直面している技術的課題を分析します。
+source: 'https://spectrum.ieee.org/ai-video-games-llms-togelius'
 ---
 
 ## LLMがビデオゲームという「動的環境」で苦戦する理由
@@ -38,3 +39,11 @@ AIがゲームを攻略するためには、環境のルールを理解する「
 
 参考
 [Why Video Games Still Baffle AI Models - IEEE Spectrum](https://spectrum.ieee.org/ai-video-games-llms-togelius)
+
+---
+
+## 関連記事
+
+- [LLMはなぜビデオゲームを攻略できないのか？動的環境における技術的限界と課題](/blog/llm)
+- [LLM Agentの信頼性はモデルだけで決まらない：Harness EngineeringからState-Aware Runtimeへ](/blog/article-2026-05-30-8t5151)
+- [ARC-AGI-3登場：AIの「真の推論能力」を測る初のインタラクティブ・ベンチマークとは](/blog/arc-agi-3-benchmark-launch-2026)

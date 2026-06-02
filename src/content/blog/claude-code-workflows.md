@@ -1,8 +1,10 @@
 ---
-title: "Claude Code /workflows に任せるべき作業とは？並列エージェントで効率を爆上げる活用法"
-date: "2026-06-02"
-tag: "Anthropic"
-excerpt: "Claude Codeの/workflows機能は、並列エージェントを使って大規模なタスクを効率的に処理する。コードベースの古いバグ検索や調査報告書の作成に適しており、AIの「体力」を増強し、苦労する作業を自動化する。难题に直面したら、/workflowsと/deep-researchを組み合わせることで、驚異的な効果が得られる。"
+title: Claude Code /workflows に任せるべき作業とは？並列エージェントで効率を爆上げる活用法
+date: '2026-06-02'
+tag: Anthropic
+excerpt: >-
+  Claude
+  Codeの/workflows機能は、並列エージェントを使って大規模なタスクを効率的に処理する。コードベースの古いバグ検索や調査報告書の作成に適しており、AIの「体力」を増強し、苦労する作業を自動化する。难题に直面したら、/workflowsと/deep-researchを組み合わせることで、驚異的な効果が得られる。
 ---
 
 皆さんこんにちは、刘小排です。
@@ -84,3 +86,11 @@ Raphael のコードベースをスキャンして、「低リスクで安心し
 **Claude Code を使って真正面から难题にぶつかる際、通常の問題記述の後に /workflows /deep-research を追加するだけで、効果が驚異的になる**
 
 試したか？コメント欄でフィードバックを頼む～
+
+---
+
+## 関連記事
+
+- [Claude Subagent 初心者向け入門ガイド](/blog/claude-subagent)
+- [Claude Opus 4.7 発表：MythosアーキテクチャとManaged Agentsの全貌](/blog/claude-opus-4-7-overview)
+- [Codex Subagent初心者ガイド：並列処理で開発効率を向上させる実践的手法](/blog/codex-subagent)
