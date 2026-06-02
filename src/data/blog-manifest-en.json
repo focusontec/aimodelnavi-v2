@@ -1,5 +1,35 @@
 [
   {
+    "slug": "awsopenaiai",
+    "title": "AWS環境からOpenAIモデルを利用する：エンタープライズAI導入へのアプローチと戦略",
+    "tag": "OpenAI",
+    "excerpt": "AWS上のアプリケーションからOpenAIのモデルを連携させることで、企業のAI導入戦略にどのような変化がもたらされるか。外部API連携による実装アプローチと、インフラ構成の最適化について解説します。",
+    "topics": [
+      "OpenAI",
+      "AIエージェント",
+      "セキュリティ"
+    ],
+    "date": "2026-06-02",
+    "title_en": "Integrating OpenAI Models into AWS: Strategies for Enterprise AI Deployment",
+    "excerpt_en": "Explore how enterprises can integrate OpenAI's advanced models into their existing AWS infrastructure. This guide covers data pipeline construction, security management, and the strategic balance between multi-cloud agility and platform integration."
+  },
+  {
+    "slug": "codex-mac-cleanup-skill",
+    "title": "CleanMyMacの費用を節約するために、PCクリーニング機能をオープンソースのAIスキルにした話",
+    "tag": "解説",
+    "excerpt": "120ドルの清理ソフト费用を節約するために、AI Agentでパソコンの存储容量を扫描・分析するオープンソーススキルを開発した。このスキルは、商用ソフトウェアより详细な情報を提示し、安全なファイルと注意が必要なファイルを色分けして表示するなど、AI時代のツール類ソフトウェアが直面する衝撃を実证するものだ。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "AIエージェント",
+      "オープンソース"
+    ],
+    "date": "2026-06-02",
+    "title_en": "How I Built an Open-Source AI Skill to Clean My Mac and Save $120",
+    "excerpt_en": "Inspired by an AI prompt on X, I created an open-source skill using Codex to analyze and clean computer storage, offering a free, transparent alternative to paid tools like CleanMyMac. The skill works on both Mac and Windows, providing an interactive HTML report with color-coded cleanup suggestions and one-click actions, proving how AI agents can disrupt traditional utility software."
+  },
+  {
     "slug": "step-37-flash-agent",
     "title": "階躍星辰のStep 3.7 Flash：Claude Opus 4.6の1/9コストで実現するAgent向け高効率モデル",
     "tag": "オープンソース",
