@@ -12,6 +12,20 @@
     "date": "2026-06-03"
   },
   {
+    "slug": "codex-deepseekv4-glm51-k26",
+    "title": "CodexにDeepSeek V4、GLM 5.1、K2.6を接続する方法｜プロトコル変換と2つの解決策",
+    "tag": "解説",
+    "excerpt": "CodexにDeepSeek V4、GLM 5.1、K2.6などの第三者モデルを接続する方法を解説する。OpenAI Responses APIとChat Completions APIのプロトコル不一致を解決するため、CC-SwitchとCodex++という2つの主要なアプローチとその選択ガイドを説明する。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "AIエージェント"
+    ],
+    "date": "2026-06-03"
+  },
+  {
     "slug": "codex",
     "title": "Codexが切り拓く「ナレッジワーク自動化」の未来：コーディング補助から汎用生産性ツールへ",
     "tag": "OpenAI",

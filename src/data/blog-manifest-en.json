@@ -14,6 +14,22 @@
     "excerpt_en": "National AI ecosystems are becoming critical infrastructure for competitive advantage, requiring strategic partnerships, focused use cases, and open environments. Countries must move beyond ad-hoc adoption to integrate AI holistically, with lessons from global examples guiding future-ready frameworks."
   },
   {
+    "slug": "codex-deepseekv4-glm51-k26",
+    "title": "CodexにDeepSeek V4、GLM 5.1、K2.6を接続する方法｜プロトコル変換と2つの解決策",
+    "tag": "解説",
+    "excerpt": "CodexにDeepSeek V4、GLM 5.1、K2.6などの第三者モデルを接続する方法を解説する。OpenAI Responses APIとChat Completions APIのプロトコル不一致を解決するため、CC-SwitchとCodex++という2つの主要なアプローチとその選択ガイドを説明する。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "AIエージェント"
+    ],
+    "date": "2026-06-03",
+    "title_en": "How to Use DeepSeek, GLM, and Kimi Models with Codex: A Guide to CC-Switch and Codex++",
+    "excerpt_en": "This guide explains why directly using third-party AI model API keys like DeepSeek or GLM in Codex fails due to protocol mismatches between the Responses API and Chat Completions API. It introduces two practical solutions: CC-Switch, a local proxy for protocol conversion, and Codex++, a desktop enhancement tool for configuration injection. The article provides detailed setup steps and compares their approaches to help you choose the right integration method."
+  },
+  {
     "slug": "codex",
     "title": "Codexが切り拓く「ナレッジワーク自動化」の未来：コーディング補助から汎用生産性ツールへ",
     "tag": "OpenAI",
@@ -52,8 +68,8 @@
       "ベンチマーク"
     ],
     "date": "2026-06-03",
-    "title_en": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
-    "excerpt_en": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。"
+    "title_en": "From 'Open-Source Hero' to 'Closed Model': The Structural Shift in the AI Industry Revealed by the Qwen3.7-Max Closure Issue",
+    "excerpt_en": "Alibaba's Qwen, once hailed as the \"last bastion of open source\" with 942 million downloads and 200,000 derived models, announced Qwen3.7-Max as a completely closed model, surprising and disappointing the community. This article delves into the implications of this shift, historical parallels, and the remaining options for developers."
   },
   {
     "slug": "awsopenaiai",
@@ -1197,8 +1213,8 @@
       "コーディング"
     ],
     "date": "2026-05-21",
-    "title_en": "Google I/O 2026速報：Gemini OmniとAntigravityが切り拓く「エージェント開発」の新時代",
-    "excerpt_en": "Google I/O 2026で発表されたGemini 3.5 FlashやOmni、そしてエージェント開発プラットフォーム「Google Antigravity」を解説。開発者が注目すべきマルチモーダル統合と自律型エージェントの衝撃をまとめます。"
+    "title_en": "Google I/O 2026 Quick Report: The New Era of 'Agent Development' Pioneered by Gemini Omni and Antigravity",
+    "excerpt_en": "This article explains Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. It summarizes the impact of multimodal integration and autonomous agents that developers should pay attention to."
   },
   {
     "slug": "aiprovenance",
@@ -1444,8 +1460,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-20",
-    "title_en": "AIエージェント設計の最前線：2026年に向けたシステムアーキテクチャと技術トレンド報告書",
-    "excerpt_en": "2026年に向けたAIエージェントの設計思想は、「万能な単体モデル」から「構成・観測・制約可能なシステム」へと転換しています。本レポートでは、プランナーと実行者の分離、軌跡ベースの評価、そして現実世界での堅牢性を高めるための最新アーキテクチャを詳説します。"
+    "title_en": "The Forefront of AI Agent Design: System Architecture and Technology Trends Report for 2026",
+    "excerpt_en": "The design philosophy for AI agents in 2026 is shifting from a \"universal monolithic model\" to a \"composable, observable, and constraint-manageable system.\" This report details the latest architectures, including the separation of planners and executors, trajectory-based evaluation, and techniques to enhance robustness in real-world applications."
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",
