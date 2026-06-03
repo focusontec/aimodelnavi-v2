@@ -1,201 +1,269 @@
 ---
-title: "Understanding World Models: The Core Technology for AI 'Thought' Before Action"
+title: "World Models Explained: The Next Frontier Beyond LLMs"
 date: "2026-06-02"
 tag: "Open Source"
-excerpt: "Explore the evolution of World Models from conceptual predictions in 1943 to the cutting-edge architectures like V-JEPA 2 and DreamDojo. This deep dive explains how AI is moving from passive observation to active participation by simulating the physical consequences of actions."
+excerpt: 'This article provides a comprehensive overview of "world models," a major trend in AI focused on predicting the consequences of actions rather than just describing the world. It covers the concept's 80-year history, from neuroscience foundations to modern architectures like Dreamer and JEPA, and compares five key technical approaches. The surge in interest is driven by concurrent advances in video generation, embodied AI data bottlenecks, and validated applications in autonomous driving safety simulation.'
 ---
 
-## The Convergence of AI Giants: LeCun, Fei-Fei, and Hassabis
+Recently, the AI world has witnessed a fascinating shift in focus. Turing Award winners **Yann LeCun** and Xie Saining co-founded AMI Labs, securing a **$1 billion** investment not to build bigger LLMs, but to create a "world model." Almost simultaneously, **Fei-Fei Li**'s World Labs raised hundreds of millions, focusing on "spatial intelligence"—helping AI understand the 3D world, not just chat and create images. With DeepMind's **Demis Hassabis** also backing Genie, some of AI's most prominent names are converging on the same path.
 
-Recently, a counter-mainstream movement has emerged in the AI industry. 
+This path is the **World Model**.
 
-Turing Award winner **Yann LeCun**, alongside Sainbay Xie, founded AMI Labs and raised **$1 billion**. Rather than building larger LLMs, they are targeting the development of "World Models." Almost simultaneously, **Fei-Fei Li's** World Labs raised hundreds of millions to pioneer "Spatial Intelligence," aiming to give AI a true understanding of the 3D world beyond mere chatting or drawing. Combined with **Demis Hassabis** at DeepMind—who continues to bet heavily on projects like Genie—the most influential names in AI are pivoting toward the same frontier.
+It tackles a problem entirely different from LLMs: an LLM tells you "what the world is like," while a world model tells you **"what the world will become if I do this."** One is an observer; the other is a participant.
 
-This field is known as **World Models**.
+Recently, Datawhale launched an open-source project called **learn-world-model**, aiming to guide everyone from zero to understanding and building world models. This article serves as an introductory guide.
 
-World models solve a fundamentally different problem than LLMs. While an LLM can tell you *what the world is*, a world model tells you **"how the world will change after I take this specific action."** One is an observer; the other is a participant.
+![Picture](/images/blog/world-models-survey/img-1.png)
+Open-source address: https://github.com/datawhalechina/learn-world-model/tree/main
 
-To help the community master this complex topic, Datawhale has launched the **learn-world-model** open-source project. This article serves as a comprehensive introduction to the field, bridging the gap between conceptual theory and practical implementation.
+We'll avoid jargon and equation bombs. First, we'll clarify what it is, then walk through its 80-year history, and finally dissect the five hottest technical approaches.
 
-![](/images/blog/world-models-survey/img-1.png)
+This lineage actually starts much earlier than LLMs. As far back as 1943, British psychologist Kenneth Craik hypothesized that the brain maintains a "small-scale model of reality," running simulations before acting. Eighty years later, these titans are bringing it to life in their own ways.
 
-We will avoid jargon and heavy formulas. Instead, we will define what a world model is, trace its 80-year evolutionary history, and analyze the five most prominent technical trajectories currently dominating the research.
+## First, A Story: The Brain is a "Prediction Machine"
 
-The origin of this concept predates LLMs by decades. In 1943, British psychologist Kenneth Craik predicted that the brain maintains a "reduced model of reality," running internal simulations before executing actions. Eighty years later, this prediction is being realized through the efforts of today's AI pioneers.
+Neuroscience discovered something intriguing in the 1990s: the brain doesn't passively "see" the world; it actively **predicts** the world and only processes the "prediction errors."
 
-## The Brain as a "Prediction Machine"
+This is called **Predictive Coding**.
 
-Neuroscience revealed a fascinating fact in the 1990s: the brain doesn't simply "see" the world; it **predicts** it and only processes the parts where the prediction fails.
+The visual cortex doesn't faithfully transmit every pixel received from the eyes—too energy-intensive. Higher brain layers continuously send "predictions" down to lower layers, which only report the **error** between prediction and actual sensory input.
 
-This is known as **Predictive Coding**.
+When you walk into a familiar office, your brain processes almost nothing because everything is as expected. But if your colleague's chair is in a different spot, that "error" signal immediately grabs your attention. Accurately predicted parts are compressed away; only errors are worth the metabolic resources.
 
-The visual cortex does not pass every single pixel to higher layers because it would be too energy-intensive. Instead, higher layers send "predictions" down to lower layers; the lower layers only transmit the **error** (the difference between the prediction and actual sensory input) back up. 
+Control engineering independently discovered a similar principle in the 1960s, called the **Internal Model Principle**:
 
-When you walk into a familiar office, your brain processes very little information because everything is expected. However, if a colleague's chair has been moved, that "deviation" signal immediately captures your attention. Predicted information is compressed; only the errors consume valuable cognitive resources.
+> To achieve perfect control over a system, the controller must contain a model of that system.
 
-In control engineering, a similar principle was discovered in the 1960s called the **Internal Model Principle**: 
+To control something, you must first understand it. This principle underpins robotics, spacecraft, and autonomous driving, and later became the theoretical foundation for model-based reinforcement learning.
 
-> "To completely control a system, the controller must contain a model of that system within itself."
+## What Exactly is a World Model? (This One Formula is Enough)
 
-To control something, you must first understand it. This principle underlies everything from robotics to spacecraft and autonomous driving, forming the theoretical bedrock of Model-Based Reinforcement Learning (MBRL).
+The term is often used loosely; let's define its boundaries.
 
-## What Exactly is a World Model?
+**Broadly speaking:** Any model that can predict "what will happen next" can be called a world model. Video generation models predict the next frame, language models predict the next word, weather forecasts predict tomorrow's temperature—all qualify.
 
-The term is often used loosely, so it is important to clarify the scope.
-
-**Broadly speaking**, any model that can predict "what happens next" can be called a world model. Video generation models predict the next frame, language models predict the next word, and weather models predict tomorrow's temperature. All fit this general description.
-
-**In a narrow sense**, specifically within reinforcement learning and robotics, a world model must be conditioned on **actions**. It doesn't just ask "what does the next frame look like?" but rather:
+**Narrowly speaking**, in reinforcement learning and robotics, a world model has a stricter meaning: it must be conditioned on an **action**. It's not just "what the next frame looks like," but rather:
 
 > "How will the world change after I take this action?"
 
-Mathematically, it predicts the probability distribution of the next observation given the current observation and action:
+In one sentence: given the current observation and an action, predict the probability distribution of the observation at the next time step.
 
-![](/images/blog/world-models-survey/img-2.png)
+![Picture](/images/blog/world-models-survey/img-2.png)
 
-Here, $o_t$ is the current observation, $a_t$ is the action taken, and $o_{t+1}$ is the observation at the next time step.
+Where $o_t$ is the current observation, $a_t$ is the executed action, and $o_{t+1}$ is the next observation.
 
-This condition transforms the model from an "observer" to a "participant": it doesn't just simulate the world, it tells you **the consequences of your choices**. This is precisely what a robot needs to navigate the physical world.
+With this single condition, the world model transforms from an "observer" to a "participant": it doesn't just tell you how the world will be, but also what **the consequences of your choices will be**. Robots specifically need the latter.
 
-## The Three Irreplaceable Values of World Models
+This article focuses on this stricter definition.
 
-World models provide three critical advantages. While the first is intuitive, the latter two are the primary drivers for industrial adoption.
+## What Can a World Model Do? Three Irreplaceable Values
 
-### 1. Sample Efficiency: Practicing Ten Thousand Times in the Mind
+Three key values. The first is most intuitive; the next two are what industry truly cares about, and are often overlooked.
 
-Model-Free Reinforcement Learning (RL) often requires millions of real-world interactions to learn simple tasks, consuming massive time and resources. 
+### Value 1: Sample Efficiency — Practice 10,000 Times in Your Head
 
-World models allow an agent to "virtually experience" vast amounts of trajectories via internal simulation:
+Model-Free reinforcement learning requires millions of real-world interactions to learn a simple task, with each interaction consuming real time and resources.
 
-![](/images/blog/world-models-survey/img-3.png)
+A world model allows an agent to "virtually experience" massive amounts of trajectories through internal simulation:
 
-Dreamer V3 (arXiv:2301.04104) surpassed human-level performance on the Atari 100k benchmark (which allows only 100,000 real-world steps) by utilizing this exact mechanism.
+![Picture](/images/blog/world-models-survey/img-3.png)
 
-### 2. Planning Ability: Computing Before Moving
+Dreamer V3 (arXiv:2301.04104) surpassed human performance on the Atari 100k benchmark (allowing only 100,000 real environment steps), relying precisely on this mechanism.
 
-With a world model, an agent can simulate various possible paths in its head before acting, selecting the one with the highest expected reward.
+### Value 2: Planning Capability — Calculate Before You Act
 
-MuZero (DeepMind, 2020, arXiv:1911.08265) relied on this to master chess, Go, and Atari games without ever being told the rules of the game, by learning its own internal dynamics model.
+With a world model, an agent can mentally simulate multiple paths before acting, choosing the one with the highest expected reward.
 
-### 3. Safety: The Industrial Critical Factor
+MuZero (DeepMind, 2020, arXiv:1911.08265) used this mechanism to learn an internal dynamics model *without being told the game rules* (state transition equations, terminal conditions), and mastered universal strategies for Chess, Go, and Atari games.
 
-In robotics and autonomous driving, the cost of trial-and-error can be catastrophic. World models solve this by synthesizing safe training data:
+### Value 3: Safety — The Killer Feature Industry Values Most
 
-![](/images/blog/world-models-survey/img-4.png)
+In robotics, autonomous driving, and industrial control, the cost of trial and error can be catastrophic.
 
-Wayve's GAIA-1 (arXiv:2309.17080) demonstrates this at an industrial scale. By conditioning on real driving fragments, the model can automatically generate variations—such as different weather conditions or pedestrian behaviors at the same intersection. This expands the coverage of safety-critical scenarios far beyond what real-world data collection could achieve, at a fraction of the cost.
+The world model's solution:
 
-## A Brief History: From 1943 to 2026
+![Picture](/images/blog/world-models-survey/img-4.png)
+Wayve's GAIA-1 (arXiv:2309.17080) has validated this approach at an industrial scale: given real driving footage, the model can automatically generate variants of the same intersection with different weather/pedestrian behaviors, increasing training coverage for safety-critical scenarios to a scale impossible with pure real-world data collection, at a fraction of the cost.
 
-### Phase 1: Theoretical Foundations (1950s – 2017)
+## A Brief History: From 1943 to 2026, Four Eras
 
-For 70 years, researchers used Recurrent Neural Networks (RNNs), Kalman Filters, and Hidden Markov Models to predict future states across audio, robotics, and control. These were disparate tools, not yet unified under the banner of "World Models."
+### Era 1: Theoretical Foundations (1950s–2017)
 
-For example, the 1960s Kalman Filter helped the Apollo navigation system predict a spacecraft's position in real-time. It "guessed" the next second's position via an internal model and then corrected the error using sensor readings. The same logic reappeared later in speech recognition and industrial robotics.
+Recurrent Neural Networks (RNNs), Kalman filters, Hidden Markov Models... For seventy years, researchers in control theory, speech recognition, and robotics built tools for "predicting future states" in different corners, never collectively called "world models."
 
-### Phase 2: "Learning to Drive in Dreams" (2018)
+A prime example: the Kalman filter helped the Apollo navigation system predict spacecraft position in real-time in the 1960s. Instead of waiting for sensor readings, it used an internal model to "guess" where the spacecraft would be in the next second, then corrected the error with actual measurements. This same logic later appeared in speech recognition, weather forecasting, and industrial robots, just in different mathematical attire.
 
-In 2018, David Ha and Jürgen Schmidhuber published *World Models* (arXiv:1803.10122), proposing a three-module framework:
+It wasn't until 2018 that a paper first assembled these scattered tools into an end-to-end trainable framework.
 
-![](/images/blog/world-models-survey/img-5.png)
+### Era 2: "Learning to Drive in a Dream" (2018)
 
-- **V-module (Vision):** A CNN that compresses game frames into a low-dimensional vector $z$.
-- **M-module (Memory):** An MDN-RNN that predicts the next $z$ based on the current $z$ and action.
-- **C-module (Controller):** A simple linear layer mapping the current state to an action.
+In 2018, David Ha and Jürgen Schmidhuber published "World Models" (arXiv:1803.10122), constructing the framework with three modules:
 
-Their most striking experiment involved training the controller within the **virtual environment** imagined by the memory module and then transferring that policy to the real game. **"
-Learning to drive in dreams and waking up ready to run"** became the defining metaphor that brought world models into the spotlight.
+![Picture](/images/blog/world-models-survey/img-5.png)
+The V module is a convolutional neural network that compresses each game frame into a low-dimensional vector *z*. The M module is a Mixture Density Network + RNN (MDN-RNN), taking *z* and the previous action as input to predict the probability distribution of the next *z*. The C module is a simple linear layer that maps the current *z* and hidden state to an action.
 
-However, this revealed a core challenge: "reward hacking." The controller learned to exploit errors in the world model to achieve fake high scores in its dreams—essentially "cheating" the simulation. This remains a central challenge in the field.
+Their most fascinating experiment: they placed the controller inside a **virtual environment** hallucinated by the memory module for training, then transferred the policy to the real game. **Learn to drive in a dream, and you can hit the road upon waking.** This metaphor brought world models into the public eye for the first time.
 
-### Phase 3: The Latent Space Revolution (2019 – 2022)
+However, the experiment also exposed a core challenge: the controller learned to **exploit errors in the world model** to generate fake high scores—cheating in the dream rather than learning real skills. In RL, this is known as **reward hacking**. The model hadn't learned to drive yet, but had already learned to game the KPIs. This problem has since become a central challenge the entire field continually strives to overcome.
 
-Danijar Hafner and colleagues introduced Dreamer V1 (arXiv:1912.01603) and the **Recurrent State Space Model (RSSM)**, pushing the architecture forward.
+### Era 3: The Latent Space Revolution (2019–2022)
 
-The key shift was to **avoid doing anything in pixel space**. Instead, prediction, planning, and reward learning all happened within a low-dimensional **latent space**.
+In 2019, Danijar Hafner et al. introduced Dreamer V1 (arXiv:1912.01603), introducing the **RSSM (Recurrent State-Space Model)**, pushing world model architecture to a new level.
 
-**What is latent space?** It compresses a 64x64 game frame (12,288 pixel values) into a small vector, discarding irrelevant details like lighting or background noise and retaining structural information (e.g., "there is a platform here, an enemy there"). This is typically achieved via a **Variational Autoencoder (VAE)**.
+Dreamer's core change was singular: **stop doing anything in pixel space.** The entire pipeline of prediction, planning, and reward learning happens directly in a low-dimensional **latent space**.
 
-Predicting in pixel space is computationally expensive and noisy. RSSM solves this by splitting the process into two paths: a **deterministic path** (using a GRU) to capture smooth dynamics, and a **stochastic path** to handle environment uncertainties (e.g., will the ball go in the hole?).
+**What is latent space?** Compress a 64×64 game frame (12,288 pixel values) into a vector of just a few dozen dimensions, discarding irrelevant details like lighting, textures, and background noise, keeping only structural information like "there's a platform here, an enemy there." This compressed, low-dimensional space is the latent space. The network performing the compression is a **VAE (Variational Autoencoder)**, trained so that reconstructing from the compressed code closely resembles the original.
 
-![](/images/blog/world-models-survey/img-6.png)
+Why is this change so critical? Predicting in pixel space requires the model to be responsible for the precise values of 12,288 numbers, including every background pixel of noise and every subtle change in lighting, demanding immense computational power.
 
-This allowed the "Imagine $\rightarrow$ Score $\rightarrow$ Act" cycle to occur entirely within the latent space, running significantly faster than the real environment. Dreamer V3 eventually achieved competitive results across 150+ tasks in 8 different domains using a single set of hyperparameters.
+RSSM splits this problem into two parallel paths. A deterministic path uses a **GRU** (a type of RNN unit good at remembering "what has happened so far") to capture smooth, continuous dynamics. A stochastic path samples a random vector from a learned probability distribution to capture genuine environmental uncertainty, like whether a thrown ball will bounce into a hole. The two paths are concatenated before making the next prediction:
 
-### Phase 4: Video as the World (2023 – Present)
+![Picture](/images/blog/world-models-survey/img-6.png)
+With this structure, Dreamer plans by feeding the current state into the RSSM, rolling out predictions for several future steps internally without interacting with the real environment, scoring them with a learned reward model, selecting the action sequence with the highest expected cumulative reward, and executing the first step. The entire "imagine-score-act" loop occurs in latent space, far faster than running in the real environment.
 
-Recently, two parallel tracks have converged on the question: *Can we learn the laws of physics purely from video?*
+The Dreamer series evolved from V1 to V4, becoming the flagship work in the world model field. Dreamer V3 (arXiv:2301.04104) used a **single set of hyperparameters** to span over 150 tasks across 8 domains including Atari, Minecraft, and robotics control, achieving competitive results in each—a feat never before accomplished.
 
-**Track A: JEPA (Joint Embedding Predictive Architecture)**
-Yann LeCun's team abandoned pixel reconstruction entirely, predicting only within a **semantic embedding space**.
+The "cheating problem" from Era 2 was structurally mitigated within the RSSM architecture: policy learning occurs entirely in latent space, drastically reducing exploitable "holes." Later, V-JEPA 2 cut off shortcuts at the training mechanism level using EMA (discussed below).
 
-![](/images/blog/world-models-survey/img-7.png)
+### Era 4: Video as the World (2023+)
 
-As LeCun puts it, "You don't need to draw a face to know who a person is." Meta's V-JEPA 2 (2025) is positioned as a component for AGI, predicting future visual representations in semantic space rather than generating realistic images.
+Around 2023, two parallel paths converged: **Could we use video itself to learn the physical laws of the world?**
 
-**Track B: Large-Scale Video Generation**
+**Path A: JEPA (Joint Embedding Predictive Architecture)**
 
-Google's Genie and Veo, followed by NVIDIA's Cosmos, have raised a provocative question: In the process of generating realistic video, do these models accidentally learn **spatial structure, object permanence, and coarse physics**? If so, could these generators serve as the foundation for robotic world models?
+Yann LeCun's team took a path fundamentally different from diffusion models: abandoning pixel reconstruction, predicting only in **semantic embedding space**.
 
-## The Perfect Storm: Why Now?
+![Picture](/images/blog/world-models-survey/img-7.png)
+"I don't need to draw your face; I just need to know who you are."
 
-Why has 2024-2025 become the era of the world model? It is the result of three converging trends:
+Meta's V-JEPA 2, released in 2025, is explicitly positioned as a "**world model component towards AGI**": given an action sequence, it predicts future visual representations in semantic space—not generating photorealistic video, but understanding "if I move my arm like this, where will the object be."
 
-1. **Explosion in Video Quality:** Models like Genie and Cosmos have improved so much that researchers are now questioning if they've acquired a true understanding of physics.
-2. **Data Bottlenecks in Embodied AI:** Training general-purpose robots requires massive amounts of teleoperation data, which is expensive. World models provide a shortcut by learning indirectly from unlabeled videos.
-3. **Proven Business Value in Auto-Driving:** GAIA-1 proved that using world models to synthesize rare "edge case" scenarios is far more efficient than simply driving millions of real-world miles.
+**Path B: Large-Scale Video Generation**
 
-## Five Technical Trajectories: A Deep Dive
+Google's Genie and Veo launched in 2024, followed by NVIDIA's Cosmos in early 2025. Researchers began asking: In the process of generating realistic video, do these models also learn **spatial structure, object permanence, and coarse-grained physical laws**? If so, could they serve as a foundational world model for robots?
 
-Depending on the bottleneck—sample efficiency, long-term dependency, generation quality, or semantic understanding—different architectures are chosen:
+This question remains unanswered definitively, but is serious enough to bring two previously parallel fields to the same discussion table.
 
-### Architecture Comparison Matrix
-![](/images/blog/world-models-survey/img-8.png)
+## Why the Surge in Just the Past Two Years?
 
-### 1. STORM: Turning Frames into "Sentences"
+Dreamer V1 from Era 3 was in 2019, and video generation in Era 4 started in 2023. Why did 2024–2025 become the highlight of every AI conference?
 
-STORM (NeurIPS 2023) treats video frames like tokens in a language model. It uses a **Categorical VAE** to compress frames into **discrete latent variables**. Instead of storing a full waveform of audio, it's like describing a song as "the chorus of the first verse."
+It wasn't a single breakthrough, but the simultaneous maturation of three independent threads.
 
-![](/images/blog/world-models-survey/img-9.png)
+**Thread 1: Video Generation Suddenly Became Powerful.** The emergence of Genie, Veo, and Cosmos (Era 4) dramatically improved video generation quality in a short time. But this quality boost raised a deeper question: high generation quality doesn't equal deep physical understanding. Can these models serve as a foundational world model for robots? This question spawned a surge in cross-disciplinary research, which is why world model discussions appeared in both video generation and robotics conferences after 2024.
 
-By reducing each frame to a single token, STORM drastically shortens sequence lengths, enabling rapid training. It achieved a record-breaking Human Normalized Score (HNS) of 126.7% on Atari 100k, training on a single RTX 3090 in just 4 hours.
+**Thread 2: Embodied Intelligence Hit a Data Bottleneck.** Training general-purpose robots requires massive teleoperation data, which is prohibitively expensive. World models provide a workaround: learning indirectly from unlabeled videos.
 
-### 2. Diamond: "Painting" the Next Frame via Diffusion
+**Thread 3: Autonomous Driving Validated the Commercial Value of "Counterfactual Simulation."** Wayve's GAIA-1 has already proven at an industrial scale that generating synthetic data for rare, dangerous scenarios with a world model is more efficient than simply accumulating test miles. The commercial logic of this path has been validated.
 
-Diamond (NeurIPS 2024) uses **Diffusion Models** to denoise and generate the next frame. By injecting action information via **cross-attention** into a U-Net, the model conditions the denoising process on the agent's actions.
+The last world model hype (2018–2020) was academia-led, proving feasibility in games with distant practical applications. This time (2024+), both industry and academia are entering the field because it has touched real cost bottlenecks and safety requirements.
 
-![](/images/blog/world-models-survey/img-10.png)
-![](/images/blog/world-models-survey/img-11.png)
+## Five Technical Approaches, Explained
 
-Diamond achieved an HNS of 146%, outperforming previous world models with superior visual quality. The trade-off is computational cost: generating one frame requires multiple neural network passes, making it orders of magnitude slower than STORM.
+Post-2023, world models have分化 into five paths, each facing different core trade-offs: RNN/RSSM prioritizes sample efficiency, Transformers aim for long-range modeling, Diffusion models pursue generation quality, JEPA focuses on semantic understanding, and Embodied WM seeks data efficiency. The choice depends on which bottleneck your task is most sensitive to.
 
-### 3. V-JEPA 2: Understanding Without Drawing
+### 📊 Architecture Comparison at a Glance
 
-V-JEPA 2 (Meta, 2025) is the most unconventional: it generates no images at all. It predicts the **semantic representation** of masked spatio-temporal blocks in a video.
+![Picture](/images/blog/world-models-survey/img-8.png)
 
-![](/images/blog/world-models-survey/img-12.png)
+### STORM: Turning Game Frames into "Sentences"
 
-A major challenge here is "representation collapse," where the model maps all inputs to the same vector to minimize error. To prevent this, V-JEPA uses **EMA (Exponential Moving Average)**. The target encoder's parameters only slowly approach the student encoder, ensuring they never fully synchronize and forcing the model to learn meaningful features.
+STORM (NeurIPS 2023, arXiv:2310.09615) applies GPT's text-processing approach to video frames.
 
-### 4. DreamDojo: "Stealing" Skills from Human Videos
+GPT can predict the "next word" because words are discrete and can be modeled with probability distributions. STORM uses a **Categorical VAE** to compress each frame into a **discrete latent variable**, like describing a musical phrase as "the A-section climax" instead of retaining "the complete waveform data for these 4 seconds." This discrete code is then merged with the current action into a single token for the Transformer to process.
 
-DreamDojo (NVIDIA, 2026) addresses the scarcity of robot data by pre-training on massive datasets of human daily activities (like Ego4D). Since the laws of physics are the same for humans and robots, this knowledge transfers.
+![Picture](/images/blog/world-models-survey/img-9.png)
+The single-token design drastically shortens sequence length (the contemporaneous IRIS method produced 16 tokens per frame, while STORM uses only 1), greatly speeding up training. On the Atari 100k benchmark, STORM set the record at the time for methods without additional planning algorithms with an average Human Normalized Score (HNS) of **126.7%** (with human performance as 100%), requiring only about 4 hours on a single RTX 3090.
 
-To handle the lack of action labels in human videos, it uses **continuous latent actions**—automatically extracting motion patterns from the difference between adjacent frames.
+### Diamond: "Painting" the Next Frame with Diffusion
 
-![](/images/blog/world-models-survey/img-13.png)
+Diamond (NeurIPS 2024, arXiv:2405.12399) took a different path: no discrete compression, instead using a diffusion model to gradually "denoise" into the next frame.
 
-DreamDojo achieves an inference speed of 10.81 FPS at 640x480 resolution, enabling real-time robot control and impressive zero-shot generalization across environments.
+The core logic of a **Diffusion Model** is to first add noise to corrupt real images, then train a model to reverse the noise step by step. In the world model scenario, conditioned on historical frames and the current action, the denoised result of the diffusion model is the prediction of the next frame.
 
-## The Great Debate: Is the World Model the Right Path?
+Diamond chose the rightmost approach: injecting action information into the U-Net via **cross-attention**, making the denoising process action-conditional:
 
-There are three prevailing schools of thought regarding the future of AI:
+![Picture](/images/blog/world-models-survey/img-10.png) ![Picture](/images/blog/world-models-survey/img-11.png)
 
-**View 1: The World Model is the Only Way (LeCun/Xie)**
-AMI Labs is betting $1 billion that the current LLM-centric trend is a detour. Sainbay Xie famously remarked that "language is a drug"—useful, but a shortcut. LeCun argues that true intelligence requires modeling the physical world directly from continuous sensory signals, not from the secondary abstraction of human symbols (language).
+Diamond surpassed all previous world model methods on Atari 100k with an average HNS of **146%**, and its generated video frames had the highest visual quality among the five architectures.
 
-**View 2: Multimodal LLMs are Sufficient (DeepMind/Google)**
-Demis Hassabis views the path to a world model as an evolution of Large Multimodal Models (LMMs). By layering spatial perception and RL onto the existing vast knowledge base of LLMs, they can inherit "world common sense" without building a new architecture from scratch.
+The trade-off: generating one frame requires multiple neural network forward passes, making computational overhead far higher than single-pass methods like STORM (measured frame generation throughput differs by roughly an order of magnitude); moreover, the generation process is non-differentiable, making it difficult to interface directly with policy optimization.
 
-**View 3: The Hybrid Pragmatists**
-Many believe the answer lies in combining the two: using LLMs for high-level reasoning and JEPA-style world models for low-level physical interaction. While LLMs provide the "what" and "why," the world model provides the "how" of physical movement.
+### V-JEPA 2: No Painting, Only Understanding
+
+V-JEPA 2 (Meta, 2025, arXiv:2506.09985) is the most "different": it doesn't generate images at all.
+
+Its training objective is: given visible spatio-temporal patches from a video, predict the **semantic representation** of occluded patches, not pixel values. V-JEPA 2 further adds action conditioning, enabling the model to answer "how will the video's semantic representation change after executing this action sequence."
+
+![Picture](/images/blog/world-models-survey/img-12.png)
+
+There's a pitfall here: if two encoders are updated in perfect sync, the model quickly finds a shortcut—mapping all inputs to the same vector minimizes prediction error, known as **Representation Collapse**. The key to blocking this shortcut is **EMA (Exponential Moving Average)**: the target encoder's parameters don't follow gradients directly. Instead, they move slightly towards the other encoder at each step (e.g., retaining 99% of the old value, absorbing 1% of the new value), like a shadow always slightly delayed. Since they're never in sync, the model can't "cheat" by outputting a fixed vector.
+
+V-JEPA 2 is explicitly positioned by Meta as a fundamental component for world models, not a video generator. Its advantage lies in **structural understanding** of the physical world: ignoring pixel-level details like lighting and texture, it models directly at the semantic level—"where is this object, is the hand holding it."
+
+### DreamDojo: "Stealing" Robot Skills from Human Videos
+
+DreamDojo (NVIDIA, 2026, preprint, arXiv:2602.06949) addresses robotics' most practical problem: robot manipulation data is absurdly expensive.
+
+Collecting high-quality robot teleoperation data requires specialized hardware, skilled operators, and real physical scenes, driving costs extremely high. However, the internet holds tens of thousands of hours of human daily operation videos (public datasets like Ego4D already exceed 44,000 hours), far exceeding the scale of robot teleoperation datasets.
+
+DreamDojo's approach: first perform large-scale pre-training on these human videos to learn basic physical interaction laws (gravity, object collisions, hand motion patterns), then fine-tune on a small amount of robot data. Humans and robots have different morphologies, but the physical laws are the same—this is the premise for transfer.
+
+How is the action labeling problem solved? Using **Continuous Latent Actions** as a proxy: automatically extracting a vector of a few dozen dimensions from the differences between adjacent frames, representing "what type of change occurred between frames." It's neither joint angles nor torque, but an abstract motion pattern automatically discovered by the model from video, bypassing the need for frame-by-frame manual annotation.
+
+![Picture](/images/blog/world-models-survey/img-13.png)
+Ultimately, DreamDojo achieves an inference speed of **10.81 FPS** at 640×480 resolution, meeting the basic requirements for real-time robot control, and demonstrates zero-shot generalization across different environments.
+
+## The Debate: Is the World Model Really the Right Answer?
+
+Five architectures, five paths, each attracting investment, funding, and papers. But there's one question none of these papers answer: Is the world model truly the right direction? The AI field has three distinct voices on this, worth hearing separately.
+
+### Voice 1: The World Model is the Only Correct Path
+
+This is Yann LeCun and Xie Saining's stance. AMI Labs, founded in December 2025 with LeCun as Executive Chairman and Xie as Chief Scientific Officer, had raised over $1 billion by March 2026. They explicitly target the Silicon Valley mainstream "centered on LLMs." Others raise billions to buy GPUs for training LLMs; they raise billions to prove everyone is training LLMs in the wrong direction.
+
+Xie Saining's metaphor has circulated widely (from interview transcript):
+
+> "Language is a 'narcotic.' It's useful, but it's a shortcut. If you keep walking with a crutch, you can't train your thigh muscles."
+
+LeCun's explanation is more detailed (see 2022 report "A Path Towards Autonomous Machine Intelligence"): LLMs process symbolic systems invented by humans—a secondary abstraction of the world. True intelligence needs to model the physical world directly from continuous sensory signals. His core assertion is: **Representation is the most important part of a world model**; language and pixels are just output interfaces for representation, not the foundation.
+
+AMI Labs' technical choice is the non-generative JEPA path, predicting state transitions directly in semantic space without generating pixels. Their bet is that in five years, today's LLM-dominated landscape will be proven a detour.
+
+### Voice 2: LLMs Plus Multimodal Fusion is Sufficient
+
+This is Google DeepMind's path. Demis Hassabis stated in a 2025 interview that Gemini's evolution is to "become a world model," but the implementation method is to layer embodied reasoning capabilities onto large multimodal LLMs, not to overturn the generative paradigm.
+
+The logic: LLMs have already accumulated a compressed representation of thousands of years of human written knowledge. Layering visual, spatial perception, and reinforcement learning onto this foundation is more pragmatic than building a new architecture from scratch. Gemini Robotics and GPT-4o's multimodal capabilities exemplify this direction.
+
+A practical supporting argument for this path: LLMs are already strong enough at common-sense reasoning, language instruction understanding, and cross-task generalization—precisely the weaknesses of pure RSSM/JEPA architectures. Gemini Robotics' approach: no need to build physical intuition from zero; directly leverage the "world common sense" already compressed in LLMs, then teach the model to map these to continuous physical actions.
+
+But critics of this path have specific counterarguments: LLMs learn statistical correlations, not causal structures. It can tell you "a glass will break if dropped," but doesn't know *why* it breaks, into how many pieces, or where the fragments will bounce. This "knows the outcome but not the mechanism" understanding is sufficient for language tasks, but in robot manipulation, it might hit the hardest part: you need precise physical prediction, not just common sense.
+
+### Voice 3: The Direction Might Be Right, but the Timing Isn't Yet
+
+This is currently the least publicly discussed but privately most widely circulated judgment in industry.
+
+The core issue is **data density**: each language token carries extremely high semantic density; a single sentence conveys a complete proposition. Visual signals are different: one 1080p frame contains about 6 million pixels, but the propositional information it carries (who, where, doing what) compressed into text is only a few dozen words. With the same data volume, visual signals convey far less semantic information: low semantic density means more frames are needed to learn the same proposition. World models precisely require massive visual input, meaning the data volume and compute needed to train a world model with capabilities comparable to current LLMs might be several orders of magnitude higher, yet the resulting capabilities might not even match an early BERT.
+
+History offers more than one cautionary tale: NLP research on syntax trees, dependency parsing, and part-of-speech tagging spanning decades was largely invalidated after LLMs emerged. The researchers weren't on the wrong path; they were run over by scaling laws ("The Bitter Lesson," Sutton, 2019). **Spiking Neural Networks (SNNs)**, which most closely mimic biological neurons, were researched for nearly half a century, only to be leapfrogged by Transformers on nearly every benchmark, with no chance to catch up.
+
+Those holding this view don't oppose the direction of world models; they oppose large-scale betting now. Until there's a fundamental breakthrough in the visual data density problem, the required objective functions, computational scale, and data volume are still far insufficient. This question mark deserves consideration by anyone seriously contemplating "should we bet on world models."
+
+The three voices are not mutually exclusive. LeCun and Xie Saining are betting their funding and careers on the direction; DeepMind is approaching the same goal via engineering; skeptics are asking "even if the direction is right, are current conditions sufficient?" All three are real questions: the direction has entered the mainstream, but the outcome is not yet decided.
+
+## Conclusion
+
+From Craik writing about "the small model in the skull" in 1943 to DreamDojo teaching robots to screw bolts from human videos in 2026, this thread has spanned 80 years, always pointing to the same question: **How can an agent think things through before acting?**
+
+LLMs answer "what the world is like"; world models answer "what will happen to the world if I do this." These are two different problems, and currently, no single architecture has solved both well.
+
+As robots and embodied intelligence move from labs to reality, the second question will become increasingly important.
+
+If you're interested in this technical path and want to start from scratch—implementing everything from VAE encoders to a complete Dreamer pipeline—Datawhale is creating an open-source course and code to accompany it👇:
+
+github.com/datawhalechina/learn-world-model
+
+Feel free to star, fork, and contribute.
+
+![Picture](/images/blog/world-models-survey/img-14.webp)

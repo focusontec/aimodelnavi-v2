@@ -1,5 +1,19 @@
 [
   {
+    "slug": "codex-deepseekv4-glm51-k26",
+    "title": "CodexにDeepSeek V4、GLM 5.1、K2.6を接続する方法",
+    "tag": "解説",
+    "excerpt": "Codexに第三者モデルを接続する際のプロトコル不一致の問題と、CC-SwitchとCodex++という2つの解決策を解説する。CC-Switchはローカルプロキシでプロトコル変換を行い、Codex++はデスクトップアプリの拡張機能を提供する。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "AIエージェント"
+    ],
+    "date": "2026-06-03"
+  },
+  {
     "slug": "qwen37-closed-source-controversy",
     "title": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
     "tag": "解説",
@@ -20,6 +34,7 @@
     "excerpt": "AWS上のアプリケーションからOpenAIのモデルを連携させることで、企業のAI導入戦略にどのような変化がもたらされるか。外部API連携による実装アプローチと、インフラ構成の最適化について解説します。",
     "topics": [
       "OpenAI",
+      "xAI/Grok",
       "AIエージェント",
       "セキュリティ"
     ],
@@ -32,6 +47,7 @@
     "excerpt": "Claude Codeの/workflows機能は、並列エージェントを使って大規模なタスクを効率的に処理する。コードベースの古いバグ検索や調査報告書の作成に適しており、AIの「体力」を増強し、苦労する作業を自動化する。难题に直面したら、/workflowsと/deep-researchを組み合わせることで、驚異的な効果が得られる。",
     "topics": [
       "Anthropic",
+      "OpenAI",
       "AIエージェント",
       "マルチモーダル"
     ],
@@ -154,8 +170,8 @@
       "AIエージェント",
       "Anthropic",
       "Google",
-      "推論",
-      "コーディング"
+      "ベンチマーク",
+      "推論"
     ],
     "date": "2026-06-01"
   },
@@ -167,6 +183,7 @@
     "topics": [
       "OpenAI",
       "AIエージェント",
+      "料金比較",
       "推論",
       "LLM"
     ],

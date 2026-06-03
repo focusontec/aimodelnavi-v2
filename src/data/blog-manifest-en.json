@@ -1,5 +1,21 @@
 [
   {
+    "slug": "codex-deepseekv4-glm51-k26",
+    "title": "CodexにDeepSeek V4、GLM 5.1、K2.6を接続する方法",
+    "tag": "解説",
+    "excerpt": "Codexに第三者モデルを接続する際のプロトコル不一致の問題と、CC-SwitchとCodex++という2つの解決策を解説する。CC-Switchはローカルプロキシでプロトコル変換を行い、Codex++はデスクトップアプリの拡張機能を提供する。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "AIエージェント"
+    ],
+    "date": "2026-06-03",
+    "title_en": "How to Connect DeepSeek, GLM, and Kimi to Codex: Two Practical Approaches",
+    "excerpt_en": "Connecting third-party LLMs like DeepSeek or GLM directly to Codex via an API key often fails due to a fundamental protocol mismatch. This guide explains the two main solutions: CC-Switch, a local proxy for protocol conversion, and Codex++, a desktop enhancer for configuration injection, helping you choose the right approach."
+  },
+  {
     "slug": "qwen37-closed-source-controversy",
     "title": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
     "tag": "解説",
@@ -12,8 +28,8 @@
       "ベンチマーク"
     ],
     "date": "2026-06-03",
-    "title_en": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
-    "excerpt_en": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。"
+    "title_en": "From \"Open-Source Hero\" to \"Closed Model\": The Qwen3.7-Max Closed-Source Issue Reveals a Structural Shift in the AI Industry",
+    "excerpt_en": "Alibaba's Qwen was hailed as the \"last bastion of open source\" with 942 million downloads and 200,000 derivative models. However, the announcement of Qwen3.7-Max as a completely closed-source model has left the community in shock and disappointment. This piece explores the implications of this shift, historical parallels, and the options remaining for developers."
   },
   {
     "slug": "awsopenaiai",
@@ -22,6 +38,7 @@
     "excerpt": "AWS上のアプリケーションからOpenAIのモデルを連携させることで、企業のAI導入戦略にどのような変化がもたらされるか。外部API連携による実装アプローチと、インフラ構成の最適化について解説します。",
     "topics": [
       "OpenAI",
+      "xAI/Grok",
       "AIエージェント",
       "セキュリティ"
     ],
@@ -36,12 +53,29 @@
     "excerpt": "Claude Codeの/workflows機能は、並列エージェントを使って大規模なタスクを効率的に処理する。コードベースの古いバグ検索や調査報告書の作成に適しており、AIの「体力」を増強し、苦労する作業を自動化する。难题に直面したら、/workflowsと/deep-researchを組み合わせることで、驚異的な効果が得られる。",
     "topics": [
       "Anthropic",
+      "OpenAI",
       "AIエージェント",
       "マルチモーダル"
     ],
     "date": "2026-06-02",
     "title_en": "Scaling Productivity with Claude Code: Mastering Parallel Agents and /workflows",
     "excerpt_en": "Explore how Claude Code's /workflows feature transforms AI capabilities by shifting the focus from raw intelligence to 'stamina' through parallel agent deployment. Learn how to combine /workflows and /deep-research to tackle massive codebases and complex technical problems."
+  },
+  {
+    "slug": "codex-mac-cleanup-skill",
+    "title": "CleanMyMacの費用を節約するために、PCクリーニング機能をオープンソースのAIスキルにした話",
+    "tag": "解説",
+    "excerpt": "120ドルの清理ソフト费用を節約するために、AI Agentでパソコンの存储容量を扫描・分析するオープンソーススキルを開発した。このスキルは、商用ソフトウェアより详细な情報を提示し、安全なファイルと注意が必要なファイルを色分けして表示するなど、AI時代のツール類ソフトウェアが直面する衝撃を実证するものだ。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "AIエージェント",
+      "オープンソース"
+    ],
+    "date": "2026-06-02",
+    "title_en": "How I Built an Open-Source AI Skill to Clean My Mac and Save $120",
+    "excerpt_en": "Inspired by an AI prompt on X, I created an open-source skill using Codex to analyze and clean computer storage, offering a free, transparent alternative to paid tools like CleanMyMac. The skill works on both Mac and Windows, providing an interactive HTML report with color-coded cleanup suggestions and one-click actions, proving how AI agents can disrupt traditional utility software."
   },
   {
     "slug": "codex",
@@ -86,22 +120,6 @@
     "date": "2026-06-02",
     "title_en": "How Step-3.7 Flash Cuts Agent Costs to 1/9 of Claude Opus While Boosting Performance",
     "excerpt_en": "Step-3.7 Flash redefines the role of a 'Flash' model for the agent era, prioritizing production-ready features like high throughput, low cost, and robust tool calling over mere benchmark performance. With an active parameter count of just 11B, it achieves near-flagship coding capabilities at approximately 1/9th the per-task cost of Claude Opus 4.6. This makes it a foundational, agentic model designed for the high-frequency, multi-step demands of real-world AI agent workflows."
-  },
-  {
-    "slug": "codex-mac-cleanup-skill",
-    "title": "CleanMyMacの費用を節約するために、PCクリーニング機能をオープンソースのAIスキルにした話",
-    "tag": "解説",
-    "excerpt": "120ドルの清理ソフト费用を節約するために、AI Agentでパソコンの存储容量を扫描・分析するオープンソーススキルを開発した。このスキルは、商用ソフトウェアより详细な情報を提示し、安全なファイルと注意が必要なファイルを色分けして表示するなど、AI時代のツール類ソフトウェアが直面する衝撃を実证するものだ。",
-    "topics": [
-      "Anthropic",
-      "OpenAI",
-      "Google",
-      "AIエージェント",
-      "オープンソース"
-    ],
-    "date": "2026-06-02",
-    "title_en": "How I replaced CleanMyMac with an open-source AI skill to save on PC cleaning costs",
-    "excerpt_en": "To save 120 dollars on cleaning software fees, I developed an open-source AI Agent skill that scans and analyzes PC storage capacity. By providing more detailed information than commercial software and color-coding safe versus suspicious files, this project demonstrates the disruption AI-era tools are bringing to traditional software."
   },
   {
     "slug": "article-2026-05-26-minimax-m3",
@@ -176,8 +194,8 @@
       "AIエージェント",
       "Anthropic",
       "Google",
-      "推論",
-      "コーディング"
+      "ベンチマーク",
+      "推論"
     ],
     "date": "2026-06-01",
     "title_en": "Why LLMs Struggle with Video Games: The Gap Between Coding and Dynamic Environments",
@@ -191,6 +209,7 @@
     "topics": [
       "OpenAI",
       "AIエージェント",
+      "料金比較",
       "推論",
       "LLM"
     ],
@@ -1154,8 +1173,8 @@
       "コーディング"
     ],
     "date": "2026-05-21",
-    "title_en": "Google I/O 2026 Quick Report: The New Era of \"Agent Development\" Opened by Gemini Omni and Antigravity",
-    "excerpt_en": "An explanation of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. This summary covers the impact of multimodal integration and autonomous agents that developers should keep an eye on."
+    "title_en": "Google I/O 2026 Flash Report: The New Era of \"Agent Development\" Pioneered by Gemini Omni and Antigravity",
+    "excerpt_en": "A breakdown of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. This summary covers the impact of multimodal integration and autonomous agents that developers should be paying attention to."
   },
   {
     "slug": "aiprovenance",
@@ -1401,8 +1420,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-20",
-    "title_en": "The Forefront of AI Agent Design: System Architecture and Technical Trend Report for 2026",
-    "excerpt_en": "The design philosophy for AI agents heading into 2026 is shifting from \"all-purpose single models\" to \"configurable, observable, and constrained systems.\" This report details the latest architectures for separating planners from executors, trajectory-based evaluation, and increasing robustness in real-world applications."
+    "title_en": "The Cutting Edge of AI Agent Design: A Report on System Architecture and Technology Trends for 2026",
+    "excerpt_en": "The design philosophy for AI agents is shifting towards \"systems that can be composed, observed, and constrained\" for 2026, moving away from a \"single, general-purpose model.\" This report details the latest architectures aimed at increasing robustness in the real world, including planner-executor separation and trace-based evaluation."
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",
