@@ -1,9 +1,11 @@
 import { setRequestLocale } from "next-intl/server";
 import { modelDetails, type ModelDetail } from "@/data/models";
 import { getModelAnalysis } from "@/data/model-analyses";
+import { leaderboardData } from "@/data/leaderboard";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import CustomCompare from "@/components/custom-compare";
 
 const T = {
   ja: {
@@ -13,6 +15,16 @@ const T = {
     compareSub: "人気のAIモデルを性能・価格・特徴で比較",
     viewDetail: "詳細を見る",
     vs: "VS",
+    customTitle: "モデルを自由に比較",
+    customSub: "気になるモデルを選んで性能・価格を並べて比較",
+    searchPlaceholder: "モデル名または開発元で検索...",
+    addModel: "モデルを追加",
+    noResults: "見つかりません",
+    inputPrice: "入力価格",
+    outputPrice: "出力価格",
+    context: "コンテキスト",
+    noData: "—",
+    model: "モデル",
   },
   en: {
     title: "AI Model Comparison — Performance & Price Showdown",
@@ -21,6 +33,16 @@ const T = {
     compareSub: "Compare popular AI models by performance, price, and features",
     viewDetail: "View Details",
     vs: "VS",
+    customTitle: "Compare Models Your Way",
+    customSub: "Pick any models to compare performance and pricing side by side",
+    searchPlaceholder: "Search by model name or developer...",
+    addModel: "Add Model",
+    noResults: "No results found",
+    inputPrice: "Input Price",
+    outputPrice: "Output Price",
+    context: "Context Window",
+    noData: "—",
+    model: "Model",
   },
 };
 
@@ -121,6 +143,24 @@ export default async function ComparePage({ params }: { params: Promise<{ locale
         <h1 className="text-3xl lg:text-4xl font-bold text-gray-900">{t.compareTitle}</h1>
         <p className="mt-2 text-gray-600">{t.compareSub}</p>
       </div>
+
+      <CustomCompare
+        models={modelDetails}
+        rankings={leaderboardData}
+        locale={locale}
+        labels={{
+          title: t.customTitle,
+          subtitle: t.customSub,
+          searchPlaceholder: t.searchPlaceholder,
+          addModel: t.addModel,
+          noResults: t.noResults,
+          inputPrice: t.inputPrice,
+          outputPrice: t.outputPrice,
+          context: t.context,
+          noData: t.noData,
+          model: t.model,
+        }}
+      />
 
       <div className="grid md:grid-cols-2 gap-6">
         {validPairs.map((pair) => (
