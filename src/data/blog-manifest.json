@@ -1,5 +1,19 @@
 [
   {
+    "slug": "chatgpt-ai",
+    "title": "ChatGPT、史上最大の改版を迎える ― AIはチャットだけの時代は終わった",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIはChatGPTを大規模に改版し、プログラミングツールCodexを統合する。AIはチャットだけでなく、タスク実行やソフトウェア操作を担う「スーパーアプリ」へと進化し、Anthropicとの競争やIPOを見据えた収益戦略の一環となっている。",
+    "topics": [
+      "OpenAI",
+      "Anthropic",
+      "Google",
+      "xAI/Grok",
+      "AIエージェント"
+    ],
+    "date": "2026-06-07"
+  },
+  {
     "slug": "article-2026-06-05-u25cwp",
     "title": "エージェントのトークン割り当てを2倍にするテクニック：5時間ローリングウィンドウの仕組みを活用",
     "tag": "解説",
