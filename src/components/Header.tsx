@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { BarChart3, BookOpen, Calculator, GitCompare, ChevronDown, Menu, X, Zap, Target, Sparkles } from "lucide-react";
+import { BarChart3, BookOpen, Calculator, GitCompare, ChevronDown, Menu, X, Zap, Target, Sparkles, LayoutGrid } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 const blogTags = [
@@ -13,7 +13,9 @@ const blogTags = [
 
 const toolLinks = [
   { slug: "cost-calculator", labelJa: "APIコスト計算", labelEn: "API Cost Calculator", icon: Calculator },
-  { slug: "token-counter", labelJa: "トークンカウンター＆コスト計算機", labelEn: "Token Counter & Cost Calculator", icon: BarChart3 },
+  { slug: "token-counter", labelJa: "トークンカウンター", labelEn: "Token Counter", icon: BarChart3 },
+  { slug: "model-recommender", labelJa: "AIモデル推薦", labelEn: "AI Model Recommender", icon: Sparkles },
+  { slug: "context-visualizer", labelJa: "コンテキスト比較", labelEn: "Context Visualizer", icon: LayoutGrid },
 ];
 
 export default function Header() {

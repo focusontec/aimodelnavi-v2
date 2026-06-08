@@ -1,7 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BarChart3, Calculator, Coins, Search, ArrowRight, TrendingUp, BookOpen, Wrench, ArrowLeftRight, FileText } from "lucide-react";
+import { BarChart3, Calculator, Coins, Search, ArrowRight, TrendingUp, BookOpen, Wrench, ArrowLeftRight, FileText, Sparkles } from "lucide-react";
 import blogManifest from "@/data/blog-manifest.json";
 import blogManifestEn from "@/data/blog-manifest-en.json";
 
@@ -20,6 +20,8 @@ const T = {
     tool1Title: "Token Counter", tool1Desc: "テキストのトークン数を計算。プロンプトコストを事前に見積もり。",
     tool2Title: "コスト計算機", tool2Desc: "API使用量から月額コストを自動計算。予算に合ったモデルを選択。",
     tool3Title: "モデル比較", tool3Desc: "2つのモデルを並列比較。ベンチマーク・料金・性能を一目で確認。",
+    tool4Title: "AIモデル推薦", tool4Desc: "4つの質問に答えて、あなたに最適なAIモデルを見つけましょう。",
+    tool5Title: "コンテキスト比較", tool5Desc: "各モデルのコンテキストサイズを視覚的に比較。",
     tryNow: "使ってみる",
   },
   en: {
@@ -36,6 +38,8 @@ const T = {
     tool1Title: "Token Counter", tool1Desc: "Count tokens in your text. Estimate prompt costs before you run.",
     tool2Title: "Cost Calculator", tool2Desc: "Calculate monthly API costs based on your usage. Pick models that fit your budget.",
     tool3Title: "Model Compare", tool3Desc: "Compare two models side by side. Benchmarks, pricing, and performance at a glance.",
+    tool4Title: "AI Model Recommender", tool4Desc: "Answer 4 questions to find the perfect AI model for your needs.",
+    tool5Title: "Context Visualizer", tool5Desc: "Visually compare context window sizes across models.",
     tryNow: "Try Now",
   },
 };
@@ -115,11 +119,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">{t.toolsTitle}</h2>
           <p className="mt-3 text-gray-500 max-w-xl mx-auto">{t.toolsSub}</p>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             { title: t.tool1Title, desc: t.tool1Desc, icon: FileText, href: `/${locale === "ja" ? "" : locale + "/"}tools/token-counter` },
             { title: t.tool2Title, desc: t.tool2Desc, icon: Calculator, href: `/${locale === "ja" ? "" : locale + "/"}tools/cost-calculator` },
             { title: t.tool3Title, desc: t.tool3Desc, icon: ArrowLeftRight, href: `/${locale === "ja" ? "" : locale + "/"}compare` },
+            { title: t.tool4Title, desc: t.tool4Desc, icon: Sparkles, href: `/${locale === "ja" ? "" : locale + "/"}tools/model-recommender` },
+            { title: t.tool5Title, desc: t.tool5Desc, icon: Wrench, href: `/${locale === "ja" ? "" : locale + "/"}tools/context-visualizer` },
           ].map((tool) => {
             const Icon = tool.icon;
             return (
