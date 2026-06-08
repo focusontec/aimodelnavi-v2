@@ -1,7 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BarChart3, Calculator, Coins, Search, ArrowRight, TrendingUp, BookOpen, Wrench, ArrowLeftRight, FileText, Sparkles } from "lucide-react";
+import { BarChart3, Calculator, Coins, Search, ArrowRight, TrendingUp, BookOpen, LayoutGrid, ArrowLeftRight, FileText, Sparkles } from "lucide-react";
 import blogManifest from "@/data/blog-manifest.json";
 import blogManifestEn from "@/data/blog-manifest-en.json";
 
@@ -125,7 +125,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             { title: t.tool2Title, desc: t.tool2Desc, icon: Calculator, href: `/${locale === "ja" ? "" : locale + "/"}tools/cost-calculator` },
             { title: t.tool3Title, desc: t.tool3Desc, icon: ArrowLeftRight, href: `/${locale === "ja" ? "" : locale + "/"}compare` },
             { title: t.tool4Title, desc: t.tool4Desc, icon: Sparkles, href: `/${locale === "ja" ? "" : locale + "/"}tools/model-recommender` },
-            { title: t.tool5Title, desc: t.tool5Desc, icon: Wrench, href: `/${locale === "ja" ? "" : locale + "/"}tools/context-visualizer` },
+            { title: t.tool5Title, desc: t.tool5Desc, icon: LayoutGrid, href: `/${locale === "ja" ? "" : locale + "/"}tools/context-visualizer` },
           ].map((tool) => {
             const Icon = tool.icon;
             return (

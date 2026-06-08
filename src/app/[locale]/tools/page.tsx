@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calculator, FileText, ArrowLeftRight, Sparkles, LayoutGrid } from "lucide-react";
+import { Calculator, FileText, ArrowLeft, ArrowLeftRight, Sparkles, LayoutGrid } from "lucide-react";
 
 const tools = [
   {
@@ -39,7 +39,7 @@ export default function ToolsPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-primary-600 mb-6">
-          <ArrowLeftRight className="w-4 h-4" />ホームに戻る
+          <ArrowLeft className="w-4 h-4" />ホームに戻る
         </Link>
         <h1 className="text-3xl font-bold text-gray-900 mb-2">ツール</h1>
         <p className="text-gray-500 mb-8">AIモデル選定をサポートする無料ツール集</p>
