@@ -46,7 +46,7 @@ async function main() {
 
   const mode = fullMode ? "full" : "incremental";
   console.log(`  Mode: ${mode}`);
-  console.log(`  LLM: ${process.env.LLM_PROVIDER || "ollama"}/${process.env.LLM_MODEL || "gemma4:31b"}`);
+  console.log(`  LLM: ${process.env.LLM_PROVIDER || "mimo"}/${process.env.LLM_MODEL || "mimo-v2.5-pro"}`);
 
   // Initialize database
   migrate();

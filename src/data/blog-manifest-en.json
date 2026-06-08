@@ -1,5 +1,21 @@
 [
   {
+    "slug": "anthropic-released-opus-4_8",
+    "title": "Anthropic、Claude Opus 4.8を公開──価格据え置き、性能と誠実性を小幅ながらも実質的に改善",
+    "tag": "Anthropic",
+    "excerpt": "Anthropicは最新モデルClaude Opus 4.8を公開しました。コーディングやエージェント能力が小幅に向上し、特に「誠実性」──自信過剰な誤答を減らす機能──が強調されています。価格は据え置きですが、fastモードのコストが大幅に引き下げられ、コスト敏感なユーザーに朗報です。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "ベンチマーク",
+      "AIエージェント",
+      "料金比較"
+    ],
+    "date": "2026-06-08",
+    "title_en": "Anthropic、Claude Opus 4.8を公開──価格据え置き、性能と誠実性を小幅ながらも実質的に改善",
+    "excerpt_en": "Anthropicは最新モデルClaude Opus 4.8を公開しました。コーディングやエージェント能力が小幅に向上し、特に「誠実性」──自信過剰な誤答を減らす機能──が強調されています。価格は据え置きですが、fastモードのコストが大幅に引き下げられ、コスト敏感なユーザーに朗報です。"
+  },
+  {
     "slug": "chatgpt-ai",
     "title": "ChatGPT、史上最大の改版を迎える ― AIはチャットだけの時代は終わった",
     "tag": "OpenAI",
@@ -12,8 +28,8 @@
       "AIエージェント"
     ],
     "date": "2026-06-07",
-    "title_en": "ChatGPT Undergoes Its Biggest Overhaul - The Era of AI as Just Chat is Over",
-    "excerpt_en": "OpenAI is overhauling ChatGPT on a massive scale, integrating its programming tool Codex. AI is evolving beyond just chat to become a \"super app\" capable of executing tasks and operating software, part of its revenue strategy in anticipation of competition with Anthropic and a potential IPO."
+    "title_en": "ChatGPT、史上最大の改版を迎える ― AIはチャットだけの時代は終わった",
+    "excerpt_en": "OpenAIはChatGPTを大規模に改版し、プログラミングツールCodexを統合する。AIはチャットだけでなく、タスク実行やソフトウェア操作を担う「スーパーアプリ」へと進化し、Anthropicとの競争やIPOを見据えた収益戦略の一環となっている。"
   },
   {
     "slug": "article-2026-06-05-u25cwp",
@@ -142,8 +158,8 @@
       "ベンチマーク"
     ],
     "date": "2026-06-03",
-    "title_en": "From \"Open-Source Hero\" to \"Closed Model\": The Structural Shift in the AI Industry Revealed by the Qwen3.7-Max Closure Controversy",
-    "excerpt_en": "Alibaba's Qwen, dubbed \"the last bastion of open source\" with 942 million downloads and 200,000 derivative models. However, Qwen3.7-Max was announced as a fully closed model, leaving the community in shock and disappointment. We delve into what this shift means, historical parallels, and the options left for developers."
+    "title_en": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
+    "excerpt_en": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。"
   },
   {
     "slug": "awsopenaiai",
@@ -1287,8 +1303,8 @@
       "コーディング"
     ],
     "date": "2026-05-21",
-    "title_en": "Google I/O 2026 Quick Report: The New Era of \"Agent Development\" Pioneered by Gemini Omni and Antigravity",
-    "excerpt_en": "An explanation of Gemini 3.5 Flash, Omni, and the agent development platform \"Google Antigravity\" announced at Google I/O 2026. A summary of the multimodal integration and the impact of autonomous agents that developers should pay attention to."
+    "title_en": "Google I/O 2026速報：Gemini OmniとAntigravityが切り拓く「エージェント開発」の新時代",
+    "excerpt_en": "Google I/O 2026で発表されたGemini 3.5 FlashやOmni、そしてエージェント開発プラットフォーム「Google Antigravity」を解説。開発者が注目すべきマルチモーダル統合と自律型エージェントの衝撃をまとめます。"
   },
   {
     "slug": "aiprovenance",
@@ -1534,8 +1550,8 @@
       "ベンチマーク"
     ],
     "date": "2026-05-20",
-    "title_en": "The Forefront of AI Agent Design: A Report on System Architecture and Technical Trends for 2026",
-    "excerpt_en": "The design philosophy for AI agents heading into 2026 is shifting from \"a universal single model\" to \"a system that can be composed, observed, and constrained.\" This report details the latest architectures for enhancing real-world robustness, including the separation of planners and executors, and trajectory-based evaluation."
+    "title_en": "AIエージェント設計の最前線：2026年に向けたシステムアーキテクチャと技術トレンド報告書",
+    "excerpt_en": "2026年に向けたAIエージェントの設計思想は、「万能な単体モデル」から「構成・観測・制約可能なシステム」へと転換しています。本レポートでは、プランナーと実行者の分離、軌跡ベースの評価、そして現実世界での堅牢性を高めるための最新アーキテクチャを詳説します。"
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",

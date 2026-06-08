@@ -20,7 +20,7 @@
 
 type Provider = "ollama" | "anthropic" | "openai" | "mimo";
 
-const PROVIDER = (process.env.LLM_PROVIDER || "ollama") as Provider;
+const PROVIDER = (process.env.LLM_PROVIDER || "mimo") as Provider;
 const API_KEY = process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY || "";
 
 const DEFAULT_MODELS: Record<Provider, string> = {
@@ -53,8 +53,8 @@ export async function callLLM(
 ): Promise<string> {
   if (!API_KEY) {
     throw new Error(
-      "LLM_API_KEY (or ANTHROPIC_API_KEY) env var not set.\n" +
-        "Set LLM_PROVIDER=ollama and LLM_API_KEY=your-ollama-key for Ollama Cloud."
+      "LLM_API_KEY env var not set.\n" +
+        "Set LLM_PROVIDER=mimo and LLM_API_KEY=your-mimo-key."
     );
   }
 

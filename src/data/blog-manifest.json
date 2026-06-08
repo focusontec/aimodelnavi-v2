@@ -1,5 +1,19 @@
 [
   {
+    "slug": "anthropic-released-opus-4_8",
+    "title": "Anthropic、Claude Opus 4.8を公開──価格据え置き、性能と誠実性を小幅ながらも実質的に改善",
+    "tag": "Anthropic",
+    "excerpt": "Anthropicは最新モデルClaude Opus 4.8を公開しました。コーディングやエージェント能力が小幅に向上し、特に「誠実性」──自信過剰な誤答を減らす機能──が強調されています。価格は据え置きですが、fastモードのコストが大幅に引き下げられ、コスト敏感なユーザーに朗報です。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "ベンチマーク",
+      "AIエージェント",
+      "料金比較"
+    ],
+    "date": "2026-06-08"
+  },
+  {
     "slug": "chatgpt-ai",
     "title": "ChatGPT、史上最大の改版を迎える ― AIはチャットだけの時代は終わった",
     "tag": "OpenAI",
