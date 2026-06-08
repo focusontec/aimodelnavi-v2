@@ -1,6 +1,6 @@
 ---
 title: "MiniMax M3 Review: The Cost-Effective Multimodal Model with 1M Token Context and Blazing Fast Decoding"
-date: "2026-06-01"
+date: "2026-06-08"
 tag: "Benchmark"
 excerpt: "MiniMax M3 introduces a groundbreaking architecture that processes up to 1 million tokens with 15.6x faster decoding speeds, making it highly competitive in benchmarks against models like GPT-5.2 and Claude Opus 4.7. With its affordable pricing, starting at $0.30 per 1 million tokens during launch, it offers a cost-effective alternative for developers seeking powerful multimodal capabilities."
 ---

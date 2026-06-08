@@ -14,6 +14,20 @@
     "date": "2026-06-08"
   },
   {
+    "slug": "article-2026-05-26-minimax-m3",
+    "title": "MiniMax M3レビュー：100万トークン対応と15倍高速デコードが実現する次世代マルチモーダルAI",
+    "tag": "解説",
+    "excerpt": "MiniMax社は2026年6月にフラッグシップモデルM3を発表した。MSAアーキテクチャにより100万トークン対応と15.6倍の高速デコードを実現し、SWE-Bench Proで59.0%を記録。価格はGPT-5.2の約1/3とコストパフォーマンスに優れる。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "xAI/Grok"
+    ],
+    "date": "2026-06-08"
+  },
+  {
     "slug": "chatgpt-ai",
     "title": "ChatGPT、史上最大の改版を迎える ― AIはチャットだけの時代は終わった",
     "tag": "OpenAI",
@@ -244,20 +258,6 @@
       "DeepSeek"
     ],
     "date": "2026-06-02"
-  },
-  {
-    "slug": "article-2026-05-26-minimax-m3",
-    "title": "MiniMax M3レビュー：100万トークン対応と15倍高速デコードが実現する次世代マルチモーダルAI",
-    "tag": "解説",
-    "excerpt": "MiniMax社は2026年6月にフラッグシップモデルM3を発表した。MSAアーキテクチャにより100万トークン対応と15.6倍の高速デコードを実現し、SWE-Bench Proで59.0%を記録。価格はGPT-5.2の約1/3とコストパフォーマンスに優れる。",
-    "topics": [
-      "Anthropic",
-      "OpenAI",
-      "Google",
-      "DeepSeek",
-      "xAI/Grok"
-    ],
-    "date": "2026-06-01"
   },
   {
     "slug": "braintrustcodex",

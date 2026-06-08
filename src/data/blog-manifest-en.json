@@ -16,6 +16,22 @@
     "excerpt_en": "Anthropic has released Claude Opus 4.8, a modest update to its flagship model with improvements in coding, agentic terminal tasks, and reasoning — all at unchanged pricing. The company is positioning \"honesty\" — the model's tendency to flag its own uncertainty rather than confidently err — as the release's most important differentiator, alongside alignment gains that now approach Mythos levels."
   },
   {
+    "slug": "article-2026-05-26-minimax-m3",
+    "title": "MiniMax M3レビュー：100万トークン対応と15倍高速デコードが実現する次世代マルチモーダルAI",
+    "tag": "解説",
+    "excerpt": "MiniMax社は2026年6月にフラッグシップモデルM3を発表した。MSAアーキテクチャにより100万トークン対応と15.6倍の高速デコードを実現し、SWE-Bench Proで59.0%を記録。価格はGPT-5.2の約1/3とコストパフォーマンスに優れる。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "xAI/Grok"
+    ],
+    "date": "2026-06-08",
+    "title_en": "MiniMax M3 Review: The Cost-Effective Multimodal Model with 1M Token Context and Blazing Fast Decoding",
+    "excerpt_en": "MiniMax M3 introduces a groundbreaking architecture that processes up to 1 million tokens with 15.6x faster decoding speeds, making it highly competitive in benchmarks against models like GPT-5.2 and Claude Opus 4.7. With its affordable pricing, starting at $0.30 per 1 million tokens during launch, it offers a cost-effective alternative for developers seeking powerful multimodal capabilities."
+  },
+  {
     "slug": "chatgpt-ai",
     "title": "ChatGPT、史上最大の改版を迎える ― AIはチャットだけの時代は終わった",
     "tag": "OpenAI",
@@ -282,22 +298,6 @@
     "date": "2026-06-02",
     "title_en": "How Step-3.7 Flash Cuts Agent Costs to 1/9 of Claude Opus While Boosting Performance",
     "excerpt_en": "Step-3.7 Flash redefines the role of a 'Flash' model for the agent era, prioritizing production-ready features like high throughput, low cost, and robust tool calling over mere benchmark performance. With an active parameter count of just 11B, it achieves near-flagship coding capabilities at approximately 1/9th the per-task cost of Claude Opus 4.6. This makes it a foundational, agentic model designed for the high-frequency, multi-step demands of real-world AI agent workflows."
-  },
-  {
-    "slug": "article-2026-05-26-minimax-m3",
-    "title": "MiniMax M3レビュー：100万トークン対応と15倍高速デコードが実現する次世代マルチモーダルAI",
-    "tag": "解説",
-    "excerpt": "MiniMax社は2026年6月にフラッグシップモデルM3を発表した。MSAアーキテクチャにより100万トークン対応と15.6倍の高速デコードを実現し、SWE-Bench Proで59.0%を記録。価格はGPT-5.2の約1/3とコストパフォーマンスに優れる。",
-    "topics": [
-      "Anthropic",
-      "OpenAI",
-      "Google",
-      "DeepSeek",
-      "xAI/Grok"
-    ],
-    "date": "2026-06-01",
-    "title_en": "MiniMax M3 Review: The Cost-Effective Multimodal Model with 1M Token Context and Blazing Fast Decoding",
-    "excerpt_en": "MiniMax M3 introduces a groundbreaking architecture that processes up to 1 million tokens with 15.6x faster decoding speeds, making it highly competitive in benchmarks against models like GPT-5.2 and Claude Opus 4.7. With its affordable pricing, starting at $0.30 per 1 million tokens during launch, it offers a cost-effective alternative for developers seeking powerful multimodal capabilities."
   },
   {
     "slug": "braintrustcodex",
