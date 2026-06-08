@@ -75,16 +75,35 @@ On SWE-Bench Pro, M3 slightly outperforms GPT-5.5 and nearly matches Claude Opus
 
 **Benchmark Credibility Note**: All of M3's launch benchmarks were run on MiniMax's own infrastructure using their configured agent scaffolding. Independent evaluations from Artificial Analysis and LMArena were still pending at publication. Developers should run their own evaluations before committing production workloads.
 
-### Grok's Evaluation Perspective
+### Real-World Code Audit: Kilo's Head-to-Head Test
 
-According to Grok's assessment, M3 represents "a big leap over prior MiniMax models (e.g., M2.7), competitive with or beating mid-to-high frontier tiers on select metrics, but not fully matching the absolute leaders like Claude Opus 4.8 in complex coding or consistency."
+The most interesting data point comes from Kilo Code, who ran the same code audit task on both Claude Opus 4.8 (at four reasoning levels) and MiniMax M3. They used a TypeScript webhook delivery service with 17 known bugs and measured what each model caught.
 
-**Grok's Key Insights:**
-- **Real-world performance**: Users report ~77 tok/s in tests, making it dramatically cheaper than US frontier models
-- **Practical strengths**: Positive feedback for debugging (catching many bugs cheaply), mockup/design tasks, and certain coding projects
-- **Benchmark reality gap**: Vendor-reported numbers are strong, but some independent tests (e.g., DeepSWE ~20% pass@1, BridgeBench) show it lagging leaders or being "unreliable/slow/verbose in production workflows"
-- **Consistency issues**: Can be "chatty" (higher output tokens) and occasionally stalls or produces lower-quality refactoring
-- **Agent value**: Some users rank it near GLM-5.1/Kimi in targeted tests; strong value for agents
+**The results surprised me:**
+
+| Model | Issues Found | Cost | Time |
+|-------|-------------|------|------|
+| MiniMax M3 | 13/17 | $0.07 | 5m 03s |
+| Claude Opus 4.8 (medium) | 13/17 | $1.30 | 3m 53s |
+| Claude Opus 4.8 (high) | 13/17 | $1.93 | 4m 33s |
+| Claude Opus 4.8 (xhigh) | 15/17 | $2.03 | 7m 26s |
+| Claude Opus 4.8 (max) | 15/17 | $3.39 | 9m 24s |
+
+MiniMax M3 found the same number of issues as Claude Opus 4.8 at medium and high settings, but at **1/18th the cost**. That's not a typo—$0.07 vs $1.30.
+
+**What M3 caught that cheaper Claude runs missed:**
+- An endpoint that returned a stored secret
+- A delivery-list filter bug when two filters were combined
+- Subscriber deletion failing once delivery history exists
+
+**What M3 missed that Claude Opus 4.8 at xhigh caught:**
+- Invalid JSON returning a 500
+- Database setup running at import time
+- Async callback running inside a synchronous transaction
+
+As @daheiniu2026 pointed out on X: "Looking close at the 3 bugs MiniMax missed, they're tightly coupled with specific TS/Bun runtime quirks, like async callbacks inside sync transactions. M3 nails hard security logic but still lags behind Opus in deep language-specific edge cases."
+
+That's a fair assessment. M3 gets the big-picture security stuff right, but Claude's higher reasoning levels catch the subtle language-specific issues.
 
 ### Agent Capabilities
 
@@ -223,6 +242,24 @@ While these use cases were possible with previous models, M3's 1 million token c
 
 - **Conclusion**: At the same price range, M3 offers higher performance.
 
+## What the Community is Saying
+
+The response on X has been mixed but interesting:
+
+**The good:**
+- Developers are impressed by the cost savings. One user noted they could run 18 M3 audits for the price of one Claude Opus 4.8 run at medium.
+- The 1M token context is getting real usage for large codebase analysis.
+- Several users report it works well for debugging and catching security issues.
+
+**The skeptical:**
+- @shahidcodes commented "Share the repo or it never happened" — reflecting the community's desire for more transparency around benchmarks.
+- @SoonCrush asked "Why compare it with 4.8? The two models 4.8 and 4.7 are pure garbage" — a hot take, but shows some users are frustrated with the benchmark arms race.
+- Some users note that M3 can be "chatty" — using more output tokens than necessary, which increases costs.
+
+**The competitive:**
+- @chetaslua pointed out that "Kimi K2.6 is godly in terms of webdev and still SOTA chinese model" — reminding us that M3 isn't the only game in town.
+- Multiple users are waiting for the open weights to ship before committing to the model.
+
 ## Conclusion
 
 As of June 2026, MiniMax M3 represents the most interesting cost-efficiency bet on the frontier coding market. Its MSA architecture enabling 1 million token support and 15.6x faster decoding speeds provide significant practical advantages. With code generation capability of 59.0% on SWE-Bench Pro and agent capability of 74.2% on MCP Atlas, it sits in the same tier as GPT-5.5 on coding benchmarks.
@@ -241,3 +278,18 @@ As of June 2026, MiniMax M3 represents the most interesting cost-efficiency bet 
 **Practical recommendation:** Watch for the open weights around June 11. If the technical report confirms the MSA efficiency claims and the license permits commercial use, M3 becomes a serious option for teams doing cost-sensitive long-context agentic work on non-sensitive data. For teams with compliance exposure to Chinese data jurisdiction, wait for the open weights and self-host.
 
 For developers considering processing large codebases, analyzing long documents, or developing cost-efficient agents, M3 is one of the most promising models to watch this summer — but run your own evaluations before committing production workloads.
+
+---
+
+**Related Links**
+- [Kilo's Code Audit: Claude Opus 4.8 vs MiniMax M3](https://x.com/kilocode/status/2063719228499542327)
+- [MiniMax M3 Official Blog](https://www.minimax.io/blog/minimax-m3)
+- [MiniMax M3 on OpenRouter](https://openrouter.ai/minimax/minimax-m3)
+
+---
+
+## Related Articles
+
+- [2026年AI価格競争：中国勢が突きつける「超低コスト」の衝撃と実効性能の正体](/blog/blog-2026-05-28-ws3hli)
+- [SWE-bench Verified 2026最新ランキング：90モデルのコーディング性能を徹底比較](/blog/swe-bench-verified-2026-90)
+- [GPT-5.2のベンチマーク総まとめ：コーディング・推論性能を徹底検証](/blog/gpt-5-2-benchmark-review)
