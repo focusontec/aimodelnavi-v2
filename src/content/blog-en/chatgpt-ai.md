@@ -2,7 +2,7 @@
 title: "ChatGPT's Biggest Overhaul Yet: OpenAI Merges Codex to Build an AI Super-App"
 date: "2026-06-07"
 tag: "OpenAI"
-excerpt: 'OpenAI is preparing ChatGPT's biggest redesign since launch, merging its fast-growing coding tool Codex directly into the platform to build an AI "super-app" that can write code, manage schedules, and automate workflows. The move — driven partly by competitive pressure from Anthropic's Claude Code — signals OpenAI's shift from a chatbot company to an agent-first platform aimed at enterprise monetization ahead of a potential IPO.'
+excerpt: "OpenAI is preparing ChatGPT's biggest redesign since launch, merging its fast-growing coding tool Codex directly into the platform to build an AI 'super-app' that can write code, manage schedules, and automate workflows. The move — driven partly by competitive pressure from Anthropic's Claude Code — signals OpenAI's shift from a chatbot company to an agent-first platform aimed at enterprise monetization ahead of a potential IPO."
 ---
 
 The era of using AI just for chat is over.

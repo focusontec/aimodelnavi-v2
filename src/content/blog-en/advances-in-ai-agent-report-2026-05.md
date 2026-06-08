@@ -2,7 +2,8 @@
 title: "AI Agent Design Frontiers: System Architecture and Technology Trends Heading Into 2026"
 date: "2026-05-20"
 tag: "AI Agent"
-excerpt: 'This report examines the evolution of AI agent architecture from 2024 through 2026, highlighting the industry's shift from monolithic models to composable, observable systems. It covers emerging design patterns like Planner-Executor and Orchestrator-Worker architectures, the move toward trajectory-based evaluation, and the concept of "Context Engineering" as a first-class architectural concern. While real-world robustness remains a challenge, agents are already delivering value in software engineering, customer support, and infrastructure optimization.'
+excerpt: >-
+  This report examines the evolution of AI agent architecture from 2024 through 2026, highlighting the industry's shift from monolithic models to composable, observable systems. It covers emerging design patterns like Planner-Executor and Orchestrator-Worker architectures, the move toward trajectory-based evaluation, and the concept of "Context Engineering" as a first-class architectural concern. While real-world robustness remains a challenge, agents are already delivering value in software engineering, customer support, and infrastructure optimization.
 ---
 
 ## Introduction: The Current State and Direction of AI Agents

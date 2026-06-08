@@ -2,7 +2,8 @@
 title: "Anthropic Launches Claude Opus 4.8 With Modest Coding and Agent Gains, Same Pricing"
 date: "2026-06-08"
 tag: "Anthropic"
-excerpt: 'Anthropic has released Claude Opus 4.8, a modest update to its flagship model with improvements in coding, agentic terminal tasks, and reasoning — all at unchanged pricing. The company is positioning "honesty" — the model's tendency to flag its own uncertainty rather than confidently err — as the release's most important differentiator, alongside alignment gains that now approach Mythos levels.'
+excerpt: >-
+  Anthropic has released Claude Opus 4.8, a modest update to its flagship model with improvements in coding, agentic terminal tasks, and reasoning — all at unchanged pricing. The company is positioning "honesty" — the model's tendency to flag its own uncertainty rather than confidently err — as the release's most important differentiator, alongside alignment gains that now approach Mythos levels.
 ---
 
 On May 28, 2026, Anthropic released Claude Opus 4.8, the latest iteration of its flagship model. The update is a measured but clearly directional step forward: Opus 4.8 edges ahead of its predecessor, Opus 4.7, across coding, agentic tasks, reasoning, and knowledge work benchmarks — all without a price increase. Anthropic has also placed "honesty" front and center as the headline improvement. In its official announcement, the company didn't hedge, describing the release as "a modest but tangible improvement" over the previous generation.

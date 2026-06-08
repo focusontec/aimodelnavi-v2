@@ -2,7 +2,8 @@
 title: "World Models Explained: The Next Frontier Beyond LLMs"
 date: "2026-06-02"
 tag: "Open Source"
-excerpt: 'This article provides a comprehensive overview of "world models," a major trend in AI focused on predicting the consequences of actions rather than just describing the world. It covers the concept's 80-year history, from neuroscience foundations to modern architectures like Dreamer and JEPA, and compares five key technical approaches. The surge in interest is driven by concurrent advances in video generation, embodied AI data bottlenecks, and validated applications in autonomous driving safety simulation.'
+excerpt: >-
+  This article provides a comprehensive overview of "world models," a major trend in AI focused on predicting the consequences of actions rather than just describing the world. It covers the concept's 80-year history, from neuroscience foundations to modern architectures like Dreamer and JEPA, and compares five key technical approaches. The surge in interest is driven by concurrent advances in video generation, embodied AI data bottlenecks, and validated applications in autonomous driving safety simulation.
 ---
 
 Recently, the AI world has witnessed a fascinating shift in focus. Turing Award winners **Yann LeCun** and Xie Saining co-founded AMI Labs, securing a **$1 billion** investment not to build bigger LLMs, but to create a "world model." Almost simultaneously, **Fei-Fei Li**'s World Labs raised hundreds of millions, focusing on "spatial intelligence"—helping AI understand the 3D world, not just chat and create images. With DeepMind's **Demis Hassabis** also backing Genie, some of AI's most prominent names are converging on the same path.

@@ -2,7 +2,8 @@
 title: "Google I/O 2026: Gemini 3.5 Omni and Antigravity Usher in the AI Agent Era"
 date: "2026-05-21"
 tag: "Google"
-excerpt: 'Google I/O 2026 unveiled the powerful Gemini 3.5 Flash model and Gemini Omni, marking a significant leap in multimodal AI. The company also launched the "Google Antigravity" platform, aimed at democratizing the development of autonomous AI agents for 24/7 tasks. This signals a strategic shift for developers from building chatbots to creating agents that can execute complex actions across Google's ecosystem.'
+excerpt: >-
+  Google I/O 2026 unveiled the powerful Gemini 3.5 Flash model and Gemini Omni, marking a significant leap in multimodal AI. The company also launched the "Google Antigravity" platform, aimed at democratizing the development of autonomous AI agents for 24/7 tasks. This signals a strategic shift for developers from building chatbots to creating agents that can execute complex actions across Google's ecosystem.
 ---
 
 At Google I/O 2026, Google unveiled a wave of features poised to fundamentally reshape its AI ecosystem. For developers, the most significant theme is the clear shift beyond chatbots towards capable **AI Agents**, coupled with an acceleration of **multimodal integration** that unifies diverse inputs and outputs.

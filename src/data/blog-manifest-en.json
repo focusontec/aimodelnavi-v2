@@ -12,8 +12,8 @@
       "料金比較"
     ],
     "date": "2026-06-08",
-    "title_en": "Anthropic、Claude Opus 4.8を公開──価格据え置き、性能と誠実性を小幅ながらも実質的に改善",
-    "excerpt_en": "Anthropicは最新モデルClaude Opus 4.8を公開しました。コーディングやエージェント能力が小幅に向上し、特に「誠実性」──自信過剰な誤答を減らす機能──が強調されています。価格は据え置きですが、fastモードのコストが大幅に引き下げられ、コスト敏感なユーザーに朗報です。"
+    "title_en": "Anthropic Launches Claude Opus 4.8 With Modest Coding and Agent Gains, Same Pricing",
+    "excerpt_en": "Anthropic has released Claude Opus 4.8, a modest update to its flagship model with improvements in coding, agentic terminal tasks, and reasoning — all at unchanged pricing. The company is positioning \"honesty\" — the model's tendency to flag its own uncertainty rather than confidently err — as the release's most important differentiator, alongside alignment gains that now approach Mythos levels."
   },
   {
     "slug": "chatgpt-ai",
@@ -28,8 +28,8 @@
       "AIエージェント"
     ],
     "date": "2026-06-07",
-    "title_en": "ChatGPT、史上最大の改版を迎える ― AIはチャットだけの時代は終わった",
-    "excerpt_en": "OpenAIはChatGPTを大規模に改版し、プログラミングツールCodexを統合する。AIはチャットだけでなく、タスク実行やソフトウェア操作を担う「スーパーアプリ」へと進化し、Anthropicとの競争やIPOを見据えた収益戦略の一環となっている。"
+    "title_en": "ChatGPT's Biggest Overhaul Yet: OpenAI Merges Codex to Build an AI Super-App",
+    "excerpt_en": "OpenAI is preparing ChatGPT's biggest redesign since launch, merging its fast-growing coding tool Codex directly into the platform to build an AI 'super-app' that can write code, manage schedules, and automate workflows. The move — driven partly by competitive pressure from Anthropic's Claude Code — signals OpenAI's shift from a chatbot company to an agent-first platform aimed at enterprise monetization ahead of a potential IPO."
   },
   {
     "slug": "article-2026-06-05-u25cwp",
@@ -1201,6 +1201,22 @@
     "excerpt_en": "Google I/O 2026 marks a major shift in AI from conversational assistance to autonomous execution, introducing models like Gemini Omni and the agent-focused platform Google Antigravity. These advancements enable developers to build AI agents that automate complex tasks across creative, research, and commercial applications, heralding a new era of intelligent automation."
   },
   {
+    "slug": "google-io-2026gemini-omniantigravity",
+    "title": "Google I/O 2026速報：Gemini OmniとAntigravityが切り拓く「エージェント開発」の新時代",
+    "tag": "Google",
+    "excerpt": "Google I/O 2026で発表されたGemini 3.5 FlashやOmni、そしてエージェント開発プラットフォーム「Google Antigravity」を解説。開発者が注目すべきマルチモーダル統合と自律型エージェントの衝撃をまとめます。",
+    "topics": [
+      "Google",
+      "ベンチマーク",
+      "AIエージェント",
+      "マルチモーダル",
+      "コーディング"
+    ],
+    "date": "2026-05-21",
+    "title_en": "Google I/O 2026: Gemini 3.5 Omni and Antigravity Usher in the AI Agent Era",
+    "excerpt_en": "Google I/O 2026 unveiled the powerful Gemini 3.5 Flash model and Gemini Omni, marking a significant leap in multimodal AI. The company also launched the \"Google Antigravity\" platform, aimed at democratizing the development of autonomous AI agents for 24/7 tasks. This signals a strategic shift for developers from building chatbots to creating agents that can execute complex actions across Google's ecosystem."
+  },
+  {
     "slug": "google-io-2026gemini",
     "title": "Google I/O 2026速報：Geminiが「エージェント時代」へ突入。開発フローはどう変わるか",
     "tag": "Google",
@@ -1291,20 +1307,20 @@
     "excerpt_en": "Ramp solved its code review bottleneck by deploying OpenAI's Codex as an automated first-pass reviewer, cutting review times from hours to minutes. This allowed human developers to focus on complex architectural feedback while the AI handled routine checks, accelerating the entire development cycle."
   },
   {
-    "slug": "google-io-2026gemini-omniantigravity",
-    "title": "Google I/O 2026速報：Gemini OmniとAntigravityが切り拓く「エージェント開発」の新時代",
-    "tag": "Google",
-    "excerpt": "Google I/O 2026で発表されたGemini 3.5 FlashやOmni、そしてエージェント開発プラットフォーム「Google Antigravity」を解説。開発者が注目すべきマルチモーダル統合と自律型エージェントの衝撃をまとめます。",
+    "slug": "advances-in-ai-agent-report-2026-05",
+    "title": "AIエージェント設計の最前線：2026年に向けたシステムアーキテクチャと技術トレンド報告書",
+    "tag": "AIエージェント",
+    "excerpt": "2026年に向けたAIエージェントの設計思想は、「万能な単体モデル」から「構成・観測・制約可能なシステム」へと転換しています。本レポートでは、プランナーと実行者の分離、軌跡ベースの評価、そして現実世界での堅牢性を高めるための最新アーキテクチャを詳説します。",
     "topics": [
-      "Google",
-      "ベンチマーク",
       "AIエージェント",
-      "マルチモーダル",
-      "コーディング"
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "ベンチマーク"
     ],
-    "date": "2026-05-21",
-    "title_en": "Google I/O 2026速報：Gemini OmniとAntigravityが切り拓く「エージェント開発」の新時代",
-    "excerpt_en": "Google I/O 2026で発表されたGemini 3.5 FlashやOmni、そしてエージェント開発プラットフォーム「Google Antigravity」を解説。開発者が注目すべきマルチモーダル統合と自律型エージェントの衝撃をまとめます。"
+    "date": "2026-05-20",
+    "title_en": "AI Agent Design Frontiers: System Architecture and Technology Trends Heading Into 2026",
+    "excerpt_en": "This report examines the evolution of AI agent architecture from 2024 through 2026, highlighting the industry's shift from monolithic models to composable, observable systems. It covers emerging design patterns like Planner-Executor and Orchestrator-Worker architectures, the move toward trajectory-based evaluation, and the concept of \"Context Engineering\" as a first-class architectural concern. While real-world robustness remains a challenge, agents are already delivering value in software engineering, customer support, and infrastructure optimization."
   },
   {
     "slug": "aiprovenance",
@@ -1536,22 +1552,6 @@
     "date": "2026-05-20",
     "title_en": "Why Karpathy Joined Anthropic: The AI Talent Exodus and a Pre-Training Revolution Powered by AI Itself",
     "excerpt_en": "Andrej Karpathy has joined Anthropic's pre-training team to build a new sub-group focused on using Claude itself to accelerate pre-training research — a move that signals a paradigm shift toward AI-driven AI improvement. As the third core OpenAI figure to defect to Anthropic in two years, his arrival underscores a decisive talent migration and hints at Anthropic's strategy to leapfrog the compute arms race through self-improving training loops."
-  },
-  {
-    "slug": "advances-in-ai-agent-report-2026-05",
-    "title": "AIエージェント設計の最前線：2026年に向けたシステムアーキテクチャと技術トレンド報告書",
-    "tag": "AIエージェント",
-    "excerpt": "2026年に向けたAIエージェントの設計思想は、「万能な単体モデル」から「構成・観測・制約可能なシステム」へと転換しています。本レポートでは、プランナーと実行者の分離、軌跡ベースの評価、そして現実世界での堅牢性を高めるための最新アーキテクチャを詳説します。",
-    "topics": [
-      "AIエージェント",
-      "Anthropic",
-      "OpenAI",
-      "Google",
-      "ベンチマーク"
-    ],
-    "date": "2026-05-20",
-    "title_en": "AIエージェント設計の最前線：2026年に向けたシステムアーキテクチャと技術トレンド報告書",
-    "excerpt_en": "2026年に向けたAIエージェントの設計思想は、「万能な単体モデル」から「構成・観測・制約可能なシステム」へと転換しています。本レポートでは、プランナーと実行者の分離、軌跡ベースの評価、そして現実世界での堅牢性を高めるための最新アーキテクチャを詳説します。"
   },
   {
     "slug": "blog-2026-05-19-3nmfsz",
