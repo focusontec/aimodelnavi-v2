@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { ArrowLeft, ArrowRight, RotateCcw, Sparkles, Code, FileText, Brain, DollarSign, Zap, Globe } from "lucide-react";
+import { pricingData } from "@/data/pricing";
 
 interface Answers { useCase: string; budget: string; priority: string; context: string; }
 interface Recommendation { model: string; reason: string; score: number; pricing: string; bestFor: string; link: string; }
@@ -12,22 +13,12 @@ const T = {
   ja: {
     back: "ツール一覧に戻る", title: "AIモデル推薦", subtitle: "4つの質問に答えて、あなたに最適なAIモデルを見つけましょう",
     questionOf: "質問", of: "/", resultTitle: "おすすめのAIモデル", restart: "もう一度診断する",
-    viewDetails: "詳細を見る", matchScore: "適合度",
-    recs: {
-      opus: { reason: "最高品質のコーディングと分析能力", bestFor: "高品質コード生成" },
-      m3: { reason: "コスパ最強。100万トークン対応", bestFor: "コスト効率" },
-      gpt: { reason: "バランスの取れた高性能モデル", bestFor: "汎用タスク" },
-    },
+    viewDetails: "詳細を見る", matchScore: "適合度", availableModels: "対象モデル数",
   },
   en: {
     back: "Back to Tools", title: "AI Model Recommender", subtitle: "Answer 4 questions to find the perfect AI model for your needs",
     questionOf: "Question", of: "of", resultTitle: "Recommended AI Models", restart: "Start Over",
-    viewDetails: "View Details", matchScore: "Match Score",
-    recs: {
-      opus: { reason: "Top-tier coding and analysis quality", bestFor: "High-quality code" },
-      m3: { reason: "Best cost efficiency. 1M token support", bestFor: "Cost efficiency" },
-      gpt: { reason: "Well-balanced high-performance model", bestFor: "General tasks" },
-    },
+    viewDetails: "View Details", matchScore: "Match Score", availableModels: "Models evaluated",
   },
 };
 
@@ -55,32 +46,100 @@ const questions = [
   ]},
 ];
 
+// Model characteristics for scoring
+const modelProfiles: Record<string, { coding: number; writing: number; analysis: number; chatbot: number; costTier: number; speedTier: number; qualityTier: number; contextSize: number }> = {
+  "Claude Opus 4.8": { coding: 95, writing: 90, analysis: 95, chatbot: 85, costTier: 1, speedTier: 2, qualityTier: 1, contextSize: 1000000 },
+  "Claude Opus 4.7": { coding: 90, writing: 88, analysis: 92, chatbot: 83, costTier: 1, speedTier: 2, qualityTier: 1, contextSize: 1000000 },
+  "Claude Opus 4.6": { coding: 88, writing: 86, analysis: 90, chatbot: 82, costTier: 1, speedTier: 2, qualityTier: 1, contextSize: 200000 },
+  "Claude Sonnet 4.6": { coding: 85, writing: 88, analysis: 85, chatbot: 90, costTier: 2, speedTier: 1, qualityTier: 2, contextSize: 200000 },
+  "GPT-5.5": { coding: 88, writing: 92, analysis: 88, chatbot: 95, costTier: 2, speedTier: 1, qualityTier: 1, contextSize: 256000 },
+  "GPT-5.2": { coding: 85, writing: 90, analysis: 85, chatbot: 92, costTier: 2, speedTier: 1, qualityTier: 2, contextSize: 256000 },
+  "Gemini 3.0 Pro": { coding: 82, writing: 85, analysis: 88, chatbot: 85, costTier: 2, speedTier: 2, qualityTier: 2, contextSize: 1000000 },
+  "Gemini 3.1 Pro Preview": { coding: 84, writing: 86, analysis: 90, chatbot: 86, costTier: 2, speedTier: 2, qualityTier: 2, contextSize: 1000000 },
+  "Gemini 3.5 Flash": { coding: 78, writing: 82, analysis: 80, chatbot: 88, costTier: 3, speedTier: 1, qualityTier: 3, contextSize: 1000000 },
+  "Grok 4": { coding: 80, writing: 82, analysis: 85, chatbot: 80, costTier: 2, speedTier: 2, qualityTier: 2, contextSize: 1000000 },
+  "MiniMax M3": { coding: 85, writing: 78, analysis: 80, chatbot: 75, costTier: 3, speedTier: 1, qualityTier: 2, contextSize: 1000000 },
+  "DeepSeek V3.2": { coding: 82, writing: 75, analysis: 78, chatbot: 72, costTier: 3, speedTier: 1, qualityTier: 3, contextSize: 128000 },
+  "DeepSeek V4 Pro": { coding: 85, writing: 78, analysis: 80, chatbot: 75, costTier: 3, speedTier: 1, qualityTier: 2, contextSize: 128000 },
+  "GPT-4.1": { coding: 75, writing: 80, analysis: 75, chatbot: 85, costTier: 3, speedTier: 1, qualityTier: 3, contextSize: 1000000 },
+  "Claude Mythos Preview": { coding: 92, writing: 88, analysis: 95, chatbot: 85, costTier: 1, speedTier: 3, qualityTier: 1, contextSize: 200000 },
+};
+
 function getRecommendations(answers: Answers, t: typeof T.ja): Recommendation[] {
   const models: Recommendation[] = [];
-  let opusScore = 0;
-  if (answers.useCase === "coding") opusScore += 30;
-  if (answers.useCase === "analysis") opusScore += 25;
-  if (answers.priority === "quality") opusScore += 30;
-  if (answers.budget === "high") opusScore += 20;
-  if (answers.context === "large") opusScore += 15;
-  models.push({ model: "Claude Opus 4.8", reason: t.recs.opus.reason, score: Math.min(opusScore, 100), pricing: "$5/$25 per 1M", bestFor: t.recs.opus.bestFor, link: "/models/claude-opus-4-8" });
+  const allModels = [...new Set(pricingData.map((p) => p.modelName))];
 
-  let m3Score = 0;
-  if (answers.useCase === "coding") m3Score += 25;
-  if (answers.priority === "cost") m3Score += 35;
-  if (answers.budget === "low") m3Score += 30;
-  if (answers.context === "large") m3Score += 20;
-  models.push({ model: "MiniMax M3", reason: t.recs.m3.reason, score: Math.min(m3Score, 100), pricing: "$0.30/$1.20 per 1M", bestFor: t.recs.m3.bestFor, link: "/models/minimax-m3" });
+  for (const modelName of allModels) {
+    const profile = modelProfiles[modelName];
+    const pricing = pricingData.find((p) => p.modelName === modelName && p.billingMode === "standard");
+    if (!profile || !pricing) continue;
 
-  let gptScore = 0;
-  if (answers.useCase === "writing") gptScore += 25;
-  if (answers.useCase === "chatbot") gptScore += 25;
-  if (answers.priority === "quality") gptScore += 20;
-  if (answers.priority === "speed") gptScore += 15;
-  if (answers.budget === "medium") gptScore += 15;
-  models.push({ model: "GPT-5.5", reason: t.recs.gpt.reason, score: Math.min(gptScore, 100), pricing: "$2.50/$10 per 1M", bestFor: t.recs.gpt.bestFor, link: "/models/gpt-5-5" });
+    let score = 0;
 
-  return models.sort((a, b) => b.score - a.score).slice(0, 3);
+    // Use case scoring
+    if (answers.useCase === "coding") score += profile.coding;
+    else if (answers.useCase === "writing") score += profile.writing;
+    else if (answers.useCase === "analysis") score += profile.analysis;
+    else if (answers.useCase === "chatbot") score += profile.chatbot;
+
+    // Budget scoring
+    if (answers.budget === "low" && profile.costTier === 3) score += 20;
+    if (answers.budget === "low" && profile.costTier === 2) score += 10;
+    if (answers.budget === "medium" && profile.costTier === 2) score += 20;
+    if (answers.budget === "medium" && profile.costTier === 1) score += 10;
+    if (answers.budget === "high" && profile.costTier === 1) score += 20;
+    if (answers.budget === "high" && profile.costTier === 2) score += 10;
+
+    // Priority scoring
+    if (answers.priority === "quality" && profile.qualityTier === 1) score += 25;
+    if (answers.priority === "quality" && profile.qualityTier === 2) score += 15;
+    if (answers.priority === "speed" && profile.speedTier === 1) score += 25;
+    if (answers.priority === "speed" && profile.speedTier === 2) score += 15;
+    if (answers.priority === "cost" && profile.costTier === 3) score += 25;
+    if (answers.priority === "cost" && profile.costTier === 2) score += 15;
+
+    // Context size scoring
+    if (answers.context === "large" && profile.contextSize >= 1000000) score += 20;
+    if (answers.context === "medium" && profile.contextSize >= 200000) score += 15;
+    if (answers.context === "small") score += 10;
+
+    const normalizedScore = Math.min(Math.round((score / 140) * 100), 100);
+
+    models.push({
+      model: modelName,
+      reason: getReason(modelName, answers),
+      score: normalizedScore,
+      pricing: `$${pricing.inputPrice}/$${pricing.outputPrice} per 1M`,
+      bestFor: getBestFor(modelName),
+      link: `/models/${modelName.toLowerCase().replace(/\s+/g, "-")}`,
+    });
+  }
+
+  return models.sort((a, b) => b.score - a.score).slice(0, 5);
+}
+
+function getReason(model: string, answers: Answers): string {
+  const reasons: Record<string, Record<string, string>> = {
+    "Claude Opus 4.8": { coding: "最高品質のコーディング能力", writing: "優れた文章生成", analysis: "高度な分析能力", chatbot: "高品質な対話" },
+    "GPT-5.5": { coding: "バランスの取れたコーディング", writing: "最高品質の文章", analysis: "優れた分析", chatbot: "自然な対話" },
+    "MiniMax M3": { coding: "コスパ最強のコーディング", writing: "コスト効率の良い文章", analysis: "大規模データ分析", chatbot: "低コスト対話" },
+    "DeepSeek V3.2": { coding: "低コストコーディング", writing: "手軽な文章生成", analysis: "基本分析", chatbot: "手軽な対話" },
+  };
+  return reasons[model]?.[answers.useCase] || "バランスの良い性能";
+}
+
+function getBestFor(model: string): string {
+  const bestFor: Record<string, string> = {
+    "Claude Opus 4.8": "高品質コード生成",
+    "Claude Opus 4.7": "高品質分析",
+    "GPT-5.5": "汎用タスク",
+    "GPT-5.2": "バランス重視",
+    "MiniMax M3": "コスト効率",
+    "DeepSeek V3.2": "低コスト",
+    "Gemini 3.0 Pro": "長コンテキスト",
+    "Grok 4": "推論タスク",
+  };
+  return bestFor[model] || "汎用";
 }
 
 export default function ModelRecommenderPage() {
@@ -90,6 +149,8 @@ export default function ModelRecommenderPage() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({ useCase: "", budget: "", priority: "", context: "" });
   const [recs, setRecs] = useState<Recommendation[] | null>(null);
+
+  const allModels = [...new Set(pricingData.map((p) => p.modelName))];
 
   const handleAnswer = (id: string, value: string) => {
     const newAnswers = { ...answers, [id]: value };
@@ -107,7 +168,8 @@ export default function ModelRecommenderPage() {
           <ArrowLeft className="w-4 h-4" />{t.back}
         </Link>
         <h1 className="text-3xl font-bold text-gray-900 mb-2">{t.title}</h1>
-        <p className="text-gray-500 mb-8">{t.subtitle}</p>
+        <p className="text-gray-500 mb-2">{t.subtitle}</p>
+        <p className="text-xs text-gray-400 mb-8">{t.availableModels}: {allModels.length}</p>
 
         {!recs && (
           <div className="mb-8">
