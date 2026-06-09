@@ -8,7 +8,7 @@ import { ArrowLeft, Upload, FileText, TrendingDown, AlertTriangle, CheckCircle, 
 const T = {
   ja: {
     back: "ツール一覧に戻る", title: "使用パターン分析", subtitle: "API使用ログを貼り付けて、コスト最適化の提案を受けましょう",
-    pasteLog: "使用ログを貼り付け", placeholder: "ここにAPI使用ログを貼り付けてください...\n\n例:\nModel: GPT-5.5, Tokens: 150000, Cost: $0.38\nModel: Claude Opus 4.8, Tokens: 200000, Cost: $5.00\nModel: GPT-5.5, Tokens: 120000, Cost: $0.30",
+    pasteLog: "使用ログを貼り付け", placeholder: "ここにAPI使用ログを貼り付けてください...\n\n対応フォーマット:\n\n① Model: GPT-5.5, Tokens: 150000, Cost: $0.38\n② GPT-5.5 | 150000 | $0.38\n③ GPT-5.5\t150000\t0.38\n④ {\"model\": \"GPT-5.5\", \"tokens\": 150000, \"cost\": 0.38}",
     analyze: "分析する", analyzing: "分析中...",
     results: "分析結果", totalCost: "総コスト", totalRequests: "総リクエスト数", avgCostPerReq: "平均コスト/リクエスト",
     recommendations: "最適化提案", priority: "優先度", high: "高", medium: "中", low: "低",
@@ -20,7 +20,7 @@ const T = {
   },
   en: {
     back: "Back to Tools", title: "Usage Pattern Analyzer", subtitle: "Paste your API usage logs to get cost optimization recommendations",
-    pasteLog: "Paste Usage Log", placeholder: "Paste your API usage logs here...\n\nExample:\nModel: GPT-5.5, Tokens: 150000, Cost: $0.38\nModel: Claude Opus 4.8, Tokens: 200000, Cost: $5.00\nModel: GPT-5.5, Tokens: 120000, Cost: $0.30",
+    pasteLog: "Paste Usage Log", placeholder: "Paste your API usage logs here...\n\nSupported formats:\n\n① Model: GPT-5.5, Tokens: 150000, Cost: $0.38\n② GPT-5.5 | 150000 | $0.38\n③ GPT-5.5\t150000\t0.38\n④ {\"model\": \"GPT-5.5\", \"tokens\": 150000, \"cost\": 0.38}",
     analyze: "Analyze", analyzing: "Analyzing...",
     results: "Analysis Results", totalCost: "Total Cost", totalRequests: "Total Requests", avgCostPerReq: "Avg Cost/Request",
     recommendations: "Optimization Recommendations", priority: "Priority", high: "High", medium: "Medium", low: "Low",
@@ -51,16 +51,63 @@ function parseLogs(text: string): LogEntry[] {
   const lines = text.split("\n").filter((l) => l.trim());
 
   for (const line of lines) {
-    const modelMatch = line.match(/Model:\s*([^,]+)/i);
-    const tokensMatch = line.match(/Tokens:\s*(\d+)/i);
-    const costMatch = line.match(/Cost:\s*\$?([\d.]+)/i);
+    // Try multiple formats
+    let modelMatch, tokensMatch, costMatch;
+
+    // Format 1: Model: GPT-5.5, Tokens: 150000, Cost: $0.38
+    modelMatch = line.match(/Model:\s*([^,]+)/i);
+    tokensMatch = line.match(/Tokens:\s*(\d+)/i);
+    costMatch = line.match(/Cost:\s*\$?([\d.]+)/i);
+
+    // Format 2: GPT-5.5 | 150000 tokens | $0.38
+    if (!modelMatch) {
+      const parts = line.split("|").map((p) => p.trim());
+      if (parts.length >= 3) {
+        modelMatch = [line, parts[0]];
+        tokensMatch = [line, parts[1].replace(/\D/g, "")];
+        costMatch = [line, parts[2].replace(/[^0-9.]/g, "")];
+      }
+    }
+
+    // Format 3: GPT-5.5 150000 $0.38 (tab or multi-space separated)
+    if (!modelMatch) {
+      const parts = line.split(/\t+|\s{2,}/).map((p) => p.trim()).filter(Boolean);
+      if (parts.length >= 3) {
+        const maybeTokens = parts[1].replace(/\D/g, "");
+        const maybeCost = parts[2].replace(/[^0-9.]/g, "");
+        if (maybeTokens && maybeCost) {
+          modelMatch = [line, parts[0]];
+          tokensMatch = [line, maybeTokens];
+          costMatch = [line, maybeCost];
+        }
+      }
+    }
+
+    // Format 4: JSON line {"model": "GPT-5.5", "tokens": 150000, "cost": 0.38}
+    if (!modelMatch && line.trim().startsWith("{")) {
+      try {
+        const json = JSON.parse(line);
+        if (json.model && (json.tokens || json.input_tokens) && (json.cost || json.total_cost)) {
+          entries.push({
+            model: json.model,
+            tokens: json.tokens || json.input_tokens || 0,
+            cost: json.cost || json.total_cost || 0,
+          });
+          continue;
+        }
+      } catch {}
+    }
 
     if (modelMatch && tokensMatch && costMatch) {
-      entries.push({
-        model: modelMatch[1].trim(),
-        tokens: parseInt(tokensMatch[1]),
-        cost: parseFloat(costMatch[1]),
-      });
+      const tokens = parseInt(tokensMatch[1]);
+      const cost = parseFloat(costMatch[1]);
+      if (!isNaN(tokens) && !isNaN(cost) && tokens > 0 && cost >= 0) {
+        entries.push({
+          model: modelMatch[1].trim(),
+          tokens,
+          cost,
+        });
+      }
     }
   }
 
