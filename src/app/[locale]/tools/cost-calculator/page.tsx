@@ -119,10 +119,7 @@ export default function CostCalculatorPage() {
           <ArrowLeft className="w-4 h-4" />{t.back}
         </Link>
 
-        <div className="flex items-center gap-3 mb-2">
-          <h1 className="text-3xl font-bold text-gray-900">{t.title}</h1>
-          <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-medium rounded-full">{t.proBadge}</span>
-        </div>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{t.title}</h1>
         <p className="text-gray-500 mb-8">{t.subtitle}</p>
 
         <div className="grid lg:grid-cols-2 gap-8">
