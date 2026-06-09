@@ -16,6 +16,7 @@ const toolLinks = [
   { slug: "token-counter", labelJa: "トークンカウンター", labelEn: "Token Counter", icon: BarChart3 },
   { slug: "model-recommender", labelJa: "AIモデル推薦", labelEn: "AI Model Recommender", icon: Sparkles },
   { slug: "context-visualizer", labelJa: "コンテキスト比較", labelEn: "Context Visualizer", icon: LayoutGrid },
+  { slug: "usage-analyzer", labelJa: "使用パターン分析", labelEn: "Usage Analyzer", icon: BarChart3 },
 ];
 
 export default function Header() {

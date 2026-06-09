@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calculator, FileText, ArrowLeft, ArrowLeftRight, Sparkles, LayoutGrid } from "lucide-react";
+import { Calculator, FileText, ArrowLeft, ArrowLeftRight, Sparkles, LayoutGrid, BarChart3 } from "lucide-react";
 
 const tools = [
   {
@@ -31,6 +31,12 @@ const tools = [
     desc: { ja: "各モデルのコンテキストサイズを視覚的に比較。", en: "Visually compare context window sizes across models." },
     icon: LayoutGrid,
     href: "/tools/context-visualizer",
+  },
+  {
+    title: { ja: "使用パターン分析", en: "Usage Analyzer" },
+    desc: { ja: "API使用ログを分析して、コスト最適化の提案を受けましょう。", en: "Analyze your API usage logs to get cost optimization recommendations." },
+    icon: BarChart3,
+    href: "/tools/usage-analyzer",
   },
 ];
 
