@@ -32,6 +32,22 @@
     "excerpt_en": "This article examines whether local LLMs can replace paid cloud models in 2026. Based on benchmark data and user experiences, it highlights scenarios where local models are sufficient and where paid models excel, along with a detailed cost analysis to guide your AI strategy."
   },
   {
+    "slug": "open-source-llm-monopoly-2026",
+    "title": "オープンソースLLMがAI独占を阻止する：2026年の關鍵戦争",
+    "tag": "オープンソース",
+    "excerpt": "Redditのディスカッションを基に、オープンソースLLMがAI市場の独占を防いでいる理由を解説する。2026年の展望と、オープンソースとクローズドソースの競争関係を探り、開発者にとっての選択肢の重要性を強調する。",
+    "topics": [
+      "オープンソース",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek"
+    ],
+    "date": "2026-06-10",
+    "title_en": "Open Source LLMs vs. AI Monopoly: Why 2026 Is the Pivotal Year",
+    "excerpt_en": "Open source LLMs are emerging as a critical defense against AI monopolization by fostering competition, driving down costs, and accelerating innovation. As the AI landscape evolves in 2026, these models ensure diversity and accessibility, challenging the dominance of closed-source giants."
+  },
+  {
     "slug": "anthropic-released-opus-4_8",
     "title": "Anthropic、Claude Opus 4.8を公開──価格据え置き、性能と誠実性を小幅ながらも実質的に改善",
     "tag": "Anthropic",
@@ -206,8 +222,8 @@
       "ベンチマーク"
     ],
     "date": "2026-06-03",
-    "title_en": "From \"Open-Source Hero\" to \"Closed Model\": Qwen3.7-Max Closure Reveals Structural Shifts in the AI Industry",
-    "excerpt_en": "With 9.42 billion downloads and 200,000 derived models, Alibaba's Qwen was hailed as \"the last bastion of open source.\" However, the announcement of Qwen3.7-Max as a completely closed-source model left the community in shock and disappointment. This piece delves into the implications of this shift, historical parallels, and the options left for developers."
+    "title_en": "From \"Open-Source Hero\" to \"Closed-Source Model\": The Qwen3.7-Max Closure Reveals Structural Shifts in the AI Industry",
+    "excerpt_en": "With 942 million downloads and 200,000 derivative models, Alibaba's Qwen was hailed as \"the last bastion of open source.\" However, the announcement of Qwen3.7-Max as a completely closed-source model left the community in shock and disappointment. This translation delves into the implications of this shift, historical parallels, and the choices remaining for developers."
   },
   {
     "slug": "awsopenaiai",

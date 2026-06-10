@@ -28,6 +28,20 @@
     "date": "2026-06-10"
   },
   {
+    "slug": "open-source-llm-monopoly-2026",
+    "title": "オープンソースLLMがAI独占を阻止する：2026年の關鍵戦争",
+    "tag": "オープンソース",
+    "excerpt": "Redditのディスカッションを基に、オープンソースLLMがAI市場の独占を防いでいる理由を解説する。2026年の展望と、オープンソースとクローズドソースの競争関係を探り、開発者にとっての選択肢の重要性を強調する。",
+    "topics": [
+      "オープンソース",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek"
+    ],
+    "date": "2026-06-10"
+  },
+  {
     "slug": "anthropic-released-opus-4_8",
     "title": "Anthropic、Claude Opus 4.8を公開──価格据え置き、性能と誠実性を小幅ながらも実質的に改善",
     "tag": "Anthropic",
