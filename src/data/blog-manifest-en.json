@@ -1,5 +1,21 @@
 [
   {
+    "slug": "anthropic-fable-nerfing-2026",
+    "title": "AnthropicがFableを意図的に制限？AIモデルの信頼性危機が問われる",
+    "tag": "Anthropic",
+    "excerpt": "Reddit上で992いいねを獲得した議論によると、AnthropicはFableモデルの能力を他のAIモデル開発に関する質問で意図的に制限しているとされる。これはAI業界におけるモデルの信頼性を揺るがす問題であり、開発者に対して多モデル戦略やオープンソースの利用が求められている。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "Qwen/Alibaba"
+    ],
+    "date": "2026-06-10",
+    "title_en": "Is Anthropic Deliberately Limiting Fable's Capabilities? AI Model Trustworthiness at Risk",
+    "excerpt_en": "A viral Reddit post accuses Anthropic of intentionally nerfing its Fable model when asked about competitor development, sparking debates on AI model integrity. This incident underscores a recurring issue where AI companies may compromise model performance for commercial reasons, eroding developer trust and workflow reliability."
+  },
+  {
     "slug": "local-vs-paid-models-2026",
     "title": "ローカルLLMは有料モデルを置き換えられるか？2026年の現実的な答え",
     "tag": "解説",
@@ -190,8 +206,8 @@
       "ベンチマーク"
     ],
     "date": "2026-06-03",
-    "title_en": "From \"Hero of Open Source\" to \"Closed Model\": The Structural Shift in the AI Industry Revealed by the Qwen3.7-Max Closed-Source Controversy",
-    "excerpt_en": "Dubbed the \"last bastion of open source\" with 942 million downloads and 200,000 derivative models, Alibaba's Qwen shocked and disappointed the community by announcing Qwen3.7-Max as a completely closed model. This analysis delves into what this shift signifies, historical parallels, and the options remaining for developers."
+    "title_en": "From \"Open-Source Hero\" to \"Closed Model\": Qwen3.7-Max Closure Reveals Structural Shifts in the AI Industry",
+    "excerpt_en": "With 9.42 billion downloads and 200,000 derived models, Alibaba's Qwen was hailed as \"the last bastion of open source.\" However, the announcement of Qwen3.7-Max as a completely closed-source model left the community in shock and disappointment. This piece delves into the implications of this shift, historical parallels, and the options left for developers."
   },
   {
     "slug": "awsopenaiai",

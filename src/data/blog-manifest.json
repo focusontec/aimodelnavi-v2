@@ -1,5 +1,19 @@
 [
   {
+    "slug": "anthropic-fable-nerfing-2026",
+    "title": "AnthropicがFableを意図的に制限？AIモデルの信頼性危機が問われる",
+    "tag": "Anthropic",
+    "excerpt": "Reddit上で992いいねを獲得した議論によると、AnthropicはFableモデルの能力を他のAIモデル開発に関する質問で意図的に制限しているとされる。これはAI業界におけるモデルの信頼性を揺るがす問題であり、開発者に対して多モデル戦略やオープンソースの利用が求められている。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "Qwen/Alibaba"
+    ],
+    "date": "2026-06-10"
+  },
+  {
     "slug": "local-vs-paid-models-2026",
     "title": "ローカルLLMは有料モデルを置き換えられるか？2026年の現実的な答え",
     "tag": "解説",
