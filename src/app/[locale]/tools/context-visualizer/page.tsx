@@ -55,18 +55,22 @@ const T = {
 };
 
 const models = [
-  { name: "DeepSeek V3.2", tokens: 128000, color: "bg-red-500", tier: "Budget" },
-  { name: "GPT-4.1", tokens: 1000000, color: "bg-green-400", tier: "Standard" },
-  { name: "GPT-5.2", tokens: 400000, color: "bg-green-500", tier: "Standard" },
-  { name: "Claude Sonnet 4.6", tokens: 1000000, color: "bg-purple-400", tier: "Standard" },
-  { name: "Claude Opus 4.7", tokens: 1000000, color: "bg-purple-500", tier: "Premium" },
+  { name: "GPT-5.6", tokens: 1500000, color: "bg-green-600", tier: "Premium" },
+  { name: "Gemini 3.2 Flash", tokens: 2000000, color: "bg-blue-600", tier: "Premium" },
+  { name: "Gemini 3.0 Pro", tokens: 2000000, color: "bg-blue-500", tier: "Premium" },
   { name: "Claude Opus 4.8", tokens: 1000000, color: "bg-purple-600", tier: "Premium" },
-  { name: "Gemini 3.0 Pro", tokens: 1000000, color: "bg-blue-500", tier: "Standard" },
-  { name: "Gemini 3.5 Flash", tokens: 1000000, color: "bg-blue-400", tier: "Budget" },
+  { name: "Claude Sonnet 4.8", tokens: 1000000, color: "bg-purple-400", tier: "Standard" },
+  { name: "Gemini 3.5 Flash", tokens: 1000000, color: "bg-blue-400", tier: "Standard" },
+  { name: "DeepSeek V4.1", tokens: 1000000, color: "bg-red-600", tier: "Standard" },
   { name: "Grok 4", tokens: 1000000, color: "bg-teal-500", tier: "Standard" },
-  { name: "MiniMax M3", tokens: 1000000, color: "bg-orange-500", tier: "Budget" },
-  { name: "DeepSeek V4 Pro", tokens: 128000, color: "bg-red-600", tier: "Standard" },
-  { name: "Qwen3.6-27B", tokens: 128000, color: "bg-yellow-500", tier: "Budget" },
+  { name: "MiniMax M3", tokens: 1000000, color: "bg-orange-500", tier: "Standard" },
+  { name: "GPT-5.2", tokens: 400000, color: "bg-green-500", tier: "Standard" },
+  { name: "GPT-5.1 Codex Max", tokens: 256000, color: "bg-green-400", tier: "Standard" },
+  { name: "Claude Opus 4.7", tokens: 200000, color: "bg-purple-500", tier: "Standard" },
+  { name: "GPT-4.1", tokens: 128000, color: "bg-green-300", tier: "Budget" },
+  { name: "DeepSeek V3.2", tokens: 128000, color: "bg-red-500", tier: "Budget" },
+  { name: "Gemma 4 31B", tokens: 128000, color: "bg-yellow-500", tier: "Budget" },
+  { name: "Qwen3.6-27B", tokens: 128000, color: "bg-yellow-400", tier: "Budget" },
 ];
 
 const references = [
