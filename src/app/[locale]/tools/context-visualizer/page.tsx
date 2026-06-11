@@ -158,7 +158,7 @@ export default function ContextVisualizerPage() {
           </p>
           <div className="space-y-3">
             {models.map((m) => {
-              const pct = (m.tokens / 1000000) * 100;
+              const pct = Math.min((m.tokens / 2000000) * 100, 100);
               const isSelected = selectedModel.name === m.name;
               return (
                 <button
