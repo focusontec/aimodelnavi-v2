@@ -67,7 +67,7 @@ export function Hero({ locale, t }: HeroProps) {
           {/* Stats */}
           <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-8">
             {[
-              { value: "289", label: t.modelsListed },
+              { value: "292", label: t.modelsListed },
               { value: "1750+", label: t.pricingData },
               { value: t.dailyUpdateVal, label: t.dailyUpdate },
             ].map((stat) => (
