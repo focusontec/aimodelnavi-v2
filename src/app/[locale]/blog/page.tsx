@@ -15,9 +15,13 @@ interface BlogPost {
 }
 
 function getManifest(locale: string): BlogPost[] {
-  const file = locale === "en" ? "blog-manifest-en.json" : "blog-manifest.json";
-  const data = readFileSync(join(process.cwd(), "src/data", file), "utf-8");
-  return JSON.parse(data);
+  try {
+    const file = locale === "en" ? "blog-manifest-en.json" : "blog-manifest.json";
+    const data = readFileSync(join(process.cwd(), "src/data", file), "utf-8");
+    return JSON.parse(data);
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
