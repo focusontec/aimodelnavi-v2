@@ -1,4 +1,3 @@
-import { setRequestLocale } from "next-intl/server";
 import blogManifest from "@/data/blog-manifest.json";
 import blogManifestEn from "@/data/blog-manifest-en.json";
 import type { Metadata } from "next";
@@ -29,8 +28,6 @@ export default async function BlogListPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  setRequestLocale(locale);
-
   const isEn = locale === "en";
   const manifest = isEn ? blogManifestEn : blogManifest;
   const sorted = [...manifest].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
