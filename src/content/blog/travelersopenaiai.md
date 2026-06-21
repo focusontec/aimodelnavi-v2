@@ -1,9 +1,10 @@
 ---
-title: "米国保険大手TravelersがOpenAIで請求処理を自動化：エンタープライズAI実装の最前線"
-date: "2026-06-03"
-tag: "解説"
-excerpt: "米国保険大手のTravelers社が、OpenAIの技術を用いて保険金請求処理を全米規模で展開しています。厳格な業務領域である保険業界において、AIをどのように実務に統合し、効率化を実現したのかを解説します。"
-source: "https://openai.com/index/travelers"
+title: 米国保険大手TravelersがOpenAIで請求処理を自動化：エンタープライズAI実装の最前線
+date: '2026-06-03'
+tag: 解説
+excerpt: >-
+  米国保険大手のTravelers社が、OpenAIの技術を用いて保険金請求処理を全米規模で展開しています。厳格な業務領域である保険業界において、AIをどのように実務に統合し、効率化を実現したのかを解説します。
+source: 'https://openai.com/index/travelers'
 ---
 
 ## 保険金請求処理へのAI導入：Travelers社の挑戦
@@ -36,3 +37,11 @@ Travelers社の事例から、日本企業が大規模なAI実装を検討する
 
 ## 参考
 - Travelers deploys AI-powered claims countrywide with OpenAI: https://openai.com/index/travelers
+
+---
+
+## 関連記事
+
+- [ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例](/blog/chatgpt-enterprise-llm)
+- [OpenAI GPT-5.5 Instantがもたらす医療AI革新：強化推論と評価フレームワークの技術解説](/blog/openai-gpt-55-instant-ai)
+- [AnthropicがFableを意図的に制限？AIモデルの信頼性危機が問われる](/blog/anthropic-fable-nerfing-2026)
