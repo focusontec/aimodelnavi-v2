@@ -1,5 +1,65 @@
 [
   {
+    "slug": "chatgpt-enterprise-llm",
+    "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。",
+    "topics": [
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-21"
+  },
+  {
+    "slug": "chatgpt-enterprisellm",
+    "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
+    "tag": "解説",
+    "excerpt": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。",
+    "topics": [
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-21"
+  },
+  {
+    "slug": "gpt-55-instantai",
+    "title": "GPT-5.5 Instantの医療AI革新：強化推論と医師監修評価フレームワークの技術解説",
+    "tag": "OpenAI",
+    "excerpt": "GPT-5.5 Instantは、OpenAIが健康・医療分野のインテリジェンス向上のために開発したモデルで、強化された推論能力、コンテキスト理解、医師監修の評価フレームワークを特徴としています。本記事では、これらの技術的特徴を分解し、日本企業が医療・ヘルスケア分野でAI製品を開発する際の品質保証・評価設計のベストプラクティスを考察します。",
+    "topics": [
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-21"
+  },
+  {
+    "slug": "openai-gpt-55-instant-ai",
+    "title": "OpenAI GPT-5.5 Instantがもたらす医療AI革新：強化推論と評価フレームワークの技術解説",
+    "tag": "OpenAI",
+    "excerpt": "GPT-5.5 Instantは、OpenAIが健康・医療分野向けに開発したモデルで、強化された推論能力、コンテキスト理解、医師監修の評価フレームワークを特徴とする。本記事では、これらの技術的特徴を分解し、日本企業が医療AI製品を開発する際の品質保証設計のベストプラクティスを考察する。",
+    "topics": [
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-21"
+  },
+  {
+    "slug": "openai18ai",
+    "title": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。",
+    "topics": [
+      "OpenAI",
+      "ベンチマーク",
+      "推論"
+    ],
+    "date": "2026-06-21"
+  },
+  {
     "slug": "anthropic-fable-nerfing-2026",
     "title": "AnthropicがFableを意図的に制限？AIモデルの信頼性危機が問われる",
     "tag": "Anthropic",

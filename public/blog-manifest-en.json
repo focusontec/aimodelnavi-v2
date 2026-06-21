@@ -1,5 +1,75 @@
 [
   {
+    "slug": "chatgpt-enterprise-llm",
+    "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。",
+    "topics": [
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-21",
+    "title_en": "ChatGPT Enterprise Spend Controls and Analytics: A Practical Guide for LLM Cost Governance",
+    "excerpt_en": "OpenAI has launched spend controls and usage analytics for ChatGPT Enterprise, enabling better cost management for large-scale LLM deployments. This article explores how these features can inform governance design, offering practical insights for IT leaders to implement proactive budget controls and optimize resource allocation."
+  },
+  {
+    "slug": "openai-gpt-55-instant-ai",
+    "title": "OpenAI GPT-5.5 Instantがもたらす医療AI革新：強化推論と評価フレームワークの技術解説",
+    "tag": "OpenAI",
+    "excerpt": "GPT-5.5 Instantは、OpenAIが健康・医療分野向けに開発したモデルで、強化された推論能力、コンテキスト理解、医師監修の評価フレームワークを特徴とする。本記事では、これらの技術的特徴を分解し、日本企業が医療AI製品を開発する際の品質保証設計のベストプラクティスを考察する。",
+    "topics": [
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-21",
+    "title_en": "How GPT-5.5 Instant is Advancing Medical AI with Enhanced Reasoning and Doctor-Verified Evaluation",
+    "excerpt_en": "OpenAI's GPT-5.5 Instant model enhances medical AI by improving reasoning accuracy and incorporating a doctor-supervised evaluation framework for safety and reliability. This innovation sets a benchmark for quality assurance in healthcare AI development, offering insights for global applications, including in Japanese markets."
+  },
+  {
+    "slug": "chatgpt-enterprisellm",
+    "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
+    "tag": "解説",
+    "excerpt": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。",
+    "topics": [
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-21",
+    "title_en": "Explaining ChatGPT Enterprise's Spend Management and Usage Analytics Features | Practical Reference Cases for LLM Infrastructure Cost Governance Design",
+    "excerpt_en": "OpenAI announced new spend management and usage analytics features for ChatGPT Enterprise. Amid growing importance of cost visualization and governance in enterprise AI adoption, this article explains the feature design from the perspective of Japanese IT departments and development leaders."
+  },
+  {
+    "slug": "gpt-55-instantai",
+    "title": "GPT-5.5 Instantの医療AI革新：強化推論と医師監修評価フレームワークの技術解説",
+    "tag": "OpenAI",
+    "excerpt": "GPT-5.5 Instantは、OpenAIが健康・医療分野のインテリジェンス向上のために開発したモデルで、強化された推論能力、コンテキスト理解、医師監修の評価フレームワークを特徴としています。本記事では、これらの技術的特徴を分解し、日本企業が医療・ヘルスケア分野でAI製品を開発する際の品質保証・評価設計のベストプラクティスを考察します。",
+    "topics": [
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-21",
+    "title_en": "GPT-5.5 Instant's Medical AI Revolution: Technical Explanation of Enhanced Reasoning and Physician-Supervised Evaluation Frameworks",
+    "excerpt_en": "GPT-5.5 Instant is a model developed by OpenAI to enhance health and medical intelligence, featuring enhanced reasoning, contextual understanding, and physician-supervised evaluation frameworks. This article breaks down these technical features and examines best practices for quality assurance and evaluation design when Japanese companies develop AI products in the medical and healthcare fields."
+  },
+  {
+    "slug": "openai18ai",
+    "title": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。",
+    "topics": [
+      "OpenAI",
+      "ベンチマーク",
+      "推論"
+    ],
+    "date": "2026-06-21",
+    "title_en": "OpenAI Reasoning Model Succeeds in 18 New Diagnostic Assistances for Pediatric Rare Diseases — Technology and Challenges in Medical AI Practical Application",
+    "excerpt_en": "OpenAI's reasoning model was utilized to assist in diagnosing pediatric rare diseases, achieving 18 new identified cases. As a practical example of complex medical reasoning using Chain-of-Thought, this result offers rich insights for Japanese medical AI developers."
+  },
+  {
     "slug": "anthropic-fable-nerfing-2026",
     "title": "AnthropicがFableを意図的に制限？AIモデルの信頼性危機が問われる",
     "tag": "Anthropic",
@@ -222,8 +292,8 @@
       "ベンチマーク"
     ],
     "date": "2026-06-03",
-    "title_en": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
-    "excerpt_en": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。"
+    "title_en": "From \"Open-Source Hero\" to \"Closed Model\": The Structural Shift in the AI Industry Revealed by the Qwen3.7-Max Closure Controversy",
+    "excerpt_en": "Alibaba's Qwen was called the \"last bastion of open source\" with 942 million downloads and 200,000 derivative models. However, Qwen3.7-Max was announced as a fully closed model, shocking and disappointing the community. This article delves into what this shift means, historical parallels, and the choices left for developers."
   },
   {
     "slug": "awsopenaiai",
