@@ -21,8 +21,11 @@ export function Hero({ locale, t }: HeroProps) {
   const prefix = locale === "ja" ? "" : `/${locale}`;
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative">
+    <section className="hero-fullwidth relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600">
+      {/* Conic gradient decoration */}
+      <div className="conic-deco absolute -right-20 top-1/2 -translate-y-1/2" style={{ background: 'conic-gradient(from 0deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)' }} />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative z-10">
         <div className="max-w-3xl">
           <h1 className="text-3xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
             {t.hero}<br />{t.hero2}
@@ -31,7 +34,7 @@ export function Hero({ locale, t }: HeroProps) {
             {t.heroSub}
           </p>
 
-          {/* Search Box */}
+          {/* Search Box — Glassmorphism */}
           <div className="mt-8 relative max-w-xl">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <Search className="h-5 w-5 text-gray-400" />
@@ -39,7 +42,8 @@ export function Hero({ locale, t }: HeroProps) {
             <input
               type="text"
               placeholder={t.searchPlaceholder}
-              className="w-full pl-11 pr-4 py-3.5 bg-white rounded-xl text-gray-900 placeholder-gray-400 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="w-full pl-11 pr-4 py-3.5 rounded-xl text-gray-900 placeholder-gray-400 shadow-lg focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
+              style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(8px)' }}
               readOnly
               tabIndex={-1}
               aria-hidden="true"
@@ -50,14 +54,14 @@ export function Hero({ locale, t }: HeroProps) {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href={`${prefix}/leaderboard`}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-700 font-semibold rounded-xl hover:bg-primary-50 transition-colors shadow-lg"
+              className="btn-modern inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-700 font-semibold shadow-lg"
             >
               <BarChart3 className="w-4 h-4" />
               {t.viewRankings}
             </Link>
             <Link
               href={`${prefix}/pricing`}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/20"
+              className="btn-shimmer inline-flex items-center gap-2 px-6 py-3 bg-white/10 text-white font-semibold backdrop-blur-sm"
             >
               <Coins className="w-4 h-4" />
               {t.comparePricing}
@@ -72,7 +76,7 @@ export function Hero({ locale, t }: HeroProps) {
               { value: t.dailyUpdateVal, label: t.dailyUpdate },
             ].map((stat) => (
               <div key={stat.label} className="text-white">
-                <div className="text-2xl lg:text-3xl font-bold">{stat.value}</div>
+                <div className="text-2xl lg:text-3xl font-bold pulse-number">{stat.value}</div>
                 <div className="text-sm text-primary-200 mt-1">{stat.label}</div>
               </div>
             ))}

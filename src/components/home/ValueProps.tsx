@@ -1,5 +1,3 @@
-import { BarChart3, Coins, RefreshCw } from "lucide-react";
-
 interface ValuePropsProps {
   t: {
     value1Title: string;
@@ -11,7 +9,27 @@ interface ValuePropsProps {
   };
 }
 
-const icons = [BarChart3, Coins, RefreshCw];
+function BenchGauge() {
+  return <div className="bench-gauge" />;
+}
+
+function BounceBars() {
+  return (
+    <div className="bounce-bars">
+      <span /><span /><span /><span /><span />
+    </div>
+  );
+}
+
+function RippleCircles() {
+  return (
+    <div className="ripple-wrap">
+      <span /><span /><span />
+    </div>
+  );
+}
+
+const loaders = [BenchGauge, BounceBars, RippleCircles];
 
 export function ValueProps({ t }: ValuePropsProps) {
   const props = [
@@ -24,11 +42,11 @@ export function ValueProps({ t }: ValuePropsProps) {
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
       <div className="grid md:grid-cols-3 gap-8">
         {props.map((prop, i) => {
-          const Icon = icons[i];
+          const Loader = loaders[i];
           return (
             <div key={prop.title} className="text-center">
-              <div className="inline-flex p-4 bg-primary-50 rounded-2xl mb-4">
-                <Icon className="w-8 h-8 text-primary-600" />
+              <div className="inline-flex items-center justify-center w-20 h-20 mb-4 bg-primary-50 rounded-2xl">
+                <Loader />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">{prop.title}</h3>
               <p className="text-sm text-gray-500">{prop.desc}</p>

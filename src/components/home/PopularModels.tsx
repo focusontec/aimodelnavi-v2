@@ -22,7 +22,7 @@ export function PopularModels({ locale, t, models }: PopularModelsProps) {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-2xl font-bold text-gray-900">🔥 {t.popularModels}</h2>
+        <h2 className="text-2xl font-bold text-gray-900">{t.popularModels}</h2>
         <Link href={`${prefix}/leaderboard`} className="text-sm font-medium text-primary-600 hover:text-primary-700">
           {t.viewAll} <ArrowRight className="w-4 h-4 inline" />
         </Link>
@@ -32,7 +32,7 @@ export function PopularModels({ locale, t, models }: PopularModelsProps) {
           <Link
             key={model.slug}
             href={`${prefix}/models/${model.slug}`}
-            className="group p-4 bg-white border border-gray-200 rounded-xl hover:border-primary-300 hover:shadow-md transition-all"
+            className="glow-border group p-4 bg-white border border-gray-200 rounded-xl hover:border-primary-300 hover:shadow-md transition-all"
           >
             <h3 className="font-bold text-gray-900 text-sm group-hover:text-primary-600 transition-colors">
               {model.name}

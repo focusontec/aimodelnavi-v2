@@ -48,7 +48,11 @@ export function Tools({ locale, t }: ToolsProps) {
         {tools.map((tool) => {
           const Icon = tool.icon;
           return (
-            <Link key={tool.title} href={tool.href} className="group p-6 bg-white border border-gray-200 rounded-xl hover:border-primary-300 hover:shadow-md transition-all">
+            <Link
+              key={tool.title}
+              href={tool.href}
+              className="shimmer-hover group p-6 bg-white border border-gray-200 rounded-xl hover:border-primary-300 hover:shadow-md transition-all"
+            >
               <div className="p-3 bg-primary-50 rounded-lg w-fit mb-4 group-hover:bg-primary-100 transition-colors">
                 <Icon className="w-6 h-6 text-primary-600" />
               </div>
