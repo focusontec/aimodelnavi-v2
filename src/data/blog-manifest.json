@@ -14,6 +14,20 @@
     "date": "2026-06-22"
   },
   {
+    "slug": "claude-sonnet-5-vs-gpt-56-2026-6-ai",
+    "title": "Claude Sonnet 5 vs GPT-5.6：2026年6月のAIモデル開発競争最前線",
+    "tag": "解説",
+    "excerpt": "AnthropicのClaude Sonnet 5とOpenAIのGPT-5.6がほぼ同時に発表される可能性が浮上し、AI業界が注目している。GPT-5.6は150万トークンのコンテキストウィンドウと新しいアライメント修正パイプラインを搭載し、ミッドティア市場での競争が激化する見込みだ。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "ベンチマーク",
+      "セキュリティ",
+      "コーディング"
+    ],
+    "date": "2026-06-22"
+  },
+  {
     "slug": "chatgpt-enterprise-llm",
     "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
     "tag": "OpenAI",

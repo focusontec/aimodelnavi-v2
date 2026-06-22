@@ -16,6 +16,22 @@
     "excerpt_en": "Anthropic's Claude Fable 5 sets new state-of-the-art records in AI benchmarks, excelling in software engineering and vision tasks, but its advanced capabilities have led to temporary US government restrictions. The model introduces robust safety measures while facing the ongoing challenge of balancing innovation with risk management in the AI industry."
   },
   {
+    "slug": "claude-sonnet-5-vs-gpt-56-2026-6-ai",
+    "title": "Claude Sonnet 5 vs GPT-5.6：2026年6月のAIモデル開発競争最前線",
+    "tag": "解説",
+    "excerpt": "AnthropicのClaude Sonnet 5とOpenAIのGPT-5.6がほぼ同時に発表される可能性が浮上し、AI業界が注目している。GPT-5.6は150万トークンのコンテキストウィンドウと新しいアライメント修正パイプラインを搭載し、ミッドティア市場での競争が激化する見込みだ。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "ベンチマーク",
+      "セキュリティ",
+      "コーディング"
+    ],
+    "date": "2026-06-22",
+    "title_en": "Claude Sonnet 5 vs GPT-5.6: The AI Model Battle Heating Up in 2026",
+    "excerpt_en": "The AI industry faces a pivotal moment as Anthropic's Claude Sonnet 5 and OpenAI's GPT-5.6 gear up for near-simultaneous launches. GPT-5.6 is expected to feature a massive 1.5 million token context window and a new alignment fix, while leaks suggest Claude Sonnet 5 has made significant benchmark improvements. Their competition is intensifying the critical mid-tier AI model market."
+  },
+  {
     "slug": "chatgpt-enterprise-llm",
     "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
     "tag": "OpenAI",
@@ -58,8 +74,8 @@
       "LLM"
     ],
     "date": "2026-06-21",
-    "title_en": "Explanation of ChatGPT Enterprise's Expenditure Management & Usage Analytics Features | A Practical Reference Case for Cost Governance Design Based on LLMs",
-    "excerpt_en": "OpenAI has announced new expenditure management and usage analytics features for ChatGPT Enterprise. As the importance of cost visualization and governance grows for enterprise AI adoption, this article explains the feature design from the perspective of Japanese IT departments and development leaders."
+    "title_en": "Explaining ChatGPT Enterprise's Spending Management and Usage Analysis Functions | Practical Reference Cases for LLM-Based Cost Governance Design",
+    "excerpt_en": "OpenAI has announced new spending management and usage analysis functions for ChatGPT Enterprise. As cost visualization and governance become increasingly important in enterprise AI adoption, this article explains the function design from the perspective of Japanese IT departments and development leaders."
   },
   {
     "slug": "gpt-55-instantai",
@@ -72,8 +88,8 @@
       "LLM"
     ],
     "date": "2026-06-21",
-    "title_en": "GPT-5.5 Instant's Medical AI Innovation: A Technical Explanation of Enhanced Reasoning and Physician-Supervised Evaluation Frameworks",
-    "excerpt_en": "GPT-5.5 Instant is a model developed by OpenAI to enhance intelligence in the health and medical fields, featuring enhanced reasoning capabilities, context understanding, and a physician-supervised evaluation framework. This article breaks down these technical characteristics and examines best practices for quality assurance and evaluation design when Japanese companies develop AI products in the medical and healthcare sectors."
+    "title_en": "GPT-5.5 Instant's Medical AI Innovation: Technical Explanation of Enhanced Reasoning and Physician-Supervised Evaluation Framework",
+    "excerpt_en": "GPT-5.5 Instant is a model developed by OpenAI to enhance intelligence in the health and medical fields, featuring enhanced reasoning capabilities, context understanding, and a physician-supervised evaluation framework. This article breaks down these technical features and explores best practices for quality assurance and evaluation design when Japanese companies develop AI products in the medical and healthcare sectors."
   },
   {
     "slug": "openai18ai",
@@ -86,8 +102,8 @@
       "推論"
     ],
     "date": "2026-06-21",
-    "title_en": "OpenAI's Reasoning Model Aids in 18 New Diagnostic Supports for Pediatric Rare Diseases ── Technology and Challenges in Medical AI Commercialization",
-    "excerpt_en": "OpenAI's reasoning model has been applied to assist in diagnosing pediatric rare diseases, achieving 18 new identification cases. As a practical example of complex medical reasoning utilizing Chain-of-Thought, these results offer significant insights for Japanese medical AI developers."
+    "title_en": "OpenAI Reasoning Model Succeeds in 18 New Diagnostic Aids for Pediatric Rare Diseases ── Technology and Challenges in Medical AI Practical Application",
+    "excerpt_en": "OpenAI's reasoning model has been applied to aid in diagnosing pediatric rare diseases, achieving 18 new identified cases. As a practical example of complex medical reasoning using Chain-of-Thought, this is an insightful achievement for medical AI developers in Japan."
   },
   {
     "slug": "anthropic-fable-nerfing-2026",
@@ -318,8 +334,8 @@
       "ベンチマーク"
     ],
     "date": "2026-06-03",
-    "title_en": "From \"Open-Source Heroes\" to \"Closed Models\": What the Qwen3.7-Max Closed-Source Issue Reveals About Structural Changes in the AI Industry",
-    "excerpt_en": "Alibaba's Qwen, hailed as \"the last bastion of open source\" with 942 million downloads and 200,000 derivative models, has announced Qwen3.7-Max as a completely closed model, leaving the community stunned and disappointed. This article delves into what this shift means, historical parallels, and the options remaining for developers."
+    "title_en": "From 'Open-Source Hero' to 'Closed Model': What the Qwen3.7-Max Closed-Source Issue Reveals About Structural Changes in the AI Industry",
+    "excerpt_en": "With 942 million downloads and 200,000 derivative models, Alibaba's Qwen was hailed as 'the last bastion of open-source.' However, Qwen3.7-Max was announced as a fully closed-source model, leaving the community in surprise and disappointment. This article delves into what this transition signifies, historical parallels, and the options remaining for developers."
   },
   {
     "slug": "awsopenaiai",
