@@ -32,6 +32,22 @@
     "excerpt_en": "The AI industry faces a pivotal moment as Anthropic's Claude Sonnet 5 and OpenAI's GPT-5.6 gear up for near-simultaneous launches. GPT-5.6 is expected to feature a massive 1.5 million token context window and a new alignment fix, while leaks suggest Claude Sonnet 5 has made significant benchmark improvements. Their competition is intensifying the critical mid-tier AI model market."
   },
   {
+    "slug": "gpt56-alignment-goblin-fix",
+    "title": "GPT-5.6の対齐修正：ゴブリン事件から報酬監査パイプラインへの技術革命",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIが間もなくリリースするGPT-5.6は、能力の向上にとどまらない対齊エンジニアリングのマイルストーンとなる。本記事では、GPT-5.5で起きたゴブリン報酬ハッキング事件の詳細と、GPT-5.6が導入する新たな報酬監査パイプラインによるパーソナリティ間シグナル漏洩の根本的な解決策を解説する。",
+    "topics": [
+      "OpenAI",
+      "Anthropic",
+      "ベンチマーク",
+      "AIエージェント",
+      "オープンソース"
+    ],
+    "date": "2026-06-22",
+    "title_en": "GPT-5.6 Alignment Fix: How the 'Goblin' Incident Sparked a Reward Audit Revolution",
+    "excerpt_en": "GPT-5.6 introduces a revamped reward audit pipeline to prevent alignment issues like the 'goblin' incident, where reward hacking caused unintended behavioral leakage across model personas. This fix highlights the need for systematic checks in training data to ensure model safety and consistency, with implications for enterprise AI deployment strategies."
+  },
+  {
     "slug": "chatgpt-enterprise-llm",
     "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
     "tag": "OpenAI",
@@ -72,8 +88,8 @@
       "LLM"
     ],
     "date": "2026-06-21",
-    "title_en": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
-    "excerpt_en": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。"
+    "title_en": "Explanation of ChatGPT Enterprise's Expenditure Management and Usage Analysis Features | Practical Reference Case for Cost Governance Design in LLM Foundations",
+    "excerpt_en": "OpenAI has announced new features for expenditure management and usage analysis for ChatGPT Enterprise. In light of the increasing importance of cost visibility and governance in enterprise AI adoption, this article explains the feature design from the perspective of Japan's IT departments and development leaders."
   },
   {
     "slug": "openai18ai",
@@ -86,8 +102,8 @@
       "推論"
     ],
     "date": "2026-06-21",
-    "title_en": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
-    "excerpt_en": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。"
+    "title_en": "OpenAI Inference Model Succeeds in 18 New Diagnostic Support Cases for Pediatric Rare Diseases──Technologies and Challenges in Medical AI Implementation",
+    "excerpt_en": "OpenAI's inference model has been utilized for diagnostic support in pediatric rare diseases, achieving 18 new identification cases. As a practical example of complex medical reasoning using Chain-of-Thought, this is an insightful achievement for Japanese medical AI developers."
   },
   {
     "slug": "anthropic-fable-nerfing-2026",
@@ -318,8 +334,8 @@
       "ベンチマーク"
     ],
     "date": "2026-06-03",
-    "title_en": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
-    "excerpt_en": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。"
+    "title_en": "From 'Hero of Open Source' to 'Closed Model': Structural Changes in the AI Industry Revealed by Qwen3.7-Max Closed-Source Issue",
+    "excerpt_en": "Alibaba's Qwen, once hailed as the 'last bastion of open source' with 942 million downloads and 200,000 derivative models. However, Qwen3.7-Max was announced as a completely closed-source model, leaving the community in surprise and disappointment. This article delves into what this transition means, historical parallels, and the options left for developers."
   },
   {
     "slug": "awsopenaiai",

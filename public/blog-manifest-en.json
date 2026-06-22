@@ -16,6 +16,22 @@
     "excerpt_en": "Anthropic's Claude Fable 5 sets new state-of-the-art records in AI benchmarks, excelling in software engineering and vision tasks, but its advanced capabilities have led to temporary US government restrictions. The model introduces robust safety measures while facing the ongoing challenge of balancing innovation with risk management in the AI industry."
   },
   {
+    "slug": "claude-sonnet-5-vs-gpt-56-2026-6-ai",
+    "title": "Claude Sonnet 5 vs GPT-5.6：2026年6月のAIモデル開発競争最前線",
+    "tag": "解説",
+    "excerpt": "AnthropicのClaude Sonnet 5とOpenAIのGPT-5.6がほぼ同時に発表される可能性が浮上し、AI業界が注目している。GPT-5.6は150万トークンのコンテキストウィンドウと新しいアライメント修正パイプラインを搭載し、ミッドティア市場での競争が激化する見込みだ。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "ベンチマーク",
+      "セキュリティ",
+      "コーディング"
+    ],
+    "date": "2026-06-22",
+    "title_en": "Claude Sonnet 5 vs GPT-5.6: The AI Model Battle Heating Up in 2026",
+    "excerpt_en": "The AI industry faces a pivotal moment as Anthropic's Claude Sonnet 5 and OpenAI's GPT-5.6 gear up for near-simultaneous launches. GPT-5.6 is expected to feature a massive 1.5 million token context window and a new alignment fix, while leaks suggest Claude Sonnet 5 has made significant benchmark improvements. Their competition is intensifying the critical mid-tier AI model market."
+  },
+  {
     "slug": "chatgpt-enterprise-llm",
     "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
     "tag": "OpenAI",
@@ -32,14 +48,12 @@
     "excerpt_en": "OpenAI has launched spend controls and usage analytics for ChatGPT Enterprise, enabling better cost management for large-scale LLM deployments. This article explores how these features can inform governance design, offering practical insights for IT leaders to implement proactive budget controls and optimize resource allocation."
   },
   {
-    "slug": "openai-gpt-55-instant-ai",
-    "title": "OpenAI GPT-5.5 Instantがもたらす医療AI革新：強化推論と評価フレームワークの技術解説",
+    "slug": "gpt-55-instantai",
+    "title": "GPT-5.5 Instantの医療AI革新：強化推論と医師監修評価フレームワークの技術解説",
     "tag": "OpenAI",
-    "excerpt": "GPT-5.5 Instantは、OpenAIが健康・医療分野向けに開発したモデルで、強化された推論能力、コンテキスト理解、医師監修の評価フレームワークを特徴とする。本記事では、これらの技術的特徴を分解し、日本企業が医療AI製品を開発する際の品質保証設計のベストプラクティスを考察する。",
+    "excerpt": "GPT-5.5 Instantは、OpenAIが健康・医療分野のインテリジェンス向上のために開発したモデルで、強化された推論能力、コンテキスト理解、医師監修の評価フレームワークを特徴としています。本記事では、これらの技術的特徴を分解し、日本企業が医療・ヘルスケア分野でAI製品を開発する際の品質保証・評価設計のベストプラクティスを考察します。",
     "topics": [
       "OpenAI",
-      "xAI/Grok",
-      "AIエージェント",
       "推論",
       "LLM"
     ],
@@ -58,22 +72,8 @@
       "LLM"
     ],
     "date": "2026-06-21",
-    "title_en": "Explanation of ChatGPT Enterprise's Expenditure Management & Usage Analytics Features | A Practical Reference Case for Cost Governance Design Based on LLMs",
-    "excerpt_en": "OpenAI has announced new expenditure management and usage analytics features for ChatGPT Enterprise. As the importance of cost visualization and governance grows for enterprise AI adoption, this article explains the feature design from the perspective of Japanese IT departments and development leaders."
-  },
-  {
-    "slug": "gpt-55-instantai",
-    "title": "GPT-5.5 Instantの医療AI革新：強化推論と医師監修評価フレームワークの技術解説",
-    "tag": "OpenAI",
-    "excerpt": "GPT-5.5 Instantは、OpenAIが健康・医療分野のインテリジェンス向上のために開発したモデルで、強化された推論能力、コンテキスト理解、医師監修の評価フレームワークを特徴としています。本記事では、これらの技術的特徴を分解し、日本企業が医療・ヘルスケア分野でAI製品を開発する際の品質保証・評価設計のベストプラクティスを考察します。",
-    "topics": [
-      "OpenAI",
-      "推論",
-      "LLM"
-    ],
-    "date": "2026-06-21",
-    "title_en": "GPT-5.5 Instant's Medical AI Innovation: A Technical Explanation of Enhanced Reasoning and Physician-Supervised Evaluation Frameworks",
-    "excerpt_en": "GPT-5.5 Instant is a model developed by OpenAI to enhance intelligence in the health and medical fields, featuring enhanced reasoning capabilities, context understanding, and a physician-supervised evaluation framework. This article breaks down these technical characteristics and examines best practices for quality assurance and evaluation design when Japanese companies develop AI products in the medical and healthcare sectors."
+    "title_en": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
+    "excerpt_en": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。"
   },
   {
     "slug": "openai18ai",
@@ -86,8 +86,8 @@
       "推論"
     ],
     "date": "2026-06-21",
-    "title_en": "OpenAI's Reasoning Model Aids in 18 New Diagnostic Supports for Pediatric Rare Diseases ── Technology and Challenges in Medical AI Commercialization",
-    "excerpt_en": "OpenAI's reasoning model has been applied to assist in diagnosing pediatric rare diseases, achieving 18 new identification cases. As a practical example of complex medical reasoning utilizing Chain-of-Thought, these results offer significant insights for Japanese medical AI developers."
+    "title_en": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
+    "excerpt_en": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。"
   },
   {
     "slug": "anthropic-fable-nerfing-2026",
@@ -318,8 +318,8 @@
       "ベンチマーク"
     ],
     "date": "2026-06-03",
-    "title_en": "From \"Open-Source Heroes\" to \"Closed Models\": What the Qwen3.7-Max Closed-Source Issue Reveals About Structural Changes in the AI Industry",
-    "excerpt_en": "Alibaba's Qwen, hailed as \"the last bastion of open source\" with 942 million downloads and 200,000 derivative models, has announced Qwen3.7-Max as a completely closed model, leaving the community stunned and disappointed. This article delves into what this shift means, historical parallels, and the options remaining for developers."
+    "title_en": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
+    "excerpt_en": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。"
   },
   {
     "slug": "awsopenaiai",
