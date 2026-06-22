@@ -48,14 +48,12 @@
     "excerpt_en": "OpenAI has launched spend controls and usage analytics for ChatGPT Enterprise, enabling better cost management for large-scale LLM deployments. This article explores how these features can inform governance design, offering practical insights for IT leaders to implement proactive budget controls and optimize resource allocation."
   },
   {
-    "slug": "openai-gpt-55-instant-ai",
-    "title": "OpenAI GPT-5.5 Instantがもたらす医療AI革新：強化推論と評価フレームワークの技術解説",
+    "slug": "gpt-55-instantai",
+    "title": "GPT-5.5 Instantの医療AI革新：強化推論と医師監修評価フレームワークの技術解説",
     "tag": "OpenAI",
-    "excerpt": "GPT-5.5 Instantは、OpenAIが健康・医療分野向けに開発したモデルで、強化された推論能力、コンテキスト理解、医師監修の評価フレームワークを特徴とする。本記事では、これらの技術的特徴を分解し、日本企業が医療AI製品を開発する際の品質保証設計のベストプラクティスを考察する。",
+    "excerpt": "GPT-5.5 Instantは、OpenAIが健康・医療分野のインテリジェンス向上のために開発したモデルで、強化された推論能力、コンテキスト理解、医師監修の評価フレームワークを特徴としています。本記事では、これらの技術的特徴を分解し、日本企業が医療・ヘルスケア分野でAI製品を開発する際の品質保証・評価設計のベストプラクティスを考察します。",
     "topics": [
       "OpenAI",
-      "xAI/Grok",
-      "AIエージェント",
       "推論",
       "LLM"
     ],
@@ -74,22 +72,8 @@
       "LLM"
     ],
     "date": "2026-06-21",
-    "title_en": "Explaining ChatGPT Enterprise's Spending Management and Usage Analysis Functions | Practical Reference Cases for LLM-Based Cost Governance Design",
-    "excerpt_en": "OpenAI has announced new spending management and usage analysis functions for ChatGPT Enterprise. As cost visualization and governance become increasingly important in enterprise AI adoption, this article explains the function design from the perspective of Japanese IT departments and development leaders."
-  },
-  {
-    "slug": "gpt-55-instantai",
-    "title": "GPT-5.5 Instantの医療AI革新：強化推論と医師監修評価フレームワークの技術解説",
-    "tag": "OpenAI",
-    "excerpt": "GPT-5.5 Instantは、OpenAIが健康・医療分野のインテリジェンス向上のために開発したモデルで、強化された推論能力、コンテキスト理解、医師監修の評価フレームワークを特徴としています。本記事では、これらの技術的特徴を分解し、日本企業が医療・ヘルスケア分野でAI製品を開発する際の品質保証・評価設計のベストプラクティスを考察します。",
-    "topics": [
-      "OpenAI",
-      "推論",
-      "LLM"
-    ],
-    "date": "2026-06-21",
-    "title_en": "GPT-5.5 Instant's Medical AI Innovation: Technical Explanation of Enhanced Reasoning and Physician-Supervised Evaluation Framework",
-    "excerpt_en": "GPT-5.5 Instant is a model developed by OpenAI to enhance intelligence in the health and medical fields, featuring enhanced reasoning capabilities, context understanding, and a physician-supervised evaluation framework. This article breaks down these technical features and explores best practices for quality assurance and evaluation design when Japanese companies develop AI products in the medical and healthcare sectors."
+    "title_en": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
+    "excerpt_en": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。"
   },
   {
     "slug": "openai18ai",
@@ -102,8 +86,8 @@
       "推論"
     ],
     "date": "2026-06-21",
-    "title_en": "OpenAI Reasoning Model Succeeds in 18 New Diagnostic Aids for Pediatric Rare Diseases ── Technology and Challenges in Medical AI Practical Application",
-    "excerpt_en": "OpenAI's reasoning model has been applied to aid in diagnosing pediatric rare diseases, achieving 18 new identified cases. As a practical example of complex medical reasoning using Chain-of-Thought, this is an insightful achievement for medical AI developers in Japan."
+    "title_en": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
+    "excerpt_en": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。"
   },
   {
     "slug": "anthropic-fable-nerfing-2026",
@@ -334,8 +318,8 @@
       "ベンチマーク"
     ],
     "date": "2026-06-03",
-    "title_en": "From 'Open-Source Hero' to 'Closed Model': What the Qwen3.7-Max Closed-Source Issue Reveals About Structural Changes in the AI Industry",
-    "excerpt_en": "With 942 million downloads and 200,000 derivative models, Alibaba's Qwen was hailed as 'the last bastion of open-source.' However, Qwen3.7-Max was announced as a fully closed-source model, leaving the community in surprise and disappointment. This article delves into what this transition signifies, historical parallels, and the options remaining for developers."
+    "title_en": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
+    "excerpt_en": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。"
   },
   {
     "slug": "awsopenaiai",
