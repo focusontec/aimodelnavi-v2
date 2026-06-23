@@ -1,5 +1,19 @@
 [
   {
+    "slug": "glm52-open-weight-frontier",
+    "title": "GLM-5.2：オープンソースモデルがFrontierSWEでGPT-5.5を初超え、その意味するもの",
+    "tag": "オープンソース",
+    "excerpt": "Z.ai（智谱AI）がMITライセンスでオープンソースとしてリリースしたGLM-5.2は、FrontierSWEベンチマークで74.4%を達成し、GPT-5.5の72.6%を初めて超えた。API価格はGPT-5.5の約7分の1で、コスト効率が高く、技術的突破と日本企業への影響を分析する。",
+    "topics": [
+      "オープンソース",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "ベンチマーク"
+    ],
+    "date": "2026-06-23"
+  },
+  {
     "slug": "2026-6-ai-claude-fable-5",
     "title": "2026年6月のフロンティアAIモデル動向：Claude Fable 5の衝撃と安全性の両立",
     "tag": "Anthropic",
@@ -22,8 +36,8 @@
       "Anthropic",
       "OpenAI",
       "ベンチマーク",
-      "セキュリティ",
-      "コーディング"
+      "AIエージェント",
+      "セキュリティ"
     ],
     "date": "2026-06-22"
   },
