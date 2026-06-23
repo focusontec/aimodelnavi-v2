@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { BarChart3, Coins, Search } from "lucide-react";
+import { useState } from "react";
 
 interface HeroProps {
   locale: string;
@@ -19,6 +23,15 @@ interface HeroProps {
 
 export function Hero({ locale, t }: HeroProps) {
   const prefix = locale === "ja" ? "" : `/${locale}`;
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (query.trim()) {
+      router.push(`${prefix}/leaderboard?q=${encodeURIComponent(query.trim())}`);
+    }
+  };
 
   return (
     <section className="hero-fullwidth relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-accent-600">
@@ -35,20 +48,19 @@ export function Hero({ locale, t }: HeroProps) {
           </p>
 
           {/* Search Box — Glassmorphism */}
-          <div className="mt-8 relative max-w-xl">
+          <form onSubmit={handleSearch} className="mt-8 relative max-w-xl">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <Search className="h-5 w-5 text-gray-400" />
             </div>
             <input
               type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
               placeholder={t.searchPlaceholder}
               className="w-full pl-11 pr-4 py-3.5 rounded-xl text-gray-900 placeholder-gray-400 shadow-lg focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
               style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(8px)' }}
-              readOnly
-              tabIndex={-1}
-              aria-hidden="true"
             />
-          </div>
+          </form>
 
           {/* CTA Buttons */}
           <div className="mt-6 flex flex-wrap gap-3">
