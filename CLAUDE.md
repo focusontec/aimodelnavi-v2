@@ -97,6 +97,23 @@ bash ~/.claude/skills/web-search/scripts/search-batch.sh '["q1", "q2", "q3"]'
 - `is_core=1` models protected from AI overwrite in pipeline
 - Every blog article MUST include images
 
+## Working Principles
+
+### Think Before Coding
+Do not assume. If something is unclear, ask. If multiple interpretations exist, present them instead of choosing silently. If a simpler approach exists, say so.
+
+### Simplicity First
+Implement the minimum that solves the request. Do not add features beyond what was asked. Do not create abstractions for single-use code. Do not add error handling for scenarios that cannot happen here.
+
+### Surgical Changes
+Touch only what you must. Do not refactor adjacent code just because you noticed it. Do not rewrite comments or formatting outside the requested scope. Match the existing style. The test: every changed line should trace directly to the user request.
+
+### Goal-Driven Execution
+Define success criteria, then verify them. For bugs, reproduce first, then fix. Do not stop at implementation if behavior can be checked.
+
+### Validate Before Handoff
+Run the relevant lint, test, or build command for the scope of the edit. Report what was verified and any residual risk. If validation fails twice in a row, stop and analyze the root cause before making more edits.
+
 ## Gotchas
 
 - macOS `grep` does not support `-P` (Perl regex) — use `-E`
