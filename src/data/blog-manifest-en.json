@@ -28,8 +28,8 @@
       "LLM"
     ],
     "date": "2026-06-24",
-    "title_en": "OpenAI Announces First In-House AI Inference Chip 'Jalapeño' – Co-developed with Broadcom to Revolutionize Inference Infrastructure's Future",
-    "excerpt_en": "OpenAI, in collaboration with Broadcom, announced its in-house designed chip 'Jalapeño' specialized for LLM inference. This chip represents a crucial step in reducing inference costs and achieving hardware sovereignty, with deployment scheduled to begin by the end of 2026. This move signifies that the infrastructure competition in the AI industry has entered a new phase."
+    "title_en": "OpenAI Unveils 'Jalapeño': First Custom AI Chip Built with Broadcom to Revolutionize LLM Inference",
+    "excerpt_en": "OpenAI and Broadcom have announced Jalapeno, OpenAI's first custom-designed chip built from the ground up for LLM inference. The move aims to drastically reduce costs and gain hardware independence, challenging Nvidia's dominance and accelerating the industry-wide shift toward custom AI silicon."
   },
   {
     "slug": "glm52-open-weight-frontier",
@@ -136,8 +136,8 @@
       "LLM"
     ],
     "date": "2026-06-21",
-    "title_en": "Explaining ChatGPT Enterprise's Spend Management & Usage Analytics Features | A Practical Reference Case for LLM-Based Cost Governance Design",
-    "excerpt_en": "OpenAI announced new spend management and usage analytics features for ChatGPT Enterprise. As the importance of cost visualization and governance grows in enterprise AI adoption, this article explains the feature design from the perspective of Japanese IT departments and development leaders."
+    "title_en": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
+    "excerpt_en": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。"
   },
   {
     "slug": "openai18ai",
@@ -150,8 +150,8 @@
       "推論"
     ],
     "date": "2026-06-21",
-    "title_en": "OpenAI Reasoning Model Succeeds in 18 New Diagnostic Support Cases for Pediatric Rare Diseases – The Technology and Challenges of Medical AI Practical Application",
-    "excerpt_en": "OpenAI's reasoning model was applied to assist in diagnosing rare pediatric diseases, achieving 18 new specific case identifications. As a practical example of complex medical reasoning utilizing Chain-of-Thought, this result offers valuable insights for medical AI developers in Japan."
+    "title_en": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
+    "excerpt_en": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。"
   },
   {
     "slug": "anthropic-fable-nerfing-2026",
@@ -355,6 +355,22 @@
     "excerpt_en": "Codex accelerates data science by automating code generation and documentation, allowing teams to prioritize essential analysis. It bridges the implementation-communication gap, enhancing efficiency across workflows. As a powerful assistant, Codex transforms how data scientists tackle complex tasks."
   },
   {
+    "slug": "qwen37-closed-source-controversy",
+    "title": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
+    "tag": "解説",
+    "excerpt": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "DeepSeek",
+      "Qwen/Alibaba",
+      "ベンチマーク"
+    ],
+    "date": "2026-06-03",
+    "title_en": "From Open-Source Hero to Closed-Weight Model: What Qwen3.7-Max's Closed-Source Pivot Reveals About AI's Structural Shift",
+    "excerpt_en": "Alibaba's Qwen was hailed as the last bastion of open-source AI with 942 million downloads and 200,000 derivative models. Then Qwen3.7-Max launched as a fully closed-weight model, leaving the community torn between awe and disappointment. We dive into what this pivot means, the historical parallels, and what options developers have left."
+  },
+  {
     "slug": "travelersopenaiai",
     "title": "米国保険大手TravelersがOpenAIで請求処理を自動化：エンタープライズAI実装の最前線",
     "tag": "解説",
@@ -368,22 +384,6 @@
     "date": "2026-06-03",
     "title_en": "Enterprise AI in Action: How Travelers Automates Insurance Claims with OpenAI",
     "excerpt_en": "Travelers is leveraging OpenAI to automate insurance claims processing across the U.S., achieving 24/7 availability and increased operational efficiency. The case highlights the importance of domain-specific workflows and human-in-the-loop governance in high-stakes enterprise AI deployments."
-  },
-  {
-    "slug": "qwen37-closed-source-controversy",
-    "title": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
-    "tag": "解説",
-    "excerpt": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。",
-    "topics": [
-      "Anthropic",
-      "OpenAI",
-      "DeepSeek",
-      "Qwen/Alibaba",
-      "ベンチマーク"
-    ],
-    "date": "2026-06-03",
-    "title_en": "From \"Open-Source Hero\" to \"Closed Model\": What the Qwen3.7-Max Closure Issue Reveals About the Structural Shift in the AI Industry",
-    "excerpt_en": "Alibaba's Qwen, hailed as the \"last bastion of open source\" with 942 million downloads and 200,000 derivative models. Yet, Qwen3.7-Max was announced as a fully closed model, leaving the community in shock and disappointment. This article delves into the meaning of this shift, historical parallels, and the choices left for developers."
   },
   {
     "slug": "awsopenaiai",

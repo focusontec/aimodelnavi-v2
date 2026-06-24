@@ -2,7 +2,7 @@
 title: "OpenAI Unveils 'Jalapeño': First Custom AI Chip Built with Broadcom to Revolutionize LLM Inference"
 date: "2026-06-24"
 tag: "OpenAI"
-excerpt: 'OpenAI and Broadcom have announced "Jalapeño," OpenAI's first custom-designed chip built from the ground up for LLM inference. The move aims to drastically reduce costs and gain hardware independence, challenging Nvidia's dominance and accelerating the industry-wide shift toward custom AI silicon.'
+excerpt: "OpenAI and Broadcom have announced Jalapeno, OpenAI's first custom-designed chip built from the ground up for LLM inference. The move aims to drastically reduce costs and gain hardware independence, challenging Nvidia's dominance and accelerating the industry-wide shift toward custom AI silicon."
 ---
 
 On June 24, 2026, OpenAI and Broadcom (NASDAQ: AVGO) officially announced "Jalapeño," OpenAI's first custom-designed AI inference accelerator. Dubbed an "intelligence processor," this chip is specifically engineered for LLM inference, marking a significant shift in the AI infrastructure landscape.

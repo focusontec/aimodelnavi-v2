@@ -1,9 +1,8 @@
 ---
-title: From Open-Source Hero to Closed-Weight Model: What Qwen3.7-Max's Closed-Source Pivot Reveals About AI's Structural Shift
+title: "From Open-Source Hero to Closed-Weight Model: What Qwen3.7-Max's Closed-Source Pivot Reveals About AI's Structural Shift"
 date: '2026-06-03'
 tag: Analysis
-excerpt: >-
-  Alibaba's Qwen was hailed as the "last bastion of open-source AI" with 942 million downloads and 200,000 derivative models. Then Qwen3.7-Max launched as a fully closed-weight model, leaving the community torn between awe and disappointment. We dive into what this pivot means, the historical parallels, and what options developers have left.
+excerpt: "Alibaba's Qwen was hailed as the last bastion of open-source AI with 942 million downloads and 200,000 derivative models. Then Qwen3.7-Max launched as a fully closed-weight model, leaving the community torn between awe and disappointment. We dive into what this pivot means, the historical parallels, and what options developers have left."
 ---
 
 ## 1. The "Most Capable Model Anyone Can Use" Suddenly Became Out of Reach
