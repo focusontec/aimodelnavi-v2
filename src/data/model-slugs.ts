@@ -30,7 +30,6 @@ export const allModelSlugs: string[] = [
   "claude-fable-5",
   "gemini-3-5-live-translate",
   "gemini-sql2",
-  "deepseek-v4-1",
   "claude-sonnet-4-8",
   "step-3-7-flash",
   "qwen3-7-max-preview",
