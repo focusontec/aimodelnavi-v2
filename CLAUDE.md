@@ -60,14 +60,26 @@ MIMO: `LLM_PROVIDER=mimo LLM_MODEL=mimo-v2.5-pro` at `token-plan-sgp.xiaomimimo.
 
 ## Web Search & Data Enrichment
 
-Use the `web-search` skill for verifying and enriching model data. Always cross-check before writing to `src/data/`.
+**Primary: agent-reach tools** (structured results, official source verification)
 
 ```bash
-# Single query
-bash ~/.claude/skills/web-search/scripts/search.sh "GPT-5.4 pricing API 2026"
+# Exa semantic search (via MCP in Claude Code)
+# Returns: structured results with URL, highlights, summary
+mcp__plugin_ecc_exa__web_search_exa(query: "query", numResults: 5)
 
-# Batch queries (up to 4 parallel)
-bash ~/.claude/skills/web-search/scripts/search-batch.sh '["query1", "query2", "query3"]'
+# Jina Reader — read any webpage as clean markdown
+curl -s "https://r.jina.ai/URL" -H "Accept: text/plain"
+
+# GitHub — verify releases and repository activity
+gh release list -R owner/repo --limit 5
+gh repo view owner/repo
+```
+
+**Fallback: Ollama web-search** (when Exa unavailable)
+
+```bash
+bash ~/.claude/skills/web-search/scripts/search.sh "query"
+bash ~/.claude/skills/web-search/scripts/search-batch.sh '["q1", "q2", "q3"]'
 ```
 
 **When to search:**
