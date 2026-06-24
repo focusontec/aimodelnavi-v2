@@ -16,6 +16,22 @@
     "excerpt_en": "June 2026 marked the most densely packed month for major AI model releases, featuring landmark launches from Anthropic and NVIDIA alongside significant delays from OpenAI and Google. This article provides a comprehensive breakdown of all key releases, from Claude Fable 5's benchmark-shattering performance to the rapid convergence of Chinese frontier models."
   },
   {
+    "slug": "openai-broadcom-jalapeno-chip",
+    "title": "OpenAI、初の自社設計AI推論チップ『Jalapeño』を発表 – Broadcomとの共同開発で推論インフラの未来を変革",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIはBroadcomと共同で、LLM推論に特化した自社設計チップ『Jalapeño』を発表した。このチップは推論コストを削減し、ハードウェア主権を獲得するための重要な一歩であり、2026年末からデプロイが開始される予定だ。AI業界のインフラ競争が新たな段階に入ったことを示す動きである。",
+    "topics": [
+      "OpenAI",
+      "Google",
+      "AIエージェント",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-24",
+    "title_en": "OpenAI Announces First In-House AI Inference Chip 'Jalapeño' – Co-developed with Broadcom to Revolutionize Inference Infrastructure's Future",
+    "excerpt_en": "OpenAI, in collaboration with Broadcom, announced its in-house designed chip 'Jalapeño' specialized for LLM inference. This chip represents a crucial step in reducing inference costs and achieving hardware sovereignty, with deployment scheduled to begin by the end of 2026. This move signifies that the infrastructure competition in the AI industry has entered a new phase."
+  },
+  {
     "slug": "glm52-open-weight-frontier",
     "title": "GLM-5.2：オープンソースモデルがFrontierSWEでGPT-5.5を初超え、その意味するもの",
     "tag": "オープンソース",
@@ -120,8 +136,8 @@
       "LLM"
     ],
     "date": "2026-06-21",
-    "title_en": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
-    "excerpt_en": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。"
+    "title_en": "Explaining ChatGPT Enterprise's Spend Management & Usage Analytics Features | A Practical Reference Case for LLM-Based Cost Governance Design",
+    "excerpt_en": "OpenAI announced new spend management and usage analytics features for ChatGPT Enterprise. As the importance of cost visualization and governance grows in enterprise AI adoption, this article explains the feature design from the perspective of Japanese IT departments and development leaders."
   },
   {
     "slug": "openai18ai",
@@ -134,8 +150,8 @@
       "推論"
     ],
     "date": "2026-06-21",
-    "title_en": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
-    "excerpt_en": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。"
+    "title_en": "OpenAI Reasoning Model Succeeds in 18 New Diagnostic Support Cases for Pediatric Rare Diseases – The Technology and Challenges of Medical AI Practical Application",
+    "excerpt_en": "OpenAI's reasoning model was applied to assist in diagnosing rare pediatric diseases, achieving 18 new specific case identifications. As a practical example of complex medical reasoning utilizing Chain-of-Thought, this result offers valuable insights for medical AI developers in Japan."
   },
   {
     "slug": "anthropic-fable-nerfing-2026",
@@ -366,8 +382,8 @@
       "ベンチマーク"
     ],
     "date": "2026-06-03",
-    "title_en": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
-    "excerpt_en": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。"
+    "title_en": "From \"Open-Source Hero\" to \"Closed Model\": What the Qwen3.7-Max Closure Issue Reveals About the Structural Shift in the AI Industry",
+    "excerpt_en": "Alibaba's Qwen, hailed as the \"last bastion of open source\" with 942 million downloads and 200,000 derivative models. Yet, Qwen3.7-Max was announced as a fully closed model, leaving the community in shock and disappointment. This article delves into the meaning of this shift, historical parallels, and the choices left for developers."
   },
   {
     "slug": "awsopenaiai",

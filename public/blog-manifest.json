@@ -14,6 +14,20 @@
     "date": "2026-06-24"
   },
   {
+    "slug": "openai-broadcom-jalapeno-chip",
+    "title": "OpenAI、初の自社設計AI推論チップ『Jalapeño』を発表 – Broadcomとの共同開発で推論インフラの未来を変革",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIはBroadcomと共同で、LLM推論に特化した自社設計チップ『Jalapeño』を発表した。このチップは推論コストを削減し、ハードウェア主権を獲得するための重要な一歩であり、2026年末からデプロイが開始される予定だ。AI業界のインフラ競争が新たな段階に入ったことを示す動きである。",
+    "topics": [
+      "OpenAI",
+      "Google",
+      "AIエージェント",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-24"
+  },
+  {
     "slug": "glm52-open-weight-frontier",
     "title": "GLM-5.2：オープンソースモデルがFrontierSWEでGPT-5.5を初超え、その意味するもの",
     "tag": "オープンソース",
