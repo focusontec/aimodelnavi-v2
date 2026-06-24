@@ -7,6 +7,8 @@ excerpt: "OpenAI and Broadcom have announced Jalapeno, OpenAI's first custom-des
 
 On June 24, 2026, OpenAI and Broadcom (NASDAQ: AVGO) officially announced "Jalapeño," OpenAI's first custom-designed AI inference accelerator. Dubbed an "intelligence processor," this chip is specifically engineered for LLM inference, marking a significant shift in the AI infrastructure landscape.
 
+![OpenAI and Broadcom leaders display the Jalapeno inference chip](/images/blog/openai-jalapeno-chip.png)
+
 ## What is Jalapeño?
 
 Jalapeño is a **ground-up, purpose-built chip for LLM inference**, designed based on insights from the systems running OpenAI's products like ChatGPT, Codex, and its API daily. It is not a repurposed general-purpose accelerator but is optimized for current and future LLM inference needs.
