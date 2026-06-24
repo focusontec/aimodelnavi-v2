@@ -37,6 +37,9 @@ npx tsx scripts/fetch-article.ts "<URL>" --filter-images
 # With watermark blur (WeChat articles)
 npx tsx scripts/fetch-article.ts "<URL>" --filter-images --blur-watermark
 
+# Fetch images from official source (for manually-written articles)
+bash scripts/fetch-blog-images.sh "https://official-blog-url" <slug>
+
 # Backfill missing English translations
 npx tsx scripts/backfill-en-blog.ts --dry-run  # preview
 npx tsx scripts/backfill-en-blog.ts --limit 5  # process 5 posts
@@ -47,10 +50,17 @@ npx tsx scripts/backfill-en-blog.ts            # process all
 ```
 
 - `fetch-article.ts` — URL → CN markdown + download images
+- `fetch-blog-images.sh` — Jina Reader → extract & download images from any URL
 - `publish-blog.sh` — translate + commit + push
 - `translate-blog.ts` — CN→JP + EN via LLM (saves to both `blog/` and `blog-en/`)
 - `image-filter.ts` — heuristic + AI vision filter
 - `watermark.ts` — blur WeChat watermarks (bottom-right region)
+
+**Image workflow for manually-written articles:**
+1. Research: Exa search → find official sources
+2. Fetch images: `bash scripts/fetch-blog-images.sh "<official-url>" <slug>`
+3. Write article: add `![alt](/images/blog/<slug>-N.png)` references
+4. Publish: `./scripts/publish-blog.sh _drafts/<slug>.md --local --yes`
 
 ## LLM Providers
 
