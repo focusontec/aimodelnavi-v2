@@ -432,6 +432,62 @@ Respond as JSON:
   return JSON.parse(cleaned);
 }
 
+export async function processBlogArticleKo(
+  titleZh: string,
+  bodyText: string,
+  sourceUrl: string,
+  images?: { alt: string; localPath: string }[]
+): Promise<{ title: string; content: string; excerpt: string; tag: string }> {
+  let imageInstructions = "";
+  if (images && images.length > 0) {
+    const imageList = images.map((img, i) =>
+      `  ${i + 1}. ![](${img.localPath}) — alt: "${img.alt}"`
+    ).join("\n");
+    imageInstructions = `
+# Required images (YOU MUST INCLUDE ALL OF THESE)
+The following images MUST be inserted at appropriate positions in the article body.
+Use the EXACT markdown syntax shown for each image.
+${imageList}`;
+  }
+
+  const system = `You are a Korean tech journalist specializing in AI/ML. You are translating and adapting a Chinese AI blog article for Korean readers.
+
+Process:
+1. Translate the article from Chinese to natural, fluent Korean
+2. Preserve the structure (sections, key points) but adapt expressions for Korean readers
+3. Keep all technical terms accurate — use standard Korean AI/ML terminology (keep English terms in parentheses where natural)
+4. DO NOT add any attribution note, source link, or "translated from" disclaimer at the end.
+5. Title should be SEO-friendly Korean
+6. Provide an excerpt (2-3 Korean sentences summarizing the key point)
+7. Choose ONE most appropriate tag: OpenAI, Anthropic, Google, 오픈소스, 가격, 벤치마크, 튜토리얼, AI 에이전트
+${imageInstructions}
+Respond as JSON:
+{
+  "title": "Korean title",
+  "content": "Korean article body in markdown (NO H1 heading)",
+  "excerpt": "2-3 sentence Korean summary",
+  "tag": "tag name"
+}`;
+
+  const maxBodyLen = 12000;
+  const truncatedBody = bodyText.length > maxBodyLen
+    ? bodyText.slice(0, maxBodyLen) + "\n\n[Article truncated due to length]"
+    : bodyText;
+
+  const result = await callLLM(
+    system,
+    `Original title: ${titleZh}\n\nArticle content:\n${truncatedBody}`,
+    8192
+  );
+
+  const cleaned = result
+    .replace(/^```json?\s*/i, "")
+    .replace(/\s*```$/i, "")
+    .trim();
+
+  return JSON.parse(cleaned);
+}
+
 /**
  * Translate a user-written Chinese Markdown blog post into Japanese.
  * Unlike processBlogArticle() (which handles crawled HTML), this preserves

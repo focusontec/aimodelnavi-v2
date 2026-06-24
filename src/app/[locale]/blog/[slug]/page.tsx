@@ -11,9 +11,11 @@ import type { Metadata } from 'next';
 export function generateStaticParams() {
   const jaPosts = getAllPosts("ja");
   const enPosts = getAllPosts("en");
+  const koPosts = getAllPosts("ko");
   const params: { slug: string; locale: string }[] = [];
   for (const p of jaPosts) params.push({ slug: p.slug, locale: "ja" });
   for (const p of enPosts) params.push({ slug: p.slug, locale: "en" });
+  for (const p of koPosts) params.push({ slug: p.slug, locale: "ko" });
   return params;
 }
 

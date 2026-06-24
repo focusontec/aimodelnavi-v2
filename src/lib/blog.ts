@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 
 const blogDir = path.join(process.cwd(), 'src/content/blog');
 const blogEnDir = path.join(process.cwd(), 'src/content/blog-en');
+const blogKoDir = path.join(process.cwd(), 'src/content/blog-ko');
 
 export interface BlogPost {
   slug: string;
@@ -58,10 +59,14 @@ export function getAllPosts(locale: string = 'ja'): BlogPost[] {
 
 export function getPostBySlug(slug: string, locale: string = 'ja'): BlogPost | null {
   if (locale === 'en') {
-    // EN: try EN version first, fall back to JA
     const enPath = path.join(blogEnDir, `${slug}.md`);
     const enPost = loadPostFromFile(enPath, slug);
     if (enPost) return enPost;
+  }
+  if (locale === 'ko') {
+    const koPath = path.join(blogKoDir, `${slug}.md`);
+    const koPost = loadPostFromFile(koPath, slug);
+    if (koPost) return koPost;
   }
   return loadPostFromFile(path.join(blogDir, `${slug}.md`), slug);
 }

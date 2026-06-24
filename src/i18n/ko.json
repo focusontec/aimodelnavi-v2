@@ -1,0 +1,118 @@
+{
+  "site": {
+    "title": "AI Models Navi",
+    "description": "AI 모델 비교 사이트 — 벤치마크, API 가격, 스펙으로 비교"
+  },
+  "nav": {
+    "home": "홈",
+    "models": "모델",
+    "leaderboard": "리더보드",
+    "pricing": "가격",
+    "blog": "블로그",
+    "tools": "도구",
+    "about": "소개",
+    "benchmarks": "벤치마크",
+    "info": "정보",
+    "recommend": "추천",
+    "compare": "비교"
+  },
+  "home": {
+    "stats": "사이트 통계",
+    "modelsCount": "모델 수",
+    "leaderboardCount": "리더보드 수",
+    "blogCount": "블로그 글 수",
+    "latestBlog": "최신 블로그",
+    "viewAll": "전체 보기"
+  },
+  "leaderboard": {
+    "title": "AI 모델 순위",
+    "description": "벤치마크 기반 종합 AI 모델 순위",
+    "comprehensive": "종합 순위",
+    "code": "코딩 능력",
+    "math": "수학 능력",
+    "agent": "AI 에이전트 능력",
+    "reasoning": "추론 능력",
+    "general": "일반 성능",
+    "benchmarks": "벤치마크",
+    "backToList": "순위 목록으로 돌아가기",
+    "loadMore": "더 보기",
+    "search": "모델명 또는 개발사로 검색",
+    "filterAll": "전체",
+    "filterReasoning": "추론",
+    "filterFoundation": "파운데이션",
+    "filterCoder": "코딩",
+    "filterChat": "채팅",
+    "filterOpenSource": "오픈소스",
+    "filterClosed": "클로즈드",
+    "modelCount": "모델",
+    "noResults": "일치하는 모델이 없습니다",
+    "aboutBenchmarks": "벤치마크 소개"
+  },
+  "models": {
+    "title": "AI 모델 목록",
+    "description": "주요 AI 모델의 상세 정보 및 스펙 비교"
+  },
+  "pricing": {
+    "title": "API 가격 비교",
+    "description": "주요 AI 모델의 API 사용 비용 비교",
+    "inputPrice": "입력 가격",
+    "outputPrice": "출력 가격",
+    "perMillionTokens": "/100만 토큰"
+  },
+  "blog": {
+    "title": "블로그",
+    "description": "AI 모델 최신 뉴스와 분석",
+    "backToList": "블로그 목록으로 돌아가기",
+    "relatedArticles": "관련 글",
+    "comments": "댓글",
+    "noComments": "아직 댓글이 없습니다",
+    "commentSubmitted": "댓글이 제출되었습니다. 승인 후 표시됩니다.",
+    "commentPlaceholder": "댓글을 입력하세요...",
+    "namePlaceholder": "닉네임",
+    "reply": "답글",
+    "submit": "제출",
+    "share": "공유",
+    "copyLink": "링크 복사",
+    "copySuccess": "복사됨!"
+  },
+  "tools": {
+    "costCalculator": "API 비용 계산기",
+    "modelCompare": "모델 비교",
+    "tokenCounter": "토큰 카운터 및 비용 계산"
+  },
+  "recommend": {
+    "title": "시나리오 기반 추천",
+    "description": "사용 사례에 맞는 최적의 AI 모델을 찾아보세요."
+  },
+  "value": {
+    "title": "가성비 순위",
+    "description": "AI 모델 성능 대비 비용 비율 순위"
+  },
+  "jpCapability": {
+    "title": "일본어 성능 평가",
+    "description": "AI 모델의 일본어 처리 능력 비교"
+  },
+  "common": {
+    "openSource": "오픈소스",
+    "closed": "클로즈드",
+    "nonCommercial": "비상업용",
+    "modelName": "모델명",
+    "developer": "개발사",
+    "rank": "순위",
+    "score": "점수",
+    "releaseDate": "출시일",
+    "license": "라이선스"
+  },
+  "footer": {
+    "about": "AI Models Navi 소개",
+    "contact": "문의",
+    "privacy": "개인정보처리방침",
+    "copyright": "AI Models Navi. All rights reserved."
+  },
+  "lang": {
+    "ja": "일본어",
+    "en": "영어",
+    "ko": "한국어",
+    "switchTo": "언어 전환"
+  }
+}

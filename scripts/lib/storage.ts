@@ -64,6 +64,26 @@ export function saveBlogPostEn(slug: string, frontmatter: Record<string, string>
   console.log(`  → Saved EN blog: ${slug}.md`);
 }
 
+export function saveBlogPostKo(slug: string, frontmatter: Record<string, string>, content: string): void {
+  const BLOG_KO_DIR = path.join(process.cwd(), 'src/content/blog-ko');
+  if (!fs.existsSync(BLOG_KO_DIR)) {
+    fs.mkdirSync(BLOG_KO_DIR, { recursive: true });
+  }
+
+  const lines = ["---"];
+  for (const [key, value] of Object.entries(frontmatter)) {
+    const escaped = value.replace(/"/g, '\\"');
+    lines.push(`${key}: "${escaped}"`);
+  }
+  lines.push("---");
+  lines.push("");
+  lines.push(content);
+
+  const filepath = path.join(BLOG_KO_DIR, `${slug}.md`);
+  fs.writeFileSync(filepath, lines.join("\n"), "utf-8");
+  console.log(`  → Saved KO blog: ${slug}.md`);
+}
+
 /**
  * Compare two data snapshots and return a summary of changes.
  */

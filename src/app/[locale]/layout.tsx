@@ -17,23 +17,22 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const isEn = locale === "en";
+  const titles: Record<string, { default: string; template: string; description: string }> = {
+    ja: { default: "AI Models Navi — AIモデルの比較・料金・ランキング", template: "%s — AI Models Navi", description: "AIモデルのベンチマーク比較、API料金、モデル仕様を日本語で比較。" },
+    en: { default: "AI Models Navi — AI Model Comparison, Pricing & Rankings", template: "%s — AI Models Navi", description: "Compare AI model benchmarks, API pricing, and specifications." },
+    ko: { default: "AI Models Navi — AI 모델 비교, 가격, 순위", template: "%s — AI Models Navi", description: "AI 모델 벤치마크, API 가격, 스펙을 한국어로 비교합니다." },
+  };
+  const t = titles[locale] || titles.ja;
   return {
-    title: {
-      default: isEn
-        ? "AI Models Navi — AI Model Comparison, Pricing & Rankings"
-        : "AI Models Navi — AIモデルの比較・料金・ランキング",
-      template: isEn ? "%s — AI Models Navi" : "%s — AI Models Navi",
-    },
-    description: isEn
-      ? "Compare AI model benchmarks, API pricing, and specifications."
-      : "AIモデルのベンチマーク比較、API料金、モデル仕様を日本語で比較。",
+    title: { default: t.default, template: t.template },
+    description: t.description,
     metadataBase: new URL("https://aimodelsnavi.com"),
     alternates: {
       canonical: `https://aimodelsnavi.com${locale === "ja" ? "" : `/${locale}`}`,
       languages: {
         ja: "https://aimodelsnavi.com",
         en: "https://aimodelsnavi.com/en",
+        ko: "https://aimodelsnavi.com/ko",
         "x-default": "https://aimodelsnavi.com",
       },
     },

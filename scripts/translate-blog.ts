@@ -19,8 +19,8 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { translateBlogMarkdown, processBlogArticleEn } from "./lib/anthropic";
-import { saveBlogPost, saveBlogPostEn } from "./lib/storage";
+import { translateBlogMarkdown, processBlogArticleEn, processBlogArticleKo } from "./lib/anthropic";
+import { saveBlogPost, saveBlogPostEn, saveBlogPostKo } from "./lib/storage";
 import { detectChineseImages, replaceChineseImages } from "./lib/image-caption";
 
 // ── CLI argument parsing ──
@@ -283,8 +283,39 @@ async function main() {
     console.log(`  → Japanese version published successfully`);
   }
 
+  // Step 4: Generate Korean translation
+  console.log("\n  Translating to Korean...");
+  try {
+    const imageRegex = /!\[([^\]]*)\]\((\/images\/blog\/[^)]+)\)/g;
+    const images: { alt: string; localPath: string }[] = [];
+    let match;
+    while ((match = imageRegex.exec(translated.content)) !== null) {
+      images.push({ alt: match[1] || "Blog image", localPath: match[2] });
+    }
+
+    const koResult = await processBlogArticleKo(
+      input.title,
+      input.body,
+      "",
+      images.length > 0 ? images : undefined
+    );
+
+    saveBlogPostKo(slug, {
+      title: koResult.title,
+      date: today,
+      tag: koResult.tag || translated.tag || "AI",
+      excerpt: koResult.excerpt || "",
+    }, koResult.content);
+
+    console.log(`  ✓ Published: src/content/blog-ko/${slug}.md`);
+  } catch (err) {
+    console.error(`  ⚠ Korean translation failed: ${err}`);
+    console.log(`  → Japanese version published successfully`);
+  }
+
   console.log(`\n  ✓ URL: /blog/${slug}`);
   console.log(`  ✓ EN URL: /en/blog/${slug}`);
+  console.log(`  ✓ KO URL: /ko/blog/${slug}`);
   console.log(`\n  Done!`);
 }
 
