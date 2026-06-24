@@ -25,8 +25,8 @@ June 2026 has been the most densely packed month for large language model (LLM) 
 | Mistral Medium 3 | Mistral AI | Closed + Self-hosted | Early June | EU-focused multilingual mid-tier |
 | Hy3 Preview (Hunyuan 3) | Tencent | Open | April 23 | MoE 295B, agent support |
 | ERNIE 5.1 | Baidu | Closed | Early June | Baidu Search integration |
-| Doubao | ByteDance | Closed | Unconfirmed | Douyin creator economy (no official announcement) |
-| GLM-6 | Zhipu AI | Open | Early June | Entry into China's open-source race |
+| Doubao | ByteDance | Closed | Unconfirmed | No official announcement |
+| GLM-5.2 | Zhipu AI | Open | June 16 | 1M context, MIT license, MoE |
 
 ## Claude Fable 5: The Mythos Tier Shock
 
