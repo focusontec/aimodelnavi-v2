@@ -33,11 +33,8 @@ export function saveBlogPost(slug: string, frontmatter: Record<string, string>, 
 
   const lines = ["---"];
   for (const [key, value] of Object.entries(frontmatter)) {
-    if (value.includes('"')) {
-      lines.push(`${key}: '${value}'`);
-    } else {
-      lines.push(`${key}: "${value}"`);
-    }
+    const escaped = value.replace(/"/g, '\\"');
+    lines.push(`${key}: "${escaped}"`);
   }
   lines.push("---");
   lines.push("");
@@ -55,11 +52,8 @@ export function saveBlogPostEn(slug: string, frontmatter: Record<string, string>
 
   const lines = ["---"];
   for (const [key, value] of Object.entries(frontmatter)) {
-    if (value.includes('"')) {
-      lines.push(`${key}: '${value}'`);
-    } else {
-      lines.push(`${key}: "${value}"`);
-    }
+    const escaped = value.replace(/"/g, '\\"');
+    lines.push(`${key}: "${escaped}"`);
   }
   lines.push("---");
   lines.push("");
