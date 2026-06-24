@@ -1,5 +1,21 @@
 [
   {
+    "slug": "ibm-huggingface-cuga-agent",
+    "title": "IBMとHuggingFaceが軽量AIエージェントフレームワークCUGAを発表：24のブループリントで開発を簡素化",
+    "tag": "オープンソース",
+    "excerpt": "IBM ResearchとHuggingFaceは、設定可能な汎用AIエージェントフレームワークCUGAを発表した。24の実用ブループリントやモデル非依存設計により、エージェント開発の参入障壁を大きく下げている。",
+    "topics": [
+      "オープンソース",
+      "Anthropic",
+      "OpenAI",
+      "AIエージェント",
+      "推論"
+    ],
+    "date": "2026-06-24",
+    "title_en": "IBM and HuggingFace Launch CUGA: Simplify AI Agent Development with 24 Ready-Made Blueprints",
+    "excerpt_en": "IBM and HuggingFace have unveiled CUGA, a configurable AI agent framework that simplifies enterprise agent development with 24 ready-to-use blueprints. It supports multiple LLMs, includes policy management features, and is open-source under Apache 2.0 license."
+  },
+  {
     "slug": "june-2026-llm-roundup",
     "title": "2026年6月 AIモデル総決算：Claude Fable 5の衝撃、GPT-5.6の延期、そして中国の四馬レース",
     "tag": "解説",
@@ -136,8 +152,8 @@
       "LLM"
     ],
     "date": "2026-06-21",
-    "title_en": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
-    "excerpt_en": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。"
+    "title_en": "Explaining ChatGPT Enterprise's Spending Management & Usage Analysis Features | Practical Reference Cases for Cost Governance Design on LLM Foundations",
+    "excerpt_en": "OpenAI has announced new spending management and usage analysis features for ChatGPT Enterprise. Amidst growing importance of cost visualization and governance in enterprise AI adoption, this article explains the feature design from the perspective of Japanese IT departments and development leaders."
   },
   {
     "slug": "openai18ai",
@@ -150,7 +166,7 @@
       "推論"
     ],
     "date": "2026-06-21",
-    "title_en": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
+    "title_en": "OpenAI's Inference Model Succeeds in Supporting 18 New Diagnoses of Pediatric Rare Diseases ── Technical Aspects and Challenges of Medical AI Implementation",
     "excerpt_en": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。"
   },
   {

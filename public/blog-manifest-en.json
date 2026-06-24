@@ -16,6 +16,22 @@
     "excerpt_en": "June 2026 marked the most densely packed month for major AI model releases, featuring landmark launches from Anthropic and NVIDIA alongside significant delays from OpenAI and Google. This article provides a comprehensive breakdown of all key releases, from Claude Fable 5's benchmark-shattering performance to the rapid convergence of Chinese frontier models."
   },
   {
+    "slug": "openai-broadcom-jalapeno-chip",
+    "title": "OpenAI、初の自社設計AI推論チップ『Jalapeño』を発表 – Broadcomとの共同開発で推論インフラの未来を変革",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIはBroadcomと共同で、LLM推論に特化した自社設計チップ『Jalapeño』を発表した。このチップは推論コストを削減し、ハードウェア主権を獲得するための重要な一歩であり、2026年末からデプロイが開始される予定だ。AI業界のインフラ競争が新たな段階に入ったことを示す動きである。",
+    "topics": [
+      "OpenAI",
+      "Google",
+      "AIエージェント",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-24",
+    "title_en": "OpenAI Unveils 'Jalapeño': First Custom AI Chip Built with Broadcom to Revolutionize LLM Inference",
+    "excerpt_en": "OpenAI and Broadcom have announced Jalapeno, OpenAI's first custom-designed chip built from the ground up for LLM inference. The move aims to drastically reduce costs and gain hardware independence, challenging Nvidia's dominance and accelerating the industry-wide shift toward custom AI silicon."
+  },
+  {
     "slug": "glm52-open-weight-frontier",
     "title": "GLM-5.2：オープンソースモデルがFrontierSWEでGPT-5.5を初超え、その意味するもの",
     "tag": "オープンソース",
@@ -339,6 +355,22 @@
     "excerpt_en": "Codex accelerates data science by automating code generation and documentation, allowing teams to prioritize essential analysis. It bridges the implementation-communication gap, enhancing efficiency across workflows. As a powerful assistant, Codex transforms how data scientists tackle complex tasks."
   },
   {
+    "slug": "qwen37-closed-source-controversy",
+    "title": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
+    "tag": "解説",
+    "excerpt": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "DeepSeek",
+      "Qwen/Alibaba",
+      "ベンチマーク"
+    ],
+    "date": "2026-06-03",
+    "title_en": "From Open-Source Hero to Closed-Weight Model: What Qwen3.7-Max's Closed-Source Pivot Reveals About AI's Structural Shift",
+    "excerpt_en": "Alibaba's Qwen was hailed as the last bastion of open-source AI with 942 million downloads and 200,000 derivative models. Then Qwen3.7-Max launched as a fully closed-weight model, leaving the community torn between awe and disappointment. We dive into what this pivot means, the historical parallels, and what options developers have left."
+  },
+  {
     "slug": "travelersopenaiai",
     "title": "米国保険大手TravelersがOpenAIで請求処理を自動化：エンタープライズAI実装の最前線",
     "tag": "解説",
@@ -352,22 +384,6 @@
     "date": "2026-06-03",
     "title_en": "Enterprise AI in Action: How Travelers Automates Insurance Claims with OpenAI",
     "excerpt_en": "Travelers is leveraging OpenAI to automate insurance claims processing across the U.S., achieving 24/7 availability and increased operational efficiency. The case highlights the importance of domain-specific workflows and human-in-the-loop governance in high-stakes enterprise AI deployments."
-  },
-  {
-    "slug": "qwen37-closed-source-controversy",
-    "title": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
-    "tag": "解説",
-    "excerpt": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。",
-    "topics": [
-      "Anthropic",
-      "OpenAI",
-      "DeepSeek",
-      "Qwen/Alibaba",
-      "ベンチマーク"
-    ],
-    "date": "2026-06-03",
-    "title_en": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
-    "excerpt_en": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。"
   },
   {
     "slug": "awsopenaiai",

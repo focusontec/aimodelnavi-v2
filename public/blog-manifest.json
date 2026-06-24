@@ -1,5 +1,19 @@
 [
   {
+    "slug": "ibm-huggingface-cuga-agent",
+    "title": "IBMとHuggingFaceが軽量AIエージェントフレームワークCUGAを発表：24のブループリントで開発を簡素化",
+    "tag": "オープンソース",
+    "excerpt": "IBM ResearchとHuggingFaceは、設定可能な汎用AIエージェントフレームワークCUGAを発表した。24の実用ブループリントやモデル非依存設計により、エージェント開発の参入障壁を大きく下げている。",
+    "topics": [
+      "オープンソース",
+      "Anthropic",
+      "OpenAI",
+      "AIエージェント",
+      "推論"
+    ],
+    "date": "2026-06-24"
+  },
+  {
     "slug": "june-2026-llm-roundup",
     "title": "2026年6月 AIモデル総決算：Claude Fable 5の衝撃、GPT-5.6の延期、そして中国の四馬レース",
     "tag": "解説",
