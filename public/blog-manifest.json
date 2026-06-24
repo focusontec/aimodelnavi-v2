@@ -1,5 +1,19 @@
 [
   {
+    "slug": "june-2026-llm-roundup",
+    "title": "2026年6月 AIモデル総決算：Claude Fable 5の衝撃、GPT-5.6の延期、そして中国の四馬レース",
+    "tag": "解説",
+    "excerpt": "2026年6月は、LLM史上最多の主要モデルが集中リリースされた月となった。AnthropicのClaude Fable 5がコーディングベンチマークで新記録を樹立し、中国主要企業による「四馬レース」が激化する中、OpenAIとGoogleの次期フラッグシップモデルは延期が発表された。本記事では、この激動の1ヶ月を網羅的に解説する。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "DeepSeek",
+      "Qwen/Alibaba"
+    ],
+    "date": "2026-06-24"
+  },
+  {
     "slug": "glm52-open-weight-frontier",
     "title": "GLM-5.2：オープンソースモデルがFrontierSWEでGPT-5.5を初超え、その意味するもの",
     "tag": "オープンソース",

@@ -1,5 +1,21 @@
 [
   {
+    "slug": "glm52-open-weight-frontier",
+    "title": "GLM-5.2：オープンソースモデルがFrontierSWEでGPT-5.5を初超え、その意味するもの",
+    "tag": "オープンソース",
+    "excerpt": "Z.ai（智谱AI）がMITライセンスでオープンソースとしてリリースしたGLM-5.2は、FrontierSWEベンチマークで74.4%を達成し、GPT-5.5の72.6%を初めて超えた。API価格はGPT-5.5の約7分の1で、コスト効率が高く、技術的突破と日本企業への影響を分析する。",
+    "topics": [
+      "オープンソース",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "ベンチマーク"
+    ],
+    "date": "2026-06-23",
+    "title_en": "GLM-5.2: How an Open-Source Model Topped GPT-5.5 on the FrontierSWE Benchmark",
+    "excerpt_en": "Z.ai's GLM-5.2, an MIT-licensed open-source model, has achieved a landmark by surpassing OpenAI's GPT-5.5 on the FrontierSWE benchmark, marking the first time an open-source model leads in long-horizon task completion. With API pricing roughly one-seventh of GPT-5.5's and innovations like IndexShare for efficient 1M-token context, GLM-5.2 offers a compelling alternative for cost-sensitive deployments, signaling a shift in the AI landscape."
+  },
+  {
     "slug": "2026-6-ai-claude-fable-5",
     "title": "2026年6月のフロンティアAIモデル動向：Claude Fable 5の衝撃と安全性の両立",
     "tag": "Anthropic",
@@ -24,8 +40,8 @@
       "Anthropic",
       "OpenAI",
       "ベンチマーク",
-      "セキュリティ",
-      "コーディング"
+      "AIエージェント",
+      "セキュリティ"
     ],
     "date": "2026-06-22",
     "title_en": "Claude Sonnet 5 vs GPT-5.6: The AI Model Battle Heating Up in 2026",
