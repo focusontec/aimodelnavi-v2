@@ -120,8 +120,8 @@
       "LLM"
     ],
     "date": "2026-06-21",
-    "title_en": "Explaining ChatGPT Enterprise's Spending Management and Usage Analytics Features | Practical Reference Cases for LLM Infrastructure Cost Governance Design",
-    "excerpt_en": "OpenAI has announced new spending management and usage analytics features for ChatGPT Enterprise. As the importance of cost visualization and governance in enterprise AI adoption grows, this article explains the functional design from the perspective of Japanese IT departments and development leaders."
+    "title_en": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
+    "excerpt_en": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。"
   },
   {
     "slug": "openai18ai",
@@ -134,8 +134,8 @@
       "推論"
     ],
     "date": "2026-06-21",
-    "title_en": "OpenAI's Reasoning Model Succeeds in 18 New Diagnostic Assistances for Pediatric Rare Diseases──Technologies and Challenges in Medical AI Practical Application",
-    "excerpt_en": "OpenAI's reasoning model has been utilized to assist in diagnosing rare pediatric diseases, achieving 18 new identification cases. As a practical example of complex medical reasoning utilizing Chain-of-Thought, this outcome is highly informative for Japanese medical AI developers."
+    "title_en": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
+    "excerpt_en": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。"
   },
   {
     "slug": "anthropic-fable-nerfing-2026",
@@ -366,8 +366,8 @@
       "ベンチマーク"
     ],
     "date": "2026-06-03",
-    "title_en": "From \"Open Source Hero\" to \"Closed Model\": What the Qwen3.7-Max Closed-Source Controversy Reveals About the AI Industry's Structural Shift",
-    "excerpt_en": "Alibaba's Qwen was hailed as the \"last stronghold of open source\" with 942 million downloads and 200,000 derivative models. However, Qwen3.7-Max was announced as a fully closed-source model, leaving the community in shock and disappointment. This analysis delves into the implications of this shift, historical parallels, and the options left for developers."
+    "title_en": "「オープンソースの英雄」から「クローズドモデル」へ：Qwen3.7-Max閉源問題が明かすAI業界の構造変化",
+    "excerpt_en": "9.42億回のダウンロードと20万の派生モデルで「オープンソースの最後の砦」と称されたAlibabaのQwen。しかしQwen3.7-Maxは完全クローズドモデルとして発表され、コミュニティは驚きと失望に包まれた。この転換が意味するもの、歴史上の類似事例、そして開発者に残された選択肢を深掘りする。"
   },
   {
     "slug": "awsopenaiai",

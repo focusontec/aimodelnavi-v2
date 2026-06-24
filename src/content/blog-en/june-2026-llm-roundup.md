@@ -20,12 +20,12 @@ June 2026 has been the most densely packed month for large language model (LLM) 
 | Nemotron 3 Ultra | NVIDIA | Open | June 4 | 550B params (55B active), MoE architecture |
 | Gemma 4 12B | Google | Open | June 3 | Encoderless multimodal, QAT support |
 | Qwen 3.7 | Alibaba | Open + Closed | Early June | Agent-focused, three-model lineup |
-| Llama 4.5 | Meta | Open | Early June | Improved agent stability |
-| DeepSeek V4.1 | DeepSeek | Open + Closed | Early June | 15% token reduction vs V4 Flash |
+| Llama 4 | Meta | Open | April 5 | Multimodal, agent support |
+| DeepSeek V4 Pro | DeepSeek | Open + Closed | April 24 | 16T parameters, 1M context window |
 | Mistral Medium 3 | Mistral AI | Closed + Self-hosted | Early June | EU-focused multilingual mid-tier |
-| Hunyuan Large 3 | Tencent | Closed + Partial Open | Early June | Deeper WeChat integration |
+| Hy3 Preview (Hunyuan 3) | Tencent | Open | April 23 | MoE 295B, agent support |
 | ERNIE 5.1 | Baidu | Closed | Early June | Baidu Search integration |
-| Doubao Pro | ByteDance | Closed | Early June | Douyin creator economy focus |
+| Doubao | ByteDance | Closed | Unconfirmed | Douyin creator economy (no official announcement) |
 | GLM-6 | Zhipu AI | Open | Early June | Entry into China's open-source race |
 
 ## Claude Fable 5: The Mythos Tier Shock
@@ -110,37 +110,37 @@ Alibaba launched Qwen 3.7 in three variants:
 
 Qwen 3.7-Plus includes GUI agent capabilities, allowing it to autonomously execute build-test-deploy workflows.
 
-### Meta Llama 4.5
+### Meta Llama 4
 
-Meta's Llama 4.5 focuses on improving agent stability, enhancing reliability for multi-step tasks.
+Meta's Llama 4, released in April, features multimodal support and enhanced agent workflows.
 
 ### Mistral Medium 3
 
 Mistral AI released this multilingual mid-tier model targeting the EU market, offering a self-hosted option to meet European enterprise privacy requirements.
 
-## China's Frontier Four-Horse Race
+## China's Frontier: Intensifying Competition
 
-A key trend of June 2026 is the rapid convergence of Chinese frontier models. In a competitive response to the price-performance standard set by DeepSeek V4 in April, Alibaba, Tencent, Baidu, ByteDance, and Zhipu AI all announced rival models within a two-week window.
+A key trend of June 2026 is the rapid convergence of Chinese frontier models. In a competitive response to the price-performance standard set by DeepSeek V4 in April, Alibaba, Tencent, Baidu, and Zhipu AI all announced rival models in quick succession.
 
-### DeepSeek V4.1
+### DeepSeek V4 Pro
 
-DeepSeek V4.1 achieves a 15% token reduction compared to V4 Flash, maintaining its leadership in cost efficiency.
+DeepSeek V4 Pro features 16 trillion parameters and a 1M token context window, maintaining its leadership in cost efficiency.
 
-### Tencent Hunyuan Large 3
+### Tencent Hy3 Preview (Hunyuan 3)
 
-This model deepens integration with WeChat, offering native AI experiences within China's largest messaging platform.
+Tencent open-sourced Hy3 Preview (Hunyuan 3) in April, featuring MoE 295B parameters with enhanced agent support.
 
 ### Baidu ERNIE 5.1
 
 With Baidu Search integration, it allows AI to directly generate summaries of search results for a seamless user experience.
 
-### ByteDance Doubao Pro
+### ByteDance Doubao
 
-A model tailored for the Douyin (TikTok) creator economy, assisting with content creation workflow automation.
+ByteDance has been developing Doubao models, but no official announcement was confirmed as of June 2026.
 
-### Zhipu AI GLM-6
+### Zhipu AI GLM-5.2
 
-A participant in China's open-source race, providing high-quality models for the OSS community.
+Released June 16, GLM-5.2 is Zhipu AI's latest flagship featuring a 1M token context window, MIT license, and MoE architecture optimized for long-horizon tasks.
 
 ## Three Macro Shifts
 
@@ -170,12 +170,12 @@ The launch of Claude Fable 5 suggests frontier labs are beginning to segment mod
 
 ### For Chinese Markets
 - **Flagship**: Qwen 3.7-Max.
-- **Cost Efficiency**: DeepSeek V4.1.
-- **Consumer Integration**: Hunyuan Large 3 (WeChat) / Doubao Pro (Douyin).
+- **Cost Efficiency**: DeepSeek V4 Pro.
+- **Consumer Integration**: Hy3 Preview (WeChat).
 
 ## Conclusion
 
-Claude Fable 5 has set a new bar for coding capabilities, China's four-horse race exemplifies intensifying competition, and the delays of GPT-5.6 and Gemini 3.5 Pro highlight the growing complexity of development.
+Claude Fable 5 has set a new bar for coding capabilities, intensifying competition among Chinese frontier models is reshaping the industry, and the delays of GPT-5.6 and Gemini 3.5 Pro highlight the growing complexity of development.
 
 Key developments to watch:
 1. **GPT-5.6's mid-July release** – Will OpenAI's counter-punch land effectively?
