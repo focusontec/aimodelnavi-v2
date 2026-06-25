@@ -203,11 +203,12 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
   const model = getModelBySlug(slug);
   if (!model) notFound();
 
-  const desc = locale === "en" ? (model.descriptionEn || model.descriptionJa) : model.descriptionJa;
-  const devName = locale === "en" ? (model.developerEn || model.developer) : model.developer;
-  const strengths = locale === "en" && model.strengthsEn?.length ? model.strengthsEn : model.strengths;
-  const weaknesses = locale === "en" && model.weaknessesEn?.length ? model.weaknessesEn : model.weaknesses;
-  const useCases = locale === "en" && model.useCasesEn?.length ? model.useCasesEn : model.useCases;
+  const useEn = locale === "en" || locale === "ko";
+  const desc = useEn ? (model.descriptionEn || model.descriptionJa) : model.descriptionJa;
+  const devName = useEn ? (model.developerEn || model.developer) : model.developer;
+  const strengths = useEn && model.strengthsEn?.length ? model.strengthsEn : model.strengths;
+  const weaknesses = useEn && model.weaknessesEn?.length ? model.weaknessesEn : model.weaknesses;
+  const useCases = useEn && model.useCasesEn?.length ? model.useCasesEn : model.useCases;
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
