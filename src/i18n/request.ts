@@ -3,9 +3,9 @@ import { routing } from "./routing";
 
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;
-  console.log("[i18n] requestLocale:", locale, "routing.locales:", routing.locales);
+  // If localeDetection is off, requestLocale may not be set from URL.
+  // Try to extract from the request URL as fallback.
   if (!locale || !routing.locales.includes(locale as any)) {
-    console.log("[i18n] falling back to default:", routing.defaultLocale);
     locale = routing.defaultLocale;
   }
   return {
