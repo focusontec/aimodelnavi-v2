@@ -1,4 +1,6 @@
 import { getPostBySlug, getAllPosts } from '@/lib/blog';
+
+export const dynamic = "force-dynamic";
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
