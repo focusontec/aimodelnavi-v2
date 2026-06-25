@@ -137,7 +137,7 @@ export default async function ComparePage({ params }: { params: Promise<{ locale
       {
         "@type": "ListItem",
         "position": 1,
-        "name": locale === "en" ? "Home" : "ホーム",
+        "name": locale === "ko" ? "홈" : locale === "en" ? "Home" : "ホーム",
         "item": "https://aimodelsnavi.com",
       },
       {

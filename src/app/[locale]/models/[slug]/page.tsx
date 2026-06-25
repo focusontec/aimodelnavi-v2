@@ -94,20 +94,20 @@ function buildBreadcrumbLd(slug: string, modelName: string, locale: string): any
       {
         "@type": "ListItem",
         "position": 1,
-        "name": locale === "en" ? "Home" : "ホーム",
+        "name": locale === "ko" ? "홈" : locale === "en" ? "Home" : "ホーム",
         "item": "https://aimodelsnavi.com",
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": locale === "en" ? "Models" : "モデル一覧",
-        "item": `https://aimodelsnavi.com${locale === "ja" ? "" : "/en"}/models`,
+        "name": locale === "ko" ? "모델" : locale === "en" ? "Models" : "モデル一覧",
+        "item": `https://aimodelsnavi.com${locale === "ja" ? "" : `/${locale}`}/models`,
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": modelName,
-        "item": `https://aimodelsnavi.com${locale === "ja" ? "" : "/en"}/models/${slug}`,
+        "item": `https://aimodelsnavi.com${locale === "ja" ? "" : `/${locale}`}/models/${slug}`,
       },
     ],
   };
@@ -118,7 +118,7 @@ function buildFaqLd(strengths: string[], weaknesses: string[], useCases: string[
   if (strengths.length > 0) {
     qas.push({
       "@type": "Question",
-      "name": locale === "en" ? `What are the strengths of this model?` : `このモデルの強みは何ですか？`,
+      "name": locale === "ko" ? "이 모델의 강점은 무엇인가요?" : locale === "en" ? `What are the strengths of this model?` : `このモデルの強みは何ですか？`,
       "acceptedAnswer": {
         "@type": "Answer",
         "text": strengths.join(" "),
@@ -128,7 +128,7 @@ function buildFaqLd(strengths: string[], weaknesses: string[], useCases: string[
   if (weaknesses.length > 0) {
     qas.push({
       "@type": "Question",
-      "name": locale === "en" ? `What are the weaknesses of this model?` : `このモデルの弱みは何ですか？`,
+      "name": locale === "ko" ? "이 모델의 약점은 무엇인가요?" : locale === "en" ? `What are the weaknesses of this model?` : `このモデルの弱みは何ですか？`,
       "acceptedAnswer": {
         "@type": "Answer",
         "text": weaknesses.join(" "),
@@ -138,7 +138,7 @@ function buildFaqLd(strengths: string[], weaknesses: string[], useCases: string[
   if (useCases.length > 0) {
     qas.push({
       "@type": "Question",
-      "name": locale === "en" ? `What are the best use cases?` : `どんな用途に最適ですか？`,
+      "name": locale === "ko" ? "어떤 용도에 가장 적합한가요?" : locale === "en" ? `What are the best use cases?` : `どんな用途に最適ですか？`,
       "acceptedAnswer": {
         "@type": "Answer",
         "text": useCases.join(" "),
@@ -253,7 +253,7 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
           <div className="bg-blue-50 border border-blue-100 rounded-xl p-6 mb-6">
             <h2 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
               <Languages className="w-5 h-5 text-blue-600" />
-              {locale === "en" ? "Japanese Language Capability" : "日本語性能"}
+              {locale === "ko" ? "일본어 처리 능력" : locale === "en" ? "Japanese Language Capability" : "日本語性能"}
             </h2>
             <div className="flex items-center gap-3 mb-3">
               <JpCapabilityBadge level={jpCap.jpLevel} badge={locale === "en" ? jpCap.badgeEn : jpCap.badgeJa} />

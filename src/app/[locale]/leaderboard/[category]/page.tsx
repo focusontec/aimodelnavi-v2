@@ -103,7 +103,7 @@ export default async function LeaderboardCategoryPage({
       <LeaderboardTable benchmarks={cat.benchmarks} benchmarkDefs={categoryBenchmarks} />
       {categoryBenchmarks.length > 0 && (
         <div className="mt-10 p-6 bg-gray-50 rounded-xl">
-          <h2 className="text-sm font-semibold text-gray-900 mb-3">{isEn ? "About Benchmarks" : "ベンチマークについて"}</h2>
+          <h2 className="text-sm font-semibold text-gray-900 mb-3">{isKo ? "벤치마크 소개" : isEn ? "About Benchmarks" : "ベンチマークについて"}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {categoryBenchmarks.map((b) => b && (
               <div key={b.key}>

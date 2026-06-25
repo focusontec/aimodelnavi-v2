@@ -61,13 +61,13 @@ export default async function BlogDetailPage({
 
   if (!post) notFound();
 
-  const baseUrl = locale === "en" ? "https://aimodelsnavi.com/en" : "https://aimodelsnavi.com";
+  const baseUrl = locale === "en" ? "https://aimodelsnavi.com/en" : locale === "ko" ? "https://aimodelsnavi.com/ko" : "https://aimodelsnavi.com";
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: locale === "en" ? "Home" : "ホーム", item: "https://aimodelsnavi.com" },
-      { "@type": "ListItem", position: 2, name: locale === "en" ? "Blog" : "ブログ", item: `${baseUrl}/blog` },
+      { "@type": "ListItem", position: 1, name: locale === "ko" ? "홈" : locale === "en" ? "Home" : "ホーム", item: "https://aimodelsnavi.com" },
+      { "@type": "ListItem", position: 2, name: locale === "ko" ? "블로그" : locale === "en" ? "Blog" : "ブログ", item: `${baseUrl}/blog` },
       { "@type": "ListItem", position: 3, name: post.title },
     ],
   };
@@ -101,7 +101,7 @@ export default async function BlogDetailPage({
         className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary-600 mb-6"
       >
         <ArrowLeft className="w-3 h-3" />
-        {locale === "en" ? "Back to Blog" : "ブログ一覧に戻る"}
+        {locale === "ko" ? "블로그 목록으로" : locale === "en" ? "Back to Blog" : "ブログ一覧に戻る"}
       </Link>
 
       <div className="mb-8">
@@ -132,7 +132,7 @@ export default async function BlogDetailPage({
           className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-700"
         >
           <ArrowLeft className="w-3 h-3" />
-          {locale === "en" ? "Back to Blog" : "ブログ一覧に戻る"}
+          {locale === "ko" ? "블로그 목록으로" : locale === "en" ? "Back to Blog" : "ブログ一覧に戻る"}
         </Link>
       </div>
     </article>

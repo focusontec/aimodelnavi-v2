@@ -124,7 +124,7 @@ function tv(value: string, locale: string): string {
 export default function ModelsPage() {
   const locale = useLocale();
   const t = T[locale as keyof typeof T] || T.ja;
-  const sourceLabels = locale === "en" ? sourceLabelsEn : sourceLabelsJa;
+  const sourceLabels = locale === "ko" ? sourceLabelsKo : locale === "en" ? sourceLabelsEn : sourceLabelsJa;
 
   const [filterSource, setFilterSource] = useState<string>('all');
   const [filterRegion, setFilterRegion] = useState<string>('all');
