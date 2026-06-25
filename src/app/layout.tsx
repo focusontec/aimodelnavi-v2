@@ -26,7 +26,7 @@ function OrganizationSchema() {
     "name": "AI Models Navi",
     "url": "https://aimodelsnavi.com",
     "logo": "https://aimodelsnavi.com/opengraph-image",
-    "description": "AIモデルの比較・料金・ランキングを日本語で提供するポータルサイト",
+    "description": "AI Model Comparison, Pricing & Rankings — AIモデル比較・料金・ランキング",
     "sameAs": [
       "https://github.com/focusontec/aimodelnavi",
     ],

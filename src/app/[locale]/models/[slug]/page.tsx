@@ -164,9 +164,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const model = getModelBySlug(slug);
   if (!model) return { title: t("modelNotFound", locale) };
 
-  const desc = locale === "en" ? (model.descriptionEn || model.descriptionJa).slice(0, 160) : model.descriptionJa.slice(0, 160);
+  const desc = (locale === "en" || locale === "ko") ? (model.descriptionEn || model.descriptionJa).slice(0, 160) : model.descriptionJa.slice(0, 160);
   const typeLabel = t(`type_${model.type}`, locale);
   const devName = locale === "en" ? (model.developerEn || model.developer) : model.developer;
+  const koreanKeywords = locale === "ko" ? ["AI 모델", "벤치마크", "API 가격", "LLM", "대규모 언어 모델"] : [];
 
   return {
     title: `${model.name} (${devName})`,
