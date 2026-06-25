@@ -82,7 +82,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   setRequestLocale(locale);
   const t = T[locale as keyof typeof T] || T.ja;
 
-  const manifest = locale === "en" ? blogManifestEn : blogManifest;
+  const manifest = (locale === "en" || locale === "ko") ? blogManifestEn : blogManifest;
   const sortedPosts = [...manifest].sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3);
 
   return (
