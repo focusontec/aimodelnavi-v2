@@ -62,14 +62,15 @@ export default async function LeaderboardCategoryPage({
     .filter(Boolean);
 
   const isEn = locale === "en";
+  const isKo = locale === "ko";
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: isEn ? "Home" : "ホーム", item: "https://aimodelsnavi.com" },
-      { "@type": "ListItem", position: 2, name: isEn ? "Leaderboard" : "ランキング", item: isEn ? "https://aimodelsnavi.com/en/leaderboard" : "https://aimodelsnavi.com/leaderboard" },
-      { "@type": "ListItem", position: 3, name: isEn ? cat.titleEn : cat.title },
+      { "@type": "ListItem", position: 1, name: isKo ? "홈" : isEn ? "Home" : "ホーム", item: "https://aimodelsnavi.com" },
+      { "@type": "ListItem", position: 2, name: isKo ? "리더보드" : isEn ? "Leaderboard" : "ランキング", item: isEn ? "https://aimodelsnavi.com/en/leaderboard" : isKo ? "https://aimodelsnavi.com/ko/leaderboard" : "https://aimodelsnavi.com/leaderboard" },
+      { "@type": "ListItem", position: 3, name: isKo ? cat.titleKo || cat.titleEn || cat.title : isEn ? cat.titleEn : cat.title },
     ],
   };
 
@@ -78,7 +79,7 @@ export default async function LeaderboardCategoryPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Link href={`/${locale === "ja" ? "" : locale + "/"}leaderboard`} className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary-600 mb-6">
         <ArrowLeft className="w-3 h-3" />
-        {isEn ? "Back to Leaderboard" : "ランキング一覧に戻る"}
+        {isKo ? "리더보드로 돌아가기" : isEn ? "Back to Leaderboard" : "ランキング一覧に戻る"}
       </Link>
       <div className="flex flex-wrap gap-2 mb-8 border-b border-gray-200 pb-4">
         {categoryOrder.map((slug) => {
