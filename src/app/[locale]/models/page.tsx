@@ -61,6 +61,31 @@ const T = {
     jpHigh: "High-Quality JP",
     jpModerate: "Multilingual",
   },
+  ko: {
+    title: "모델 목록",
+    desc: "주요 AI 모델의 사양, 라이선스, 성능 요약을 한눈에 비교할 수 있습니다.",
+    search: "모델명·개발사로 검색...",
+    license: "라이선스:",
+    all: "전체",
+    openSource: "오픈소스",
+    conditional: "조건부 오픈",
+    proprietary: "독점",
+    region: "지역:",
+    allRegions: "전체 지역",
+    domestic: "🇯🇵 일본",
+    global: "🌍 글로벌",
+    count: "모델",
+    noResults: "일치하는 모델이 없습니다",
+    modelName: "모델명",
+    developer: "개발사",
+    params: "파라미터",
+    contextWindow: "컨텍스트",
+    jpCapability: "일본어:",
+    jpAll: "전체",
+    jpNative: "네이티브 JP",
+    jpHigh: "고품질 일본어",
+    jpModerate: "다국어 대응",
+  },
 };
 
 const sourceLabelsJa: Record<string, string> = {
@@ -73,6 +98,12 @@ const sourceLabelsEn: Record<string, string> = {
   open: 'Open Source',
   'open-nc': 'Conditional',
   closed: 'Proprietary',
+};
+
+const sourceLabelsKo: Record<string, string> = {
+  open: '오픈소스',
+  'open-nc': '조건부 오픈',
+  closed: '독점',
 };
 
 const sourceBadgeColors: Record<string, string> = {
