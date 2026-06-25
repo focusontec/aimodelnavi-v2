@@ -28,6 +28,18 @@ const T = {
     post: "Post",
     cancel: "Cancel",
   },
+  ko: {
+    postComment: "댓글 작성",
+    nickname: "닉네임",
+    placeholder: "댓글을 입력하세요...",
+    submitFailed: "제출에 실패했습니다",
+    submitted: "댓글이 제출되었습니다. 승인 후 표시됩니다.",
+    networkError: "네트워크 오류가 발생했습니다",
+    submitting: "전송 중...",
+    reply: "답글",
+    post: "게시",
+    cancel: "취소",
+  },
 };
 
 interface CommentFormProps {

@@ -19,6 +19,11 @@ const T = {
     loading: "Loading...",
     noComments: "No comments yet. Be the first to comment.",
   },
+  ko: {
+    comments: "댓글",
+    loading: "로딩 중...",
+    noComments: "아직 댓글이 없습니다. 첫 댓글을 남겨보세요.",
+  },
 };
 
 interface CommentSectionProps {

@@ -17,6 +17,12 @@ const T = {
     copied: "Copied",
     copy: "Copy",
   },
+  ko: {
+    share: "공유:",
+    hatena: "Hatena",
+    copied: "복사됨",
+    copy: "복사",
+  },
 };
 
 interface ShareButtonsProps {

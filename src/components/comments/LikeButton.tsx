@@ -13,6 +13,10 @@ const T = {
     unlike: "Unlike",
     like: "Like",
   },
+  ko: {
+    unlike: "좋아요 취소",
+    like: "좋아요",
+  },
 };
 
 interface LikeButtonProps {

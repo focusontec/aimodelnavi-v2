@@ -42,6 +42,15 @@ const T = {
     replySubmitted: "Reply submitted. It will be displayed after approval.",
     dateLocale: "en-US",
   },
+  ko: {
+    justNow: "방금",
+    minutesAgo: (n: number) => `${n}분 전`,
+    hoursAgo: (n: number) => `${n}시간 전`,
+    daysAgo: (n: number) => `${n}일 전`,
+    reply: "답글",
+    replySubmitted: "답글이 제출되었습니다. 승인 후 표시됩니다.",
+    dateLocale: "ko-KR",
+  },
 };
 
 function relativeTime(dateStr: string, locale: string): string {
