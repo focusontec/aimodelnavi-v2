@@ -18,7 +18,7 @@ export interface ModelDetail {
   pricing: {
     inputPer1M: number | null;
     outputPer1M: number | null;
-    currency: "USD" | "JPY";
+    currency: "USD" | "JPY" | "CNY";
     billingMode: string;
     url: string | null;
   } | null;

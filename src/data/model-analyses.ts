@@ -32619,6 +32619,6 @@ export const modelAnalysesJa: Record<string, ModelAnalysis> = {
 };
 
 export function getModelAnalysis(slug: string, locale: string = 'ja'): ModelAnalysis | undefined {
-  if (locale === 'en') return modelAnalysesEn[slug] || modelAnalysesJa[slug];
+  if (locale === 'en' || locale === 'ko') return modelAnalysesEn[slug] || modelAnalysesJa[slug];
   return modelAnalysesJa[slug] || modelAnalysesEn[slug];
 }

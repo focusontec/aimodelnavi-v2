@@ -259,10 +259,10 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
               {locale === "ko" ? "일본어 처리 능력" : locale === "en" ? "Japanese Language Capability" : "日本語性能"}
             </h2>
             <div className="flex items-center gap-3 mb-3">
-              <JpCapabilityBadge level={jpCap.jpLevel} badge={locale === "en" ? jpCap.badgeEn : jpCap.badgeJa} />
+              <JpCapabilityBadge level={jpCap.jpLevel} badge={locale === "ko" ? jpCap.badgeEn : locale === "en" ? jpCap.badgeEn : jpCap.badgeJa} />
             </div>
             <p className="text-sm text-gray-700">
-              {locale === "en" ? jpCap.descriptionEn : jpCap.descriptionJa}
+              {locale === "ko" ? jpCap.descriptionEn : locale === "en" ? jpCap.descriptionEn : jpCap.descriptionJa}
             </p>
             {(jpCap.japaneseMtBench || jpCap.jglue || jpCap.jmmlu) && (
               <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
