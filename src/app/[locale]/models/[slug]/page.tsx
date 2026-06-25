@@ -40,10 +40,10 @@ function t(key: string, locale: string): string {
   return dict[key]?.[locale] || dict[key]?.ja || key;
 }
 
-// Translate Japanese data values to English for EN locale
+// Translate Japanese data values to English/Korean for EN/KO locale
 function tv(value: string, locale: string): string {
-  if (locale !== "en") return value;
-  const map: Record<string, string> = {
+  if (locale === "ja") return value;
+  const enMap: Record<string, string> = {
     "プロプライエタリ": "Proprietary",
     "オープンソース": "Open Source",
     "条件付オープン": "Conditional Open",
@@ -155,7 +155,7 @@ function buildFaqLd(strengths: string[], weaknesses: string[], useCases: string[
 
 export function generateStaticParams() {
   return modelDetails.flatMap((model) =>
-    ["ja", "en"].map((locale) => ({ slug: model.slug, locale }))
+    ["ja", "en", "ko"].map((locale) => ({ slug: model.slug, locale }))
   );
 }
 
