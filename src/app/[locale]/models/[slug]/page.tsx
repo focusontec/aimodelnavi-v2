@@ -170,7 +170,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   return {
     title: `${model.name} (${devName})`,
-    description: `${desc} ${devName} ${typeLabel} ${locale === "en" ? "model" : "モデル"}.`.slice(0, 160),
+    description: `${desc} ${devName} ${typeLabel} ${locale === "ko" ? "모델" : locale === "en" ? "model" : "モデル"}.`.slice(0, 160),
     keywords: [model.name, devName, typeLabel, "AI model", "benchmark", "API pricing", "LLM", locale === "ja" ? "大規模言語モデル" : "large language model"],
     openGraph: {
       title: `${model.name} | AI Models Navi`,
