@@ -24,8 +24,8 @@ export async function generateMetadata({
   if (!cat) return {};
   const t = await getTranslations({ locale, namespace: "leaderboard" });
 
-  const catTitle = locale === "en" ? cat.titleEn : cat.title;
-  const catDesc = locale === "en" ? cat.descriptionEn : cat.description;
+  const catTitle = locale === "ko" ? cat.titleKo : locale === "en" ? cat.titleEn : cat.title;
+  const catDesc = locale === "ko" ? cat.descriptionKo : locale === "en" ? cat.descriptionEn : cat.description;
 
   return {
     title: catTitle,

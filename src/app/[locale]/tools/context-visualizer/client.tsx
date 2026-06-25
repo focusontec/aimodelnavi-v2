@@ -52,6 +52,29 @@ const T = {
     whyMattersDesc2: "Bigger isn't always better though. How well the model 'understands' the context also matters.",
     tip: "Pro tip: For long-context tasks, choose models with large windows. For short tasks, smaller models are often sufficient and cheaper.",
   },
+  ko: {
+    back: "도구 목록으로", title: "컨텍스트 윈도우 시각화",
+    subtitle: "AI 모델의 '기억 용량'을 시각적으로 이해하기",
+    whatIs: "컨텍스트 윈도우란?",
+    whatIsDesc: "AI 모델이 한 번에 처리할 수 있는 텍스트의 최대량입니다. 컨텍스트가 클수록 긴 문서나 대규모 코드베이스를 한 번에 분석할 수 있습니다.",
+    selectModel: "모델 선택", modelCompare: "모델 비교",
+    whatFits: "이 컨텍스트에 무엇이 들어갈까?",
+    reference: "참고: 일반적인 텍스트 양",
+    chat100: "채팅 100회 왕복", chat100desc: "약 5만 토큰",
+    novel: "소설 1권", novelDesc: "약 8-10만 토큰",
+    docs: "기술 문서", docsDesc: "약 10-15만 토큰",
+    code50k: "코드베이스 (5만 줄)", code50kdesc: "약 15-20만 토큰",
+    code100k: "코드베이스 (10만 줄)", code100kdesc: "약 30-40만 토큰",
+    book: "책 1권 (200페이지)", bookDesc: "약 50만 토큰",
+    dailyReport: "일일 보고서 1년치", dailyReportDesc: "약 60만 토큰",
+    annualReport: "연간 보고서 5권", annualReportDesc: "약 100만 토큰",
+    tokenUnit: "토큰", fits: "회분 들어갑니다",
+    selectPrompt: "모델을 선택하여 무엇이 들어가는지 확인하세요",
+    whyMatters: "컨텍스트 윈도우가 중요한 이유",
+    whyMattersDesc1: "컨텍스트 윈도우가 크면 한 번에 많은 정보를 처리할 수 있습니다. 예를 들어, 전체 코드베이스를 한 번에 읽고 버그를 찾을 수 있습니다.",
+    whyMattersDesc2: "하지만 클수록 좋은 것은 아닙니다. 모델이 컨텍스트를 '정확히 이해할 수 있는지'도 중요합니다.",
+    tip: "팁: 긴 문맥 처리가 필요한 경우 컨텍스트 윈도우가 큰 모델을 선택하세요. 짧은 태스크라면 작은 모델로도 충분합니다.",
+  },
 };
 
 const models = [
@@ -89,7 +112,7 @@ function formatTokens(n: number): string {
 
 export default function ContextVisualizerPage() {
   const params = useParams();
-  const locale = (params.locale as string) === "en" ? "en" : "ja";
+  const locale = (params.locale as string) === "en" ? "en" : (params.locale as string) === "ko" ? "ko" : "ja";
   const t = T[locale];
   const [selectedModel, setSelectedModel] = useState(models[0]);
   const [showInfo, setShowInfo] = useState(false);
@@ -151,7 +174,7 @@ export default function ContextVisualizerPage() {
         <div className="bg-white rounded-xl border border-gray-200 p-6 mb-8">
           <h2 className="font-bold text-gray-900 mb-2">{t.modelCompare}</h2>
           <p className="text-sm text-gray-500 mb-6">
-            {locale === "ja" ? "各モデルのコンテキストウィンドウを視覚的に比較" : "Visual comparison of context windows across models"}
+            {locale === "ja" ? "各モデルのコンテキストウィンドウを視覚的に比較" : locale === "ko" ? "각 모델의 컨텍스트 윈도우를 시각적으로 비교" : "Visual comparison of context windows across models"}
           </p>
           <div className="space-y-3">
             {models.map((m) => {
@@ -213,13 +236,13 @@ export default function ContextVisualizerPage() {
 
         {/* Quick Comparison */}
         <div className="bg-white rounded-xl border border-gray-200 p-6">
-          <h2 className="font-bold text-gray-900 mb-4">{locale === "ja" ? "クイック比較" : "Quick Comparison"}</h2>
+          <h2 className="font-bold text-gray-900 mb-4">{locale === "ja" ? "クイック比較" : locale === "ko" ? "빠른 비교" : "Quick Comparison"}</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-gray-200">
-                  <th className="text-left py-2 text-gray-500">{locale === "ja" ? "テキスト" : "Text"}</th>
-                  <th className="text-right py-2 text-gray-500">{locale === "ja" ? "トークン" : "Tokens"}</th>
+                  <th className="text-left py-2 text-gray-500">{locale === "ja" ? "テキスト" : locale === "ko" ? "텍스트" : "Text"}</th>
+                  <th className="text-right py-2 text-gray-500">{locale === "ja" ? "トークン" : locale === "ko" ? "토큰" : "Tokens"}</th>
                   <th className="text-right py-2 text-gray-500">{locale === "ja" ? "128K" : "128K"}</th>
                   <th className="text-right py-2 text-gray-500">{locale === "ja" ? "256K" : "256K"}</th>
                   <th className="text-right py-2 text-gray-500">{locale === "ja" ? "1M" : "1M"}</th>
