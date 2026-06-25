@@ -11,12 +11,17 @@ const blogTags = [
   "オープンソース", "ベンチマーク", "DeepSeek", "xAI", "Alibaba", "料金比較",
 ];
 
+const blogTagKo: Record<string, string> = {
+  "AIエージェント": "AI 에이전트", "解説": "분석", "オープンソース": "오픈소스",
+  "ベンチマーク": "벤치마크", "料金比較": "가격",
+};
+
 const toolLinks = [
-  { slug: "cost-calculator", labelJa: "APIコスト計算", labelEn: "API Cost Calculator", icon: Calculator },
-  { slug: "token-counter", labelJa: "トークンカウンター", labelEn: "Token Counter", icon: BarChart3 },
-  { slug: "model-recommender", labelJa: "AIモデル推薦", labelEn: "AI Model Recommender", icon: Sparkles },
-  { slug: "context-visualizer", labelJa: "コンテキスト比較", labelEn: "Context Visualizer", icon: LayoutGrid },
-  { slug: "usage-analyzer", labelJa: "使用パターン分析", labelEn: "Usage Analyzer", icon: BarChart3 },
+  { slug: "cost-calculator", labelJa: "APIコスト計算", labelEn: "API Cost Calculator", labelKo: "API 비용 계산", icon: Calculator },
+  { slug: "token-counter", labelJa: "トークンカウンター", labelEn: "Token Counter", labelKo: "Token Counter", icon: BarChart3 },
+  { slug: "model-recommender", labelJa: "AIモデル推薦", labelEn: "AI Model Recommender", labelKo: "AI 모델 추천", icon: Sparkles },
+  { slug: "context-visualizer", labelJa: "コンテキスト比較", labelEn: "Context Visualizer", labelKo: "컨텍스트 비교", icon: LayoutGrid },
+  { slug: "usage-analyzer", labelJa: "使用パターン分析", labelEn: "Usage Analyzer", labelKo: "사용 패턴 분석", icon: BarChart3 },
 ];
 
 export default function Header() {
@@ -114,7 +119,7 @@ export default function Header() {
                             href={`${item.href}?tag=${encodeURIComponent(tag)}`}
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-600"
                           >
-                            {tag}
+                            {locale === "ko" ? (blogTagKo[tag] || tag) : tag}
                           </Link>
                         ))}
                       </div>
@@ -154,7 +159,7 @@ export default function Header() {
                             className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-600"
                           >
                             <tool.icon className="w-4 h-4 text-gray-400" />
-                            {locale === "ja" ? tool.labelJa : tool.labelEn}
+                            {locale === "ko" ? tool.labelKo : locale === "ja" ? tool.labelJa : tool.labelEn}
                           </Link>
                         ))}
                       </div>
@@ -260,7 +265,7 @@ export default function Header() {
                           className="flex items-center gap-2 px-3 py-1.5 text-xs text-gray-500 hover:text-primary-600"
                         >
                           <tool.icon className="w-3.5 h-3.5" />
-                          {locale === "ja" ? tool.labelJa : tool.labelEn}
+                          {locale === "ko" ? tool.labelKo : locale === "ja" ? tool.labelJa : tool.labelEn}
                         </Link>
                       ))}
                     </div>

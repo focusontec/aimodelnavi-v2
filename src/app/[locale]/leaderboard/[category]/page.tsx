@@ -10,7 +10,7 @@ import LeaderboardTable from "@/components/LeaderboardTable";
 
 export function generateStaticParams() {
   return categoryOrder.flatMap((slug) =>
-    ["ja", "en"].map((locale) => ({ category: slug, locale }))
+    ["ja", "en", "ko"].map((locale) => ({ category: slug, locale }))
   );
 }
 
@@ -41,6 +41,7 @@ export async function generateMetadata({
       languages: {
         ja: `https://aimodelsnavi.com/leaderboard/${category}`,
         en: `https://aimodelsnavi.com/en/leaderboard/${category}`,
+        ko: `https://aimodelsnavi.com/ko/leaderboard/${category}`,
         "x-default": `https://aimodelsnavi.com/leaderboard/${category}`,
       },
     },
@@ -70,7 +71,7 @@ export default async function LeaderboardCategoryPage({
     itemListElement: [
       { "@type": "ListItem", position: 1, name: isKo ? "홈" : isEn ? "Home" : "ホーム", item: "https://aimodelsnavi.com" },
       { "@type": "ListItem", position: 2, name: isKo ? "리더보드" : isEn ? "Leaderboard" : "ランキング", item: isEn ? "https://aimodelsnavi.com/en/leaderboard" : isKo ? "https://aimodelsnavi.com/ko/leaderboard" : "https://aimodelsnavi.com/leaderboard" },
-      { "@type": "ListItem", position: 3, name: isEn ? cat.titleEn : cat.title },
+      { "@type": "ListItem", position: 3, name: isKo ? cat.titleKo : isEn ? cat.titleEn : cat.title },
     ],
   };
 
@@ -91,14 +92,14 @@ export default async function LeaderboardCategoryPage({
                 slug === category ? "bg-primary-600 text-white" : "text-gray-600 hover:bg-gray-100"
               }`}>
               <Icon className="w-4 h-4" />
-              {isEn ? c.titleEn : c.title}
+              {isKo ? c.titleKo : isEn ? c.titleEn : c.title}
             </Link>
           );
         })}
       </div>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">{isEn ? cat.titleEn : cat.title}</h1>
-        <p className="mt-2 text-gray-500">{isEn ? cat.descriptionEn : cat.description}</p>
+        <h1 className="text-3xl font-bold text-gray-900">{isKo ? cat.titleKo : isEn ? cat.titleEn : cat.title}</h1>
+        <p className="mt-2 text-gray-500">{isKo ? cat.descriptionKo : isEn ? cat.descriptionEn : cat.description}</p>
       </div>
       <LeaderboardTable benchmarks={cat.benchmarks} benchmarkDefs={categoryBenchmarks} />
       {categoryBenchmarks.length > 0 && (

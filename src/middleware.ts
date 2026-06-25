@@ -6,9 +6,6 @@ const intlMiddleware = createMiddleware(routing);
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  if (pathname.startsWith("/ko")) {
-    console.log("[middleware] /ko path detected:", pathname);
-  }
 
   // Admin and API routes: handle auth, skip intl middleware
   if (pathname.startsWith("/admin") || pathname.startsWith("/api/admin") ||
