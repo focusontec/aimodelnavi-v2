@@ -11,6 +11,10 @@ const T = {
     title: "Cost-Effectiveness Ranking",
     desc: "AI model performance-to-cost ratio ranking. Compare models by value score (benchmark score divided by API cost).",
   },
+  ko: {
+    title: "가성비 랭킹",
+    desc: "AI 모델 성능 대비 비용 비율 랭킹. 벤치마크 스코어를 API 가격으로 나눈 밸류 스코어로 비교합니다.",
+  },
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {

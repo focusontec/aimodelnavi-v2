@@ -35,6 +35,20 @@ const LABELS: Record<string, Record<string, string>> = {
     explanation: "Value Score = Composite Benchmark Score / API Cost. Higher means better cost-performance.",
     all: "All", reasoning: "Reasoning", foundation: "Base", coder: "Coding", chat: "Chat",
   },
+  ko: {
+    search: "모델명 또는 개발사로 검색",
+    model: "모델",
+    developer: "개발사",
+    compositeScore: "종합 점수",
+    valueScore: "밸류 스코어",
+    inputPrice: "입력 가격",
+    outputPrice: "출력 가격",
+    costPer1M: "/1M 토큰",
+    noResults: "해당하는 모델이 없습니다",
+    models: "개 모델",
+    explanation: "밸류 스코어 = 종합 벤치마크 점수 / API 비용. 높을수록 가성비가 좋습니다.",
+    all: "전체", reasoning: "추론", foundation: "파운데이션", coder: "코딩", chat: "채팅",
+  },
 };
 
 const PAGE_SIZE = 30;
@@ -172,7 +186,7 @@ export default function ValueRankingTable() {
             onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
             className="text-sm font-medium text-primary-600 hover:text-primary-700"
           >
-            {locale === "ja" ? "さらに読み込む" : "Load more"}
+            {locale === "ja" ? "さらに読み込む" : locale === "ko" ? "더 보기" : "Load more"}
           </button>
         </div>
       )}

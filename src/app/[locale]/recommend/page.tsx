@@ -11,6 +11,10 @@ const T = {
     title: "Scenario-Based Recommendations",
     desc: "Find the best AI model for your specific use case. Choose from 8 scenarios: code generation, writing, data analysis, and more.",
   },
+  ko: {
+    title: "시나리오 기반 추천",
+    desc: "사용 목적에 최적화된 AI 모델을 추천합니다. 코드 생성, 글쓰기, 데이터 분석 등 8가지 시나리오에서 선택하세요.",
+  },
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {

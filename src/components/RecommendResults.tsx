@@ -32,6 +32,15 @@ const LABELS: Record<string, Record<string, string>> = {
     noRecommendations: "No matching models found",
     score: "Score",
   },
+  ko: {
+    selectScenario: "시나리오 선택",
+    whyRecommended: "추천 이유",
+    topBenchmark: "주요 벤치마크",
+    matchedUseCases: "해당 활용 사례",
+    viewDetail: "상세 보기",
+    noRecommendations: "해당하는 모델이 없습니다",
+    score: "점수",
+  },
 };
 
 export default function RecommendResults() {
@@ -63,7 +72,7 @@ export default function RecommendResults() {
                 }`}
               >
                 <Icon className={`w-4 h-4 ${isSelected ? "text-white" : "text-primary-600"}`} />
-                <span>{locale === "ja" ? s.titleJa : s.titleEn}</span>
+                <span>{locale === "ja" ? s.titleJa : locale === "ko" ? (s.titleKo || s.titleEn) : s.titleEn}</span>
               </button>
             );
           })}
@@ -73,7 +82,7 @@ export default function RecommendResults() {
       {/* Scenario description */}
       {scenario && (
         <p className="text-gray-600 mb-6">
-          {locale === "ja" ? scenario.descriptionJa : scenario.descriptionEn}
+          {locale === "ja" ? scenario.descriptionJa : locale === "ko" ? (scenario.descriptionKo || scenario.descriptionEn) : scenario.descriptionEn}
         </p>
       )}
 

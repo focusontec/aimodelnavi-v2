@@ -45,6 +45,24 @@ const T = {
     noData: "—",
     model: "Model",
   },
+  ko: {
+    title: "AI 모델 비교 — 성능 & 가격 대결",
+    description: "GPT, Claude, Gemini, DeepSeek 등 인기 AI 모델을 벤치마크, API 가격, 성능으로 비교. 최적의 모델을 찾아보세요.",
+    compareTitle: "모델 비교",
+    compareSub: "인기 AI 모델을 성능, 가격, 기능으로 비교",
+    viewDetail: "상세 보기",
+    vs: "VS",
+    customTitle: "모델 자유 비교",
+    customSub: "관심 있는 모델을 선택하여 성능과 가격을 나란히 비교",
+    searchPlaceholder: "모델명 또는 개발사로 검색...",
+    addModel: "모델 추가",
+    noResults: "검색 결과 없음",
+    inputPrice: "입력 가격",
+    outputPrice: "출력 가격",
+    context: "컨텍스트 윈도우",
+    noData: "—",
+    model: "모델",
+  },
 };
 
 // High-value comparison pairs for "vs" keyword SEO

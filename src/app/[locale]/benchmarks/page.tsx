@@ -54,6 +54,30 @@ const T = {
     infoTitle: "About Evaluation Benchmarks",
     infoDesc: "Each evaluation benchmark is designed to measure specific capabilities of AI models. You can evaluate model performance from diverse angles including mathematical reasoning, coding, and comprehensive understanding. Data is updated regularly to reflect the latest model scores.",
   },
+  ko: {
+    title: "AI 모델 평가 벤치마크",
+    desc: "주요 AI 모델 평가 벤치마크 목록. 각 벤치마크 설명과 모델 랭킹을 확인할 수 있습니다.",
+    categories: [
+      { key: 'all', label: '전체' },
+      { key: 'math', label: '수학' },
+      { key: 'coding', label: '프로그래밍' },
+      { key: 'reasoning', label: '추론' },
+      { key: 'comprehensive', label: '종합' },
+      { key: 'agent', label: '에이전트' },
+    ],
+    categoryMap: { math: '수학', coding: '프로그래밍', reasoning: '추론', comprehensive: '종합', agent: '에이전트' } as Record<string, string>,
+    models: "개 모델",
+    rank: "#",
+    model: "모델",
+    developer: "개발사",
+    score: "점수",
+    mode: "모드",
+    morePrefix: "... 외",
+    moreSuffix: "개 모델",
+    noData: "랭킹 데이터가 없습니다",
+    infoTitle: "평가 벤치마크 소개",
+    infoDesc: "각 평가 벤치마크는 AI 모델의 특정 능력을 측정하도록 설계되었습니다. 수학 추론, 코딩, 종합 이해력 등 다양한 각도에서 모델의 성능을 평가할 수 있습니다. 데이터는 정기적으로 업데이트되어 최신 모델 점수가 반영됩니다.",
+  },
 };
 
 export default function BenchmarksPage() {

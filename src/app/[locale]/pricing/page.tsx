@@ -48,6 +48,27 @@ const T = {
       "long-context": { label: "Long Context", desc: "Tiered pricing for extended input" },
     } as Record<BillingMode, { label: string; desc: string }>,
   },
+  ko: {
+    title: "API 가격 비교",
+    desc: "주요 AI 모델의 API 가격을 1M 토큰당 가격으로 비교. 데이터는 각사 공식 사이트 기준.",
+    provider: "프로바이더",
+    billingMode: "과금 모드",
+    modelName: "모델명",
+    inputPrice: "입력 가격",
+    outputPrice: "출력 가격",
+    inputFormat: "입력 형식",
+    outputFormat: "출력 형식",
+    text: "텍스트",
+    multimodal: "이미지+텍스트",
+    billingTitle: "과금 모드 소개",
+    note: "※ 가격은 각사 공식 사이트 정보 기준입니다. 최신 정확한 요금은 각 공식 사이트에서 확인하시기 바랍니다. 가격은 USD(미국 달러) 표시입니다.",
+    billing: {
+      standard: { label: "표준", desc: "일반 토큰 단위 과금" },
+      batch: { label: "배치", desc: "비동기 대량 처리(최대 50% 할인)" },
+      cache: { label: "캐시", desc: "반복 컨텍스트 할인 요금" },
+      "long-context": { label: "장문", desc: "긴 입력 초과 시 단계 요금" },
+    } as Record<BillingMode, { label: string; desc: string }>,
+  },
 };
 
 const providers = [...new Set(pricingData.map((p) => p.provider))];

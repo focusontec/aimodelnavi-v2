@@ -33,6 +33,20 @@ const T = {
       moderate: "General multilingual model",
     },
   },
+  ko: {
+    title: "일본어 성능 레이팅",
+    desc: "AI 모델의 일본어 처리 능력을 비교합니다. 네이티브 JP 대응부터 다국어 대응까지, 모델별 일본어 성능을 확인하세요.",
+    models: "개 모델",
+    native: "네이티브 JP",
+    high: "고품질 일본어",
+    moderate: "다국어 대응",
+    viewDetail: "상세 보기",
+    levelDesc: {
+      native: "일본 기업이 개발하거나 일본어에 특화된 모델",
+      high: "다국어 대응 모델 중 일본어 처리에 뛰어난 모델",
+      moderate: "일반 다국어 대응 모델",
+    },
+  },
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
