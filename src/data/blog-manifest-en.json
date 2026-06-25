@@ -155,34 +155,6 @@
     "excerpt_en": "OpenAI's GPT-5.5 Instant model enhances medical AI by improving reasoning accuracy and incorporating a doctor-supervised evaluation framework for safety and reliability. This innovation sets a benchmark for quality assurance in healthcare AI development, offering insights for global applications, including in Japanese markets."
   },
   {
-    "slug": "chatgpt-enterprisellm",
-    "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
-    "tag": "解説",
-    "excerpt": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。",
-    "topics": [
-      "OpenAI",
-      "推論",
-      "LLM"
-    ],
-    "date": "2026-06-21",
-    "title_en": "Explanation of ChatGPT Enterprise's Spending Management and Usage Analytics Features | A Practical Reference Case for Cost Governance Design in LLM Infrastructure",
-    "excerpt_en": "OpenAI has announced new spending management and usage analytics features for ChatGPT Enterprise. As cost visibility and governance become increasingly important in enterprise AI adoption, this article explains the feature design from the perspective of Japanese IT departments and development leaders."
-  },
-  {
-    "slug": "openai18ai",
-    "title": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
-    "tag": "OpenAI",
-    "excerpt": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。",
-    "topics": [
-      "OpenAI",
-      "ベンチマーク",
-      "推論"
-    ],
-    "date": "2026-06-21",
-    "title_en": "OpenAI's Reasoning Model Assists in 18 New Diagnoses for Pediatric Rare Diseases ── Technologies and Challenges in Medical AI Practical Application",
-    "excerpt_en": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。"
-  },
-  {
     "slug": "anthropic-fable-nerfing-2026",
     "title": "AnthropicがFableを意図的に制限？AIモデルの信頼性危機が問われる",
     "tag": "Anthropic",
