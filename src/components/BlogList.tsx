@@ -19,15 +19,16 @@ const ITEMS_PER_PAGE = 10;
 
 export default function BlogList() {
   const params = useParams();
-  const locale = (params.locale as string) === "en" ? "en" : "ja";
+  const locale = (params.locale as string) === "en" ? "en" : (params.locale as string) === "ko" ? "ko" : "ja";
   const isEn = locale === "en";
+  const isKo = locale === "ko";
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [search, setSearch] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const url = isEn ? "/blog-manifest-en.json" : "/blog-manifest.json";
+    const url = isEn ? "/blog-manifest-en.json" : isKo ? "/blog-manifest.json" : "/blog-manifest.json";
     fetch(url).then(r => r.json()).then(setPosts).catch(() => {});
   }, [isEn]);
 
@@ -53,14 +54,14 @@ export default function BlogList() {
 
   const totalPages = Math.ceil(sorted.length / ITEMS_PER_PAGE);
   const paged = sorted.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
-  const blogBase = isEn ? "/en/blog" : "/blog";
+  const blogBase = isEn ? "/en/blog" : isKo ? "/ko/blog" : "/blog";
 
   return (
     <>
       <div className="relative mb-4">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
         <input type="text" value={search} onChange={e => { setSearch(e.target.value); setCurrentPage(1); }}
-          placeholder={isEn ? "Search..." : "記事を検索..."}
+          placeholder={isKo ? "검색..." : isEn ? "Search..." : "記事を検索..."}
           className="w-full pl-10 pr-10 py-2.5 text-sm border border-gray-200 rounded-lg bg-white focus:outline-none focus:border-primary-400" />
         {search && <button onClick={() => { setSearch(""); setCurrentPage(1); }}
           className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"><X className="w-4 h-4" /></button>}
@@ -69,7 +70,7 @@ export default function BlogList() {
       <div className="flex flex-wrap gap-2 mb-6">
         <button onClick={() => { setSelectedTag(null); setCurrentPage(1); }}
           className={`px-3 py-1 text-xs font-medium rounded-full ${selectedTag === null ? "bg-primary-600 text-white" : "bg-gray-100 text-gray-600"}`}>
-          {isEn ? "All" : "すべて"}
+          {isKo ? "전체" : isEn ? "All" : "すべて"}
         </button>
         {tags.map(tag => (
           <button key={tag} onClick={() => { setSelectedTag(selectedTag === tag ? null : tag); setCurrentPage(1); }}
@@ -82,7 +83,7 @@ export default function BlogList() {
       {posts.length === 0 ? (
         <div className="py-12 text-center text-gray-400">Loading...</div>
       ) : paged.length === 0 ? (
-        <p className="text-center text-gray-400 py-12">{isEn ? "No articles found" : "該当する記事が見つかりません"}</p>
+        <p className="text-center text-gray-400 py-12">{isKo ? "일치하는 글이 없습니다" : isEn ? "No articles found" : "該当する記事が見つかりません"}</p>
       ) : (
         <div className="space-y-6">
           {paged.map(post => (
@@ -102,10 +103,10 @@ export default function BlogList() {
       {totalPages > 1 && (
         <div className="flex items-center justify-center gap-4 mt-10">
           {currentPage > 1 && <button onClick={() => setCurrentPage(currentPage - 1)}
-            className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary-600"><ChevronLeft className="w-4 h-4" />{isEn ? "Prev" : "前へ"}</button>}
+            className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary-600"><ChevronLeft className="w-4 h-4" />{isKo ? "이전" : isEn ? "Prev" : "前へ"}</button>}
           <span className="text-sm text-gray-400">{currentPage} / {totalPages}</span>
           {currentPage < totalPages && <button onClick={() => setCurrentPage(currentPage + 1)}
-            className="inline-flex items-center gap-1 text-sm text-primary-600">{isEn ? "Next" : "次へ"}<ChevronRight className="w-4 h-4" /></button>}
+            className="inline-flex items-center gap-1 text-sm text-primary-600">{isKo ? "다음" : isEn ? "Next" : "次へ"}<ChevronRight className="w-4 h-4" /></button>}
         </div>
       )}
     </>

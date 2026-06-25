@@ -38,33 +38,30 @@ interface Props {
 }
 
 export default function ModelAnalysisSection({ analysis, locale, modelNameToSlug }: Props) {
-  const l = locale === "en" ? {
-    title: "Deep Analysis",
-    pros: "Strengths",
-    cons: "Weaknesses",
-    compare: "Competitor Comparison",
-    sources: "Sources",
-    generated: "Analysis generated",
-    summary: "Overview",
-    performance: "Benchmarks & Performance",
-    comparisons: "Detailed Comparison",
-    community: "Community Feedback",
-    useCases: "Use Cases",
-    news: "Latest News",
-  } : {
-    title: "深度分析",
-    pros: "強み",
-    cons: "弱み",
-    compare: "競合比較",
-    sources: "出典",
-    generated: "分析生成日",
-    summary: "概要",
-    performance: "ベンチマーク＆性能",
-    comparisons: "詳細比較",
-    community: "コミュニティ評価",
-    useCases: "ユースケース",
-    news: "最新ニュース",
+  const labels: Record<string, Record<string, string>> = {
+    en: {
+      title: "Deep Analysis", pros: "Strengths", cons: "Weaknesses",
+      compare: "Competitor Comparison", sources: "Sources", generated: "Analysis generated",
+      summary: "Overview", performance: "Benchmarks & Performance",
+      comparisons: "Detailed Comparison", community: "Community Feedback",
+      useCases: "Use Cases", news: "Latest News",
+    },
+    ja: {
+      title: "深度分析", pros: "強み", cons: "弱み",
+      compare: "競合比較", sources: "出典", generated: "分析生成日",
+      summary: "概要", performance: "ベンチマーク＆性能",
+      comparisons: "詳細比較", community: "コミュニティ評価",
+      useCases: "ユースケース", news: "最新ニュース",
+    },
+    ko: {
+      title: "심층 분석", pros: "강점", cons: "약점",
+      compare: "경쟁사 비교", sources: "출처", generated: "분석 생성일",
+      summary: "개요", performance: "벤치마크 및 성능",
+      comparisons: "상세 비교", community: "커뮤니티 평가",
+      useCases: "활용 사례", news: "최신 뉴스",
+    },
   };
+  const l = labels[locale] || labels.ja;
 
   const hasMetrics = analysis.keyMetrics?.length > 0;
   const hasProsCons = analysis.pros?.length > 0 || analysis.cons?.length > 0;

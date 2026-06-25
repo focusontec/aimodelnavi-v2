@@ -35,6 +35,7 @@ export default function BlogListClient({ posts, locale, labels }: Props) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const isEn = locale === "en";
+  const isKo = locale === "ko";
 
   // Extract unique tags preserving order by frequency
   const tags = useMemo(() => {
@@ -84,7 +85,7 @@ export default function BlogListClient({ posts, locale, labels }: Props) {
     currentPage * ITEMS_PER_PAGE
   );
 
-  const blogBase = isEn ? "/en/blog" : "/blog";
+  const blogBase = isEn ? "/en/blog" : isKo ? "/ko/blog" : "/blog";
 
   return (
     <>
@@ -138,7 +139,7 @@ export default function BlogListClient({ posts, locale, labels }: Props) {
       {/* Results count when filtered */}
       {(selectedTag || search.trim()) && (
         <p className="text-xs text-gray-400 mb-4">
-          {filtered.length} {isEn ? "results" : "件"}
+          {filtered.length} {isKo ? "건" : isEn ? "results" : "件"}
         </p>
       )}
 

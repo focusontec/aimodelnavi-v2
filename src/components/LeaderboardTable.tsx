@@ -26,6 +26,13 @@ const LABELS: Record<string, Record<string, string>> = {
     modelName: "Model", developer: "Developer", openSourceCol: "Open Source",
     open: "Open", nc: "Non-commercial",
   },
+  ko: {
+    all: "전체", reasoning: "추론", foundation: "파운데이션", coder: "코딩", chat: "채팅",
+    openSource: "오픈소스", closed: "클로즈드", search: "모델명·개발사로 검색",
+    models: "모델", noResults: "일치하는 모델이 없습니다", loadMore: "더 보기",
+    modelName: "모델명", developer: "개발사", openSourceCol: "오픈소스",
+    open: "오픈", nc: "비상업용",
+  },
 };
 
 const PAGE_SIZE = 30;
@@ -137,7 +144,7 @@ export default function LeaderboardTable({ benchmarks, benchmarkDefs }: Leaderbo
                     ) : model.openSource === "open-nc" ? (
                       <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700">{l.nc}</span>
                     ) : (
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">{locale === "en" ? "Closed" : "クローズド"}</span>
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">{locale === "ko" ? "클로즈드" : locale === "en" ? "Closed" : "クローズド"}</span>
                     )}
                   </td>
                 </tr>
