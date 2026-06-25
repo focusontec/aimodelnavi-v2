@@ -20,6 +20,13 @@ const T = {
     comprehensiveTitle: "Comprehensive Ranking",
     comprehensiveDesc: "Overall scores across HLE, ARC-AGI-2, FrontierMath, SWE-bench, and τ²-Bench",
   },
+  ko: {
+    title: "AI 모델 순위",
+    desc: "17개 벤치마크를 아우르는 종합 AI 모델 순위. 카테고리별 상세 비교.",
+    benchmarks: "벤치마크",
+    comprehensiveTitle: "종합 순위",
+    comprehensiveDesc: "HLE, ARC-AGI-2, FrontierMath, SWE-bench, τ²-Bench 종합 점수",
+  },
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -40,6 +47,7 @@ export default async function LeaderboardPage({ params }: { params: Promise<{ lo
   setRequestLocale(locale);
   const t = T[locale as keyof typeof T] || T.ja;
   const isEn = locale === "en";
+  const isKo = locale === "ko";
 
   const mainBenchmarks = ["hle", "arcAgi2", "frontierMath", "sweBenchVerified", "tauBench"];
   const mainBenchmarkDefs = mainBenchmarks
@@ -68,10 +76,10 @@ export default async function LeaderboardPage({ params }: { params: Promise<{ lo
                   <Icon className="w-5 h-5 text-primary-600" />
                 </div>
                 <h2 className="text-lg font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
-                  {isEn ? cat.titleEn : cat.title}
+                  {isKo ? cat.titleKo || cat.titleEn || cat.title : isEn ? cat.titleEn : cat.title}
                 </h2>
               </div>
-              <p className="text-sm text-gray-500 line-clamp-2">{isEn ? cat.descriptionEn : cat.description}</p>
+              <p className="text-sm text-gray-500 line-clamp-2">{isKo ? cat.descriptionKo || cat.descriptionEn || cat.description : isEn ? cat.descriptionEn : cat.description}</p>
               <p className="mt-2 text-xs text-gray-400">
                 {cat.benchmarks.length} {t.benchmarks}
               </p>
