@@ -33,20 +33,7 @@ function loadPostFromFile(filepath: string, slug: string): BlogPost | null {
 }
 
 export function getAllPosts(locale: string = 'ja'): BlogPost[] {
-  if (locale === 'en') {
-    // EN listing: return all JA posts (listing page uses manifest for EN titles)
-    // Detail page will use getPostBySlug which tries EN first, falls back to JA
-    const files = fs.readdirSync(blogDir).filter((f) => f.endsWith('.md'));
-    return files
-      .map((file) => {
-        const slug = file.replace(/\.md$/, '');
-        return loadPostFromFile(path.join(blogDir, file), slug);
-      })
-      .filter((p): p is BlogPost => p !== null)
-      .sort((a, b) => (a.date > b.date ? -1 : 1));
-  }
-
-  // JA: read from blog/
+  // All locales read from JA directory for listing (detail page uses getPostBySlug for locale-specific content)
   const files = fs.readdirSync(blogDir).filter((f) => f.endsWith('.md'));
   return files
     .map((file) => {
