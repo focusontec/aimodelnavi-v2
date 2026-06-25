@@ -70,7 +70,7 @@ export default async function LeaderboardCategoryPage({
     itemListElement: [
       { "@type": "ListItem", position: 1, name: isKo ? "홈" : isEn ? "Home" : "ホーム", item: "https://aimodelsnavi.com" },
       { "@type": "ListItem", position: 2, name: isKo ? "리더보드" : isEn ? "Leaderboard" : "ランキング", item: isEn ? "https://aimodelsnavi.com/en/leaderboard" : isKo ? "https://aimodelsnavi.com/ko/leaderboard" : "https://aimodelsnavi.com/leaderboard" },
-      { "@type": "ListItem", position: 3, name: isKo ? cat.titleKo || cat.titleEn || cat.title : isEn ? cat.titleEn : cat.title },
+      { "@type": "ListItem", position: 3, name: isEn ? cat.titleEn : cat.title },
     ],
   };
 

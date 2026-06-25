@@ -76,10 +76,10 @@ export default async function LeaderboardPage({ params }: { params: Promise<{ lo
                   <Icon className="w-5 h-5 text-primary-600" />
                 </div>
                 <h2 className="text-lg font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
-                  {isKo ? cat.titleKo || cat.titleEn || cat.title : isEn ? cat.titleEn : cat.title}
+                  {isEn ? cat.titleEn : cat.title}
                 </h2>
               </div>
-              <p className="text-sm text-gray-500 line-clamp-2">{isKo ? cat.descriptionKo || cat.descriptionEn || cat.description : isEn ? cat.descriptionEn : cat.description}</p>
+              <p className="text-sm text-gray-500 line-clamp-2">{isEn ? cat.descriptionEn : cat.description}</p>
               <p className="mt-2 text-xs text-gray-400">
                 {cat.benchmarks.length} {t.benchmarks}
               </p>

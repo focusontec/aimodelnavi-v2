@@ -54,7 +54,7 @@ function tv(value: string, locale: string): string {
     "キャッシュ": "Cache",
     "長文": "Long Context",
   };
-  return map[value] || value;
+  return (locale === "ko" ? enMap[value] : enMap[value]) || value;
 }
 
 
