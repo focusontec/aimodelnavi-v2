@@ -20,29 +20,34 @@ const T = {
     questionOf: "Question", of: "of", resultTitle: "Recommended AI Models", restart: "Start Over",
     viewDetails: "View Details", matchScore: "Match Score", availableModels: "Models evaluated",
   },
+  ko: {
+    back: "도구 목록으로", title: "AI 모델 추천", subtitle: "4가지 질문에 답하여 최적의 AI 모델을 찾아보세요",
+    questionOf: "질문", of: "/", resultTitle: "추천 AI 모델", restart: "다시 진단하기",
+    viewDetails: "자세히 보기", matchScore: "적합도", availableModels: "평가 대상 모델",
+  },
 };
 
 const questions = [
-  { id: "useCase", question: { ja: "主な用途は何ですか？", en: "What's your primary use case?" }, options: [
-    { value: "coding", label: { ja: "コーディング", en: "Coding" }, icon: Code },
-    { value: "writing", label: { ja: "文章作成", en: "Writing" }, icon: FileText },
-    { value: "analysis", label: { ja: "データ分析", en: "Analysis" }, icon: Brain },
-    { value: "chatbot", label: { ja: "チャットボット", en: "Chatbot" }, icon: Globe },
+  { id: "useCase", question: { ja: "主な用途は何ですか？", en: "What's your primary use case?", ko: "주요 용도는 무엇인가요?" }, options: [
+    { value: "coding", label: { ja: "コーディング", en: "Coding", ko: "코딩" }, icon: Code },
+    { value: "writing", label: { ja: "文章作成", en: "Writing", ko: "글쓰기" }, icon: FileText },
+    { value: "analysis", label: { ja: "データ分析", en: "Analysis", ko: "데이터 분석" }, icon: Brain },
+    { value: "chatbot", label: { ja: "チャットボット", en: "Chatbot", ko: "챗봇" }, icon: Globe },
   ]},
-  { id: "budget", question: { ja: "月間のAPI予算は？", en: "Monthly API budget?" }, options: [
-    { value: "low", label: { ja: "~$50", en: "~$50" }, icon: DollarSign },
-    { value: "medium", label: { ja: "$50-$200", en: "$50-$200" }, icon: DollarSign },
-    { value: "high", label: { ja: "$200+", en: "$200+" }, icon: DollarSign },
+  { id: "budget", question: { ja: "月間のAPI予算は？", en: "Monthly API budget?", ko: "월간 API 예산은?" }, options: [
+    { value: "low", label: { ja: "~$50", en: "~$50", ko: "~$50" }, icon: DollarSign },
+    { value: "medium", label: { ja: "$50-$200", en: "$50-$200", ko: "$50-$200" }, icon: DollarSign },
+    { value: "high", label: { ja: "$200+", en: "$200+", ko: "$200+" }, icon: DollarSign },
   ]},
-  { id: "priority", question: { ja: "最も重視するポイントは？", en: "What matters most?" }, options: [
-    { value: "quality", label: { ja: "品質", en: "Quality" }, icon: Sparkles },
-    { value: "speed", label: { ja: "速度", en: "Speed" }, icon: Zap },
-    { value: "cost", label: { ja: "コスパ", en: "Cost" }, icon: DollarSign },
+  { id: "priority", question: { ja: "最も重視するポイントは？", en: "What matters most?", ko: "가장 중요한 것은?" }, options: [
+    { value: "quality", label: { ja: "品質", en: "Quality", ko: "품질" }, icon: Sparkles },
+    { value: "speed", label: { ja: "速度", en: "Speed", ko: "속도" }, icon: Zap },
+    { value: "cost", label: { ja: "コスパ", en: "Cost", ko: "비용" }, icon: DollarSign },
   ]},
-  { id: "context", question: { ja: "扱うデータ量は？", en: "Data volume?" }, options: [
-    { value: "small", label: { ja: "少量", en: "Small" }, icon: FileText },
-    { value: "medium", label: { ja: "中程度", en: "Medium" }, icon: FileText },
-    { value: "large", label: { ja: "大量(100万トークン)", en: "Large (1M tokens)" }, icon: FileText },
+  { id: "context", question: { ja: "扱うデータ量は？", en: "Data volume?", ko: "데이터량은?" }, options: [
+    { value: "small", label: { ja: "少量", en: "Small", ko: "소량" }, icon: FileText },
+    { value: "medium", label: { ja: "中程度", en: "Medium", ko: "중간" }, icon: FileText },
+    { value: "large", label: { ja: "大量(100万トークン)", en: "Large (1M tokens)", ko: "대량 (100만 토큰)" }, icon: FileText },
   ]},
 ];
 
@@ -65,7 +70,7 @@ const modelProfiles: Record<string, { coding: number; writing: number; analysis:
   "Claude Mythos Preview": { coding: 92, writing: 88, analysis: 95, chatbot: 85, costTier: 1, speedTier: 3, qualityTier: 1, contextSize: 200000 },
 };
 
-function getRecommendations(answers: Answers, t: typeof T.ja): Recommendation[] {
+function getRecommendations(answers: Answers, t: typeof T.ja, locale: string): Recommendation[] {
   const models: Recommendation[] = [];
   const allModels = [...new Set(pricingData.map((p) => p.modelName))];
 
@@ -107,10 +112,10 @@ function getRecommendations(answers: Answers, t: typeof T.ja): Recommendation[] 
 
     models.push({
       model: modelName,
-      reason: getReason(modelName, answers),
+      reason: getReason(modelName, answers, locale),
       score: normalizedScore,
       pricing: `$${pricing.inputPrice}/$${pricing.outputPrice} per 1M`,
-      bestFor: getBestFor(modelName),
+      bestFor: getBestFor(modelName, locale),
       link: `/models/${modelName.toLowerCase().replace(/\s+/g, "-")}`,
     });
   }
@@ -118,17 +123,24 @@ function getRecommendations(answers: Answers, t: typeof T.ja): Recommendation[] 
   return models.sort((a, b) => b.score - a.score).slice(0, 5);
 }
 
-function getReason(model: string, answers: Answers): string {
+function getReason(model: string, answers: Answers, locale: string): string {
   const reasons: Record<string, Record<string, string>> = {
     "Claude Opus 4.8": { coding: "最高品質のコーディング能力", writing: "優れた文章生成", analysis: "高度な分析能力", chatbot: "高品質な対話" },
     "GPT-5.5": { coding: "バランスの取れたコーディング", writing: "最高品質の文章", analysis: "優れた分析", chatbot: "自然な対話" },
     "MiniMax M3": { coding: "コスパ最強のコーディング", writing: "コスト効率の良い文章", analysis: "大規模データ分析", chatbot: "低コスト対話" },
     "DeepSeek V3.2": { coding: "低コストコーディング", writing: "手軽な文章生成", analysis: "基本分析", chatbot: "手軽な対話" },
   };
+  const koReasons: Record<string, Record<string, string>> = {
+    "Claude Opus 4.8": { coding: "최고 품질의 코딩 능력", writing: "뛰어난 글 생성", analysis: "고급 분석 능력", chatbot: "고품질 대화" },
+    "GPT-5.5": { coding: "균형 잡힌 코딩", writing: "최고 품질의 글", analysis: "뛰어난 분석", chatbot: "자연스러운 대화" },
+    "MiniMax M3": { coding: "가성비 최강 코딩", writing: "비용 효율적인 글", analysis: "대규모 데이터 분석", chatbot: "저비용 대화" },
+    "DeepSeek V3.2": { coding: "저비용 코딩", writing: "간편한 글 생성", analysis: "기본 분석", chatbot: "간편한 대화" },
+  };
+  if (locale === "ko") return koReasons[model]?.[answers.useCase] || reasons[model]?.[answers.useCase] || "균형 잡힌 성능";
   return reasons[model]?.[answers.useCase] || "バランスの良い性能";
 }
 
-function getBestFor(model: string): string {
+function getBestFor(model: string, locale: string): string {
   const bestFor: Record<string, string> = {
     "Claude Opus 4.8": "高品質コード生成",
     "Claude Opus 4.7": "高品質分析",
@@ -139,12 +151,23 @@ function getBestFor(model: string): string {
     "Gemini 3.0 Pro": "長コンテキスト",
     "Grok 4": "推論タスク",
   };
+  const koBestFor: Record<string, string> = {
+    "Claude Opus 4.8": "고품질 코드 생성",
+    "Claude Opus 4.7": "고품질 분석",
+    "GPT-5.5": "범용 태스크",
+    "GPT-5.2": "균형 중시",
+    "MiniMax M3": "비용 효율",
+    "DeepSeek V3.2": "저비용",
+    "Gemini 3.0 Pro": "긴 컨텍스트",
+    "Grok 4": "추론 태스크",
+  };
+  if (locale === "ko") return koBestFor[model] || "범용";
   return bestFor[model] || "汎用";
 }
 
 export default function ModelRecommenderPage() {
   const params = useParams();
-  const locale = (params.locale as string) === "en" ? "en" : "ja";
+  const locale = (params.locale as string) === "en" ? "en" : (params.locale as string) === "ko" ? "ko" : "ja";
   const t = T[locale];
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({ useCase: "", budget: "", priority: "", context: "" });
@@ -156,7 +179,7 @@ export default function ModelRecommenderPage() {
     const newAnswers = { ...answers, [id]: value };
     setAnswers(newAnswers);
     if (step < questions.length - 1) setStep(step + 1);
-    else setRecs(getRecommendations(newAnswers, t));
+    else setRecs(getRecommendations(newAnswers, t, locale));
   };
 
   const reset = () => { setStep(0); setAnswers({ useCase: "", budget: "", priority: "", context: "" }); setRecs(null); };

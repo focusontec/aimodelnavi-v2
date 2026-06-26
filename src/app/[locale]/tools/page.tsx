@@ -11,42 +11,45 @@ const T = {
   en: {
     back: "Back to Home", title: "Free AI Model Tools", desc: "Free tools to help you choose the right AI model and estimate costs",
   },
+  ko: {
+    back: "홈으로 돌아가기", title: "AI 모델 무료 도구", desc: "AI 모델 선택을 지원하는 무료 도구 모음",
+  },
 };
 
 const tools = [
   {
-    title: { ja: "Token Counter", en: "Token Counter" },
-    desc: { ja: "テキストのトークン数を計算。プロンプトコストを事前に見積もり。", en: "Count tokens in your text. Estimate prompt costs before you run." },
+    title: { ja: "Token Counter", en: "Token Counter", ko: "Token Counter" },
+    desc: { ja: "テキストのトークン数を計算。プロンプトコストを事前に見積もり。", en: "Count tokens in your text. Estimate prompt costs before you run.", ko: "텍스트의 토큰 수를 계산. 프롬프트 비용을 미리 추정." },
     icon: FileText,
     href: "/tools/token-counter",
   },
   {
-    title: { ja: "コスト計算機", en: "Cost Calculator" },
-    desc: { ja: "API使用量から月額コストを自動計算。", en: "Calculate monthly API costs based on your usage." },
+    title: { ja: "コスト計算機", en: "Cost Calculator", ko: "비용 계산기" },
+    desc: { ja: "API使用量から月額コストを自動計算。", en: "Calculate monthly API costs based on your usage.", ko: "API 사용량에서 월간 비용을 자동 계산." },
     icon: Calculator,
     href: "/tools/cost-calculator",
   },
   {
-    title: { ja: "モデル比較", en: "Model Compare" },
-    desc: { ja: "2つのモデルを並列比較。ベンチマーク・料金・性能を一目で確認。", en: "Compare two models side by side. Benchmarks, pricing, and performance." },
+    title: { ja: "モデル比較", en: "Model Compare", ko: "모델 비교" },
+    desc: { ja: "2つのモデルを並列比較。ベンチマーク・料金・性能を一目で確認。", en: "Compare two models side by side. Benchmarks, pricing, and performance.", ko: "두 모델을 나란히 비교. 벤치마크, 가격, 성능을 한눈에 확인." },
     icon: ArrowLeftRight,
     href: "/compare",
   },
   {
-    title: { ja: "AIモデル推薦", en: "AI Model Recommender" },
-    desc: { ja: "4つの質問に答えて、あなたに最適なAIモデルを見つけましょう。", en: "Answer 4 questions to find the perfect AI model for your needs." },
+    title: { ja: "AIモデル推薦", en: "AI Model Recommender", ko: "AI 모델 추천" },
+    desc: { ja: "4つの質問に答えて、あなたに最適なAIモデルを見つけましょう。", en: "Answer 4 questions to find the perfect AI model for your needs.", ko: "4가지 질문에 답하여 최적의 AI 모델을 찾아보세요." },
     icon: Sparkles,
     href: "/tools/model-recommender",
   },
   {
-    title: { ja: "コンテキスト比較", en: "Context Visualizer" },
-    desc: { ja: "各モデルのコンテキストサイズを視覚的に比較。", en: "Visually compare context window sizes across models." },
+    title: { ja: "コンテキスト比較", en: "Context Visualizer", ko: "컨텍스트 비교" },
+    desc: { ja: "各モデルのコンテキストサイズを視覚的に比較。", en: "Visually compare context window sizes across models.", ko: "각 모델의 컨텍스트 크기를 시각적으로 비교." },
     icon: LayoutGrid,
     href: "/tools/context-visualizer",
   },
   {
-    title: { ja: "使用パターン分析", en: "Usage Analyzer" },
-    desc: { ja: "API使用ログを分析して、コスト最適化の提案を受けましょう。", en: "Analyze your API usage logs to get cost optimization recommendations." },
+    title: { ja: "使用パターン分析", en: "Usage Analyzer", ko: "사용 패턴 분석" },
+    desc: { ja: "API使用ログを分析して、コスト最適化の提案を受けましょう。", en: "Analyze your API usage logs to get cost optimization recommendations.", ko: "API 사용 로그를 분석하여 비용 최적화 제안을 받으세요." },
     icon: BarChart3,
     href: "/tools/usage-analyzer",
   },
@@ -54,7 +57,7 @@ const tools = [
 
 export default function ToolsPage() {
   const params = useParams();
-  const locale = (params.locale as string) === "en" ? "en" : "ja";
+  const locale = (params.locale as string) === "en" ? "en" : (params.locale as string) === "ko" ? "ko" : "ja";
   const t = T[locale];
 
   return (

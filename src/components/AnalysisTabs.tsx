@@ -17,12 +17,12 @@ interface Props {
 }
 
 const tabs = [
-  { key: "summary", icon: BookOpen, ja: "概要", en: "Overview" },
-  { key: "performance", icon: BarChart3, ja: "ベンチマーク", en: "Benchmarks" },
-  { key: "comparisons", icon: BarChart3, ja: "詳細比較", en: "Comparisons" },
-  { key: "community", icon: Users, ja: "コミュニティ", en: "Community" },
-  { key: "useCases", icon: Lightbulb, ja: "ユースケース", en: "Use Cases" },
-  { key: "news", icon: Newspaper, ja: "ニュース", en: "News" },
+  { key: "summary", icon: BookOpen, ja: "概要", en: "Overview", ko: "개요" },
+  { key: "performance", icon: BarChart3, ja: "ベンチマーク", en: "Benchmarks", ko: "벤치마크" },
+  { key: "comparisons", icon: BarChart3, ja: "詳細比較", en: "Comparisons", ko: "상세 비교" },
+  { key: "community", icon: Users, ja: "コミュニティ", en: "Community", ko: "커뮤니티" },
+  { key: "useCases", icon: Lightbulb, ja: "ユースケース", en: "Use Cases", ko: "유스케이스" },
+  { key: "news", icon: Newspaper, ja: "ニュース", en: "News", ko: "뉴스" },
 ];
 
 function slugify(text: string): string {
@@ -35,11 +35,11 @@ function extractHeadings(content: string): string[] {
   return matches.map((m) => m.replace(/^###\s+/, ""));
 }
 
-function TableOfContents({ headings }: { headings: string[] }) {
+function TableOfContents({ headings, locale }: { headings: string[]; locale: string }) {
   if (headings.length < 2) return null;
   return (
     <div className="analysis-toc">
-      <p className="font-medium text-gray-700 mb-1.5">目次</p>
+      <p className="font-medium text-gray-700 mb-1.5">{locale === "ko" ? "목차" : locale === "en" ? "Contents" : "目次"}</p>
       <ul className="space-y-0.5">
         {headings.map((h) => (
           <li key={h}>
@@ -83,7 +83,7 @@ export default function AnalysisTabs({
       <nav className="analysis-tabs-nav" role="tablist">
         {tabs.map((tab, i) => {
           const Icon = tab.icon;
-          const label = locale === "en" ? tab.en : tab.ja;
+          const label = locale === "ko" ? tab.ko : locale === "en" ? tab.en : tab.ja;
           return (
             <button
               key={tab.key}
@@ -126,7 +126,7 @@ export default function AnalysisTabs({
               id={`tabpanel-${tab.key}`}
               role="tabpanel"
             >
-              <TableOfContents headings={headings} />
+              <TableOfContents headings={headings} locale={locale} />
               <div className="analysis-content">
                 <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
                   {linkedContents[idx]}

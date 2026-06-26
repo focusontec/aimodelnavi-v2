@@ -30,6 +30,18 @@ const T = {
     error: "Failed to parse logs. Please check the format.",
     proBadge: "Pro", comingSoon: "Coming Soon", saveUpTo: "Save up to",
   },
+  ko: {
+    back: "도구 목록으로", title: "사용 패턴 분석", subtitle: "API 사용 로그를 붙여넣어 비용 최적화 제안을 받으세요",
+    pasteLog: "사용 로그 붙여넣기", placeholder: "API 사용 로그를 여기에 붙여넣으세요...\n\n지원 형식:\n\n① Model: GPT-5.5, Tokens: 150000, Cost: $0.38\n② GPT-5.5 | 150000 | $0.38\n③ GPT-5.5\t150000\t0.38\n④ {\"model\": \"GPT-5.5\", \"tokens\": 150000, \"cost\": 0.38}",
+    analyze: "분석하기", analyzing: "분석 중...",
+    results: "분석 결과", totalCost: "총 비용", totalRequests: "총 요청 수", avgCostPerReq: "평균 비용/요청",
+    recommendations: "최적화 제안", priority: "우선순위", high: "높음", medium: "중간", low: "낮음",
+    modelBreakdown: "모델별 내역", usage: "사용량", cost: "비용", percentage: "비율",
+    tip1: "고비용 모델의 사용 빈도를 줄이면 비용을 크게 절감할 수 있습니다", tip2: "배치 처리를 활용하면 요청 수를 줄일 수 있습니다", tip3: "프롬프트 캐싱을 활용하면 반복 요청의 비용을 절감할 수 있습니다",
+    noData: "로그를 붙여넣고 분석 버튼을 클릭하세요",
+    error: "로그 분석에 실패했습니다. 올바른 형식으로 붙여넣어 주세요.",
+    proBadge: "Pro", comingSoon: "출시 예정", saveUpTo: "최대 절약액",
+  },
 };
 
 interface LogEntry {
@@ -179,7 +191,7 @@ function analyzeLogs(entries: LogEntry[]): AnalysisResult {
 
 export default function UsageAnalyzerPage() {
   const params = useParams();
-  const locale = (params.locale as string) === "en" ? "en" : "ja";
+  const locale = (params.locale as string) === "en" ? "en" : (params.locale as string) === "ko" ? "ko" : "ja";
   const t = T[locale];
 
   const [logText, setLogText] = useState("");

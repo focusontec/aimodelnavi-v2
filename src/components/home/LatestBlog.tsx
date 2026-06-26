@@ -5,10 +5,13 @@ interface BlogPost {
   slug: string;
   title: string;
   title_en?: string;
+  title_ko?: string;
   tag: string;
+  tag_ko?: string;
   date: string;
   excerpt?: string;
   excerpt_en?: string;
+  excerpt_ko?: string;
 }
 
 interface LatestBlogProps {
@@ -41,15 +44,15 @@ export function LatestBlog({ locale, t, posts }: LatestBlogProps) {
             >
               <div className="flex items-center gap-2 mb-3">
                 <span className="px-2.5 py-0.5 bg-primary-50 text-primary-700 text-xs font-medium rounded-full">
-                  {post.tag}
+                  {locale === "ko" ? (post.tag_ko || post.tag) : post.tag}
                 </span>
                 <span className="text-xs text-gray-400">{post.date}</span>
               </div>
               <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors line-clamp-2 mb-2">
-                {locale === "en" ? (post.title_en || post.title) : post.title}
+                {locale === "ko" ? (post.title_ko || post.title) : locale === "en" ? (post.title_en || post.title) : post.title}
               </h3>
               <p className="text-sm text-gray-500 line-clamp-3">
-                {locale === "en" ? (post.excerpt_en || post.excerpt || "") : (post.excerpt || "")}
+                {locale === "ko" ? (post.excerpt_ko || post.excerpt || "") : locale === "en" ? (post.excerpt_en || post.excerpt || "") : (post.excerpt || "")}
               </p>
             </Link>
           ))}

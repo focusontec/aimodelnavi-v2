@@ -13,6 +13,9 @@ interface BlogPost {
   date: string;
   title_en?: string;
   excerpt_en?: string;
+  title_ko?: string;
+  excerpt_ko?: string;
+  tag_ko?: string;
 }
 
 const ITEMS_PER_PAGE = 10;
@@ -28,9 +31,9 @@ export default function BlogList() {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const url = isEn ? "/blog-manifest-en.json" : isKo ? "/blog-manifest.json" : "/blog-manifest.json";
+    const url = isEn ? "/blog-manifest-en.json" : isKo ? "/blog-manifest-ko.json" : "/blog-manifest.json";
     fetch(url).then(r => r.json()).then(setPosts).catch(() => {});
-  }, [isEn]);
+  }, [isEn, isKo]);
 
   const tags = useMemo(() => {
     const counts = new Map<string, number>();
@@ -44,13 +47,13 @@ export default function BlogList() {
     if (search.trim()) {
       const q = search.toLowerCase();
       result = result.filter(p => {
-        const title = (isEn ? p.title_en || p.title : p.title).toLowerCase();
-        const excerpt = (isEn ? p.excerpt_en || p.excerpt : p.excerpt || "").toLowerCase();
+        const title = (isKo ? p.title_ko || p.title : isEn ? p.title_en || p.title : p.title).toLowerCase();
+        const excerpt = (isKo ? p.excerpt_ko || p.excerpt : isEn ? p.excerpt_en || p.excerpt : p.excerpt || "").toLowerCase();
         return title.includes(q) || excerpt.includes(q);
       });
     }
     return result;
-  }, [posts, selectedTag, search, isEn]);
+  }, [posts, selectedTag, search, isEn, isKo]);
 
   const totalPages = Math.ceil(sorted.length / ITEMS_PER_PAGE);
   const paged = sorted.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
@@ -90,11 +93,11 @@ export default function BlogList() {
             <Link key={post.slug} href={`${blogBase}/${post.slug}`}
               className="block p-4 sm:p-6 bg-white border border-gray-200 rounded-xl hover:border-primary-300 hover:shadow-sm transition-all">
               <div className="flex items-center gap-3 mb-2">
-                <span className="px-2 py-0.5 bg-primary-50 text-primary-700 text-xs font-medium rounded-full">{post.tag}</span>
+                <span className="px-2 py-0.5 bg-primary-50 text-primary-700 text-xs font-medium rounded-full">{isKo ? post.tag_ko || post.tag : post.tag}</span>
                 <time className="text-sm text-gray-400">{post.date}</time>
               </div>
-              <h2 className="text-lg font-semibold text-gray-900 mb-2">{isEn ? post.title_en || post.title : post.title}</h2>
-              <p className="text-sm text-gray-500 line-clamp-2">{isEn ? post.excerpt_en || post.excerpt || "" : post.excerpt || ""}</p>
+              <h2 className="text-lg font-semibold text-gray-900 mb-2">{isKo ? post.title_ko || post.title : isEn ? post.title_en || post.title : post.title}</h2>
+              <p className="text-sm text-gray-500 line-clamp-2">{isKo ? post.excerpt_ko || post.excerpt || "" : isEn ? post.excerpt_en || post.excerpt || "" : post.excerpt || ""}</p>
             </Link>
           ))}
         </div>

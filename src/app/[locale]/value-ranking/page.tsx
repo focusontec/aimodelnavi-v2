@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t.desc,
     alternates: {
       canonical: "https://aimodelsnavi.com/value-ranking",
-      languages: { ja: "https://aimodelsnavi.com/value-ranking", en: "https://aimodelsnavi.com/en/value-ranking", "x-default": "https://aimodelsnavi.com/value-ranking" },
+      languages: { ja: "https://aimodelsnavi.com/value-ranking", en: "https://aimodelsnavi.com/en/value-ranking", ko: "https://aimodelsnavi.com/ko/value-ranking", "x-default": "https://aimodelsnavi.com/value-ranking" },
     },
   };
 }

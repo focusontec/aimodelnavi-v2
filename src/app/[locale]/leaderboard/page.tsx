@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t.desc,
     alternates: {
       canonical: "https://aimodelsnavi.com/leaderboard",
-      languages: { ja: "https://aimodelsnavi.com/leaderboard", en: "https://aimodelsnavi.com/en/leaderboard", "x-default": "https://aimodelsnavi.com/leaderboard" },
+      languages: { ja: "https://aimodelsnavi.com/leaderboard", en: "https://aimodelsnavi.com/en/leaderboard", ko: "https://aimodelsnavi.com/ko/leaderboard", "x-default": "https://aimodelsnavi.com/leaderboard" },
     },
   };
 }

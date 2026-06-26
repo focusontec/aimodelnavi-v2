@@ -129,6 +129,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages: {
         ja: "https://aimodelsnavi.com/compare",
         en: "https://aimodelsnavi.com/en/compare",
+        ko: "https://aimodelsnavi.com/ko/compare",
         "x-default": "https://aimodelsnavi.com/compare",
       },
     },

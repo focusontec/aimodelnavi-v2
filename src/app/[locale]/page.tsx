@@ -7,6 +7,7 @@ import { Tools } from "@/components/home/Tools";
 import { LatestBlog } from "@/components/home/LatestBlog";
 import blogManifest from "@/data/blog-manifest.json";
 import blogManifestEn from "@/data/blog-manifest-en.json";
+import blogManifestKo from "@/data/blog-manifest-ko.json";
 
 const T = {
   ja: {
@@ -45,11 +46,30 @@ const T = {
     tool5Title: "Context Visualizer", tool5Desc: "Visually compare context window sizes across models.",
     tryNow: "Try Now",
   },
+  ko: {
+    hero: "최적의 AI 모델을,", hero2: "가장 빠르게 찾기",
+    heroSub: "벤치마크 비교, API 가격, 모델 스펙. OpenAI, Anthropic, Google, DeepSeek 등 주요 AI 모델을 한국어로 비교.",
+    searchPlaceholder: "모델명으로 검색...",
+    viewRankings: "랭킹 보기", comparePricing: "API 가격 비교",
+    modelsListed: "등록 모델", pricingData: "API 가격 데이터", dailyUpdate: "최신 정보", dailyUpdateVal: "매일 업데이트",
+    value1Title: "벤치마크 비교", value1Desc: "200개 이상 모델의 벤치마크 스코어를 한눈에 비교",
+    value2Title: "API 가격 비교", value2Desc: "160개 이상 모델의 API 가격 데이터로 비용 계산",
+    value3Title: "매일 업데이트", value3Desc: "최신 모델 정보와 벤치마크 데이터를 매일 업데이트",
+    popularModels: "인기 모델", latestBlog: "최신 블로그", viewAll: "전체 보기",
+    toolsTitle: "개발자 도구", toolsSub: "AI 모델 선택과 비용 계산을 지원하는 도구 모음",
+    tool1Title: "Token Counter", tool1Desc: "텍스트의 토큰 수를 계산. 프롬프트 비용을 미리 추정.",
+    tool2Title: "비용 계산기", tool2Desc: "API 사용량에서 월간 비용을 자동 계산. 예산에 맞는 모델 선택.",
+    tool3Title: "모델 비교", tool3Desc: "두 모델을 나란히 비교. 벤치마크, 가격, 성능을 한눈에 확인.",
+    tool4Title: "AI 모델 추천", tool4Desc: "4가지 질문에 답하여 최적의 AI 모델을 찾아보세요.",
+    tool5Title: "컨텍스트 비교", tool5Desc: "각 모델의 컨텍스트 크기를 시각적으로 비교.",
+    tryNow: "사용해보기",
+  },
 };
 
 const PAGE_TITLES: Record<string, string> = {
   ja: "AIモデル比較・料金・ランキング — AI Models Navi",
   en: "AI Model Comparison, Pricing & Rankings — AI Models Navi",
+  ko: "AI 모델 비교, 가격, 랭킹 — AI Models Navi",
 };
 
 const popularModels = [
@@ -71,6 +91,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages: {
         ja: "https://aimodelsnavi.com",
         en: "https://aimodelsnavi.com/en",
+        ko: "https://aimodelsnavi.com/ko",
         "x-default": "https://aimodelsnavi.com",
       },
     },
@@ -82,7 +103,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   setRequestLocale(locale);
   const t = T[locale as keyof typeof T] || T.ja;
 
-  const manifest = (locale === "en" || locale === "ko") ? blogManifestEn : blogManifest;
+  const manifest = locale === "ko" ? blogManifestKo : locale === "en" ? blogManifestEn : blogManifest;
   const sortedPosts = [...manifest].sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3);
 
   return (

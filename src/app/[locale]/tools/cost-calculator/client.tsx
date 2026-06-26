@@ -33,6 +33,19 @@ const T = {
     tipsTitle: "💡 Cost Optimization Tips", tip1: "Using batch processing can reduce API costs by up to 50%", tip2: "Leveraging prompt caching can reduce costs for repeated requests", tip3: "Choosing the right model for each task maintains quality while reducing costs",
     viewAllModels: "View All Models", tryRecommender: "Try Model Recommender",
   },
+  ko: {
+    back: "도구 목록으로", title: "AI 비용 최적화 도구", subtitle: "모델과 사용량을 입력하면 월간 비용을 시뮬레이션하고 최적 모델을 추천합니다",
+    selectModel: "모델 선택", placeholder: "모델을 선택하세요",
+    inputTokens: "요청당 입력 토큰 수", outputTokens: "요청당 출력 토큰 수",
+    requestsDay: "일간 요청 수", perRequest: "요청당", perDay: "일간", perMonth: "월간 (30일)",
+    noData: "이 모델의 표준 과금 데이터를 찾을 수 없습니다.",
+    note: "※ 이 계산은 추정치입니다. 실제 요금은 각 공식 가격표를 기준으로 합니다.",
+    savingsTitle: "💰 절약 가능한 모델", savingsDesc: "동등한 품질로 비용을 크게 절약할 수 있는 모델이 있습니다",
+    saveUpTo: "최대 절약액", switchTo: "전환 대상", qualityNote: "품질 수준", perMonthLabel: "/월",
+    proBadge: "Pro", comingSoon: "출시 예정", proDesc: "고급 최적화 분석 및 사용 패턴 추적",
+    tipsTitle: "💡 비용 최적화 팁", tip1: "배치 처리를 사용하면 API 비용을 최대 50% 절감할 수 있습니다", tip2: "프롬프트 캐싱을 활용하면 반복 요청의 비용을 절감할 수 있습니다", tip3: "각 작업에 맞는 모델을 선택하면 품질을 유지하면서 비용을 절감할 수 있습니다",
+    viewAllModels: "모든 모델 보기", tryRecommender: "AI 모델 추천",
+  },
 };
 
 // Model quality tiers for comparison
@@ -83,7 +96,7 @@ function getCheaperAlternatives(currentModel: string, monthlyCost: number) {
 
 export default function CostCalculatorPage() {
   const params = useParams();
-  const locale = (params.locale as string) === "en" ? "en" : "ja";
+  const locale = (params.locale as string) === "en" ? "en" : (params.locale as string) === "ko" ? "ko" : "ja";
   const t = T[locale];
 
   const [selectedModel, setSelectedModel] = useState("");

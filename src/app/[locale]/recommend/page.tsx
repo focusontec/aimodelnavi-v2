@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t.desc,
     alternates: {
       canonical: "https://aimodelsnavi.com/recommend",
-      languages: { ja: "https://aimodelsnavi.com/recommend", en: "https://aimodelsnavi.com/en/recommend", "x-default": "https://aimodelsnavi.com/recommend" },
+      languages: { ja: "https://aimodelsnavi.com/recommend", en: "https://aimodelsnavi.com/en/recommend", ko: "https://aimodelsnavi.com/ko/recommend", "x-default": "https://aimodelsnavi.com/recommend" },
     },
   };
 }

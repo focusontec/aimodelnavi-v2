@@ -46,6 +46,7 @@ export async function generateMetadata({
       languages: {
         ja: `https://aimodelsnavi.com/blog/${post.slug}`,
         en: `https://aimodelsnavi.com/en/blog/${post.slug}`,
+        ko: `https://aimodelsnavi.com/ko/blog/${post.slug}`,
         "x-default": `https://aimodelsnavi.com/blog/${post.slug}`,
       },
     },
