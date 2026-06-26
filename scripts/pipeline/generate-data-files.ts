@@ -132,6 +132,10 @@ export function generateDataFiles(): GenerateResult {
       mt_s.translated_text as strengths_en,
       mt_w.translated_text as weaknesses_en,
       mt_u.translated_text as use_cases_en,
+      mt_ko_d.translated_text as description_ko,
+      mt_ko_s.translated_text as strengths_ko,
+      mt_ko_w.translated_text as weaknesses_ko,
+      mt_ko_u.translated_text as use_cases_ko,
       pe.input_price as pe_input_price,
       pe.output_price as pe_output_price,
       pe.currency as pe_currency,
@@ -146,6 +150,14 @@ export function generateDataFiles(): GenerateResult {
       AND mt_w.language = 'en' AND mt_w.field_name = 'weaknesses'
     LEFT JOIN model_translations mt_u ON mt_u.model_id = m.id
       AND mt_u.language = 'en' AND mt_u.field_name = 'use_cases'
+    LEFT JOIN model_translations mt_ko_d ON mt_ko_d.model_id = m.id
+      AND mt_ko_d.language = 'ko' AND mt_ko_d.field_name = 'description'
+    LEFT JOIN model_translations mt_ko_s ON mt_ko_s.model_id = m.id
+      AND mt_ko_s.language = 'ko' AND mt_ko_s.field_name = 'strengths'
+    LEFT JOIN model_translations mt_ko_w ON mt_ko_w.model_id = m.id
+      AND mt_ko_w.language = 'ko' AND mt_ko_w.field_name = 'weaknesses'
+    LEFT JOIN model_translations mt_ko_u ON mt_ko_u.model_id = m.id
+      AND mt_ko_u.language = 'ko' AND mt_ko_u.field_name = 'use_cases'
     LEFT JOIN (
       SELECT model_id, input_price, output_price, currency, source_url, billing_mode,
         ROW_NUMBER() OVER (PARTITION BY model_id ORDER BY output_price DESC, updated_at DESC) as rn
@@ -191,6 +203,9 @@ export function generateDataFiles(): GenerateResult {
     const strengthsEn = parseJSON<string[]>((m as any).strengths_en, []);
     const weaknessesEn = parseJSON<string[]>((m as any).weaknesses_en, []);
     const useCasesEn = parseJSON<string[]>((m as any).use_cases_en, []);
+    const strengthsKo = parseJSON<string[]>((m as any).strengths_ko, []);
+    const weaknessesKo = parseJSON<string[]>((m as any).weaknesses_ko, []);
+    const useCasesKo = parseJSON<string[]>((m as any).use_cases_ko, []);
 
     // Map category to the type field expected by the website
     const typeMap: Record<string, string> = {
@@ -225,12 +240,16 @@ export function generateDataFiles(): GenerateResult {
     }` : "null"},
     descriptionJa: "${escapeStr(m.description_ja || "")}",
     descriptionEn: "${escapeStr(m.description_en || "")}",
+    descriptionKo: "${escapeStr((m as any).description_ko || "")}",
     strengths: ${JSON.stringify(strengths)},
     strengthsEn: ${JSON.stringify(strengthsEn)},
+    strengthsKo: ${JSON.stringify(strengthsKo)},
     weaknesses: ${JSON.stringify(weaknesses)},
     weaknessesEn: ${JSON.stringify(weaknessesEn)},
+    weaknessesKo: ${JSON.stringify(weaknessesKo)},
     useCases: ${JSON.stringify(useCases)},
     useCasesEn: ${JSON.stringify(useCasesEn)},
+    useCasesKo: ${JSON.stringify(useCasesKo)},
     links: {
       ${links.official ? `official: "${escapeStr(links.official)}",` : ""}
       ${links.huggingface ? `huggingface: "${escapeStr(links.huggingface)}",` : ""}
@@ -266,12 +285,16 @@ export interface ModelDetail {
   } | null;
   descriptionJa: string;
   descriptionEn: string;
+  descriptionKo: string;
   strengths: string[];
   strengthsEn: string[];
+  strengthsKo: string[];
   weaknesses: string[];
   weaknessesEn: string[];
+  weaknessesKo: string[];
   useCases: string[];
   useCasesEn: string[];
+  useCasesKo: string[];
   links: {
     official?: string;
     huggingface?: string;

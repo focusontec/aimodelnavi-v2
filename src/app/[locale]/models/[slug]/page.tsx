@@ -204,12 +204,13 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
   const model = getModelBySlug(slug);
   if (!model) notFound();
 
-  const useEn = locale === "en" || locale === "ko";
-  const desc = useEn ? (model.descriptionEn || model.descriptionJa) : model.descriptionJa;
+  const useEn = locale === "en";
+  const useKo = locale === "ko";
+  const desc = useKo ? (model.descriptionKo || model.descriptionEn || model.descriptionJa) : useEn ? (model.descriptionEn || model.descriptionJa) : model.descriptionJa;
   const devName = useEn ? (model.developerEn || model.developer) : model.developer;
-  const strengths = useEn && model.strengthsEn?.length ? model.strengthsEn : model.strengths;
-  const weaknesses = useEn && model.weaknessesEn?.length ? model.weaknessesEn : model.weaknesses;
-  const useCases = useEn && model.useCasesEn?.length ? model.useCasesEn : model.useCases;
+  const strengths = useKo && model.strengthsKo?.length ? model.strengthsKo : useEn && model.strengthsEn?.length ? model.strengthsEn : model.strengths;
+  const weaknesses = useKo && model.weaknessesKo?.length ? model.weaknessesKo : useEn && model.weaknessesEn?.length ? model.weaknessesEn : model.weaknesses;
+  const useCases = useKo && model.useCasesKo?.length ? model.useCasesKo : useEn && model.useCasesEn?.length ? model.useCasesEn : model.useCases;
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
