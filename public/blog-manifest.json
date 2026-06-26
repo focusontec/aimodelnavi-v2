@@ -1,11 +1,26 @@
 [
   {
+    "slug": "frontier-model-showdown-june-2026",
+    "title": "2026年6月 AI最前線モデル総力比較 — Claude Opus 4.8 vs GPT-5.5 vs Gemini 3.1 Pro",
+    "tag": "ベンチマーク",
+    "excerpt": "2026年6月、AI業界は過去最大の激戦期を迎えている。Claude Opus 4.8、GPT-5.5、Gemini 3.1 Proという3つの最前線モデルを、公式ベンチマーク・API料金・ユースケース別の観点から徹底比較する。",
+    "topics": [
+      "ベンチマーク",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "xAI/Grok"
+    ],
+    "date": "2026-06-26"
+  },
+  {
     "slug": "loop-engineering-ai-agent",
     "title": "Loop Engineering：プロンプトを書く代わりに、エージェントが自律実行するループを設計する方法",
     "tag": "Anthropic",
     "excerpt": "Anthropic Claude Codeの責任者Boris Chernyは「もうClaudeにプロンプトを書いていない。ループにプロンプトを書かせている」と述べた。Loop Engineeringとは何か？五つのコンポーネント、一つのState、三つの負債から成るAIエージェントのループ設計の核心方法論を解説する。",
     "topics": [
       "Anthropic",
+      "OpenAI",
       "AIエージェント"
     ],
     "date": "2026-06-25"

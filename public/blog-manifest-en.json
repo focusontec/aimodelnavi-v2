@@ -1,5 +1,18 @@
 [
   {
+    "slug": "loop-engineering-ai-agent",
+    "title": "Loop Engineering：プロンプトを書く代わりに、エージェントが自律実行するループを設計する方法",
+    "tag": "Anthropic",
+    "excerpt": "Anthropic Claude Codeの責任者Boris Chernyは「もうClaudeにプロンプトを書いていない。ループにプロンプトを書かせている」と述べた。Loop Engineeringとは何か？五つのコンポーネント、一つのState、三つの負債から成るAIエージェントのループ設計の核心方法論を解説する。",
+    "topics": [
+      "Anthropic",
+      "AIエージェント"
+    ],
+    "date": "2026-06-25",
+    "title_en": "Stop Prompting, Start Engineering Loops: The Rise of Loop Engineering in AI",
+    "excerpt_en": "Loop Engineering shifts the focus from crafting single prompts to designing autonomous, self-running loops for AI agents. The approach involves key components like shared state, validation sub-agents, and goal-driven automation. However, it introduces new debts—verification, comprehension, and cognitive surrender—that developers must actively manage to avoid long-term risks."
+  },
+  {
     "slug": "ibm-huggingface-cuga-agent",
     "title": "IBMとHuggingFaceが軽量AIエージェントフレームワークCUGAを発表：24のブループリントで開発を簡素化",
     "tag": "オープンソース",
@@ -140,34 +153,6 @@
     "date": "2026-06-21",
     "title_en": "How GPT-5.5 Instant is Advancing Medical AI with Enhanced Reasoning and Doctor-Verified Evaluation",
     "excerpt_en": "OpenAI's GPT-5.5 Instant model enhances medical AI by improving reasoning accuracy and incorporating a doctor-supervised evaluation framework for safety and reliability. This innovation sets a benchmark for quality assurance in healthcare AI development, offering insights for global applications, including in Japanese markets."
-  },
-  {
-    "slug": "chatgpt-enterprisellm",
-    "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
-    "tag": "解説",
-    "excerpt": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。",
-    "topics": [
-      "OpenAI",
-      "推論",
-      "LLM"
-    ],
-    "date": "2026-06-21",
-    "title_en": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
-    "excerpt_en": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。"
-  },
-  {
-    "slug": "openai18ai",
-    "title": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
-    "tag": "OpenAI",
-    "excerpt": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。",
-    "topics": [
-      "OpenAI",
-      "ベンチマーク",
-      "推論"
-    ],
-    "date": "2026-06-21",
-    "title_en": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
-    "excerpt_en": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。"
   },
   {
     "slug": "anthropic-fable-nerfing-2026",

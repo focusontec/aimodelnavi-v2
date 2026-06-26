@@ -1,11 +1,26 @@
 [
   {
+    "slug": "frontier-model-showdown-june-2026",
+    "title": "2026年6月 AI最前線モデル総力比較 — Claude Opus 4.8 vs GPT-5.5 vs Gemini 3.1 Pro",
+    "tag": "ベンチマーク",
+    "excerpt": "2026年6月、AI業界は過去最大の激戦期を迎えている。Claude Opus 4.8、GPT-5.5、Gemini 3.1 Proという3つの最前線モデルを、公式ベンチマーク・API料金・ユースケース別の観点から徹底比較する。",
+    "topics": [
+      "ベンチマーク",
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "xAI/Grok"
+    ],
+    "date": "2026-06-26"
+  },
+  {
     "slug": "loop-engineering-ai-agent",
     "title": "Loop Engineering：プロンプトを書く代わりに、エージェントが自律実行するループを設計する方法",
     "tag": "Anthropic",
     "excerpt": "Anthropic Claude Codeの責任者Boris Chernyは「もうClaudeにプロンプトを書いていない。ループにプロンプトを書かせている」と述べた。Loop Engineeringとは何か？五つのコンポーネント、一つのState、三つの負債から成るAIエージェントのループ設計の核心方法論を解説する。",
     "topics": [
       "Anthropic",
+      "OpenAI",
       "AIエージェント"
     ],
     "date": "2026-06-25"
@@ -123,6 +138,18 @@
     "date": "2026-06-21"
   },
   {
+    "slug": "chatgpt-enterprisellm",
+    "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
+    "tag": "解説",
+    "excerpt": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。",
+    "topics": [
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-21"
+  },
+  {
     "slug": "gpt-55-instantai",
     "title": "GPT-5.5 Instantの医療AI革新：強化推論と医師監修評価フレームワークの技術解説",
     "tag": "OpenAI",
@@ -131,6 +158,18 @@
       "OpenAI",
       "推論",
       "LLM"
+    ],
+    "date": "2026-06-21"
+  },
+  {
+    "slug": "openai18ai",
+    "title": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。",
+    "topics": [
+      "OpenAI",
+      "ベンチマーク",
+      "推論"
     ],
     "date": "2026-06-21"
   },
