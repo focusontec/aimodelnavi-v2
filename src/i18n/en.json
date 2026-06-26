@@ -99,9 +99,19 @@
   "leaderboard": {
     "title": "AI Model Rankings",
     "desc": "Comprehensive AI model rankings across 17 benchmarks. Detailed comparisons by category.",
-    "benchmarks": "benchmarks",
+    "benchmarks": "Benchmarks",
+    "comprehensive": "Comprehensive Ranking",
     "comprehensiveTitle": "Comprehensive Ranking",
-    "comprehensiveDesc": "Overall scores across HLE, ARC-AGI-2, FrontierMath, SWE-bench, and τ²-Bench"
+    "comprehensiveDesc": "Overall scores from HLE, ARC-AGI-2, FrontierMath, SWE-bench, τ²-Bench",
+    "reasoning": "Reasoning",
+    "code": "Code",
+    "math": "Math",
+    "agent": "AI Agent",
+    "general": "General",
+    "backToList": "Back to Rankings",
+    "loadMore": "Load more",
+    "search": "Search by model name or developer",
+    "aboutBenchmarks": "About Benchmarks"
   },
   "models": {
     "title": "Model List",

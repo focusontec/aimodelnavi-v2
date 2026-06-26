@@ -100,8 +100,18 @@
     "title": "AI 모델 순위",
     "desc": "17개 벤치마크에 걸친 종합 AI 모델 순위. 카테고리별 상세 비교.",
     "benchmarks": "벤치마크",
+    "comprehensive": "종합 순위",
     "comprehensiveTitle": "종합 순위",
-    "comprehensiveDesc": "HLE, ARC-AGI-2, FrontierMath, SWE-bench, τ²-Bench 종합 점수"
+    "comprehensiveDesc": "HLE, ARC-AGI-2, FrontierMath, SWE-bench, τ²-Bench 종합 점수",
+    "reasoning": "추론 능력",
+    "code": "코딩 능력",
+    "math": "수학 능력",
+    "agent": "AI 에이전트 능력",
+    "general": "일반 성능",
+    "backToList": "순위 목록으로 돌아가기",
+    "loadMore": "더 보기",
+    "search": "모델명 또는 개발사로 검색",
+    "aboutBenchmarks": "벤치마크 소개"
   },
   "models": {
     "title": "모델 목록",

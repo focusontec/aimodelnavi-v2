@@ -100,8 +100,18 @@
     "title": "AIモデルランキング",
     "desc": "17種類のベンチマークによるAIモデル総合ランキング。カテゴリ別に詳細な比較が可能です。",
     "benchmarks": "ベンチマーク",
+    "comprehensive": "総合ランキング",
     "comprehensiveTitle": "総合ランキング",
-    "comprehensiveDesc": "HLE、ARC-AGI-2、FrontierMath、SWE-bench、τ²-Bench の総合スコア"
+    "comprehensiveDesc": "HLE、ARC-AGI-2、FrontierMath、SWE-bench、τ²-Bench の総合スコア",
+    "reasoning": "推論能力",
+    "code": "コーディング能力",
+    "math": "数学能力",
+    "agent": "AIエージェント能力",
+    "general": "汎用性能",
+    "backToList": "ランキング一覧に戻る",
+    "loadMore": "もっと見る",
+    "search": "モデル名・開名・開発元で検索",
+    "aboutBenchmarks": "ベンチマークについて"
   },
   "models": {
     "title": "モデル一覧",
