@@ -26,15 +26,12 @@ export default function LangSwitcher() {
   }, []);
 
   function switchTo(targetLocale: string) {
-    // Use useLocale() for authoritative locale, not pathname parsing
-    // With localePrefix: "as-needed", usePathname() may omit the prefix
-    let cleanPath = pathname;
-    if (locale !== "ja") {
-      cleanPath = pathname.replace(new RegExp(`^/${locale}(?=/|$)`), "") || "/";
-    }
-    const newPath = targetLocale === "ja"
-      ? cleanPath
-      : `/${targetLocale}${cleanPath === "/" ? "" : cleanPath}`;
+    // Set NEXT_LOCALE cookie so middleware respects the new locale
+    document.cookie = `NEXT_LOCALE=${targetLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    // Get clean path by stripping any locale prefix from pathname
+    let cleanPath = pathname.replace(/^\/(?:ja|en|ko)(?=\/|$)/, "") || "/";
+    // Build target URL: default locale (ja) has no prefix, others get /xx prefix
+    const newPath = targetLocale === "ja" ? cleanPath : `/${targetLocale}${cleanPath}`;
     window.location.href = newPath;
   }
 
