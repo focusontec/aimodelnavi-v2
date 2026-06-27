@@ -1,5 +1,19 @@
 [
   {
+    "slug": "gpt-5-6-sol-preview",
+    "title": "GPT-5.6 Sol発表：ultraモードによるサブエージェント協調でOpenAI最強モデルが到達した新パラダイム",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIが次世代モデルGPT-5.6の限定プレビューを開始。フラッグシップのSolは「ultraモード」によりサブエージェントを活用した並列処理を実現し、Terminal-Bench 2.1やサイバーセキュリティ分野で新SOTAを達成した。コスト最適化されたTerraとLunaも含め、エージェント協調という新たなパラダイムを提示する。",
+    "topics": [
+      "OpenAI",
+      "Anthropic",
+      "Google",
+      "ベンチマーク",
+      "AIエージェント"
+    ],
+    "date": "2026-06-27"
+  },
+  {
     "slug": "frontier-model-showdown-june-2026",
     "title": "2026年6月 AI最前線モデル総力比較 — Claude Opus 4.8 vs GPT-5.5 vs Gemini 3.1 Pro",
     "tag": "ベンチマーク",
