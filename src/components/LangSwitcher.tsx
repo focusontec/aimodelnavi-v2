@@ -26,11 +26,16 @@ export default function LangSwitcher() {
   }, []);
 
   function switchTo(targetLocale: string) {
-    // Strip current locale prefix and add new one
-    const parts = pathname.split("/").filter(Boolean);
-    if (["ja", "en", "ko"].includes(parts[0])) parts.shift();
-    const newPath = targetLocale === "ja" ? `/${parts.join("/")}` : `/${targetLocale}/${parts.join("/")}`;
-    window.location.href = newPath || "/";
+    // Use useLocale() for authoritative locale, not pathname parsing
+    // With localePrefix: "as-needed", usePathname() may omit the prefix
+    let cleanPath = pathname;
+    if (locale !== "ja") {
+      cleanPath = pathname.replace(new RegExp(`^/${locale}(?=/|$)`), "") || "/";
+    }
+    const newPath = targetLocale === "ja"
+      ? cleanPath
+      : `/${targetLocale}${cleanPath === "/" ? "" : cleanPath}`;
+    window.location.href = newPath;
   }
 
   const currentLang = LANGUAGES.find((l) => l.code === locale);
