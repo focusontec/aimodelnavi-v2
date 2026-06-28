@@ -1,5 +1,19 @@
 [
   {
+    "slug": "gpt56-sol-government-gate",
+    "title": "GPT-5.6 Sol「政府門」：OpenAIとAnthropicの最強モデルが政府のゲートキーパーに直面",
+    "tag": "解説",
+    "excerpt": "OpenAIのGPT-5.6 SolとAnthropicのMythos 5が、米国政府の承認を受けた顧客にのみ限定提供される事態が起きた。フロンティアモデルの公開が政府のゲートキーパーを経由する時代が始まり、開発者には利用可能な代替モデルでの対応が求められている。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "xAI/Grok",
+      "AIエージェント"
+    ],
+    "date": "2026-06-28"
+  },
+  {
     "slug": "gpt-5-6-sol-preview",
     "title": "GPT-5.6 Sol発表：ultraモードによるサブエージェント協調でOpenAI最強モデルが到達した新パラダイム",
     "tag": "OpenAI",
