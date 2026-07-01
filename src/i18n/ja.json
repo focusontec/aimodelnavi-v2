@@ -14,7 +14,8 @@
     "benchmarks": "ベンチマーク一覧",
     "info": "情報",
     "recommend": "おすすめ",
-    "compare": "比較"
+    "compare": "比較",
+    "changelog": "リリース履歴"
   },
   "home": {
     "hero": "最適なAIモデルを、",

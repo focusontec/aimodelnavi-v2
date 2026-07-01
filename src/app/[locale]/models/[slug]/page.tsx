@@ -36,6 +36,7 @@ function t(key: string, locale: string): string {
     type_foundation: { ja: "基盤", en: "foundation", ko: "파운데이션" },
     input: { ja: "入力", en: "Input", ko: "입력" },
     output: { ja: "出力", en: "Output", ko: "출력" },
+    compareWith: { ja: "このモデルを比較", en: "Compare this model", ko: "이 모델 비교" },
   };
   return dict[key]?.[locale] || dict[key]?.ja || key;
 }
@@ -214,9 +215,13 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <Link href={`/${locale === "ja" ? "" : locale + "/"}models`} className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary-600 mb-6">
-        <ArrowLeft className="w-3 h-3" />{t("backToModels", locale)}
-      </Link>
+      <nav className="flex items-center gap-1.5 text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+        <Link href={`/${locale === "ja" ? "" : locale + "/"}`} className="hover:text-primary-600">{t("home", locale)}</Link>
+        <span>/</span>
+        <Link href={`/${locale === "ja" ? "" : locale + "/"}models`} className="hover:text-primary-600">{t("modelList", locale)}</Link>
+        <span>/</span>
+        <span className="text-gray-900 font-medium">{model.name}</span>
+      </nav>
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-3">
           <span className="text-sm text-gray-500">{devName}</span>
@@ -229,10 +234,44 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
           )}
         </div>
         <h1 className="text-3xl font-bold text-gray-900 leading-tight">{model.name}</h1>
+        <Link
+          href={`/${locale === "ja" ? "" : locale + "/"}compare?models=${model.slug}`}
+          className="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+        >
+          {t("compareWith", locale)}
+        </Link>
       </div>
 
       <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6">
         <p className="text-gray-700 leading-relaxed">{desc}</p>
+      </div>
+
+      <div className="flex items-center gap-2 mb-6">
+        <span className="text-xs text-gray-400">{locale === "ja" ? "シェア:" : locale === "ko" ? "공유:" : "Share:"}</span>
+        <a
+          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(model.name)}&url=${encodeURIComponent(`https://aimodelsnavi.com${locale === "ja" ? "" : `/${locale}`}/models/${model.slug}`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 px-2.5 py-1 text-xs text-gray-600 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors"
+        >
+          X
+        </a>
+        <a
+          href={`https://b.hatena.ne.jp/entry/${encodeURIComponent(`https://aimodelsnavi.com${locale === "ja" ? "" : `/${locale}`}/models/${model.slug}`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 px-2.5 py-1 text-xs text-gray-600 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors"
+        >
+          {locale === "ja" ? "はてブ" : "Hatena"}
+        </a>
+        <a
+          href={`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(`https://aimodelsnavi.com${locale === "ja" ? "" : `/${locale}`}/models/${model.slug}`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 px-2.5 py-1 text-xs text-gray-600 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors"
+        >
+          LINE
+        </a>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">

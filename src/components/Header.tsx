@@ -72,6 +72,7 @@ export default function Header() {
     { href: `${prefix}/pricing`, label: t("pricing"), icon: Zap },
     { href: `${prefix}/models`, label: t("models"), icon: BookOpen },
     { href: `${prefix}/blog`, label: t("blog"), icon: BookOpen },
+    { href: `${prefix}/changelog`, label: t("changelog"), icon: LayoutGrid },
     { href: `${prefix}/tools/cost-calculator`, label: t("tools"), icon: Calculator },
   ];
 

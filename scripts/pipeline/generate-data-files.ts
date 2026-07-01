@@ -264,6 +264,8 @@ export function generateDataFiles(): GenerateResult {
 // Source: SQLite database (data/crawler.db)
 // DO NOT EDIT MANUALLY
 
+export const LAST_UPDATED = "${new Date().toISOString()}";
+
 export interface ModelDetail {
   slug: string;
   name: string;

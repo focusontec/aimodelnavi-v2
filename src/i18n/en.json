@@ -14,7 +14,8 @@
     "benchmarks": "Benchmarks",
     "info": "Info",
     "recommend": "Recommend",
-    "compare": "Compare"
+    "compare": "Compare",
+    "changelog": "Changelog"
   },
   "home": {
     "hero": "Find the Best AI Model,",

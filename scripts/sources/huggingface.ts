@@ -156,11 +156,11 @@ export async function crawlHuggingFace(
     const logId = startCrawlLog(sourceId, url, mode);
 
     try {
-      const response = await fetchJson<HFModelListResponse>(url, {
+      const response = await fetchJson<HFModelListResponse | HFModel[]>(url, {
         headers: { Accept: "application/json" },
       });
 
-      const models = response.items || [];
+      const models = Array.isArray(response) ? response : (response.items || []);
       console.log(`    Found ${models.length} models`);
 
       for (const model of models) {

@@ -248,7 +248,6 @@
     "excerpt_en": "OpenAI's inference model was utilized for diagnostic support in pediatric rare diseases, achieving 18 new identification cases. As a practical example of complex medical inference using Chain-of-Thought, it offers insightful results for Japanese medical AI developers."
   },
   {
->>>>>>> 53ae871 (blog: publish translated post — Claude Sonnet 5 发布：Anthropic 最强中端模型，GPT-5.5 被全面超越)
     "slug": "anthropic-fable-nerfing-2026",
     "title": "AnthropicがFableを意図的に制限？AIモデルの信頼性危機が問われる",
     "tag": "Anthropic",

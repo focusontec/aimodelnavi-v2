@@ -57,7 +57,7 @@ const PROVIDERS = [
   },
   {
     name: "Anthropic",
-    url: "https://www.anthropic.com/pricing",
+    url: "https://claude.com/pricing",
     needsJS: true,
   },
   {
