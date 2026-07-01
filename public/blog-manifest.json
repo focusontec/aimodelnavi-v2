@@ -1,5 +1,19 @@
 [
   {
+    "slug": "claude-sonnet-5-deep-dive",
+    "title": "Claude Sonnet 5 発表：Anthropic最強中端モデルがGPT-5.5を全面的に超越",
+    "tag": "Anthropic",
+    "excerpt": "Anthropicは2026年6月30日、Sonnetシリーズ史上最強のモデルとなるClaude Sonnet 5を発表した。この中端モデルは7つの主要ベンチマークテストでGPT-5.5に5勝2敗と勝利し、前世代フラッグシップのOpus 4.8にも迫る推論能力を示した。価格は期間限定で入力$2/1Mトークンと非常に攻撃的であり、コストパフォーマンスの新たな王者として2026年後半のAIモデル選択を変える可能性がある。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "ベンチマーク",
+      "AIエージェント"
+    ],
+    "date": "2026-07-01"
+  },
+  {
     "slug": "gpt56-sol-government-gate",
     "title": "GPT-5.6 Sol「政府門」：OpenAIとAnthropicの最強モデルが政府のゲートキーパーに直面",
     "tag": "解説",
