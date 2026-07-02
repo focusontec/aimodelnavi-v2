@@ -8,21 +8,27 @@ const T = {
     title: "AIモデル リリース履歴",
     description: "2026年のAIモデルリリースを時系列で追跡。GPT、Claude、Geminiなど主要モデルの発表スケジュール。",
     subtitle: "2026年の主要AIモデルリリースを時系列で追跡します",
-    license: "ライセンス",
   },
   en: {
     title: "AI Model Release History",
     description: "Track AI model releases over time. GPT, Claude, Gemini and other major model announcements.",
     subtitle: "Track major AI model releases in 2026 over time",
-    license: "License",
   },
   ko: {
     title: "AI 모델 출시 이력",
     description: "GPT, Claude, Gemini 등 주요 모델 발표 일정을 시간순으로 추적합니다.",
     subtitle: "2026년 주요 AI 모델 출시를 시간순으로 추적합니다",
-    license: "라이선스",
   },
 };
+
+const licenseEn: Record<string, string> = {
+  "プロプライエタリ": "Proprietary", "オープンソース": "Open Source", "条件付オープン": "Conditional Open",
+};
+const licenseKo: Record<string, string> = {
+  "プロプライエタリ": "독점", "オープンソース": "오픈소스", "条件付オープン": "조건부 오픈",
+};
+const paramsEn: Record<string, string> = { "非公開": "Undisclosed" };
+const paramsKo: Record<string, string> = { "非公開": "비공개" };
 
 const localeFormats: Record<string, string> = {
   ja: "ja-JP",
@@ -97,9 +103,9 @@ export default async function ChangelogPage({ params }: { params: Promise<{ loca
                       </time>
                     </div>
                     <div className="mt-2 flex flex-wrap gap-2 text-xs">
-                      <span className="px-2 py-0.5 bg-gray-100 rounded">{model.params}</span>
+                      <span className="px-2 py-0.5 bg-gray-100 rounded">{locale === "en" ? (paramsEn[model.params] || model.params) : locale === "ko" ? (paramsKo[model.params] || model.params) : model.params}</span>
                       <span className="px-2 py-0.5 bg-gray-100 rounded">{model.contextWindow}</span>
-                      <span className="px-2 py-0.5 bg-gray-100 rounded">{model.license}</span>
+                      <span className="px-2 py-0.5 bg-gray-100 rounded">{locale === "en" ? (licenseEn[model.license] || model.license) : locale === "ko" ? (licenseKo[model.license] || model.license) : model.license}</span>
                       {model.pricing && (
                         <span className="px-2 py-0.5 bg-green-50 text-green-700 rounded">
                           ${model.pricing.inputPer1M}/M in
