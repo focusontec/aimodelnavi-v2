@@ -1,5 +1,21 @@
 [
   {
+    "slug": "claude-sonnet-5-deep-dive",
+    "title": "Claude Sonnet 5 発表：Anthropic最強中端モデルがGPT-5.5を全面的に超越",
+    "tag": "Anthropic",
+    "excerpt": "Anthropicは2026年6月30日、Sonnetシリーズ史上最強のモデルとなるClaude Sonnet 5を発表した。この中端モデルは7つの主要ベンチマークテストでGPT-5.5に5勝2敗と勝利し、前世代フラッグシップのOpus 4.8にも迫る推論能力を示した。価格は期間限定で入力$2/1Mトークンと非常に攻撃的であり、コストパフォーマンスの新たな王者として2026年後半のAIモデル選択を変える可能性がある。",
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Google",
+      "ベンチマーク",
+      "AIエージェント"
+    ],
+    "date": "2026-07-01",
+    "title_en": "Claude Sonnet 5 Arrives: Anthropic's Mid-Range Model Beats GPT-5.5 on 5 of 7 Benchmarks",
+    "excerpt_en": "Anthropic's Claude Sonnet 5 beats GPT-5.5 on 5 of 7 shared benchmarks while costing less than half as much, making it the new default mid-range AI model for H2 2026. The model's reasoning capabilities nearly match Anthropic's own Opus 4.8 flagship at just 40% of the price, representing a major shift in the cost-performance landscape."
+  },
+  {
     "slug": "gpt56-sol-government-gate",
     "title": "GPT-5.6 Sol「政府門」：OpenAIとAnthropicの最強モデルが政府のゲートキーパーに直面",
     "tag": "解説",
@@ -202,34 +218,6 @@
     "date": "2026-06-21",
     "title_en": "How GPT-5.5 Instant is Advancing Medical AI with Enhanced Reasoning and Doctor-Verified Evaluation",
     "excerpt_en": "OpenAI's GPT-5.5 Instant model enhances medical AI by improving reasoning accuracy and incorporating a doctor-supervised evaluation framework for safety and reliability. This innovation sets a benchmark for quality assurance in healthcare AI development, offering insights for global applications, including in Japanese markets."
-  },
-  {
-    "slug": "chatgpt-enterprisellm",
-    "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
-    "tag": "解説",
-    "excerpt": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。",
-    "topics": [
-      "OpenAI",
-      "推論",
-      "LLM"
-    ],
-    "date": "2026-06-21",
-    "title_en": "Explanation of ChatGPT Enterprise's Spending Management and Usage Analysis Features | Practical Reference for LLM-Based Cost Governance Design",
-    "excerpt_en": "OpenAI has announced new spending management and usage analysis features for ChatGPT Enterprise. As the importance of cost visualization and governance grows in enterprise AI adoption, this article explains the feature design from the perspective of Japanese IT departments and development leaders."
-  },
-  {
-    "slug": "openai18ai",
-    "title": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
-    "tag": "OpenAI",
-    "excerpt": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。",
-    "topics": [
-      "OpenAI",
-      "ベンチマーク",
-      "推論"
-    ],
-    "date": "2026-06-21",
-    "title_en": "OpenAI's Reasoning Model Aids 18 New Diagnoses in Pediatric Rare Diseases—Technology and Challenges in Medical AI Practical Use",
-    "excerpt_en": "OpenAI's reasoning model was utilized to assist in diagnosing rare pediatric diseases, achieving 18 new identification cases. As a practical example of complex medical reasoning using chain-of-thought, this result offers valuable insights for Japanese healthcare AI developers."
   },
   {
     "slug": "anthropic-fable-nerfing-2026",

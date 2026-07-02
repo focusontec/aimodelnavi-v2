@@ -1,5 +1,19 @@
 [
   {
+    "slug": "kimi-k2-7-code-copilot",
+    "title": "Kimi K2.7 Code、GitHub Copilotに参入：オープンソースモデル初の主要開発ツールチェーン統合",
+    "tag": "オープンソース",
+    "excerpt": "2026年7月1日、中国のMoonshot AIが開発したオープンソースコーディングモデル「Kimi K2.7 Code」が、GitHub Copilotのモデル選択肢として初めて組み込まれた。これは1兆パラメータのMoEアーキテクチャを持ちながら推論コストが低く、データセキュリティが求められる日本企業にとってローカルデプロイ可能な新たな選択肢となる。",
+    "topics": [
+      "オープンソース",
+      "Anthropic",
+      "ベンチマーク",
+      "AIエージェント",
+      "セキュリティ"
+    ],
+    "date": "2026-07-02"
+  },
+  {
     "slug": "claude-sonnet-5-deep-dive",
     "title": "Claude Sonnet 5 発表：Anthropic最強中端モデルがGPT-5.5を全面的に超越",
     "tag": "Anthropic",

@@ -1,5 +1,19 @@
 [
   {
+    "slug": "kimi-k2-7-code-copilot",
+    "title": "Kimi K2.7 Code、GitHub Copilotに参入：オープンソースモデル初の主要開発ツールチェーン統合",
+    "tag": "オープンソース",
+    "excerpt": "2026年7月1日、中国のMoonshot AIが開発したオープンソースコーディングモデル「Kimi K2.7 Code」が、GitHub Copilotのモデル選択肢として初めて組み込まれた。これは1兆パラメータのMoEアーキテクチャを持ちながら推論コストが低く、データセキュリティが求められる日本企業にとってローカルデプロイ可能な新たな選択肢となる。",
+    "topics": [
+      "オープンソース",
+      "Anthropic",
+      "ベンチマーク",
+      "AIエージェント",
+      "セキュリティ"
+    ],
+    "date": "2026-07-02"
+  },
+  {
     "slug": "claude-sonnet-5-deep-dive",
     "title": "Claude Sonnet 5 発表：Anthropic最強中端モデルがGPT-5.5を全面的に超越",
     "tag": "Anthropic",
@@ -180,6 +194,18 @@
     "date": "2026-06-21"
   },
   {
+    "slug": "chatgpt-enterprisellm",
+    "title": "ChatGPT Enterpriseの支出管理・利用分析機能を解説｜LLM基盤のコストガバナンス設計に向けた実践的参考事例",
+    "tag": "解説",
+    "excerpt": "OpenAIがChatGPT Enterprise向けに支出管理・利用分析機能を新機能として発表。エンタープライズ向けAI導入におけるコスト可視化とガバナンスの重要性が高まる中、本記事ではその機能設計を日本のIT部門・開発リーダー視点で解説します。",
+    "topics": [
+      "OpenAI",
+      "推論",
+      "LLM"
+    ],
+    "date": "2026-06-21"
+  },
+  {
     "slug": "gpt-55-instantai",
     "title": "GPT-5.5 Instantの医療AI革新：強化推論と医師監修評価フレームワークの技術解説",
     "tag": "OpenAI",
@@ -188,6 +214,18 @@
       "OpenAI",
       "推論",
       "LLM"
+    ],
+    "date": "2026-06-21"
+  },
+  {
+    "slug": "openai18ai",
+    "title": "OpenAI推論モデルが小児希少疾患で18件の新規診断支援に成功──医療AI実用化の技術と課題",
+    "tag": "OpenAI",
+    "excerpt": "OpenAIの推論モデルが小児の希少疾患診断支援に活用され、18件の新規特定事例を達成した。推論チェーン（Chain-of-Thought）を活用した複雑な医学推論の実践例として、日本の医療AI開発者にとって示唆に富む成果だ。",
+    "topics": [
+      "OpenAI",
+      "ベンチマーク",
+      "推論"
     ],
     "date": "2026-06-21"
   },
