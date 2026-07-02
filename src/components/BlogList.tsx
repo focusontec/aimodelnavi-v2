@@ -20,6 +20,15 @@ interface BlogPost {
 
 const ITEMS_PER_PAGE = 10;
 
+const tagEn: Record<string, string> = {
+  "解説": "Analysis", "AIエージェント": "AI Agents", "オープンソース": "Open Source",
+  "ベンチマーク": "Benchmarks", "料金比較": "Pricing", "分析": "Analysis",
+};
+const tagKo: Record<string, string> = {
+  "解説": "분석", "AIエージェント": "AI 에이전트", "オープンソース": "오픈소스",
+  "ベンチマー크": "벤치마크", "料金 비교": "가격", "分析": "분석",
+};
+
 export default function BlogList() {
   const params = useParams();
   const locale = (params.locale as string) === "en" ? "en" : (params.locale as string) === "ko" ? "ko" : "ja";
@@ -75,12 +84,15 @@ export default function BlogList() {
           className={`px-3 py-1 text-xs font-medium rounded-full ${selectedTag === null ? "bg-primary-600 text-white" : "bg-gray-100 text-gray-600"}`}>
           {isKo ? "전체" : isEn ? "All" : "すべて"}
         </button>
-        {tags.map(tag => (
-          <button key={tag} onClick={() => { setSelectedTag(selectedTag === tag ? null : tag); setCurrentPage(1); }}
-            className={`px-3 py-1 text-xs font-medium rounded-full ${selectedTag === tag ? "bg-primary-600 text-white" : "bg-gray-100 text-gray-600"}`}>
-            {tag}
-          </button>
-        ))}
+        {tags.map(tag => {
+          const displayTag = isKo ? (tagKo[tag] || tag) : isEn ? (tagEn[tag] || tag) : tag;
+          return (
+            <button key={tag} onClick={() => { setSelectedTag(selectedTag === tag ? null : tag); setCurrentPage(1); }}
+              className={`px-3 py-1 text-xs font-medium rounded-full ${selectedTag === tag ? "bg-primary-600 text-white" : "bg-gray-100 text-gray-600"}`}>
+              {displayTag}
+            </button>
+          );
+        })}
       </div>
 
       {posts.length === 0 ? (
@@ -93,7 +105,7 @@ export default function BlogList() {
             <Link key={post.slug} href={`${blogBase}/${post.slug}`}
               className="block p-4 sm:p-6 bg-white border border-gray-200 rounded-xl hover:border-primary-300 hover:shadow-sm transition-all">
               <div className="flex items-center gap-3 mb-2">
-                <span className="px-2 py-0.5 bg-primary-50 text-primary-700 text-xs font-medium rounded-full">{isKo ? post.tag_ko || post.tag : post.tag}</span>
+                <span className="px-2 py-0.5 bg-primary-50 text-primary-700 text-xs font-medium rounded-full">{isKo ? post.tag_ko || tagKo[post.tag] || post.tag : isEn ? tagEn[post.tag] || post.tag : post.tag}</span>
                 <time className="text-sm text-gray-400">{post.date}</time>
               </div>
               <h2 className="text-lg font-semibold text-gray-900 mb-2">{isKo ? post.title_ko || post.title : isEn ? post.title_en || post.title : post.title}</h2>

@@ -110,7 +110,7 @@ export default async function BlogDetailPage({
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <span className="px-2.5 py-0.5 bg-primary-50 text-primary-700 text-xs font-medium rounded-full">
-            {post.tag}
+            {locale === "en" ? ({ "解説": "Analysis", "AIエージェント": "AI Agents", "オープンソース": "Open Source", "ベンチマーク": "Benchmarks", "料金比較": "Pricing", "分析": "Analysis" }[post.tag] || post.tag) : locale === "ko" ? ({ "解説": "분석", "AIエージェント": "AI 에이전트", "オープンソース": "오픈소스", "ベンチマー크": "벤치마크", "料金比較": "가격", "分析": "분석" }[post.tag] || post.tag) : post.tag}
           </span>
           <time className="text-sm text-gray-400">{post.date}</time>
         </div>

@@ -1,17 +1,54 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { modelDetails } from "@/data/models";
 
-export const metadata: Metadata = {
-  title: "AIモデル リリース履歴 | AI Models Navi",
-  description: "2026年のAIモデルリリースを時系列で追跡。GPT、Claude、Geminiなど主要モデルの発表スケジュール。",
+const T = {
+  ja: {
+    title: "AIモデル リリース履歴",
+    description: "2026年のAIモデルリリースを時系列で追跡。GPT、Claude、Geminiなど主要モデルの発表スケジュール。",
+    subtitle: "2026年の主要AIモデルリリースを時系列で追跡します",
+    license: "ライセンス",
+  },
+  en: {
+    title: "AI Model Release History",
+    description: "Track AI model releases over time. GPT, Claude, Gemini and other major model announcements.",
+    subtitle: "Track major AI model releases in 2026 over time",
+    license: "License",
+  },
+  ko: {
+    title: "AI 모델 출시 이력",
+    description: "GPT, Claude, Gemini 등 주요 모델 발표 일정을 시간순으로 추적합니다.",
+    subtitle: "2026년 주요 AI 모델 출시를 시간순으로 추적합니다",
+    license: "라이선스",
+  },
 };
+
+const localeFormats: Record<string, string> = {
+  ja: "ja-JP",
+  en: "en-US",
+  ko: "ko-KR",
+};
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = T[locale as keyof typeof T] || T.ja;
+  return {
+    title: `${t.title} | AI Models Navi`,
+    description: t.description,
+  };
+}
 
 interface GroupedModels {
   [month: string]: typeof modelDetails;
 }
 
-export default function ChangelogPage() {
+export default async function ChangelogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = T[locale as keyof typeof T] || T.ja;
+  const prefix = locale === "ja" ? "" : `/${locale}`;
+
   const sorted = [...modelDetails]
     .filter((m) => m.releaseDate)
     .sort((a, b) => b.releaseDate.localeCompare(a.releaseDate));
@@ -24,17 +61,16 @@ export default function ChangelogPage() {
   }
 
   const months = Object.keys(grouped);
+  const loc = localeFormats[locale] || "ja-JP";
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold mb-2">AIモデル リリース履歴</h1>
-      <p className="text-gray-500 mb-8">
-        2026年の主要AIモデルリリースを時系列で追跡します
-      </p>
+      <h1 className="text-3xl font-bold mb-2">{t.title}</h1>
+      <p className="text-gray-500 mb-8">{t.subtitle}</p>
 
       {months.map((month) => {
         const date = new Date(month + "-01");
-        const label = date.toLocaleDateString("ja-JP", { year: "numeric", month: "long" });
+        const label = date.toLocaleDateString(loc, { year: "numeric", month: "long" });
         return (
           <section key={month} className="mb-10">
             <h2 className="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2">
@@ -49,7 +85,7 @@ export default function ChangelogPage() {
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <Link
-                          href={`/models/${model.slug}`}
+                          href={`${prefix}/models/${model.slug}`}
                           className="text-lg font-medium text-blue-600 hover:underline"
                         >
                           {model.name}
